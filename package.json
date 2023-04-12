@@ -8,6 +8,15 @@
   "license": "MIT",
   "private": true,
   "devDependencies": {
-    "gulp": "^4.0.2"
+    "bourbon": "^7.3.0",
+    "css-mqpacker": "^7.0.0",
+    "cssnano": "^6.0.0",
+    "gulp": "^4.0.2",
+    "gulp-jsbeautifier": "^3.0.1",
+    "gulp-postcss": "^9.0.1",
+    "gulp-pug": "^5.0.0",
+    "gulp-sass": "^5.1.0",
+    "postcss-assets": "^6.0.0",
+    "sass": "^1.62.0"
   }
 }

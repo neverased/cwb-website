@@ -6,7 +6,7 @@
     }
 
     .intro {
-        @include user-select(none);
+        user-select: none;
         cursor: none;
     }
 
@@ -21,8 +21,8 @@
             display: none;
         }
 
-        @include transform(translate3d(0, 0, 0));
-        @include transition(all .1s);
+        transform: (translate3d(0, 0, 0));
+        transition: (all .1s);
         position: fixed;
         top: 0;
         left: 0;
@@ -32,7 +32,7 @@
         background: $black-space-background-color;
 
         &.started {
-            @include user-select(none);
+            user-select: none;
             cursor: none;
 
             #start {
@@ -90,7 +90,7 @@
     }
 
     #spaceship {
-        @include transform(translate3d(0, 0, 0));
+        transform: translate3d(0, 0, 0);
         position: absolute;
         bottom: 50px;
         left: 50%;
@@ -168,7 +168,7 @@
     }
 
     .lazer {
-        @include transition(bottom .666s linear);
+        transition: bottom .666s linear;
         position: absolute;
         bottom: 51px;
         width: 8px;
@@ -181,8 +181,8 @@
     }
 
     .enemy {
-        @include transition(top 4s linear);
-        @include transform(translate3d(0, 0, 0));
+        transition: top 4s linear;
+        transform: translate3d(0, 0, 0);
         position: absolute;
         top: -50px;
         width: 50px;
@@ -194,7 +194,7 @@
         }
 
         &.exploding {
-            @include transition(all .1s linear);
+            transition: all .1s linear;
             background: red;
             width: 60px;
             height: 60px;
@@ -204,7 +204,7 @@
     }
 
     .star {
-        @include transition(transform 2s linear);
+        transition: transform 2s linear;
         position: absolute;
         top: 0;
         width: 4px;
@@ -212,11 +212,11 @@
         background: rgba(255, 255, 255, 0.3);
 
         &.fast {
-            @include transition(transform 2.5s linear);
+            transition: transform 2.5s linear;
         }
 
         &.shooting {
-            @include transform(translate3d(0, 1200px, 0));
+            transform: translate3d(0, 1200px, 0);
         }
     }
 

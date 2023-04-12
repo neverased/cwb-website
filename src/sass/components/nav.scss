@@ -1,13 +1,19 @@
+$color-nav: color('blue-grey', 'darken-3');
+$color-nav-hover: transparentize(color('blue-grey', 'darken-3'), .5);
+$color-nav-border: transparentize(color('blue-grey', 'darken-3'), .75);
+$color-nav-background: color('blue-grey', 'lighten-5');
+$transition: all .4s $ease-out-circ .5s;
+
 .navbar-fixed nav {
     background-color: transparent;
     box-shadow: none;
 
     %a {
-        color: color('blue-grey', 'darken-3');
-        border-bottom: 1px solid transparentize(color('blue-grey', 'darken-3'), .75);
+        color: $color-nav;
+        border-bottom: 1px solid $color-nav-border;
 
         &:hover {
-            border-bottom-color: transparentize(color('blue-grey', 'darken-3'), .5);
+            border-bottom-color: $color-nav-hover;
         }
     }
 
@@ -18,10 +24,11 @@
     }
 
     ul:not(.side-nav) {
-        @include transition(all .4s $ease-out-circ .5s);
+        transition: $transition;
 
         &.hidden {
-            @include transform(translateY(-5rem));
+            transform: translate(0, -5rem);
+            
         }
 
         a {
@@ -44,8 +51,8 @@
             display: block;
             height: 64px;
             line-height: 64px;
-            border-bottom: 1px solid color('blue-grey', 'lighten-5') !important;
-            color: color('blue-grey', 'darken-3') !important;
+            border-bottom: 1px solid $color-nav-background !important;
+            color: $color-nav !important;
         }
 
     }

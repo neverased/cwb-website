@@ -1,11 +1,14 @@
+// font
 html {
     font-family: 'Roboto Mono', monospace;
 }
 
+// transition
 body {
-    @include transition(background .4s ease);
+    transition: background .4s ease;
 }
 
+// font smoothing
 body,
 input,
 textarea,
@@ -18,10 +21,12 @@ button {
     -moz-font-feature-settings: 'liga', 'kern';
 }
 
+// no underline
 .no-underline {
     border-bottom: 0 !important;
 }
 
+// section
 section {
     padding: 5rem 0;
 
@@ -38,6 +43,7 @@ section {
     }
 }
 
+// container
 .container {
     width: 90%;
     max-width: 1600px;
@@ -60,6 +66,7 @@ section {
     }
 }
 
+// pace
 .pace {
     .pace-progress-inner {
         box-shadow: none;
@@ -73,32 +80,38 @@ section {
     }
 }
 
+// iframe
 iframe {
     border: 0;
 }
 
+// intro text
 .intro-text {
     @media #{$small-and-down} {
         margin-top: 3rem;
     }
 }
 
+// margin on medium and down
 .margin-on-medium-and-down {
     @media #{$medium-and-down} {
         margin-bottom: 2rem;
     }
 }
 
+// p margin adjust
 .p-margin-adjust {
     margin-top: -1em;
 }
 
+// h2
 h2 {
     @media #{$small-and-down} {
         font-size: 2rem;
     }
 }
 
+// social row
 .social .row {
     margin-bottom: 0;
 }

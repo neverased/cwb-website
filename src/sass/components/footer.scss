@@ -15,7 +15,7 @@ footer {
     }
 
     .new-window {
-        @include transform(rotate(-45deg));
+        transform: rotate(-45deg);
         display: inline-block;
     }
 }

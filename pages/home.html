@@ -1,0 +1,109 @@
+<div class="container intro">
+    <div class="row">
+        <div class="col s12 l6 offset-l6">
+            <p class="flow-text intro-text">Oona is a cutting edge design and development studio that exists to create challenging and engaging visual concepts.
+            </p>
+        </div>
+    </div>
+</div>
+<div id="curves" class="hero"></div>
+<div class="container">
+
+    <section class="latest-projects">
+        <div class="row">
+            <div class="col s12">
+                <h2>Latest projects</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 l6 margin-on-medium-and-down">
+                <a href="#/work/the-lamp" class="no-underline">
+                    <img src="./assets/images/work/lamp.png" alt="The Lamp" class="responsive-img" />
+                </a>
+                <a href="#/work/the-lamp" class="flow-text">The Lamp</a>
+            </div>
+            <div class="col s12 l6">
+                <a href="#/work/the-clocks" class="no-underline">
+                    <img src="./assets/images/work/clocks.png" alt="The Clocks" class="responsive-img" />
+                </a>
+                <a href="#/work/the-clocks" class="flow-text">The Clocks</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="services">
+        <div class="row">
+            <div class="col s12">
+                <h2>Our services</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 l6 margin-on-medium-and-down">
+                <i class="icon-basic-cloud"></i><span class="flow-text">Cloud solutions</span></div>
+            <div class="col s12 l6">
+                <i class="icon-basic-accelerator"></i><span class="flow-text">Performance optimizations</span></div>
+        </div>
+        <div class="row">
+            <div class="col s12 l6 margin-on-medium-and-down">
+                <i class="icon-basic-target"></i><span class="flow-text">Targeted clients</span></div>
+            <div class="col s12 l6">
+                <i class="icon-ecommerce-graph-increase"></i><span class="flow-text">Sales analysis</span></div>
+        </div>
+        <div class="row">
+            <div class="col s12 l6 margin-on-medium-and-down">
+                <i class="icon-basic-battery-charge"></i><span class="flow-text">Sustainable energy</span></div>
+            <div class="col s12 l6">
+                <i class="icon-basic-heart"></i><span class="flow-text">A lot of passion</span></div>
+        </div>
+    </section>
+
+    <section class="blog-posts">
+        <div class="row">
+            <div class="col s12">
+                <h2>Journal entries</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 l6 margin-on-medium-and-down">
+                <a href="#/blog/new-bike" class="no-underline">
+                    <img src="./assets/images/blog/bicycle.jpg" alt="New Bike" class="responsive-img" />
+                </a>
+                <div class="meta">
+                    <time datetime="2016-08-08T21:00">08/08/2016</time><span>&nbsp;by Pete</span></div>
+                <a href="#/blog/new-bike" class="flow-text">Pete’s new bike</a>
+            </div>
+            <div class="col s12 l6">
+                <a href="#/blog/the-mountain" class="no-underline">
+                    <img src="./assets/images/blog/mountain.jpg" alt="The Mountain" class="responsive-img" />
+                </a>
+                <div class="meta">
+                    <time datetime="2016-08-01T21:00">01/08/2016</time><span>&nbsp;by Annie</span></div>
+                <a href="#/blog/the-mountain" class="flow-text">The Mountain</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="get-in-touch">
+        <div class="row">
+            <div class="col s12">
+                <h2>Get in touch</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 l6">
+                <p class="flow-text">Whether you like to start a new project, discuss a brilliant investment idea or just have a small-talk chat, feel free to
+                    <a href="#/contact" class="ajax-link">contact us</a>.</p>
+            </div>
+        </div>
+    </section>
+</div>
+<script>
+    $.getScript('./assets/js/curves.js?v=1')
+        .done(function(script, status) {
+            //console.log(status);
+        })
+        .fail(function(error) {
+            //console.error(error);
+            Materialize.toast('Curves script error: ' + error.statusText, App.CONFIG.toastSpeed, 'error');
+        });
+</script>

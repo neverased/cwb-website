@@ -1,0 +1,13 @@
+{
+  "name": "cwb-website",
+  "version": "1.0.0",
+  "description": "Consulting Wojciech Bajer - WWW",
+  "main": "index.html",
+  "repository": "git@github.com:neverased/cwb-website.git",
+  "author": "Wojciech Bajer <mail@wojciechbajer.com>",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "gulp": "^4.0.2"
+  }
+}

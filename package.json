@@ -1,20 +1,44 @@
 {
-  "name": "cwb-website",
+  "name": "my-webpack-project",
   "version": "1.0.0",
-  "description": "Consulting Wojciech Bajer - WWW",
+  "description": "My webpack project",
   "main": "index.html",
   "repository": "git@github.com:neverased/cwb-website.git",
   "author": "Wojciech Bajer <mail@wojciechbajer.com>",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "build": "webpack --mode=production --node-env=production",
+    "dev": "webpack --mode development",
+    "watch": "webpack --watch",
+    "build:dev": "webpack --mode=development",
+    "build:prod": "webpack --mode=production --node-env=production",
+    "serve": "webpack serve"
+  },
   "devDependencies": {
+    "@babel/core": "^7.21.4",
+    "@babel/preset-env": "^7.21.4",
+    "@webpack-cli/generators": "^3.0.1",
+    "autoprefixer": "^10.4.14",
+    "babel-loader": "^9.1.2",
     "bourbon": "^7.3.0",
+    "css-loader": "^6.7.3",
     "css-mqpacker": "^7.0.0",
     "cssnano": "^6.0.0",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.7.5",
     "postcss": "^8.4.21",
     "postcss-assets": "^6.0.0",
+    "postcss-loader": "^7.2.4",
+    "prettier": "^2.8.7",
     "sass": "^1.62.0",
+    "sass-loader": "^13.2.2",
+    "style-loader": "^3.3.2",
     "webpack": "^5.79.0",
-    "webpack-cli": "^5.0.1"
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.13.2"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
   }
 }

@@ -15,6 +15,7 @@
     "build:prod": "webpack --mode=production --node-env=production",
     "serve": "webpack serve"
   },
+  "puglint.enable": true,
   "devDependencies": {
     "@babel/core": "^7.21.4",
     "@babel/preset-env": "^7.21.4",
@@ -27,12 +28,14 @@
     "css-loader": "^6.7.3",
     "css-mqpacker": "^7.0.0",
     "cssnano": "^6.0.0",
+    "eslint": "^8.38.0",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.7.5",
     "postcss": "^8.4.21",
     "postcss-assets": "^6.0.0",
     "postcss-loader": "^7.2.4",
     "prettier": "^2.8.7",
+    "pug-lint": "^2.7.0",
     "pug-plugin": "^4.9.7",
     "sass": "^1.62.0",
     "sass-loader": "^13.2.2",

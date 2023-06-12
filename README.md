@@ -1,6 +1,6 @@
 # WojciechBajer.com Source Code
 
-This is the source code for the personal website located at www.wojciechbajer.com.
+This is the source code for the personal website located at [www.wojciechbajer.com](https://wojciechbajer.com).
 
 ## Description
 
@@ -18,27 +18,27 @@ Please ensure that you have the following installed on your machine:
 
 1. Clone the repository:
 
-\`\`\`bash
-git clone https://github.com/wojciechbajer/wojciechbajer.com.git
-\`\`\`
+    ``bash
+    git clone <https://github.com/wojciechbajer/wojciechbajer.com.git>
+    ``
 
 2. Navigate to the project directory:
 
-\`\`\`bash
-cd wojciechbajer.com
-\`\`\`
+    ``bash
+    cd wojciechbajer.com
+    ``
 
 3. Install the required dependencies:
 
-\`\`\`bash
-npm install
-\`\`\`
+    ``bash
+    npm install
+    ``
 
 4. Start the development server:
 
-\`\`\`bash
-npm start
-\`\`\`
+    ``bash
+    npm start
+    ``
 
 The website should now be accessible at `http://localhost:[port]`.
 

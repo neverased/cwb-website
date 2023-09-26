@@ -9,7 +9,7 @@ export const CONTACT =
     `class Contact {
   constructor() {
     this.mail = mail@wojciechbajer.com;
-    this.location = Poland, Sweden, Worldwide;
+    this.location = Poland, Worldwide;
     this.phone = +48 694 913 653; }}`
 
 

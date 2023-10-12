@@ -1,5 +1,5 @@
 import "./globals.css";
-import 'highlight.js/styles/github-dark.css'
+import "highlight.js/styles/github-dark.css";
 import { Fira_Code } from "next/font/google";
 
 const fira_code = Fira_Code({
@@ -26,7 +26,8 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </head>
-      <body className={fira_code.className}>{children}</body>
+      <body className={fira_code.className}>{children}
+      </body>
     </html>
   );
 }

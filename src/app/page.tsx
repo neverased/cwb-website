@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import Image from "next/image";
 import styles from "./page.module.css";
@@ -7,11 +7,11 @@ import { WELCOME, CONTACT, COOKIES, HACKING } from "@/static/staticText/start";
 import { Intro } from "@/components/use_scramble";
 
 export default function Home() {
-  return (
-    <main className={styles.main}>
-      <Intro texts={HACKING}/>
+    return (
+        <main className={styles.main}>
+            <Intro texts={HACKING} />
 
-      {/* <div className={styles.grid}>{CodeBlock(WELCOME, "javascript")}</div>
+            {/* <div className={styles.grid}>{CodeBlock(WELCOME, "javascript")}</div>
       <div className={styles.grid}>
         {CodeBlock(
           `import Logo from "./public/assets/cwb_logo.png`,
@@ -44,6 +44,6 @@ export default function Home() {
         </a>
       </div>
       <div className={styles.grid}>{CodeBlock(COOKIES, "powershell")}</div> */}
-    </main>
-  );
+        </main>
+    );
 }

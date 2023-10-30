@@ -1,6 +1,7 @@
 import "./globals.css";
 import "highlight.js/styles/github-dark.css";
 import { Fira_Code } from "next/font/google";
+import Script from "next/script";
 
 const fira_code = Fira_Code({
   subsets: ["latin"],

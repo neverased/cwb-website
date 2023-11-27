@@ -2,10 +2,10 @@
 import hljs from "highlight.js";
 
 export default function CodeBlock(code: string, language: string) {
-    const myCode = hljs.highlight(code, { language: language }).value
+    const myCode = hljs.highlight(code, { language: language }).value;
     return (
-      <pre>
-        <code dangerouslySetInnerHTML={{ __html: myCode }} />
-      </pre>
-    )
-  }
+        <pre>
+            <code dangerouslySetInnerHTML={{ __html: myCode }} />
+        </pre>
+    );
+}

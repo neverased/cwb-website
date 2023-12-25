@@ -22,7 +22,7 @@
     "react-dom": "^18.2.0",
     "sass": "^1.69.5",
     "typescript": "5.3.3",
-    "use-scramble": "^2.2.12"
+    "use-scramble": "^2.2.15"
   },
   "devDependencies": {
     "coffeescript": "^2.7.0"

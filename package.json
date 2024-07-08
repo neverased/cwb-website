@@ -20,7 +20,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "sass": "^1.77.2",
-    "typescript": "5.4.5",
+    "typescript": "5.5.3",
     "use-scramble": "^2.2.15"
   },
   "devDependencies": {

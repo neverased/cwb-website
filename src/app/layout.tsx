@@ -1,5 +1,6 @@
 import "./globals.css";
 import "highlight.js/styles/github-dark.css";
+
 import { Fira_Code } from "next/font/google";
 
 const fira_code = Fira_Code({

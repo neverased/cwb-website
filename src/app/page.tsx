@@ -1,10 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import styles from "./page.module.css";
+
 import CodeBlock from "@/components/highligt_code";
-import { WELCOME, CONTACT, COOKIES, HACKING } from "@/static/staticText/start";
 import { Intro } from "@/components/use_scramble";
+import { CONTACT, COOKIES, HACKING,WELCOME } from "@/static/staticText/start";
+
+import styles from "./page.module.css";
 
 export default function Home() {
     return (

@@ -4,7 +4,7 @@ import Image from "next/image";
 
 import CodeBlock from "@/components/highligt_code";
 import { Intro } from "@/components/use_scramble";
-import { CONTACT, COOKIES, HACKING,WELCOME } from "@/static/staticText/start";
+import { CONTACT, COOKIES, HACKING, WELCOME } from "@/static/staticText/start";
 
 import styles from "./page.module.css";
 

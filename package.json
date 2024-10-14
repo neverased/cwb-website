@@ -9,7 +9,7 @@
     "lint": "eslint \"{src,apps,libs,test}/**/*.{ts,tsx}\" --fix"
   },
   "dependencies": {
-    "@types/node": "22.5.1",
+    "@types/node": "22.7.5",
     "@types/react": "18.3.4",
     "@types/react-dom": "18.3.0",
     "@uit/glitch-image": "^0.0.11",

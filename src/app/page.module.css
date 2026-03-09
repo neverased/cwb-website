@@ -1,222 +1,173 @@
 .main {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5rem;
-    /* min-height: 100vh; */
+    min-height: 100vh;
+    padding: clamp(1.5rem, 4vw, 4rem);
+    background:
+        radial-gradient(circle at top left, rgba(70, 255, 191, 0.14), transparent 30%),
+        radial-gradient(circle at 80% 20%, rgba(255, 214, 106, 0.12), transparent 24%),
+        linear-gradient(135deg, #04100e 0%, #071917 48%, #04100e 100%);
+}
+
+.hero {
+    width: min(1280px, 100%);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.95fr);
+    gap: clamp(1.5rem, 4vw, 3rem);
+    align-items: stretch;
+}
+
+.terminalColumn {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.copyBlock {
+    max-width: 44rem;
+}
+
+.eyebrow,
+.brandLabel {
+    margin-bottom: 0.85rem;
+    color: #8cd6b3;
+    font-size: 0.78rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+}
+
+.title {
+    max-width: 12ch;
+    font-family: var(--font-display), "Fira Code", monospace;
+    font-size: clamp(3rem, 8vw, 6rem);
+    line-height: 0.95;
+    letter-spacing: -0.05em;
+    color: #f4fff8;
 }
 
 .description {
-    display: inherit;
-    justify-content: inherit;
-    align-items: inherit;
-    font-size: 0.85rem;
-    max-width: var(--max-width);
+    max-width: 54ch;
+    margin-top: 1rem;
+    color: rgba(212, 237, 224, 0.84);
+    font-size: clamp(1rem, 1.8vw, 1.15rem);
+    line-height: 1.7;
+}
+
+.brandColumn {
+    display: flex;
+    align-items: stretch;
+}
+
+.brandCard {
+    position: relative;
     width: 100%;
-    z-index: 2;
-    font-family: var(--font-mono);
-}
-
-.description a {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
+    gap: 1.5rem;
+    overflow: hidden;
+    padding: clamp(1.5rem, 4vw, 3rem);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 2rem;
+    background:
+        radial-gradient(circle at top center, rgba(255, 220, 142, 0.16), transparent 35%),
+        linear-gradient(180deg, rgba(14, 25, 22, 0.94), rgba(8, 15, 13, 0.98));
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.05),
+        0 2rem 5rem rgba(0, 0, 0, 0.28);
 }
 
-.description p {
-    position: relative;
-    margin: 0;
-    padding: 1rem;
-    background-color: rgba(var(--callout-rgb), 0.5);
-    border: 1px solid rgba(var(--callout-border-rgb), 0.3);
-    border-radius: var(--border-radius);
-}
-
-.code {
-    font-weight: 700;
-    font-family: var(--font-mono);
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(33%, auto));
-    width: var(--max-width);
-    max-width: 100%;
-    margin-bottom: 20px;
-}
-
-.card {
-    padding: 1rem 1.2rem;
-    border-radius: var(--border-radius);
-    background: rgba(var(--card-rgb), 0);
-    border: 1px solid rgba(var(--card-border-rgb), 0);
-    transition: background 200ms, border 200ms;
-}
-
-.card span {
-    display: inline-block;
-    transition: transform 200ms;
-}
-
-.card h2 {
-    font-weight: 600;
-    margin-bottom: 0.7rem;
-}
-
-.card p {
-    margin: 0;
-    opacity: 0.6;
-    font-size: 0.9rem;
-    line-height: 1.5;
-    max-width: 30ch;
-}
-
-.center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    padding: 4rem 0;
-}
-
-.center::before {
-    background: var(--secondary-glow);
-    border-radius: 50%;
-    width: 480px;
-    height: 360px;
-    margin-left: -400px;
-}
-
-.center::after {
-    background: var(--primary-glow);
-    width: 240px;
-    height: 180px;
-    z-index: -1;
-}
-
-.center::before,
-.center::after {
+.brandCard::before {
     content: "";
-    left: 50%;
     position: absolute;
-    filter: blur(45px);
-    transform: translateZ(0);
+    inset: auto -25% -35% 30%;
+    aspect-ratio: 1;
+    border-radius: 999px;
+    background: radial-gradient(circle, rgba(116, 255, 191, 0.18), transparent 70%);
+    filter: blur(30px);
+    pointer-events: none;
+}
+
+.logoFrame {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 17rem;
+    padding: clamp(1.25rem, 3vw, 2rem);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 1.5rem;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02)),
+        linear-gradient(135deg, rgba(54, 70, 67, 0.35), rgba(6, 13, 12, 0.2));
+}
+
+.logoFrame::after {
+    content: "";
+    position: absolute;
+    inset: 12%;
+    border: 1px solid rgba(140, 214, 179, 0.1);
+    border-radius: 1rem;
+    pointer-events: none;
 }
 
 .logo {
-    position: relative;
-}
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-    .card:hover {
-        background: rgba(var(--card-rgb), 0.1);
-        border: 1px solid rgba(var(--card-border-rgb), 0.15);
-    }
-
-    .card:hover span {
-        transform: translateX(4px);
-    }
+    width: min(100%, 29rem);
+    height: auto;
+    filter: drop-shadow(0 1rem 2rem rgba(0, 0, 0, 0.28));
 }
 
-@media (prefers-reduced-motion) {
-    .card:hover span {
-        transform: none;
-    }
+.brandText {
+    max-width: 28ch;
+    color: rgba(230, 240, 234, 0.84);
+    font-size: clamp(1rem, 1.6vw, 1.15rem);
+    line-height: 1.7;
 }
 
-/* Mobile */
-@media (max-width: 700px) {
-    .content {
-        padding: 4rem;
-    }
+.signalRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
 
-    .grid {
+.signalChip {
+    padding: 0.65rem 0.95rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.04);
+    color: rgba(228, 245, 236, 0.88);
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+@media (max-width: 980px) {
+    .hero {
         grid-template-columns: 1fr;
-        margin-bottom: 120px;
-        max-width: 320px;
-        text-align: center;
     }
 
-    .card {
-        padding: 1rem 2.5rem;
+    .title {
+        max-width: 14ch;
     }
+}
 
-    .card h2 {
-        margin-bottom: 0.5rem;
-    }
-
-    .center {
-        padding: 8rem 0 6rem;
-    }
-
-    .center::before {
-        transform: none;
-        height: 300px;
-    }
-
-    .description {
-        font-size: 0.8rem;
-    }
-
-    .description a {
+@media (max-width: 700px) {
+    .main {
         padding: 1rem;
     }
 
-    .description p,
-    .description div {
-        display: flex;
-        justify-content: center;
-        position: fixed;
-        width: 100%;
+    .hero {
+        gap: 1rem;
     }
 
-    .description p {
-        align-items: center;
-        inset: 0 0 auto;
-        padding: 2rem 1rem 1.4rem;
-        border-radius: 0;
-        border: none;
-        border-bottom: 1px solid rgba(var(--callout-border-rgb), 0.25);
-        background: linear-gradient(to bottom, rgba(var(--background-start-rgb), 1), rgba(var(--callout-rgb), 0.5));
-        background-clip: padding-box;
-        backdrop-filter: blur(24px);
+    .title {
+        max-width: none;
+        font-size: clamp(2.5rem, 15vw, 4rem);
     }
 
-    .description div {
-        align-items: flex-end;
-        pointer-events: none;
-        inset: auto 0 0;
-        padding: 2rem;
-        height: 200px;
-        background: linear-gradient(to bottom, transparent 0%, rgb(var(--background-end-rgb)) 40%);
-        z-index: 1;
-    }
-}
-
-/* Tablet and Smaller Desktop */
-@media (min-width: 701px) and (max-width: 1120px) {
-    .grid {
-        grid-template-columns: repeat(2, 50%);
-    }
-}
-
-@media (prefers-color-scheme: dark) {
-    .vercelLogo {
-        filter: invert(1);
+    .brandCard {
+        border-radius: 1.5rem;
     }
 
-    .logo {
-        filter: invert(1) drop-shadow(0 0 0.3rem #ffffff70);
-    }
-}
-
-@keyframes rotate {
-    from {
-        transform: rotate(360deg);
-    }
-    to {
-        transform: rotate(0deg);
+    .logoFrame {
+        min-height: 13rem;
     }
 }

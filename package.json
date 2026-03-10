@@ -9,7 +9,7 @@
     "lint": "eslint \"{src,apps,libs,test}/**/*.{ts,tsx}\" --fix"
   },
   "dependencies": {
-    "@types/node": "25.3.5",
+    "@types/node": "25.4.0",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "@uit/glitch-image": "^0.0.11",
@@ -31,9 +31,9 @@
     "eslint-plugin-prettier": "^5.5.5",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "globals": "^17.4.0",
-    "jest": "^30.2.0",
+    "jest": "^30.3.0",
     "prettier": "^3.8.1",
-    "typescript-eslint": "^8.56.1"
+    "typescript-eslint": "^8.57.0"
   },
-  "packageManager": "pnpm@10.31.0"
+  "packageManager": "pnpm@10.32.0"
 }

@@ -417,7 +417,7 @@ export default function Home() {
             />
             <div className={styles.sectionLead}>
               <p className={styles.sectionDescription}>
-                No CMS needed for now. The structure is static and code-driven,
+                The structure is static and code-driven,
                 which keeps deploys simple and works cleanly with export-based
                 hosting.
               </p>
@@ -455,9 +455,7 @@ export default function Home() {
             />
             <div className={styles.sectionLead}>
               <p className={styles.sectionDescription}>
-                The landing page keeps the direct route visible, but the contact
-                form also has its own page for a cleaner handoff from the main
-                navigation.
+                Contact me short and sweet, or longer and more detailed.
               </p>
               <Link className={styles.sectionRoute} href="/contact">
                 Open contact page

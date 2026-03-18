@@ -131,7 +131,7 @@ export const ContactPanel = ({ className }: ContactPanelProps) => {
 
           <div className={styles.formFooter}>
             <p className={styles.formHint}>
-              Static site, direct PHP handling on hosting, no external CMS.
+              I usually respond within 24 hours.
             </p>
             <button className={styles.submitButton} type="submit">
               Transmit inquiry
@@ -161,8 +161,7 @@ export const ContactPanel = ({ className }: ContactPanelProps) => {
 
         <p className={styles.contactLabel}>delivery route</p>
         <p className={styles.contactText}>
-          The form posts to a local PHP endpoint on dhosting, so the site still
-          ships as static output.
+          Let's talk about your project and how I can help.
         </p>
       </div>
     </div>

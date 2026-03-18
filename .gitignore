@@ -35,3 +35,6 @@ yarn-error.log*
 
 # Firebase Debug
 firebase-debug.log
+
+# local brainstorming artifacts
+.superpowers/

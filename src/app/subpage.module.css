@@ -1,0 +1,335 @@
+.page {
+  position: relative;
+  min-height: 100vh;
+  overflow: clip;
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(116, 255, 191, 0.12),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 88% 12%,
+      rgba(255, 208, 107, 0.1),
+      transparent 20%
+    ),
+    linear-gradient(180deg, #020807 0%, #041111 38%, #020807 100%);
+}
+
+.page::before,
+.page::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+.page::before {
+  background:
+    linear-gradient(90deg, rgba(102, 255, 198, 0.06) 1px, transparent 1px),
+    linear-gradient(rgba(102, 255, 198, 0.05) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(circle at center, black, transparent 80%);
+  opacity: 0.35;
+}
+
+.page::after {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 14%),
+    repeating-linear-gradient(
+      180deg,
+      rgba(123, 255, 202, 0.04),
+      rgba(123, 255, 202, 0.04) 1px,
+      transparent 1px,
+      transparent 5px
+    );
+  mix-blend-mode: screen;
+  opacity: 0.2;
+}
+
+.pageShell {
+  position: relative;
+  width: min(1220px, 100%);
+  margin: 0 auto;
+  padding: 1rem clamp(1rem, 3vw, 1.75rem) 4.5rem;
+  display: grid;
+  gap: 2rem;
+  z-index: 1;
+}
+
+.lead,
+.splitGrid,
+.cardGrid,
+.notesGrid,
+.signalGrid {
+  display: grid;
+  gap: 1rem;
+}
+
+.lead,
+.splitGrid {
+  grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+}
+
+.cardGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.notesGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.signalGrid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.leadCopy {
+  display: grid;
+  align-content: start;
+  gap: 1rem;
+}
+
+.kicker {
+  color: #8ddfba;
+  font-size: 0.76rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.title {
+  max-width: 11ch;
+  font-family: var(--font-display), "Fira Code", monospace;
+  font-size: clamp(2.5rem, 5vw, 4.8rem);
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+  color: #f4fff8;
+}
+
+.description,
+.panelText,
+.cardText,
+.noteText {
+  color: rgba(214, 236, 225, 0.78);
+  line-height: 1.75;
+}
+
+.panel,
+.card,
+.timelineCard,
+.signalCard {
+  position: relative;
+  overflow: hidden;
+  padding: 1.35rem;
+  border: 1px solid rgba(126, 255, 203, 0.12);
+  border-radius: 1.5rem;
+  background:
+    linear-gradient(180deg, rgba(10, 18, 17, 0.9), rgba(5, 11, 11, 0.96)),
+    radial-gradient(
+      circle at top left,
+      rgba(126, 255, 203, 0.05),
+      transparent 40%
+    );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 1.5rem 3rem rgba(0, 0, 0, 0.24);
+  backdrop-filter: blur(18px);
+}
+
+.panel::before,
+.card::before,
+.timelineCard::before,
+.signalCard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 14%),
+    repeating-linear-gradient(
+      180deg,
+      rgba(126, 255, 203, 0.04),
+      rgba(126, 255, 203, 0.04) 1px,
+      transparent 1px,
+      transparent 4px
+    );
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.panel > *,
+.card > *,
+.timelineCard > *,
+.signalCard > * {
+  position: relative;
+  z-index: 1;
+}
+
+.panelLabel,
+.cardLabel,
+.timelineStep {
+  color: #8ddfba;
+  font-size: 0.74rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.panelTitle,
+.cardTitle,
+.noteTitle,
+.signalValue {
+  color: #f4fff8;
+  font-size: 1.2rem;
+  line-height: 1.4;
+}
+
+.panelTitle {
+  margin: 0.8rem 0 0.55rem;
+}
+
+.cardHead {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+}
+
+.cardMeta {
+  color: rgba(228, 247, 236, 0.76);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.commandPreview {
+  margin-top: 0.95rem;
+  padding: 0.95rem 1rem;
+  border: 1px solid rgba(126, 255, 203, 0.08);
+  border-radius: 1rem;
+  background: rgba(0, 0, 0, 0.24);
+  color: #d9ff8c;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.stackList {
+  list-style: none;
+  display: grid;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+.stackList li {
+  position: relative;
+  padding-left: 1.1rem;
+  color: rgba(231, 245, 237, 0.86);
+}
+
+.stackList li::before {
+  content: ">";
+  position: absolute;
+  left: 0;
+  color: #d9ff8c;
+}
+
+.timeline {
+  display: grid;
+  gap: 1rem;
+}
+
+.timelineCard {
+  display: grid;
+  gap: 0.8rem;
+  padding: 1.5rem;
+}
+
+.timelineTitle {
+  color: #f4fff8;
+  font-size: 1.45rem;
+}
+
+.inlineLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+}
+
+.routeLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0.8rem 1.05rem;
+  border: 1px solid rgba(126, 255, 203, 0.22);
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    rgba(115, 255, 190, 0.16),
+    rgba(221, 255, 139, 0.18)
+  );
+  color: #f6fff8;
+  font-size: 0.76rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.notesCard {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.noteMeta {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  color: #8ddfba;
+  font-size: 0.74rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.signalCard {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.signalValue {
+  font-size: 1.05rem;
+}
+
+.pageLink {
+  color: #d9ff8c;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.78rem;
+}
+
+@media (max-width: 1080px) {
+  .lead,
+  .splitGrid,
+  .signalGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .pageShell {
+    padding-inline: 1rem;
+  }
+
+  .lead,
+  .splitGrid,
+  .cardGrid,
+  .notesGrid,
+  .signalGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .title {
+    max-width: none;
+  }
+
+  .cardHead,
+  .noteMeta {
+    flex-direction: column;
+  }
+}

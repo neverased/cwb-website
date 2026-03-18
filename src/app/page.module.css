@@ -82,6 +82,8 @@
 }
 
 .bootShell {
+  --boot-panel-height: min(42rem, calc(100dvh - 4rem));
+  --boot-panel-min-height: min(29rem, calc(100dvh - 4rem));
   display: grid;
   grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
   gap: clamp(1rem, 3vw, 2rem);
@@ -90,6 +92,8 @@
 
 .bootCopy,
 .commandDeck,
+.signalCard,
+.processConsole,
 .capabilityCard,
 .processCard,
 .noteCard,
@@ -145,6 +149,8 @@
   flex-direction: column;
   justify-content: space-between;
   gap: 1.35rem;
+  block-size: var(--boot-panel-height);
+  min-block-size: var(--boot-panel-min-height);
 }
 
 .kicker {
@@ -163,9 +169,9 @@
 
 .bootTitle {
   max-width: 10ch;
-  font-size: clamp(3rem, 8vw, 5.5rem);
-  line-height: 0.94;
-  letter-spacing: -0.05em;
+  font-size: clamp(2.65rem, 6.2vw, 4.6rem);
+  line-height: 0.96;
+  letter-spacing: -0.04em;
 }
 
 .bootDescription,
@@ -326,14 +332,127 @@
 
 .heroTitle {
   max-width: 11ch;
-  font-size: clamp(3rem, 7vw, 6rem);
-  line-height: 0.94;
-  letter-spacing: -0.05em;
+  font-size: clamp(2.35rem, 5vw, 4.85rem);
+  line-height: 0.98;
+  letter-spacing: -0.04em;
 }
 
 .heroDescription {
   max-width: 60ch;
   font-size: clamp(1rem, 1.7vw, 1.12rem);
+}
+
+.focusTabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.focusTab {
+  min-height: 2.8rem;
+  padding: 0.7rem 0.95rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.03);
+  color: rgba(226, 247, 236, 0.78);
+  font: inherit;
+  font-size: 0.76rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.focusTab:hover {
+  transform: translateY(-2px);
+}
+
+.focusTabActive {
+  border-color: rgba(126, 255, 203, 0.24);
+  background: linear-gradient(
+    90deg,
+    rgba(115, 255, 190, 0.14),
+    rgba(221, 255, 139, 0.14)
+  );
+  color: #f6fff8;
+}
+
+.focusPanel,
+.focusConsole,
+.processConsole {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(126, 255, 203, 0.1);
+  border-radius: 1.2rem;
+  background:
+    linear-gradient(180deg, rgba(9, 18, 16, 0.88), rgba(4, 11, 10, 0.96)),
+    rgba(255, 255, 255, 0.02);
+}
+
+.focusPanel::before,
+.focusConsole::before,
+.processConsole::before,
+.signalCard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 16%),
+    repeating-linear-gradient(
+      180deg,
+      rgba(126, 255, 203, 0.03),
+      rgba(126, 255, 203, 0.03) 1px,
+      transparent 1px,
+      transparent 4px
+    );
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.focusPanel {
+  display: grid;
+  gap: 0.65rem;
+  padding: 1rem 1.05rem;
+}
+
+.focusPanelHeader,
+.focusConsoleHeader {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+}
+
+.focusPanelHeader span,
+.focusConsoleHeader span {
+  color: rgba(228, 247, 236, 0.76);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.focusPanelTitle {
+  position: relative;
+  z-index: 1;
+  color: #f4fff8;
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.focusPanelText,
+.focusConsoleText,
+.signalCardText {
+  position: relative;
+  z-index: 1;
+  color: rgba(214, 236, 225, 0.78);
+  line-height: 1.7;
 }
 
 .heroActions {
@@ -493,6 +612,25 @@
   background: rgba(255, 255, 255, 0.03);
 }
 
+.focusConsole {
+  display: grid;
+  gap: 0.8rem;
+  padding: 1rem 1.1rem;
+}
+
+.commandPreview {
+  position: relative;
+  z-index: 1;
+  padding: 0.95rem 1rem;
+  border: 1px solid rgba(126, 255, 203, 0.08);
+  border-radius: 1rem;
+  background: rgba(0, 0, 0, 0.24);
+  color: #d9ff8c;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
 .signalList {
   list-style: none;
   display: grid;
@@ -518,10 +656,27 @@
   gap: 1.6rem;
 }
 
+.signalSection {
+  display: grid;
+}
+
+.signalStrip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
 .sectionHeading {
   display: grid;
   gap: 0.9rem;
   max-width: 54rem;
+}
+
+.sectionLead {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: end;
 }
 
 .sectionTitle {
@@ -533,6 +688,33 @@
 
 .sectionDescription {
   max-width: 66ch;
+}
+
+.sectionRoute {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  min-height: 3rem;
+  padding: 0.8rem 1.05rem;
+  border: 1px solid rgba(126, 255, 203, 0.22);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.03);
+  color: #f6fff8;
+  font-size: 0.74rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease,
+    color 180ms ease;
+}
+
+.sectionRoute:hover {
+  transform: translateY(-2px);
+  border-color: rgba(126, 255, 203, 0.32);
+  background: rgba(126, 255, 203, 0.08);
 }
 
 .capabilityGrid,
@@ -548,12 +730,30 @@
 }
 
 .processGrid {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .noteGrid,
 .contactGrid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.contactGrid {
+  grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
+}
+
+.signalCard {
+  padding: 1.2rem;
+  border-radius: 1.4rem;
+}
+
+.signalCard h3 {
+  position: relative;
+  z-index: 1;
+  margin: 0.8rem 0 0.55rem;
+  color: #f4fff8;
+  font-size: 1.1rem;
+  line-height: 1.45;
 }
 
 .capabilityCard,
@@ -598,12 +798,25 @@
   margin-bottom: 0.8rem;
 }
 
+.processConsole {
+  display: grid;
+  gap: 0.8rem;
+  width: min(100%, 38rem);
+  padding: 1.2rem;
+  justify-self: start;
+}
+
 .contactSection {
   padding-bottom: 1rem;
 }
 
 .contactCard {
   min-height: 100%;
+}
+
+.contactFormCard {
+  display: grid;
+  gap: 1rem;
 }
 
 .contactLabel {
@@ -622,18 +835,165 @@
   line-height: 1.4;
 }
 
+.statusBanner,
+.terminalForm,
+.fieldGroup,
+.formFooter {
+  position: relative;
+  z-index: 1;
+}
+
+.statusBanner {
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.95rem 1rem;
+  border: 1px solid rgba(126, 255, 203, 0.14);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.statusBanner strong {
+  color: #f4fff8;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.statusBanner p,
+.formHint {
+  color: rgba(214, 236, 225, 0.78);
+  line-height: 1.65;
+}
+
+.statusSuccess {
+  border-color: rgba(116, 255, 191, 0.28);
+  background: rgba(116, 255, 191, 0.08);
+}
+
+.statusError {
+  border-color: rgba(255, 170, 120, 0.28);
+  background: rgba(255, 170, 120, 0.08);
+}
+
+.terminalForm {
+  display: grid;
+  gap: 1rem;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.fieldGroup {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.fieldSpan {
+  grid-column: 1 / -1;
+}
+
+.fieldLabel {
+  color: #8ddfba;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.terminalInput {
+  width: 100%;
+  min-height: 3.2rem;
+  padding: 0.85rem 0.95rem;
+  border: 1px solid rgba(126, 255, 203, 0.12);
+  border-radius: 1rem;
+  background:
+    linear-gradient(180deg, rgba(11, 22, 20, 0.92), rgba(4, 11, 10, 0.98)),
+    rgba(255, 255, 255, 0.02);
+  color: #f4fff8;
+  font: inherit;
+  caret-color: #7effc6;
+}
+
+.terminalInput::placeholder {
+  color: rgba(173, 206, 189, 0.48);
+}
+
+.terminalInput:focus {
+  outline: none;
+  border-color: rgba(126, 255, 203, 0.36);
+  box-shadow: 0 0 0 1px rgba(126, 255, 203, 0.16);
+}
+
+.terminalTextarea {
+  min-height: 11rem;
+  resize: vertical;
+}
+
+.formTrap {
+  position: absolute;
+  left: -9999px;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+}
+
+.formFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.formHint {
+  max-width: 34ch;
+  font-size: 0.86rem;
+}
+
+.submitButton {
+  min-height: 3.2rem;
+  padding: 0.85rem 1.15rem;
+  border: 1px solid rgba(126, 255, 203, 0.22);
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    rgba(115, 255, 190, 0.16),
+    rgba(221, 255, 139, 0.18)
+  );
+  color: #f6fff8;
+  font: inherit;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease,
+    color 180ms ease;
+}
+
+.submitButton:hover {
+  transform: translateY(-2px);
+}
+
 @media (max-width: 1080px) {
   .bootShell,
   .hero {
     grid-template-columns: 1fr;
   }
 
-  .processGrid {
+  .signalStrip {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 760px) {
+  .bootShell {
+    --boot-panel-height: min(36rem, calc(100dvh - 2rem));
+    --boot-panel-min-height: min(24rem, calc(100dvh - 2rem));
+  }
+
   .siteShell {
     padding-inline: 1rem;
   }
@@ -656,21 +1016,35 @@
     max-width: none;
   }
 
+  .sectionLead {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
   .capabilityGrid,
   .processGrid,
+  .signalStrip,
   .noteGrid,
-  .contactGrid {
+  .contactGrid,
+  .formGrid {
     grid-template-columns: 1fr;
   }
 
   .factRow,
   .capabilityHeader,
-  .noteMeta {
+  .noteMeta,
+  .focusPanelHeader,
+  .focusConsoleHeader {
     flex-direction: column;
   }
 
   .factRow strong {
     text-align: left;
+  }
+
+  .formFooter {
+    align-items: stretch;
+    flex-direction: column;
   }
 }
 
@@ -680,7 +1054,10 @@
   .skipButton,
   .primaryAction,
   .secondaryAction,
-  .contactValue {
+  .sectionRoute,
+  .contactValue,
+  .submitButton,
+  .focusTab {
     transition: none;
   }
 }

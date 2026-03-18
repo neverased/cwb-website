@@ -1,0 +1,238 @@
+.contactGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
+  gap: 1rem;
+}
+
+.contactCard {
+  position: relative;
+  overflow: hidden;
+  min-height: 100%;
+  padding: 1.35rem;
+  border: 1px solid rgba(126, 255, 203, 0.12);
+  border-radius: 1.5rem;
+  background:
+    linear-gradient(180deg, rgba(10, 18, 17, 0.9), rgba(5, 11, 11, 0.96)),
+    radial-gradient(
+      circle at top left,
+      rgba(126, 255, 203, 0.05),
+      transparent 40%
+    );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 1.5rem 3rem rgba(0, 0, 0, 0.24);
+  backdrop-filter: blur(18px);
+}
+
+.contactCard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 14%),
+    repeating-linear-gradient(
+      180deg,
+      rgba(126, 255, 203, 0.04),
+      rgba(126, 255, 203, 0.04) 1px,
+      transparent 1px,
+      transparent 4px
+    );
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.contactFormCard {
+  display: grid;
+  gap: 1rem;
+}
+
+.contactLabel {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 0.85rem;
+  color: #8ddfba;
+  font-size: 0.74rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.contactValue {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  margin-bottom: 1rem;
+  color: #f6fff8;
+  font-size: clamp(1.05rem, 2vw, 1.45rem);
+  line-height: 1.4;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease,
+    color 180ms ease;
+}
+
+.contactValue:hover {
+  transform: translateY(-2px);
+}
+
+.contactText,
+.statusBanner p,
+.formHint {
+  color: rgba(214, 236, 225, 0.78);
+  line-height: 1.65;
+}
+
+.statusBanner,
+.terminalForm,
+.fieldGroup,
+.formFooter {
+  position: relative;
+  z-index: 1;
+}
+
+.statusBanner {
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.95rem 1rem;
+  border: 1px solid rgba(126, 255, 203, 0.14);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.statusBanner strong {
+  color: #f4fff8;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.statusSuccess {
+  border-color: rgba(116, 255, 191, 0.28);
+  background: rgba(116, 255, 191, 0.08);
+}
+
+.statusError {
+  border-color: rgba(255, 170, 120, 0.28);
+  background: rgba(255, 170, 120, 0.08);
+}
+
+.terminalForm {
+  display: grid;
+  gap: 1rem;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.fieldGroup {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.fieldSpan {
+  grid-column: 1 / -1;
+}
+
+.fieldLabel {
+  color: #8ddfba;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.terminalInput {
+  width: 100%;
+  min-height: 3.2rem;
+  padding: 0.85rem 0.95rem;
+  border: 1px solid rgba(126, 255, 203, 0.12);
+  border-radius: 1rem;
+  background:
+    linear-gradient(180deg, rgba(11, 22, 20, 0.92), rgba(4, 11, 10, 0.98)),
+    rgba(255, 255, 255, 0.02);
+  color: #f4fff8;
+  font: inherit;
+  caret-color: #7effc6;
+}
+
+.terminalInput::placeholder {
+  color: rgba(173, 206, 189, 0.48);
+}
+
+.terminalInput:focus {
+  outline: none;
+  border-color: rgba(126, 255, 203, 0.36);
+  box-shadow: 0 0 0 1px rgba(126, 255, 203, 0.16);
+}
+
+.terminalTextarea {
+  min-height: 11rem;
+  resize: vertical;
+}
+
+.formTrap {
+  position: absolute;
+  left: -9999px;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+}
+
+.formFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.formHint {
+  max-width: 34ch;
+  font-size: 0.86rem;
+}
+
+.submitButton {
+  min-height: 3.2rem;
+  padding: 0.85rem 1.15rem;
+  border: 1px solid rgba(126, 255, 203, 0.22);
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    rgba(115, 255, 190, 0.16),
+    rgba(221, 255, 139, 0.18)
+  );
+  color: #f6fff8;
+  font: inherit;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease,
+    color 180ms ease;
+}
+
+.submitButton:hover {
+  transform: translateY(-2px);
+}
+
+@media (max-width: 760px) {
+  .contactGrid,
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .formFooter {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contactValue,
+  .submitButton {
+    transition: none;
+  }
+}

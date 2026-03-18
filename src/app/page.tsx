@@ -1,15 +1,20 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { startTransition, useCallback, useState } from "react";
 
+import { ContactPanel } from "@/components/contact_panel";
 import { ScrambleText } from "@/components/scramble_text";
+import { SiteHeader } from "@/components/site_header";
 import { TerminalLoader } from "@/components/use_scramble";
 import {
   coreSignals,
+  executionConsole,
+  focusModules,
   noteQueue,
   operatingModel,
-  signalStack,
+  operatingSignals,
   terminalFacts,
 } from "@/static/siteContent";
 import { HACKING } from "@/static/staticText/start";
@@ -18,12 +23,23 @@ import styles from "./page.module.css";
 
 export default function Home() {
   const [hasBooted, setHasBooted] = useState(false);
+  const [activeFocusId, setActiveFocusId] = useState<
+    (typeof focusModules)[number]["id"]
+  >(focusModules[0].id);
 
   const enterSite = useCallback(() => {
     startTransition(() => {
       setHasBooted(true);
     });
   }, []);
+
+  const activeFocus =
+    focusModules.find(({ id }) => id === activeFocusId) ?? focusModules[0];
+  const activeFacts = terminalFacts.map((fact) =>
+    fact.label === "focus"
+      ? { ...fact, value: `${activeFocus.label.toLowerCase()} active` }
+      : fact,
+  );
 
   return (
     <main className={styles.page}>
@@ -42,10 +58,14 @@ export default function Home() {
               speed={0.8}
               step={3}
             />
-            <p className={styles.bootDescription}>
-              A temporary terminal veil, then the actual destination: personal
-              brand, operating model, and room for future writing.
-            </p>
+            <ScrambleText
+              as="p"
+              className={styles.bootDescription}
+              text="A temporary terminal veil, then the actual destination: personal brand, operating model, and room for future writing."
+              delay={120}
+              speed={0.45}
+              step={1}
+            />
 
             <div className={styles.bootMeta}>
               <span>Operator: Wojciech Bajer</span>
@@ -70,19 +90,7 @@ export default function Home() {
           .filter(Boolean)
           .join(" ")}
       >
-        <header className={styles.topbar}>
-          <a href="#top" className={styles.brandLockup}>
-            <span className={styles.brandPrompt}>cwb://profile</span>
-            <span className={styles.brandName}>Wojciech Bajer</span>
-          </a>
-
-          <nav className={styles.nav}>
-            <a href="#capabilities">Capabilities</a>
-            <a href="#process">Process</a>
-            <a href="#notes">Notes</a>
-            <a href="#contact">Contact</a>
-          </nav>
-        </header>
+        <SiteHeader currentPath="/" />
 
         <section className={styles.hero} id="top">
           <div className={styles.heroCopy}>
@@ -95,12 +103,56 @@ export default function Home() {
               speed={0.9}
               step={3}
             />
-            <p className={styles.heroDescription}>
-              I work across multimedia production, software engineering,
-              application architecture, and product or company audits. The
-              common theme is signal quality: reducing noise, exposing weak
-              links, and shipping systems that hold up under pressure.
-            </p>
+            <ScrambleText
+              as="p"
+              className={styles.heroDescription}
+              text="I work across multimedia production, software engineering, application architecture, and product or company audits. The common theme is signal quality: reducing noise, exposing weak links, and shipping systems that hold up under pressure."
+              delay={320}
+              speed={0.45}
+              step={1}
+            />
+
+            <div className={styles.focusTabs}>
+              {focusModules.map((module) => (
+                <button
+                  key={module.id}
+                  className={[
+                    styles.focusTab,
+                    module.id === activeFocus.id ? styles.focusTabActive : "",
+                  ]
+                    .filter(Boolean)
+                    .join(" ")}
+                  type="button"
+                  aria-pressed={module.id === activeFocus.id}
+                  onClick={() => {
+                    setActiveFocusId(module.id);
+                  }}
+                >
+                  {module.label}
+                </button>
+              ))}
+            </div>
+
+            <div className={styles.focusPanel}>
+              <div className={styles.focusPanelHeader}>
+                <p className={styles.deckLabel}>active module</p>
+                <span>{activeFocus.status}</span>
+              </div>
+              <ScrambleText
+                as="p"
+                className={styles.focusPanelTitle}
+                text={activeFocus.label}
+                speed={0.7}
+                step={2}
+              />
+              <ScrambleText
+                as="p"
+                className={styles.focusPanelText}
+                text={activeFocus.summary}
+                speed={0.45}
+                step={1}
+              />
+            </div>
 
             <div className={styles.heroActions}>
               <a
@@ -109,15 +161,16 @@ export default function Home() {
               >
                 mail@wojciechbajer.com
               </a>
-              <a className={styles.secondaryAction} href="#notes">
-                Open note queue
-              </a>
+              <Link className={styles.secondaryAction} href="/services">
+                Open service map
+              </Link>
             </div>
 
             <div className={styles.heroFootnote}>
               <span>Based in Poland</span>
               <span>Working worldwide</span>
               <span>Available for selected collaborations</span>
+              <span>{activeFocus.status}</span>
             </div>
           </div>
 
@@ -128,7 +181,9 @@ export default function Home() {
                 <span />
                 <span />
               </div>
-              <span className={styles.deckStatus}>live operator console</span>
+              <span className={styles.deckStatus}>
+                {activeFocus.label} active
+              </span>
             </div>
 
             <div className={styles.logoModule}>
@@ -142,8 +197,25 @@ export default function Home() {
               />
             </div>
 
+            <div className={styles.focusConsole}>
+              <div className={styles.focusConsoleHeader}>
+                <p className={styles.deckLabel}>mission brief</p>
+                <span>{activeFocus.status}</span>
+              </div>
+              <ScrambleText
+                as="p"
+                className={styles.focusConsoleText}
+                text={activeFocus.summary}
+                speed={0.45}
+                step={1}
+              />
+              <pre className={styles.commandPreview}>
+                <code>{activeFocus.command}</code>
+              </pre>
+            </div>
+
             <div className={styles.deckFacts}>
-              {terminalFacts.map(({ label, value }) => (
+              {activeFacts.map(({ label, value }) => (
                 <div key={label} className={styles.factRow}>
                   <span>{label}</span>
                   <strong>{value}</strong>
@@ -152,14 +224,39 @@ export default function Home() {
             </div>
 
             <div className={styles.deckBlock}>
-              <p className={styles.deckLabel}>active stack</p>
+              <p className={styles.deckLabel}>loaded tools</p>
               <ul className={styles.signalList}>
-                {signalStack.map((signal) => (
+                {activeFocus.stack.map((signal) => (
                   <li key={signal}>{signal}</li>
                 ))}
               </ul>
             </div>
           </aside>
+        </section>
+
+        <section className={styles.signalSection}>
+          <div className={styles.signalStrip}>
+            {operatingSignals.map(({ label, value, detail }, index) => (
+              <article key={label} className={styles.signalCard}>
+                <p className={styles.deckLabel}>{label}</p>
+                <ScrambleText
+                  as="h3"
+                  text={value}
+                  delay={360 + index * 70}
+                  speed={0.6}
+                  step={2}
+                />
+                <ScrambleText
+                  as="p"
+                  className={styles.signalCardText}
+                  text={detail}
+                  delay={420 + index * 70}
+                  speed={0.45}
+                  step={1}
+                />
+              </article>
+            ))}
+          </div>
         </section>
 
         <section className={styles.section} id="capabilities">
@@ -171,23 +268,42 @@ export default function Home() {
               text="Built for more than a digital business card."
               delay={420}
             />
-            <p className={styles.sectionDescription}>
-              The site positions you as an operator who can move between
-              creative production, engineering, architecture, and independent
-              assessment without flattening everything into generic agency
-              language.
-            </p>
+            <div className={styles.sectionLead}>
+              <ScrambleText
+                as="p"
+                className={styles.sectionDescription}
+                text="These are distinct entry points into the same way of working: technical clarity, cleaner systems, and a stronger signal between idea, product, and execution."
+                delay={500}
+                speed={0.45}
+                step={1}
+              />
+              <Link className={styles.sectionRoute} href="/services">
+                Open services page
+              </Link>
+            </div>
           </div>
 
           <div className={styles.capabilityGrid}>
-            {coreSignals.map(({ id, title, description, detail }) => (
+            {coreSignals.map(({ id, title, description, detail }, index) => (
               <article key={id} className={styles.capabilityCard}>
                 <div className={styles.capabilityHeader}>
                   <span>{id}</span>
                   <p>{title}</p>
                 </div>
-                <h3>{description}</h3>
-                <p>{detail}</p>
+                <ScrambleText
+                  as="h3"
+                  text={description}
+                  delay={560 + index * 70}
+                  speed={0.55}
+                  step={2}
+                />
+                <ScrambleText
+                  as="p"
+                  text={detail}
+                  delay={620 + index * 70}
+                  speed={0.45}
+                  step={1}
+                />
               </article>
             ))}
           </div>
@@ -202,17 +318,54 @@ export default function Home() {
               text="A practical process for audits, architecture, and delivery."
               delay={520}
             />
+            <div className={styles.sectionLead}>
+              <ScrambleText
+                as="p"
+                className={styles.sectionDescription}
+                text="The landing page now keeps only the compressed overview. The full process gets its own route, so this section can stay readable instead of trying to carry everything at once."
+                delay={600}
+                speed={0.45}
+                step={1}
+              />
+              <Link className={styles.sectionRoute} href="/process">
+                Open full process page
+              </Link>
+            </div>
           </div>
 
           <div className={styles.processGrid}>
-            {operatingModel.map(({ step, title, text }) => (
+            {operatingModel.map(({ step, title, text }, index) => (
               <article key={step} className={styles.processCard}>
                 <span className={styles.processStep}>{step}</span>
-                <h3>{title}</h3>
-                <p>{text}</p>
+                <ScrambleText
+                  as="h3"
+                  text={title}
+                  delay={660 + index * 70}
+                  speed={0.55}
+                  step={2}
+                />
+                <ScrambleText
+                  as="p"
+                  text={text}
+                  delay={720 + index * 70}
+                  speed={0.45}
+                  step={1}
+                />
               </article>
             ))}
           </div>
+
+          <aside className={styles.processConsole}>
+            <div className={styles.focusConsoleHeader}>
+              <p className={styles.deckLabel}>execution loop</p>
+              <span>landing summary</span>
+            </div>
+            <ul className={styles.signalList}>
+              {executionConsole.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </aside>
         </section>
 
         <section className={styles.section} id="notes">
@@ -224,22 +377,42 @@ export default function Home() {
               text="Room for essays, breakdowns, and post-audit observations."
               delay={620}
             />
-            <p className={styles.sectionDescription}>
-              No CMS needed for now. The structure is static and code-driven,
-              which keeps deploys simple and works cleanly with export-based
-              hosting.
-            </p>
+            <div className={styles.sectionLead}>
+              <ScrambleText
+                as="p"
+                className={styles.sectionDescription}
+                text="No CMS needed for now. The structure is static and code-driven, which keeps deploys simple and works cleanly with export-based hosting."
+                delay={700}
+                speed={0.45}
+                step={1}
+              />
+              <Link className={styles.sectionRoute} href="/notes">
+                Open notes page
+              </Link>
+            </div>
           </div>
 
           <div className={styles.noteGrid}>
-            {noteQueue.map(({ status, title, summary }) => (
+            {noteQueue.map(({ status, title, summary }, index) => (
               <article key={title} className={styles.noteCard}>
                 <div className={styles.noteMeta}>
                   <span>{status}</span>
                   <span>signal draft</span>
                 </div>
-                <h3>{title}</h3>
-                <p>{summary}</p>
+                <ScrambleText
+                  as="h3"
+                  text={title}
+                  delay={760 + index * 70}
+                  speed={0.55}
+                  step={2}
+                />
+                <ScrambleText
+                  as="p"
+                  text={summary}
+                  delay={820 + index * 70}
+                  speed={0.45}
+                  step={1}
+                />
               </article>
             ))}
           </div>
@@ -257,34 +430,22 @@ export default function Home() {
               text="If the system is noisy, unclear, or underbuilt, I can help."
               delay={720}
             />
-          </div>
-
-          <div className={styles.contactGrid}>
-            <div className={styles.contactCard}>
-              <p className={styles.contactLabel}>preferred channel</p>
-              <a
-                className={styles.contactValue}
-                href="mailto:mail@wojciechbajer.com"
-              >
-                mail@wojciechbajer.com
-              </a>
-              <p className={styles.contactText}>
-                Best for consulting requests, architecture reviews, audits, and
-                media-heavy digital product work.
-              </p>
-            </div>
-
-            <div className={styles.contactCard}>
-              <p className={styles.contactLabel}>engagement fit</p>
-              <p className={styles.contactValue}>
-                strategy, execution, independent review
-              </p>
-              <p className={styles.contactText}>
-                Short diagnostic work, longer architecture engagements, and
-                selected builds where the technical direction matters.
-              </p>
+            <div className={styles.sectionLead}>
+              <ScrambleText
+                as="p"
+                className={styles.sectionDescription}
+                text="The landing page keeps the direct route visible, but the contact form also has its own page for a cleaner handoff from the main navigation."
+                delay={800}
+                speed={0.45}
+                step={1}
+              />
+              <Link className={styles.sectionRoute} href="/contact">
+                Open contact page
+              </Link>
             </div>
           </div>
+
+          <ContactPanel />
         </section>
       </div>
     </main>

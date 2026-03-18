@@ -33,6 +33,65 @@ export const coreSignals = [
   },
 ] as const;
 
+export const focusModules = [
+  {
+    id: "multimedia",
+    label: "Multimedia",
+    status: "signal routing",
+    summary:
+      "Audio, video, and interactive delivery designed like systems work, not like disconnected production tasks.",
+    command: "$ inspect --surface media --goal launch-ready --signal clean",
+    stack: [
+      "audio and video pipelines",
+      "capture to delivery workflows",
+      "interactive presentation surfaces",
+      "quality control under real deadlines",
+    ],
+  },
+  {
+    id: "software",
+    label: "Software",
+    status: "runtime execution",
+    summary:
+      "Shipping interfaces and product systems with maintainable code, fast iteration, and fewer hidden liabilities.",
+    command: "$ deploy --surface product --mode engineering --risk visible",
+    stack: [
+      "frontend systems and interfaces",
+      "integration and internal tooling",
+      "developer workflow cleanup",
+      "delivery without unnecessary ceremony",
+    ],
+  },
+  {
+    id: "architecture",
+    label: "Architecture",
+    status: "system mapping",
+    summary:
+      "Clarifying structure, coupling, and tradeoffs before scale turns small design mistakes into permanent cost.",
+    command: "$ map --surface architecture --trace dependencies --expose debt",
+    stack: [
+      "platform shape and boundaries",
+      "dependency mapping and risk zones",
+      "handoff-ready technical direction",
+      "decision support for product teams",
+    ],
+  },
+  {
+    id: "audits",
+    label: "Audits",
+    status: "diagnostic mode",
+    summary:
+      "Independent review of product, process, and technology when a company needs a cleaner read on reality.",
+    command: "$ audit --surface company --mode product-tech --output signal",
+    stack: [
+      "technical and product audits",
+      "delivery friction diagnosis",
+      "process and ownership review",
+      "concrete next-step recommendations",
+    ],
+  },
+] as const;
+
 export const operatingModel = [
   {
     step: "01",
@@ -54,6 +113,37 @@ export const operatingModel = [
     title: "Leave a durable setup",
     text: "The output should stay useful after handoff: documented logic, cleaner systems, and fewer hidden liabilities.",
   },
+] as const;
+
+export const operatingSignals = [
+  {
+    label: "delivery mode",
+    value: "advisory + hands-on",
+    detail: "Strategy is useful only if execution can follow it.",
+  },
+  {
+    label: "working surface",
+    value: "media + product + systems",
+    detail: "Creative and technical work share the same operating logic here.",
+  },
+  {
+    label: "publishing mode",
+    value: "notes shipped in code",
+    detail: "Static output keeps the site simple, direct, and easy to host.",
+  },
+  {
+    label: "engagement filter",
+    value: "selected collaborations",
+    detail:
+      "Best fit when clarity, quality, and architectural rigor actually matter.",
+  },
+] as const;
+
+export const executionConsole = [
+  "capture current signal",
+  "surface hidden constraints",
+  "reduce technical noise",
+  "ship a cleaner system state",
 ] as const;
 
 export const terminalFacts = [

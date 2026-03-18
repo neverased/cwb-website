@@ -68,6 +68,7 @@ export const TerminalLoader = ({
   const [isComplete, setIsComplete] = useState(false);
   const timeoutRef = useRef<number | null>(null);
   const completionTriggeredRef = useRef(false);
+  const screenRef = useRef<HTMLPreElement | null>(null);
   const currentText = texts[index] ?? "";
   const progress = isComplete
     ? 100
@@ -138,6 +139,22 @@ export const TerminalLoader = ({
 
   useEffect(() => clearScheduledAdvance, []);
 
+  useEffect(() => {
+    const screenElement = screenRef.current;
+
+    if (!screenElement) {
+      return;
+    }
+
+    const frame = window.requestAnimationFrame(() => {
+      screenElement.scrollTop = screenElement.scrollHeight;
+    });
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+    };
+  }, [index, currentText]);
+
   return (
     <div className={styles.shell}>
       <div className={styles.header}>
@@ -168,7 +185,7 @@ export const TerminalLoader = ({
         </div>
       </div>
 
-      <pre className={styles.screen} aria-live="polite">
+      <pre ref={screenRef} className={styles.screen} aria-live="polite">
         {texts.slice(0, index).map((line, lineIndex) => (
           <div
             key={`${line}-${lineIndex}`}

@@ -180,3 +180,13 @@ export const noteQueue = [
       "The recurring technical and organizational indicators I look for when a company feels busy but not aligned.",
   },
 ] as const;
+
+export const credibilitySignal = {
+  kicker: "Verified credibility",
+  title: "Rzetelna Firma member",
+  description:
+    "We participate in the program. Review the company profile and our credibility certificate.",
+  actionLabel: "View certificate",
+  displayUrl: "rzetelnafirma.pl/D72SOALK4C2PIGNR",
+  href: "https://www.rzetelnafirma.pl/D72SOALK4C2PIGNR",
+} as const;

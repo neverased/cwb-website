@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { startTransition, useCallback, useState } from "react";
 
+import { CredibilityPanel } from "@/components/credibility_panel";
 import { ContactPanel } from "@/components/contact_panel";
 import { ScrambleText } from "@/components/scramble_text";
 import { SiteHeader } from "@/components/site_header";
@@ -257,6 +258,10 @@ export default function Home() {
               </article>
             ))}
           </div>
+        </section>
+
+        <section className={styles.credibilitySection}>
+          <CredibilityPanel />
         </section>
 
         <section className={styles.section} id="capabilities">

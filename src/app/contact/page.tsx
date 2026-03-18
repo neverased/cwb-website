@@ -1,3 +1,4 @@
+import { CredibilityPanel } from "@/components/credibility_panel";
 import { ContactPanel } from "@/components/contact_panel";
 import { ScrambleText } from "@/components/scramble_text";
 import { SiteHeader } from "@/components/site_header";
@@ -50,6 +51,8 @@ export default function ContactPage() {
             />
           </aside>
         </section>
+
+        <CredibilityPanel />
 
         <ContactPanel />
       </div>

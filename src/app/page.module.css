@@ -656,6 +656,10 @@
   gap: 1.6rem;
 }
 
+.credibilitySection {
+  display: grid;
+}
+
 .signalSection {
   display: grid;
 }

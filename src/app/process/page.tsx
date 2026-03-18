@@ -1,5 +1,16 @@
 import { ScrambleText } from "@/components/scramble_text";
 import { SiteHeader } from "@/components/site_header";
+import { StructuredData } from "@/components/structured_data";
+import {
+  absoluteUrl,
+  buildBreadcrumbJsonLd,
+  buildJsonLdGraph,
+  buildMetadata,
+  buildWebPageNode,
+  PERSON_ID,
+  personGraphNode,
+  websiteGraphNode,
+} from "@/lib/seo";
 import {
   executionConsole,
   processArtifacts,
@@ -8,9 +19,67 @@ import {
 
 import styles from "../subpage.module.css";
 
+const PROCESS_TITLE = "Process | Wojciech Bajer";
+const PROCESS_DESCRIPTION =
+  "Operating model for audits, architecture, software delivery, and multimedia systems work by Wojciech Bajer.";
+
+export const metadata = buildMetadata({
+  title: PROCESS_TITLE,
+  description: PROCESS_DESCRIPTION,
+  path: "/process/",
+  keywords: [
+    "technical process",
+    "operating model",
+    "architecture review process",
+    "audit workflow",
+  ],
+});
+
+const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+  { name: "Home", path: "/" },
+  { name: "Process", path: "/process/" },
+]);
+
+const processListJsonLd = {
+  "@type": "ItemList",
+  "@id": absoluteUrl("/process/#steps"),
+  itemListElement: processFlow.map(({ step, title, summary }, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    item: {
+      "@type": "Thing",
+      name: `${step} ${title}`,
+      description: summary,
+    },
+  })),
+};
+
+const processPageJsonLd = buildJsonLdGraph([
+  websiteGraphNode,
+  personGraphNode,
+  breadcrumbJsonLd,
+  processListJsonLd,
+  buildWebPageNode({
+    name: PROCESS_TITLE,
+    description: PROCESS_DESCRIPTION,
+    path: "/process/",
+    breadcrumbId: absoluteUrl("/process/#breadcrumb"),
+    about: [
+      {
+        "@id": PERSON_ID,
+      },
+    ],
+    mainEntity: {
+      "@id": absoluteUrl("/process/#steps"),
+    },
+  }),
+]);
+
 export default function ProcessPage() {
   return (
     <main className={styles.page}>
+      <StructuredData data={processPageJsonLd} />
+
       <div className={styles.pageShell}>
         <SiteHeader currentPath="/process" />
 

@@ -1,5 +1,16 @@
 import { ScrambleText } from "@/components/scramble_text";
 import { SiteHeader } from "@/components/site_header";
+import { StructuredData } from "@/components/structured_data";
+import {
+  absoluteUrl,
+  buildBreadcrumbJsonLd,
+  buildJsonLdGraph,
+  buildMetadata,
+  buildWebPageNode,
+  PERSON_ID,
+  personGraphNode,
+  websiteGraphNode,
+} from "@/lib/seo";
 import {
   serviceBoards,
   serviceRouting,
@@ -8,9 +19,71 @@ import {
 
 import styles from "../subpage.module.css";
 
+const SERVICES_TITLE = "Services | Wojciech Bajer";
+const SERVICES_DESCRIPTION =
+  "Service map for multimedia systems, software engineering, application architecture, and independent product or technology audits by Wojciech Bajer.";
+
+export const metadata = buildMetadata({
+  title: SERVICES_TITLE,
+  description: SERVICES_DESCRIPTION,
+  path: "/services/",
+  keywords: [
+    "multimedia services",
+    "software engineering consulting",
+    "application architecture consulting",
+    "technical audit services",
+  ],
+});
+
+const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+  { name: "Home", path: "/" },
+  { name: "Services", path: "/services/" },
+]);
+
+const servicesListJsonLd = {
+  "@type": "ItemList",
+  "@id": absoluteUrl("/services/#list"),
+  itemListElement: serviceBoards.map(({ label, headline }, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    item: {
+      "@type": "Service",
+      name: label,
+      description: headline,
+      provider: {
+        "@id": PERSON_ID,
+      },
+    },
+  })),
+};
+
+const servicesPageJsonLd = buildJsonLdGraph([
+  websiteGraphNode,
+  personGraphNode,
+  breadcrumbJsonLd,
+  servicesListJsonLd,
+  buildWebPageNode({
+    type: "CollectionPage",
+    name: SERVICES_TITLE,
+    description: SERVICES_DESCRIPTION,
+    path: "/services/",
+    breadcrumbId: absoluteUrl("/services/#breadcrumb"),
+    about: [
+      {
+        "@id": PERSON_ID,
+      },
+    ],
+    mainEntity: {
+      "@id": absoluteUrl("/services/#list"),
+    },
+  }),
+]);
+
 export default function ServicesPage() {
   return (
     <main className={styles.page}>
+      <StructuredData data={servicesPageJsonLd} />
+
       <div className={styles.pageShell}>
         <SiteHeader currentPath="/services" />
 

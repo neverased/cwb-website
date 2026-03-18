@@ -841,12 +841,65 @@
   font-size: 0.78rem;
 }
 
+.profileSignalCard {
+  min-height: 14rem;
+}
+
+.logoGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.logoCard {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.logoSurface {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 10.5rem;
+  padding: 1.25rem;
+  border: 1px solid rgba(126, 255, 203, 0.08);
+  border-radius: 1.15rem;
+  background: rgba(6, 16, 15, 0.86);
+}
+
+.logoSurfaceLight {
+  background: linear-gradient(180deg, #f9fffb, #dfe9e2);
+}
+
+.logoSurfaceDark {
+  background: linear-gradient(180deg, #091212, #020707);
+}
+
+.logoSurfaceYellow {
+  background: linear-gradient(180deg, #ffcc00, #f8c504);
+}
+
+.logoImage {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 4.8rem;
+  object-fit: contain;
+}
+
+.logoName {
+  color: #f4fff8;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
 @media (max-width: 1080px) {
   .lead,
   .splitGrid,
   .signalGrid,
   .surfaceGrid,
-  .artifactGrid {
+  .artifactGrid,
+  .logoGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -877,7 +930,8 @@
   .surfaceGrid,
   .matrixGrid,
   .artifactGrid,
-  .ioGrid {
+  .ioGrid,
+  .logoGrid {
     grid-template-columns: 1fr;
   }
 

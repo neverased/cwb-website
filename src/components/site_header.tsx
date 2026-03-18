@@ -4,6 +4,7 @@ import styles from "./site_header.module.css";
 
 const NAV_ITEMS = [
   { href: "/", label: "Landing" },
+  { href: "/profile", label: "Profile" },
   { href: "/services", label: "Services" },
   { href: "/process", label: "Process" },
   { href: "/notes", label: "Notes" },
@@ -16,7 +17,11 @@ interface SiteHeaderProps {
 
 export const SiteHeader = ({ currentPath }: SiteHeaderProps) => {
   const routePrompt =
-    currentPath === "/" ? "cwb://profile" : `cwb://profile${currentPath}`;
+    currentPath === "/"
+      ? "cwb://profile"
+      : currentPath === "/profile"
+        ? "cwb://profile/about"
+        : `cwb://profile${currentPath}`;
 
   return (
     <header className={styles.topbar}>

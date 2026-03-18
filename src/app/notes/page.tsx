@@ -1,12 +1,85 @@
 import { ScrambleText } from "@/components/scramble_text";
 import { SiteHeader } from "@/components/site_header";
+import { StructuredData } from "@/components/structured_data";
+import {
+  absoluteUrl,
+  buildBreadcrumbJsonLd,
+  buildJsonLdGraph,
+  buildMetadata,
+  buildWebPageNode,
+  PERSON_ID,
+  personGraphNode,
+  websiteGraphNode,
+} from "@/lib/seo";
 import { noteQueue } from "@/static/siteContent";
 
 import styles from "../subpage.module.css";
 
+const NOTES_TITLE = "Notes | Wojciech Bajer";
+const NOTES_DESCRIPTION =
+  "Static-first notes page for essays, breakdowns, and field observations on architecture, multimedia systems, and audit work.";
+
+export const metadata = buildMetadata({
+  title: NOTES_TITLE,
+  description: NOTES_DESCRIPTION,
+  path: "/notes/",
+  keywords: [
+    "technical notes",
+    "architecture essays",
+    "audit observations",
+    "software and multimedia writing",
+  ],
+});
+
+const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+  { name: "Home", path: "/" },
+  { name: "Notes", path: "/notes/" },
+]);
+
+const notesListJsonLd = {
+  "@type": "ItemList",
+  "@id": absoluteUrl("/notes/#queue"),
+  itemListElement: noteQueue.map(({ title, summary }, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    item: {
+      "@type": "CreativeWork",
+      name: title,
+      description: summary,
+      author: {
+        "@id": PERSON_ID,
+      },
+    },
+  })),
+};
+
+const notesPageJsonLd = buildJsonLdGraph([
+  websiteGraphNode,
+  personGraphNode,
+  breadcrumbJsonLd,
+  notesListJsonLd,
+  buildWebPageNode({
+    type: "CollectionPage",
+    name: NOTES_TITLE,
+    description: NOTES_DESCRIPTION,
+    path: "/notes/",
+    breadcrumbId: absoluteUrl("/notes/#breadcrumb"),
+    about: [
+      {
+        "@id": PERSON_ID,
+      },
+    ],
+    mainEntity: {
+      "@id": absoluteUrl("/notes/#queue"),
+    },
+  }),
+]);
+
 export default function NotesPage() {
   return (
     <main className={styles.page}>
+      <StructuredData data={notesPageJsonLd} />
+
       <div className={styles.pageShell}>
         <SiteHeader currentPath="/notes" />
 

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { startTransition, useCallback, useState } from "react";
+import { startTransition, useCallback, useLayoutEffect, useState } from "react";
 
 import { CredibilityPanel } from "@/components/credibility_panel";
 import { ContactPanel } from "@/components/contact_panel";
@@ -16,19 +16,61 @@ import {
   noteQueue,
   operatingModel,
   operatingSignals,
+  selectedCollaborations,
   terminalFacts,
 } from "@/static/siteContent";
 import { HACKING } from "@/static/staticText/start";
 
 import styles from "./page.module.css";
 
+const BOOT_SESSION_KEY = "cwb.boot.completed";
+
+let hasBootedInMemory = false;
+
+const readPersistedBootState = () => {
+  if (typeof window === "undefined") {
+    return false;
+  }
+
+  try {
+    return window.sessionStorage.getItem(BOOT_SESSION_KEY) === "1";
+  } catch {
+    return false;
+  }
+};
+
+const persistBootState = () => {
+  hasBootedInMemory = true;
+
+  if (typeof window === "undefined") {
+    return;
+  }
+
+  try {
+    window.sessionStorage.setItem(BOOT_SESSION_KEY, "1");
+  } catch {
+    // Ignore storage failures and keep the in-memory session flag.
+  }
+};
+
 export default function Home() {
-  const [hasBooted, setHasBooted] = useState(false);
+  const [hasBooted, setHasBooted] = useState(hasBootedInMemory);
   const [activeFocusId, setActiveFocusId] = useState<
     (typeof focusModules)[number]["id"]
   >(focusModules[0].id);
 
+  useLayoutEffect(() => {
+    if (!readPersistedBootState()) {
+      return;
+    }
+
+    hasBootedInMemory = true;
+    setHasBooted(true);
+  }, []);
+
   const enterSite = useCallback(() => {
+    persistBootState();
+
     startTransition(() => {
       setHasBooted(true);
     });
@@ -59,14 +101,10 @@ export default function Home() {
               speed={0.8}
               step={3}
             />
-            <ScrambleText
-              as="p"
-              className={styles.bootDescription}
-              text="A temporary terminal veil, then the actual destination: personal brand, operating model, and room for future writing."
-              delay={120}
-              speed={0.45}
-              step={1}
-            />
+            <p className={styles.bootDescription}>
+              A temporary terminal veil, then the actual destination: personal
+              brand, operating model, and room for future writing.
+            </p>
 
             <div className={styles.bootMeta}>
               <span>Operator: Wojciech Bajer</span>
@@ -94,6 +132,13 @@ export default function Home() {
         <SiteHeader currentPath="/" />
 
         <section className={styles.hero} id="top">
+          <div className={styles.heroBackdrop} aria-hidden="true">
+            <span className={styles.heroSweep} />
+            <span className={styles.heroSweepSecondary} />
+            <span className={styles.heroRing} />
+            <span className={styles.heroRail} />
+          </div>
+
           <div className={styles.heroCopy}>
             <p className={styles.kicker}>Terminal-grade personal brand</p>
             <ScrambleText
@@ -104,14 +149,12 @@ export default function Home() {
               speed={0.9}
               step={3}
             />
-            <ScrambleText
-              as="p"
-              className={styles.heroDescription}
-              text="I work across multimedia production, software engineering, application architecture, and product or company audits. The common theme is signal quality: reducing noise, exposing weak links, and shipping systems that hold up under pressure."
-              delay={320}
-              speed={0.45}
-              step={1}
-            />
+            <p className={styles.heroDescription}>
+              I work across multimedia production, software engineering,
+              application architecture, and product or company audits. The
+              common theme is signal quality: reducing noise, exposing weak
+              links, and shipping systems that hold up under pressure.
+            </p>
 
             <div className={styles.focusTabs}>
               {focusModules.map((module) => (
@@ -139,20 +182,8 @@ export default function Home() {
                 <p className={styles.deckLabel}>active module</p>
                 <span>{activeFocus.status}</span>
               </div>
-              <ScrambleText
-                as="p"
-                className={styles.focusPanelTitle}
-                text={activeFocus.label}
-                speed={0.7}
-                step={2}
-              />
-              <ScrambleText
-                as="p"
-                className={styles.focusPanelText}
-                text={activeFocus.summary}
-                speed={0.45}
-                step={1}
-              />
+              <p className={styles.focusPanelTitle}>{activeFocus.label}</p>
+              <p className={styles.focusPanelText}>{activeFocus.summary}</p>
             </div>
 
             <div className={styles.heroActions}>
@@ -203,13 +234,7 @@ export default function Home() {
                 <p className={styles.deckLabel}>mission brief</p>
                 <span>{activeFocus.status}</span>
               </div>
-              <ScrambleText
-                as="p"
-                className={styles.focusConsoleText}
-                text={activeFocus.summary}
-                speed={0.45}
-                step={1}
-              />
+              <p className={styles.focusConsoleText}>{activeFocus.summary}</p>
               <pre className={styles.commandPreview}>
                 <code>{activeFocus.command}</code>
               </pre>
@@ -237,24 +262,11 @@ export default function Home() {
 
         <section className={styles.signalSection}>
           <div className={styles.signalStrip}>
-            {operatingSignals.map(({ label, value, detail }, index) => (
+            {operatingSignals.map(({ label, value, detail }) => (
               <article key={label} className={styles.signalCard}>
                 <p className={styles.deckLabel}>{label}</p>
-                <ScrambleText
-                  as="h3"
-                  text={value}
-                  delay={360 + index * 70}
-                  speed={0.6}
-                  step={2}
-                />
-                <ScrambleText
-                  as="p"
-                  className={styles.signalCardText}
-                  text={detail}
-                  delay={420 + index * 70}
-                  speed={0.45}
-                  step={1}
-                />
+                <h3>{value}</h3>
+                <p className={styles.signalCardText}>{detail}</p>
               </article>
             ))}
           </div>
@@ -262,6 +274,57 @@ export default function Home() {
 
         <section className={styles.credibilitySection}>
           <CredibilityPanel />
+        </section>
+
+        <section className={styles.section} id="collaborations">
+          <div className={styles.sectionHeading}>
+            <p className={styles.kicker}>Selected collaborations</p>
+            <ScrambleText
+              as="h2"
+              className={styles.sectionTitle}
+              text="Work delivered for recognized teams and larger systems."
+              delay={400}
+            />
+            <p className={styles.sectionDescription}>
+              A few organizations I have worked with across multimedia,
+              engineering, and delivery contexts. The section keeps the same
+              terminal frame, but now uses the actual partner marks.
+            </p>
+          </div>
+
+          <div className={styles.collaborationGrid}>
+            {selectedCollaborations.map(
+              ({ name, tag, src, width, height, surface }) => (
+                <article key={name} className={styles.collaborationCard}>
+                  <p className={styles.deckLabel}>{tag}</p>
+                  <div
+                    className={[
+                      styles.collaborationSurface,
+                      surface === "light"
+                        ? styles.collaborationSurfaceLight
+                        : "",
+                      surface === "dark" ? styles.collaborationSurfaceDark : "",
+                      surface === "yellow"
+                        ? styles.collaborationSurfaceYellow
+                        : "",
+                    ]
+                      .filter(Boolean)
+                      .join(" ")}
+                  >
+                    <Image
+                      className={styles.collaborationLogo}
+                      src={src}
+                      alt={`${name} logo`}
+                      width={width}
+                      height={height}
+                      sizes="(max-width: 720px) calc(100vw - 5rem), (max-width: 1100px) calc(50vw - 3rem), 26rem"
+                    />
+                  </div>
+                  <p className={styles.collaborationName}>{name}</p>
+                </article>
+              ),
+            )}
+          </div>
         </section>
 
         <section className={styles.section} id="capabilities">
@@ -274,14 +337,11 @@ export default function Home() {
               delay={420}
             />
             <div className={styles.sectionLead}>
-              <ScrambleText
-                as="p"
-                className={styles.sectionDescription}
-                text="These are distinct entry points into the same way of working: technical clarity, cleaner systems, and a stronger signal between idea, product, and execution."
-                delay={500}
-                speed={0.45}
-                step={1}
-              />
+              <p className={styles.sectionDescription}>
+                These are distinct entry points into the same way of working:
+                technical clarity, cleaner systems, and a stronger signal
+                between idea, product, and execution.
+              </p>
               <Link className={styles.sectionRoute} href="/services">
                 Open services page
               </Link>
@@ -289,26 +349,14 @@ export default function Home() {
           </div>
 
           <div className={styles.capabilityGrid}>
-            {coreSignals.map(({ id, title, description, detail }, index) => (
+            {coreSignals.map(({ id, title, description, detail }) => (
               <article key={id} className={styles.capabilityCard}>
                 <div className={styles.capabilityHeader}>
                   <span>{id}</span>
                   <p>{title}</p>
                 </div>
-                <ScrambleText
-                  as="h3"
-                  text={description}
-                  delay={560 + index * 70}
-                  speed={0.55}
-                  step={2}
-                />
-                <ScrambleText
-                  as="p"
-                  text={detail}
-                  delay={620 + index * 70}
-                  speed={0.45}
-                  step={1}
-                />
+                <h3>{description}</h3>
+                <p>{detail}</p>
               </article>
             ))}
           </div>
@@ -324,14 +372,11 @@ export default function Home() {
               delay={520}
             />
             <div className={styles.sectionLead}>
-              <ScrambleText
-                as="p"
-                className={styles.sectionDescription}
-                text="The landing page now keeps only the compressed overview. The full process gets its own route, so this section can stay readable instead of trying to carry everything at once."
-                delay={600}
-                speed={0.45}
-                step={1}
-              />
+              <p className={styles.sectionDescription}>
+                The landing page now keeps only the compressed overview. The
+                full process gets its own route, so this section can stay
+                readable instead of trying to carry everything at once.
+              </p>
               <Link className={styles.sectionRoute} href="/process">
                 Open full process page
               </Link>
@@ -339,23 +384,11 @@ export default function Home() {
           </div>
 
           <div className={styles.processGrid}>
-            {operatingModel.map(({ step, title, text }, index) => (
+            {operatingModel.map(({ step, title, text }) => (
               <article key={step} className={styles.processCard}>
                 <span className={styles.processStep}>{step}</span>
-                <ScrambleText
-                  as="h3"
-                  text={title}
-                  delay={660 + index * 70}
-                  speed={0.55}
-                  step={2}
-                />
-                <ScrambleText
-                  as="p"
-                  text={text}
-                  delay={720 + index * 70}
-                  speed={0.45}
-                  step={1}
-                />
+                <h3>{title}</h3>
+                <p>{text}</p>
               </article>
             ))}
           </div>
@@ -383,14 +416,11 @@ export default function Home() {
               delay={620}
             />
             <div className={styles.sectionLead}>
-              <ScrambleText
-                as="p"
-                className={styles.sectionDescription}
-                text="No CMS needed for now. The structure is static and code-driven, which keeps deploys simple and works cleanly with export-based hosting."
-                delay={700}
-                speed={0.45}
-                step={1}
-              />
+              <p className={styles.sectionDescription}>
+                No CMS needed for now. The structure is static and code-driven,
+                which keeps deploys simple and works cleanly with export-based
+                hosting.
+              </p>
               <Link className={styles.sectionRoute} href="/notes">
                 Open notes page
               </Link>
@@ -398,26 +428,14 @@ export default function Home() {
           </div>
 
           <div className={styles.noteGrid}>
-            {noteQueue.map(({ status, title, summary }, index) => (
+            {noteQueue.map(({ status, title, summary }) => (
               <article key={title} className={styles.noteCard}>
                 <div className={styles.noteMeta}>
                   <span>{status}</span>
                   <span>signal draft</span>
                 </div>
-                <ScrambleText
-                  as="h3"
-                  text={title}
-                  delay={760 + index * 70}
-                  speed={0.55}
-                  step={2}
-                />
-                <ScrambleText
-                  as="p"
-                  text={summary}
-                  delay={820 + index * 70}
-                  speed={0.45}
-                  step={1}
-                />
+                <h3>{title}</h3>
+                <p>{summary}</p>
               </article>
             ))}
           </div>
@@ -436,14 +454,11 @@ export default function Home() {
               delay={720}
             />
             <div className={styles.sectionLead}>
-              <ScrambleText
-                as="p"
-                className={styles.sectionDescription}
-                text="The landing page keeps the direct route visible, but the contact form also has its own page for a cleaner handoff from the main navigation."
-                delay={800}
-                speed={0.45}
-                step={1}
-              />
+              <p className={styles.sectionDescription}>
+                The landing page keeps the direct route visible, but the contact
+                form also has its own page for a cleaner handoff from the main
+                navigation.
+              </p>
               <Link className={styles.sectionRoute} href="/contact">
                 Open contact page
               </Link>

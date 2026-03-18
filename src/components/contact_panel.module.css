@@ -7,6 +7,7 @@
 .contactCard {
   position: relative;
   overflow: hidden;
+  isolation: isolate;
   min-height: 100%;
   padding: 1.35rem;
   border: 1px solid rgba(126, 255, 203, 0.12);
@@ -41,9 +42,56 @@
   pointer-events: none;
 }
 
+.contactCard::after {
+  content: "";
+  position: absolute;
+  left: -16%;
+  right: auto;
+  bottom: 1.25rem;
+  width: 28%;
+  height: 3.4rem;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(126, 255, 203, 0.18),
+    transparent
+  );
+  filter: blur(14px);
+  opacity: 0.2;
+  animation: contactSweep 18s linear infinite;
+  pointer-events: none;
+}
+
+.contactCard > * {
+  position: relative;
+  z-index: 1;
+}
+
 .contactFormCard {
   display: grid;
   gap: 1rem;
+}
+
+.contactFormCard::after {
+  content: "";
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 5.5rem;
+  height: 5.5rem;
+  border: 1px solid rgba(126, 255, 203, 0.16);
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+  opacity: 0.22;
+  animation: contactPulse 7s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.contactFormCard::before {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    inset 0 0 0 1px rgba(126, 255, 203, 0.02);
 }
 
 .contactLabel {
@@ -187,6 +235,22 @@
   gap: 1rem;
 }
 
+.formFooter::before {
+  content: "";
+  position: absolute;
+  top: -0.7rem;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(126, 255, 203, 0.42),
+    transparent
+  );
+  opacity: 0.42;
+}
+
 .formHint {
   max-width: 34ch;
   font-size: 0.86rem;
@@ -218,6 +282,41 @@
   transform: translateY(-2px);
 }
 
+@keyframes contactSweep {
+  0% {
+    transform: translate3d(0, 0, 0);
+    left: -18%;
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 0.18;
+  }
+
+  78% {
+    opacity: 0.14;
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0);
+    left: 108%;
+    opacity: 0;
+  }
+}
+
+@keyframes contactPulse {
+  0%,
+  100% {
+    opacity: 0.18;
+    transform: scale(0.98);
+  }
+
+  50% {
+    opacity: 0.34;
+    transform: scale(1.04);
+  }
+}
+
 @media (max-width: 760px) {
   .contactGrid,
   .formGrid {
@@ -231,8 +330,15 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .contactCard::after,
+  .contactFormCard::after,
   .contactValue,
   .submitButton {
     transition: none;
+  }
+
+  .contactCard::after,
+  .contactFormCard::after {
+    animation: none;
   }
 }

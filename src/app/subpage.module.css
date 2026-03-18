@@ -2,6 +2,7 @@
   position: relative;
   min-height: 100vh;
   overflow: clip;
+  isolation: isolate;
   background:
     radial-gradient(
       circle at top left,
@@ -31,6 +32,7 @@
   background-size: 80px 80px;
   mask-image: radial-gradient(circle at center, black, transparent 80%);
   opacity: 0.35;
+  animation: subpageAmbientDrift 40s ease-in-out infinite;
 }
 
 .page::after {
@@ -42,9 +44,72 @@
       rgba(123, 255, 202, 0.04) 1px,
       transparent 1px,
       transparent 5px
+    ),
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(120, 255, 207, 0.14),
+      rgba(120, 255, 207, 0.05),
+      transparent
     );
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-size:
+    auto,
+    auto,
+    34% 100%;
+  background-position:
+    0 0,
+    0 0,
+    -140% 0;
   mix-blend-mode: screen;
-  opacity: 0.2;
+  opacity: 0.16;
+  animation: subpageShellSweep 24s linear infinite;
+}
+
+@keyframes subpageAmbientDrift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.26;
+  }
+
+  50% {
+    transform: translate3d(1%, -2%, 0) scale(1.03);
+    opacity: 0.34;
+  }
+}
+
+@keyframes subpageShellSweep {
+  0% {
+    background-position:
+      0 0,
+      0 0,
+      -140% 0;
+    opacity: 0.12;
+  }
+
+  55% {
+    opacity: 0.2;
+  }
+
+  100% {
+    background-position:
+      0 0,
+      0 0,
+      220% 0;
+    opacity: 0.12;
+  }
+}
+
+@keyframes subpagePanelPulse {
+  0%,
+  100% {
+    opacity: 0.14;
+  }
+
+  50% {
+    opacity: 0.28;
+  }
 }
 
 .pageShell {
@@ -61,9 +126,38 @@
 .splitGrid,
 .cardGrid,
 .notesGrid,
-.signalGrid {
+.signalGrid,
+.boardSection,
+.matrixSection,
+.surfaceGrid,
+.matrixGrid,
+.pipelineGrid,
+.artifactGrid {
   display: grid;
   gap: 1rem;
+}
+
+.lead {
+  position: relative;
+  isolation: isolate;
+}
+
+.lead::before {
+  content: "";
+  position: absolute;
+  inset: -1rem 34% auto 0;
+  height: 8rem;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(126, 255, 203, 0.12),
+    transparent
+  );
+  filter: blur(24px);
+  opacity: 0.18;
+  pointer-events: none;
+  animation: subpageShellSweep 26s linear infinite;
 }
 
 .lead,
@@ -83,10 +177,35 @@
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
+.boardSection,
+.matrixSection,
+.artifactSection {
+  display: grid;
+  gap: 1rem;
+}
+
+.surfaceGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.matrixGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.artifactGrid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
 .leadCopy {
   display: grid;
   align-content: start;
   gap: 1rem;
+}
+
+.sectionIntro {
+  display: grid;
+  gap: 0.9rem;
+  max-width: 52rem;
 }
 
 .kicker {
@@ -103,6 +222,15 @@
   line-height: 0.98;
   letter-spacing: -0.04em;
   color: #f4fff8;
+}
+
+.sectionTitle {
+  max-width: 18ch;
+  color: #f4fff8;
+  font-family: var(--font-display), "Fira Code", monospace;
+  font-size: clamp(1.9rem, 3vw, 3.1rem);
+  line-height: 1.02;
+  letter-spacing: -0.04em;
 }
 
 .description,
@@ -133,6 +261,7 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.04),
     0 1.5rem 3rem rgba(0, 0, 0, 0.24);
   backdrop-filter: blur(18px);
+  isolation: isolate;
 }
 
 .panel::before,
@@ -153,6 +282,27 @@
     );
   opacity: 0.4;
   pointer-events: none;
+}
+
+.panel::after,
+.card::after,
+.timelineCard::after,
+.signalCard::after {
+  content: "";
+  position: absolute;
+  inset: 0.85rem;
+  background:
+    linear-gradient(rgba(126, 255, 203, 0.14), rgba(126, 255, 203, 0.14)) left
+      top / 1rem 1px no-repeat,
+    linear-gradient(rgba(126, 255, 203, 0.14), rgba(126, 255, 203, 0.14)) left
+      top / 1px 1rem no-repeat,
+    linear-gradient(rgba(126, 255, 203, 0.14), rgba(126, 255, 203, 0.14)) right
+      bottom / 1rem 1px no-repeat,
+    linear-gradient(rgba(126, 255, 203, 0.14), rgba(126, 255, 203, 0.14)) right
+      bottom / 1px 1rem no-repeat;
+  opacity: 0.14;
+  pointer-events: none;
+  animation: subpagePanelPulse 9s ease-in-out infinite;
 }
 
 .panel > *,
@@ -179,6 +329,394 @@
   color: #f4fff8;
   font-size: 1.2rem;
   line-height: 1.4;
+}
+
+.routeBoard {
+  display: grid;
+  align-content: stretch;
+}
+
+.routeGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 1rem;
+  align-items: center;
+  min-height: 100%;
+}
+
+.routeLane {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.routeStack {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.routeNode {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.8rem;
+  padding: 0.8rem 0.95rem;
+  border: 1px solid rgba(126, 255, 203, 0.12);
+  border-radius: 1rem;
+  background: rgba(6, 16, 15, 0.7);
+  color: rgba(229, 245, 236, 0.86);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.routeCore {
+  position: relative;
+  display: grid;
+  gap: 0.8rem;
+  width: clamp(10rem, 18vw, 13rem);
+  padding: 1rem 1.05rem;
+  border: 1px solid rgba(126, 255, 203, 0.12);
+  border-radius: 1.3rem;
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(126, 255, 203, 0.1),
+      rgba(3, 10, 10, 0.92) 64%
+    ),
+    rgba(3, 10, 10, 0.92);
+}
+
+.routeCore::before,
+.routeCore::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 1rem;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(126, 255, 203, 0),
+    rgba(126, 255, 203, 0.28),
+    rgba(126, 255, 203, 0)
+  );
+}
+
+.routeCore::before {
+  left: -1rem;
+}
+
+.routeCore::after {
+  right: -1rem;
+}
+
+.routeCoreLabel {
+  color: #d9ff8c;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.routeSurfaceList {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.routeSurface {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.35rem;
+  padding: 0.65rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(126, 255, 203, 0.08);
+  color: #f4fff8;
+  font-size: 0.74rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.surfaceCard {
+  display: grid;
+  gap: 1rem;
+  padding: 1.5rem;
+}
+
+.surfaceTitle {
+  color: #f4fff8;
+  font-size: 1.55rem;
+  line-height: 1.25;
+}
+
+.surfaceDiagram {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  align-items: stretch;
+}
+
+.surfaceStage {
+  position: relative;
+  display: grid;
+  gap: 0.55rem;
+  min-height: 8.6rem;
+  padding: 0.95rem;
+  border: 1px solid rgba(126, 255, 203, 0.08);
+  border-radius: 1rem;
+  background: rgba(0, 0, 0, 0.22);
+}
+
+.surfaceStage:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -0.7rem;
+  width: 0.7rem;
+  height: 1px;
+  background: rgba(126, 255, 203, 0.24);
+}
+
+.surfaceStage:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  top: calc(50% - 4px);
+  right: -0.75rem;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  border-left: 6px solid rgba(126, 255, 203, 0.24);
+}
+
+.surfaceStageLabel {
+  color: #8ddfba;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.surfaceStageValue {
+  color: rgba(238, 248, 243, 0.9);
+  line-height: 1.55;
+}
+
+.chipRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.1rem;
+  padding: 0.45rem 0.8rem;
+  border: 1px solid rgba(126, 255, 203, 0.12);
+  border-radius: 999px;
+  background: rgba(126, 255, 203, 0.06);
+  color: rgba(228, 246, 236, 0.82);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.surfaceFit {
+  color: rgba(217, 255, 140, 0.86);
+  line-height: 1.7;
+}
+
+.matrixBoard {
+  display: grid;
+  gap: 0.95rem;
+}
+
+.matrixStack {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.matrixRow {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.8rem;
+  align-items: start;
+  padding: 0.8rem 0.9rem;
+  border: 1px solid rgba(126, 255, 203, 0.08);
+  border-radius: 1rem;
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.matrixDot {
+  width: 0.55rem;
+  height: 0.55rem;
+  margin-top: 0.45rem;
+  border-radius: 999px;
+  background: #d9ff8c;
+  box-shadow: 0 0 0.8rem rgba(217, 255, 140, 0.28);
+}
+
+.matrixValue {
+  color: rgba(238, 248, 243, 0.9);
+  line-height: 1.55;
+}
+
+.processControl {
+  display: grid;
+  gap: 1rem;
+}
+
+.loopRail {
+  position: relative;
+  display: grid;
+  gap: 0.8rem;
+  padding-left: 0.5rem;
+}
+
+.loopRail::before {
+  content: "";
+  position: absolute;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  left: 0.3rem;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    rgba(126, 255, 203, 0.12),
+    rgba(126, 255, 203, 0.32),
+    rgba(126, 255, 203, 0.12)
+  );
+}
+
+.loopStep {
+  position: relative;
+  display: grid;
+  gap: 0.25rem;
+  min-height: 3.25rem;
+  padding-left: 2.35rem;
+}
+
+.loopStep::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.65rem;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 999px;
+  border: 1px solid rgba(126, 255, 203, 0.45);
+  background: rgba(3, 12, 11, 0.92);
+  box-shadow: 0 0 0 0.3rem rgba(126, 255, 203, 0.08);
+}
+
+.loopIndex {
+  color: #8ddfba;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.loopLabel {
+  color: rgba(239, 248, 243, 0.88);
+  line-height: 1.5;
+}
+
+.pipelineGrid {
+  position: relative;
+  gap: 1.1rem;
+  padding-left: 1.4rem;
+}
+
+.pipelineGrid::before {
+  content: "";
+  position: absolute;
+  top: 1.2rem;
+  bottom: 1.2rem;
+  left: 0.6rem;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    rgba(126, 255, 203, 0.14),
+    rgba(126, 255, 203, 0.3),
+    rgba(126, 255, 203, 0.14)
+  );
+}
+
+.pipelineCard {
+  display: grid;
+  gap: 1rem;
+  padding: 1.55rem;
+}
+
+.pipelineHead {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.pipelineHead::before {
+  content: "";
+  position: absolute;
+  left: -1.48rem;
+  top: 50%;
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 999px;
+  transform: translateY(-50%);
+  background: #d9ff8c;
+  box-shadow:
+    0 0 0 0.3rem rgba(217, 255, 140, 0.08),
+    0 0 1rem rgba(217, 255, 140, 0.18);
+}
+
+.pipelineMarkers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.pipelineMarker {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.9rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(126, 255, 203, 0.08);
+  color: rgba(228, 246, 236, 0.78);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.ioGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.ioCell {
+  display: grid;
+  gap: 0.55rem;
+  min-height: 7rem;
+  padding: 0.95rem;
+  border: 1px solid rgba(126, 255, 203, 0.08);
+  border-radius: 1rem;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.ioLabel {
+  color: #8ddfba;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.ioValue {
+  color: rgba(239, 248, 243, 0.88);
+  line-height: 1.6;
+}
+
+.artifactCard {
+  min-height: 11rem;
+  align-content: start;
 }
 
 .panelTitle {
@@ -306,8 +844,23 @@
 @media (max-width: 1080px) {
   .lead,
   .splitGrid,
-  .signalGrid {
+  .signalGrid,
+  .surfaceGrid,
+  .artifactGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .routeGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .routeCore {
+    width: auto;
+  }
+
+  .routeCore::before,
+  .routeCore::after {
+    display: none;
   }
 }
 
@@ -320,7 +873,11 @@
   .splitGrid,
   .cardGrid,
   .notesGrid,
-  .signalGrid {
+  .signalGrid,
+  .surfaceGrid,
+  .matrixGrid,
+  .artifactGrid,
+  .ioGrid {
     grid-template-columns: 1fr;
   }
 
@@ -328,8 +885,51 @@
     max-width: none;
   }
 
+  .sectionTitle {
+    max-width: none;
+  }
+
+  .lead::before {
+    inset-inline-end: 10%;
+  }
+
   .cardHead,
   .noteMeta {
     flex-direction: column;
+  }
+
+  .surfaceDiagram {
+    grid-template-columns: 1fr;
+  }
+
+  .surfaceStage:not(:last-child)::after,
+  .surfaceStage:not(:last-child)::before {
+    display: none;
+  }
+
+  .pipelineGrid {
+    padding-left: 0;
+  }
+
+  .pipelineGrid::before,
+  .pipelineHead::before {
+    display: none;
+  }
+
+  .pipelineHead,
+  .pipelineMarkers {
+    justify-content: flex-start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page::before,
+  .page::after,
+  .lead::before,
+  .panel::after,
+  .card::after,
+  .timelineCard::after,
+  .signalCard::after {
+    animation: none;
   }
 }

@@ -2,8 +2,8 @@ import { ScrambleText } from "@/components/scramble_text";
 import { SiteHeader } from "@/components/site_header";
 import {
   executionConsole,
-  operatingModel,
-  operatingSignals,
+  processArtifacts,
+  processFlow,
 } from "@/static/siteContent";
 
 import styles from "../subpage.module.css";
@@ -24,72 +24,107 @@ export default function ProcessPage() {
               speed={0.8}
               step={3}
             />
-            <ScrambleText
-              as="p"
-              className={styles.description}
-              text="This is the part that was too compressed on the landing page. The process is simple on purpose: understand the actual signal, map the system, correct what matters, and leave something durable behind."
-              delay={120}
-              speed={0.45}
-              step={1}
-            />
+            <p className={styles.description}>
+              This is the part that was too compressed on the landing page. The
+              process is simple on purpose: understand the actual signal, map
+              the system, correct what matters, and leave something durable
+              behind.
+            </p>
           </div>
 
-          <aside className={styles.panel}>
+          <aside className={[styles.panel, styles.processControl].join(" ")}>
             <p className={styles.panelLabel}>execution loop</p>
-            <ul className={styles.stackList}>
-              {executionConsole.map((item) => (
-                <li key={item}>{item}</li>
+            <div className={styles.loopRail}>
+              {executionConsole.map((item, index) => (
+                <div key={item} className={styles.loopStep}>
+                  <span className={styles.loopIndex}>
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <p className={styles.loopLabel}>{item}</p>
+                </div>
               ))}
-            </ul>
+            </div>
           </aside>
         </section>
 
-        <section className={styles.timeline}>
-          {operatingModel.map(({ step, title, text }, index) => (
-            <article key={step} className={styles.timelineCard}>
-              <p className={styles.timelineStep}>{step}</p>
-              <ScrambleText
-                as="h2"
-                className={styles.timelineTitle}
-                text={title}
-                delay={220 + index * 70}
-                speed={0.55}
-                step={2}
-              />
-              <ScrambleText
-                as="p"
-                className={styles.cardText}
-                text={text}
-                delay={280 + index * 70}
-                speed={0.45}
-                step={1}
-              />
-            </article>
-          ))}
+        <section className={styles.boardSection}>
+          <div className={styles.sectionIntro}>
+            <p className={styles.kicker}>Operating flow</p>
+            <ScrambleText
+              as="h2"
+              className={styles.sectionTitle}
+              text="A connected pipeline instead of a stack of paragraphs."
+              speed={0.78}
+              step={3}
+            />
+          </div>
+
+          <div className={styles.pipelineGrid}>
+            {processFlow.map(
+              ({ step, title, summary, input, operation, output, markers }) => (
+                <article
+                  key={step}
+                  className={[styles.timelineCard, styles.pipelineCard].join(
+                    " ",
+                  )}
+                >
+                  <div className={styles.pipelineHead}>
+                    <p className={styles.timelineStep}>{step}</p>
+                    <div className={styles.pipelineMarkers}>
+                      {markers.map((marker) => (
+                        <span key={marker} className={styles.pipelineMarker}>
+                          {marker}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <h2 className={styles.timelineTitle}>{title}</h2>
+                  <p className={styles.cardText}>{summary}</p>
+
+                  <div className={styles.ioGrid}>
+                    <div className={styles.ioCell}>
+                      <span className={styles.ioLabel}>input</span>
+                      <p className={styles.ioValue}>{input}</p>
+                    </div>
+                    <div className={styles.ioCell}>
+                      <span className={styles.ioLabel}>operation</span>
+                      <p className={styles.ioValue}>{operation}</p>
+                    </div>
+                    <div className={styles.ioCell}>
+                      <span className={styles.ioLabel}>output</span>
+                      <p className={styles.ioValue}>{output}</p>
+                    </div>
+                  </div>
+                </article>
+              ),
+            )}
+          </div>
         </section>
 
-        <section className={styles.signalGrid}>
-          {operatingSignals.map(({ label, value, detail }, index) => (
-            <article key={label} className={styles.signalCard}>
-              <p className={styles.panelLabel}>{label}</p>
-              <ScrambleText
-                as="h2"
-                className={styles.signalValue}
-                text={value}
-                delay={520 + index * 70}
-                speed={0.55}
-                step={2}
-              />
-              <ScrambleText
-                as="p"
-                className={styles.cardText}
-                text={detail}
-                delay={580 + index * 70}
-                speed={0.45}
-                step={1}
-              />
-            </article>
-          ))}
+        <section className={styles.artifactSection}>
+          <div className={styles.sectionIntro}>
+            <p className={styles.kicker}>Artifacts delivered</p>
+            <ScrambleText
+              as="h2"
+              className={styles.sectionTitle}
+              text="The work should leave usable artifacts, not just temporary relief."
+              speed={0.78}
+              step={3}
+            />
+          </div>
+
+          <div className={styles.artifactGrid}>
+            {processArtifacts.map(({ label, detail }) => (
+              <article
+                key={label}
+                className={[styles.signalCard, styles.artifactCard].join(" ")}
+              >
+                <p className={styles.panelLabel}>{label}</p>
+                <p className={styles.cardText}>{detail}</p>
+              </article>
+            ))}
+          </div>
         </section>
       </div>
     </main>

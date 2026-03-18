@@ -20,39 +20,25 @@ export default function NotesPage() {
               speed={0.8}
               step={3}
             />
-            <ScrambleText
-              as="p"
-              className={styles.description}
-              text="This page is the normal home for writing outside the landing page. For now the notes are still curated in code, which keeps the site static, direct, and easy to deploy."
-              delay={120}
-              speed={0.45}
-              step={1}
-            />
+            <p className={styles.description}>
+              This page is the normal home for writing outside the landing page.
+              For now the notes are still curated in code, which keeps the site
+              static, direct, and easy to deploy.
+            </p>
           </div>
 
           <aside className={styles.panel}>
             <p className={styles.panelLabel}>publishing setup</p>
-            <ScrambleText
-              as="h2"
-              className={styles.panelTitle}
-              text="Static first, depth later."
-              delay={180}
-              speed={0.6}
-              step={2}
-            />
-            <ScrambleText
-              as="p"
-              className={styles.panelText}
-              text="Articles can stay code-driven for now and later move to MDX without changing the public structure of the site."
-              delay={240}
-              speed={0.45}
-              step={1}
-            />
+            <h2 className={styles.panelTitle}>Static first, depth later.</h2>
+            <p className={styles.panelText}>
+              Articles can stay code-driven for now and later move to MDX
+              without changing the public structure of the site.
+            </p>
           </aside>
         </section>
 
         <section className={styles.notesGrid}>
-          {noteQueue.map(({ status, title, summary }, index) => (
+          {noteQueue.map(({ status, title, summary }) => (
             <article
               key={title}
               className={[styles.card, styles.notesCard].join(" ")}
@@ -61,22 +47,8 @@ export default function NotesPage() {
                 <span>{status}</span>
                 <span>signal draft</span>
               </div>
-              <ScrambleText
-                as="h2"
-                className={styles.noteTitle}
-                text={title}
-                delay={320 + index * 70}
-                speed={0.55}
-                step={2}
-              />
-              <ScrambleText
-                as="p"
-                className={styles.noteText}
-                text={summary}
-                delay={380 + index * 70}
-                speed={0.45}
-                step={1}
-              />
+              <h2 className={styles.noteTitle}>{title}</h2>
+              <p className={styles.noteText}>{summary}</p>
             </article>
           ))}
         </section>

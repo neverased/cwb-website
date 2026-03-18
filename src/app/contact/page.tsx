@@ -21,34 +21,22 @@ export default function ContactPage() {
               speed={0.8}
               step={3}
             />
-            <ScrambleText
-              as="p"
-              className={styles.description}
-              text="If the system is noisy, unclear, or underbuilt, send the brief directly. The site stays static, while the form is handled by PHP on hosting."
-              delay={120}
-              speed={0.45}
-              step={1}
-            />
+            <p className={styles.description}>
+              If the system is noisy, unclear, or underbuilt, send the brief
+              directly. The site stays static, while the form is handled by PHP
+              on hosting.
+            </p>
           </div>
 
           <aside className={styles.panel}>
             <p className={styles.panelLabel}>delivery route</p>
-            <ScrambleText
-              as="h2"
-              className={styles.panelTitle}
-              text="Static frontend, local PHP handler."
-              delay={180}
-              speed={0.6}
-              step={2}
-            />
-            <ScrambleText
-              as="p"
-              className={styles.panelText}
-              text="No external form backend is required on dhosting. The landing page and this route both submit to the same contact.php."
-              delay={240}
-              speed={0.45}
-              step={1}
-            />
+            <h2 className={styles.panelTitle}>
+              Static frontend, local PHP handler.
+            </h2>
+            <p className={styles.panelText}>
+              No external form backend is required on dhosting. The landing page
+              and this route both submit to the same contact.php.
+            </p>
           </aside>
         </section>
 

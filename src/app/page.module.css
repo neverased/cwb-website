@@ -2,6 +2,7 @@
   position: relative;
   min-height: 100vh;
   overflow: clip;
+  isolation: isolate;
   background:
     radial-gradient(
       circle at top left,
@@ -31,6 +32,7 @@
   background-size: 80px 80px;
   mask-image: radial-gradient(circle at center, black, transparent 80%);
   opacity: 0.35;
+  animation: homeAmbientDrift 34s ease-in-out infinite;
 }
 
 .page::after {
@@ -42,9 +44,129 @@
       rgba(123, 255, 202, 0.04) 1px,
       transparent 1px,
       transparent 5px
+    ),
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(120, 255, 207, 0.18),
+      rgba(120, 255, 207, 0.08),
+      transparent
     );
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-size:
+    auto,
+    auto,
+    36% 100%;
+  background-position:
+    0 0,
+    0 0,
+    -140% 0;
   mix-blend-mode: screen;
   opacity: 0.2;
+  animation: homeShellSweep 18s linear infinite;
+}
+
+@keyframes homeAmbientDrift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.32;
+  }
+
+  50% {
+    transform: translate3d(1.5%, -2.5%, 0) scale(1.04);
+    opacity: 0.42;
+  }
+}
+
+@keyframes homeShellSweep {
+  0% {
+    background-position:
+      0 0,
+      0 0,
+      -140% 0;
+    opacity: 0.16;
+  }
+
+  18% {
+    opacity: 0.2;
+  }
+
+  55% {
+    opacity: 0.28;
+  }
+
+  100% {
+    background-position:
+      0 0,
+      0 0,
+      220% 0;
+    opacity: 0.16;
+  }
+}
+
+@keyframes homeHudSweep {
+  0% {
+    transform: translate3d(-135%, 0, 0);
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 0.22;
+  }
+
+  75% {
+    opacity: 0.16;
+  }
+
+  100% {
+    transform: translate3d(145%, 0, 0);
+    opacity: 0;
+  }
+}
+
+@keyframes homeVerticalSweep {
+  0% {
+    transform: translate3d(0, -120%, 0);
+    opacity: 0;
+  }
+
+  18% {
+    opacity: 0.2;
+  }
+
+  80% {
+    opacity: 0.18;
+  }
+
+  100% {
+    transform: translate3d(0, 120%, 0);
+    opacity: 0;
+  }
+}
+
+@keyframes homeMarkerPulse {
+  0%,
+  100% {
+    opacity: 0.22;
+    transform: scale(0.98);
+  }
+
+  50% {
+    opacity: 0.52;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes homeRailBlink {
+  0%,
+  100% {
+    opacity: 0.18;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
 }
 
 .bootLayer {
@@ -147,8 +269,9 @@
 .bootCopy {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 1.35rem;
+  padding-block-end: clamp(2rem, 4vw, 3rem);
   block-size: var(--boot-panel-height);
   min-block-size: var(--boot-panel-min-height);
 }
@@ -169,8 +292,8 @@
 
 .bootTitle {
   max-width: 10ch;
-  font-size: clamp(2.65rem, 6.2vw, 4.6rem);
-  line-height: 0.96;
+  font-size: clamp(2.35rem, 5.4vw, 4rem);
+  line-height: 0.92;
   letter-spacing: -0.04em;
 }
 
@@ -194,6 +317,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
+  margin-top: auto;
 }
 
 .bootMeta span,
@@ -224,6 +348,9 @@
 }
 
 .skipButton {
+  align-self: flex-start;
+  margin-top: 0.35rem;
+  margin-bottom: clamp(1rem, 2.5vw, 1.75rem);
   width: fit-content;
   padding: 0.8rem 1rem;
   border: 1px solid rgba(126, 255, 203, 0.22);
@@ -317,10 +444,104 @@
 }
 
 .hero {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
   gap: clamp(1.4rem, 4vw, 2rem);
   align-items: stretch;
+}
+
+.hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+.heroBackdrop {
+  position: absolute;
+  inset: -1.75rem -1.5rem -1.75rem 44%;
+  overflow: hidden;
+  border-radius: 2rem;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.heroSweep,
+.heroSweepSecondary {
+  position: absolute;
+  left: -30%;
+  right: -30%;
+  height: 7.5rem;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(120, 255, 208, 0.18),
+    rgba(120, 255, 208, 0.06),
+    transparent
+  );
+  filter: blur(18px);
+  animation: homeHudSweep 16s linear infinite;
+}
+
+.heroSweep {
+  top: 16%;
+  transform: rotate(-8deg);
+}
+
+.heroSweepSecondary {
+  top: 58%;
+  height: 5rem;
+  opacity: 0.55;
+  transform: rotate(7deg);
+  animation-delay: -8s;
+}
+
+.heroRing {
+  position: absolute;
+  top: 6%;
+  right: 1.5rem;
+  width: min(24rem, 45%);
+  aspect-ratio: 1;
+  border: 1px solid rgba(126, 255, 203, 0.16);
+  border-radius: 50%;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.03),
+    0 0 4rem rgba(126, 255, 203, 0.08);
+  animation: homeMarkerPulse 8s ease-in-out infinite;
+}
+
+.heroRing::before,
+.heroRing::after {
+  content: "";
+  position: absolute;
+  border: 1px dashed rgba(126, 255, 203, 0.14);
+  border-radius: 50%;
+}
+
+.heroRing::before {
+  inset: 1.25rem;
+}
+
+.heroRing::after {
+  inset: 2.8rem;
+}
+
+.heroRail {
+  position: absolute;
+  top: 12%;
+  bottom: 12%;
+  left: 1.5rem;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(126, 255, 203, 0.52),
+    rgba(217, 255, 140, 0.36),
+    transparent
+  );
+  box-shadow: 0 0 1rem rgba(126, 255, 203, 0.12);
 }
 
 .heroCopy {
@@ -332,7 +553,7 @@
 
 .heroTitle {
   max-width: 11ch;
-  font-size: clamp(2.35rem, 5vw, 4.85rem);
+  font-size: clamp(2.05rem, 4.2vw, 4.1rem);
   line-height: 0.98;
   letter-spacing: -0.04em;
 }
@@ -498,9 +719,36 @@
 }
 
 .commandDeck {
+  position: relative;
+  isolation: isolate;
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+}
+
+.commandDeck::after {
+  content: "";
+  position: absolute;
+  top: 8%;
+  bottom: 10%;
+  left: -18%;
+  width: 26%;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(126, 255, 203, 0.16),
+    transparent
+  );
+  filter: blur(18px);
+  opacity: 0.22;
+  animation: homeHudSweep 15s linear infinite;
+  pointer-events: none;
+}
+
+.commandDeck > * {
+  position: relative;
+  z-index: 1;
 }
 
 .deckHeader {
@@ -652,6 +900,7 @@
 }
 
 .section {
+  position: relative;
   display: grid;
   gap: 1.6rem;
 }
@@ -661,13 +910,51 @@
 }
 
 .signalSection {
+  position: relative;
+  isolation: isolate;
   display: grid;
 }
 
+.signalSection::before {
+  content: "";
+  position: absolute;
+  top: -0.25rem;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(126, 255, 203, 0.48),
+    transparent
+  );
+  opacity: 0.5;
+  pointer-events: none;
+}
+
 .signalStrip {
+  position: relative;
+  isolation: isolate;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1rem;
+}
+
+.signalStrip::before {
+  content: "";
+  position: absolute;
+  inset: -1.2rem -2rem;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(126, 255, 203, 0.14),
+    rgba(126, 255, 203, 0.04),
+    transparent
+  );
+  filter: blur(24px);
+  opacity: 0.18;
+  pointer-events: none;
+  animation: homeHudSweep 20s linear infinite;
 }
 
 .sectionHeading {
@@ -722,6 +1009,7 @@
 }
 
 .capabilityGrid,
+.collaborationGrid,
 .processGrid,
 .noteGrid,
 .contactGrid {
@@ -729,12 +1017,50 @@
   gap: 1rem;
 }
 
+.collaborationGrid,
 .capabilityGrid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .processGrid {
+  position: relative;
+  isolation: isolate;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.processGrid::before {
+  content: "";
+  position: absolute;
+  top: 1.5rem;
+  bottom: 1.5rem;
+  left: 50%;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(126, 255, 203, 0.42),
+    rgba(126, 255, 203, 0.2),
+    transparent
+  );
+  pointer-events: none;
+}
+
+.processGrid::after {
+  content: "";
+  position: absolute;
+  inset: 16% 24% auto;
+  height: 5rem;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(126, 255, 203, 0.16),
+    transparent
+  );
+  filter: blur(22px);
+  opacity: 0.2;
+  pointer-events: none;
+  animation: homeHudSweep 22s linear infinite;
 }
 
 .noteGrid,
@@ -747,8 +1073,36 @@
 }
 
 .signalCard {
+  position: relative;
   padding: 1.2rem;
   border-radius: 1.4rem;
+}
+
+.signalCard::after,
+.processCard::after {
+  content: "";
+  position: absolute;
+  inset: 0.8rem;
+  background:
+    linear-gradient(rgba(126, 255, 203, 0.18), rgba(126, 255, 203, 0.18)) left
+      top / 1.1rem 1px no-repeat,
+    linear-gradient(rgba(126, 255, 203, 0.18), rgba(126, 255, 203, 0.18)) left
+      top / 1px 1.1rem no-repeat,
+    linear-gradient(rgba(126, 255, 203, 0.18), rgba(126, 255, 203, 0.18)) right
+      top / 1.1rem 1px no-repeat,
+    linear-gradient(rgba(126, 255, 203, 0.18), rgba(126, 255, 203, 0.18)) right
+      top / 1px 1.1rem no-repeat,
+    linear-gradient(rgba(126, 255, 203, 0.18), rgba(126, 255, 203, 0.18)) left
+      bottom / 1.1rem 1px no-repeat,
+    linear-gradient(rgba(126, 255, 203, 0.18), rgba(126, 255, 203, 0.18)) left
+      bottom / 1px 1.1rem no-repeat,
+    linear-gradient(rgba(126, 255, 203, 0.18), rgba(126, 255, 203, 0.18)) right
+      bottom / 1.1rem 1px no-repeat,
+    linear-gradient(rgba(126, 255, 203, 0.18), rgba(126, 255, 203, 0.18)) right
+      bottom / 1px 1.1rem no-repeat;
+  opacity: 0.24;
+  pointer-events: none;
+  animation: homeRailBlink 7s ease-in-out infinite;
 }
 
 .signalCard h3 {
@@ -760,12 +1114,173 @@
   line-height: 1.45;
 }
 
+.collaborationCard,
 .capabilityCard,
 .processCard,
 .noteCard,
 .contactCard {
   padding: 1.35rem;
   border-radius: 1.5rem;
+}
+
+.collaborationCard {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  gap: 0.9rem;
+  align-content: start;
+  min-height: 14rem;
+  border: 1px solid rgba(126, 255, 203, 0.12);
+  background:
+    linear-gradient(180deg, rgba(10, 18, 17, 0.9), rgba(5, 11, 11, 0.96)),
+    radial-gradient(
+      circle at top left,
+      rgba(126, 255, 203, 0.05),
+      transparent 40%
+    );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 1.5rem 3rem rgba(0, 0, 0, 0.24);
+  backdrop-filter: blur(18px);
+}
+
+.collaborationCard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 14%),
+    repeating-linear-gradient(
+      180deg,
+      rgba(126, 255, 203, 0.04),
+      rgba(126, 255, 203, 0.04) 1px,
+      transparent 1px,
+      transparent 4px
+    );
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.collaborationCard::after {
+  content: "";
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 999px;
+  background: #d9ff8c;
+  box-shadow: 0 0 1rem rgba(217, 255, 140, 0.55);
+  opacity: 0.52;
+  animation: homeMarkerPulse 7s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.collaborationCard > * {
+  position: relative;
+  z-index: 1;
+}
+
+.collaborationSurface {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 8.25rem;
+  padding: 1rem;
+  display: grid;
+  place-items: center;
+  border-radius: 1.15rem;
+  border: 1px solid rgba(126, 255, 203, 0.12);
+  background:
+    linear-gradient(180deg, rgba(16, 28, 25, 0.92), rgba(9, 17, 16, 0.98)),
+    radial-gradient(
+      circle at top left,
+      rgba(126, 255, 203, 0.07),
+      transparent 44%
+    );
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.collaborationSurface::before {
+  content: "";
+  position: absolute;
+  inset: -22% auto -22% -30%;
+  width: 36%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.28),
+    transparent
+  );
+  filter: blur(12px);
+  opacity: 0.22;
+  transform: skewX(-18deg);
+  animation: homeHudSweep 18s linear infinite;
+  pointer-events: none;
+}
+
+.collaborationSurface::after {
+  content: "";
+  position: absolute;
+  inset: 0.8rem;
+  background:
+    linear-gradient(rgba(126, 255, 203, 0.16), rgba(126, 255, 203, 0.16)) left
+      top / 1rem 1px no-repeat,
+    linear-gradient(rgba(126, 255, 203, 0.16), rgba(126, 255, 203, 0.16)) left
+      top / 1px 1rem no-repeat,
+    linear-gradient(rgba(126, 255, 203, 0.16), rgba(126, 255, 203, 0.16)) right
+      bottom / 1rem 1px no-repeat,
+    linear-gradient(rgba(126, 255, 203, 0.16), rgba(126, 255, 203, 0.16)) right
+      bottom / 1px 1rem no-repeat;
+  opacity: 0.28;
+  pointer-events: none;
+}
+
+.collaborationSurfaceLight {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(249, 252, 251, 0.98),
+      rgba(232, 241, 236, 0.94)
+    ),
+    radial-gradient(
+      circle at top left,
+      rgba(116, 255, 191, 0.15),
+      transparent 48%
+    );
+}
+
+.collaborationSurfaceDark {
+  background:
+    linear-gradient(180deg, rgba(11, 21, 19, 0.98), rgba(6, 12, 11, 1)),
+    radial-gradient(
+      circle at top left,
+      rgba(126, 255, 203, 0.1),
+      transparent 46%
+    );
+}
+
+.collaborationSurfaceYellow {
+  border-color: rgba(140, 92, 0, 0.18);
+  background: linear-gradient(180deg, rgb(255, 204, 0), rgb(248, 197, 4));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+.collaborationLogo {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: auto;
+  max-width: 15rem;
+  max-height: 4.5rem;
+  object-fit: contain;
+}
+
+.collaborationName {
+  color: rgba(232, 247, 239, 0.9);
+  font-size: 0.92rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .capabilityCard h3,
@@ -808,6 +1323,25 @@
   width: min(100%, 38rem);
   padding: 1.2rem;
   justify-self: start;
+}
+
+.processConsole::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -12%;
+  width: 24%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(126, 255, 203, 0.15),
+    transparent
+  );
+  filter: blur(14px);
+  opacity: 0.18;
+  animation: homeHudSweep 18s linear infinite;
+  pointer-events: none;
 }
 
 .contactSection {
@@ -987,6 +1521,22 @@
     grid-template-columns: 1fr;
   }
 
+  .heroBackdrop {
+    inset: -1rem -1rem auto -1rem;
+    min-height: 22rem;
+  }
+
+  .heroRing {
+    top: -1rem;
+    right: -2rem;
+    width: min(18rem, 52%);
+  }
+
+  .heroRail,
+  .processGrid::before {
+    display: none;
+  }
+
   .signalStrip {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1020,12 +1570,23 @@
     max-width: none;
   }
 
+  .heroBackdrop {
+    inset: -0.5rem -0.5rem auto;
+    min-height: 18rem;
+    opacity: 0.8;
+  }
+
+  .heroRing {
+    width: 12rem;
+  }
+
   .sectionLead {
     grid-template-columns: 1fr;
     align-items: start;
   }
 
   .capabilityGrid,
+  .collaborationGrid,
   .processGrid,
   .signalStrip,
   .noteGrid,
@@ -1053,6 +1614,19 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .page::before,
+  .page::after,
+  .heroSweep,
+  .heroSweepSecondary,
+  .heroRing,
+  .commandDeck::after,
+  .signalStrip::before,
+  .signalCard::after,
+  .processCard::after,
+  .processGrid::after,
+  .processConsole::after,
+  .collaborationCard::after,
+  .collaborationSurface::before,
   .bootLayer,
   .siteShell,
   .skipButton,
@@ -1063,5 +1637,21 @@
   .submitButton,
   .focusTab {
     transition: none;
+  }
+
+  .page::before,
+  .page::after,
+  .heroSweep,
+  .heroSweepSecondary,
+  .heroRing,
+  .commandDeck::after,
+  .signalStrip::before,
+  .signalCard::after,
+  .processCard::after,
+  .processGrid::after,
+  .processConsole::after,
+  .collaborationCard::after,
+  .collaborationSurface::before {
+    animation: none;
   }
 }

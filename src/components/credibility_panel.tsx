@@ -13,23 +13,26 @@ export const CredibilityPanel = ({ className }: CredibilityPanelProps) => {
       className={[styles.panel, className ?? ""].filter(Boolean).join(" ")}
       aria-label={credibilitySignal.kicker}
     >
+      <div className={styles.verificationLayer} aria-hidden="true">
+        <span className={styles.verificationSweep} />
+        <span className={styles.verificationPulse} />
+      </div>
+
       <div className={styles.copy}>
         <p className={styles.kicker}>{credibilitySignal.kicker}</p>
-        <ScrambleText
-          as="h2"
-          className={styles.title}
-          text={credibilitySignal.title}
-          speed={0.75}
-          step={2}
-        />
-        <ScrambleText
-          as="p"
-          className={styles.description}
-          text={credibilitySignal.description}
-          delay={120}
-          speed={0.45}
-          step={1}
-        />
+        <h2 className={styles.title} aria-label={credibilitySignal.title}>
+          <span className={styles.titleAccent}>
+            {credibilitySignal.titleAccent}
+          </span>
+          <ScrambleText
+            as="span"
+            className={styles.titleRest}
+            text={credibilitySignal.titleSuffix}
+            speed={0.75}
+            step={2}
+          />
+        </h2>
+        <p className={styles.description}>{credibilitySignal.description}</p>
       </div>
 
       <div className={styles.actions}>

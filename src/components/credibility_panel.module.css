@@ -1,6 +1,7 @@
 .panel {
   position: relative;
   overflow: hidden;
+  isolation: isolate;
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) auto;
   gap: 1.25rem;
@@ -44,6 +45,61 @@
   z-index: 1;
 }
 
+.verificationLayer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.verificationSweep {
+  position: absolute;
+  top: 10%;
+  bottom: 10%;
+  left: -16%;
+  width: 18%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(126, 255, 203, 0.14),
+    rgba(217, 255, 140, 0.18),
+    transparent
+  );
+  filter: blur(10px);
+  transform: skewX(-18deg);
+  opacity: 0.18;
+  animation: credibilitySweep 16s ease-in-out infinite;
+}
+
+.verificationPulse {
+  position: absolute;
+  top: 1.1rem;
+  right: 1.1rem;
+  width: 6.25rem;
+  height: 6.25rem;
+  border: 1px solid rgba(126, 255, 203, 0.16);
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+  opacity: 0.24;
+  animation: credibilityPulse 7.5s ease-in-out infinite;
+}
+
+.verificationPulse::before,
+.verificationPulse::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  border: 1px dashed rgba(126, 255, 203, 0.14);
+}
+
+.verificationPulse::before {
+  inset: 0.85rem;
+}
+
+.verificationPulse::after {
+  inset: 1.65rem;
+}
+
 .copy {
   display: grid;
   gap: 0.8rem;
@@ -57,12 +113,25 @@
 }
 
 .title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.36ch;
   font-family: var(--font-display), "Fira Code", monospace;
   color: #f4fff8;
   font-size: clamp(1.9rem, 3.4vw, 3rem);
   line-height: 0.98;
   letter-spacing: -0.04em;
   text-transform: uppercase;
+}
+
+.titleAccent {
+  color: #e14545;
+  text-shadow: 0 0 1rem rgba(225, 69, 69, 0.28);
+}
+
+.titleRest {
+  color: inherit;
 }
 
 .description {
@@ -118,6 +187,41 @@
   transform: translateY(-2px);
 }
 
+@keyframes credibilitySweep {
+  0% {
+    transform: translate3d(0, 0, 0) skewX(-18deg);
+    left: -18%;
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 0.2;
+  }
+
+  78% {
+    opacity: 0.14;
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0) skewX(-18deg);
+    left: 108%;
+    opacity: 0;
+  }
+}
+
+@keyframes credibilityPulse {
+  0%,
+  100% {
+    opacity: 0.16;
+    transform: scale(0.98);
+  }
+
+  50% {
+    opacity: 0.34;
+    transform: scale(1.04);
+  }
+}
+
 @media (max-width: 760px) {
   .panel {
     grid-template-columns: 1fr;
@@ -130,8 +234,15 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .verificationSweep,
+  .verificationPulse,
   .button,
   .link {
     transition: none;
+  }
+
+  .verificationSweep,
+  .verificationPulse {
+    animation: none;
   }
 }

@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 
-import { ScrambleText } from "./scramble_text";
 import styles from "./contact_panel.module.css";
 
 const CONTACT_FEEDBACK = {
@@ -131,14 +130,9 @@ export const ContactPanel = ({ className }: ContactPanelProps) => {
           </div>
 
           <div className={styles.formFooter}>
-            <ScrambleText
-              as="p"
-              className={styles.formHint}
-              text="Static site, direct PHP handling on hosting, no external CMS."
-              delay={120}
-              speed={0.45}
-              step={1}
-            />
+            <p className={styles.formHint}>
+              Static site, direct PHP handling on hosting, no external CMS.
+            </p>
             <button className={styles.submitButton} type="submit">
               Transmit inquiry
             </button>
@@ -151,42 +145,25 @@ export const ContactPanel = ({ className }: ContactPanelProps) => {
         <a className={styles.contactValue} href="mailto:mail@wojciechbajer.com">
           mail@wojciechbajer.com
         </a>
-        <ScrambleText
-          as="p"
-          className={styles.contactText}
-          text="Best for consulting requests, architecture reviews, audits, and media-heavy digital product work."
-          delay={180}
-          speed={0.45}
-          step={1}
-        />
+        <p className={styles.contactText}>
+          Best for consulting requests, architecture reviews, audits, and
+          media-heavy digital product work.
+        </p>
 
         <p className={styles.contactLabel}>engagement fit</p>
-        <ScrambleText
-          as="p"
-          className={styles.contactValue}
-          text="strategy, execution, independent review"
-          delay={240}
-          speed={0.55}
-          step={2}
-        />
-        <ScrambleText
-          as="p"
-          className={styles.contactText}
-          text="Short diagnostic work, longer architecture engagements, and selected builds where the technical direction matters."
-          delay={300}
-          speed={0.45}
-          step={1}
-        />
+        <p className={styles.contactValue}>
+          strategy, execution, independent review
+        </p>
+        <p className={styles.contactText}>
+          Short diagnostic work, longer architecture engagements, and selected
+          builds where the technical direction matters.
+        </p>
 
         <p className={styles.contactLabel}>delivery route</p>
-        <ScrambleText
-          as="p"
-          className={styles.contactText}
-          text="The form posts to a local PHP endpoint on dhosting, so the site still ships as static output."
-          delay={360}
-          speed={0.45}
-          step={1}
-        />
+        <p className={styles.contactText}>
+          The form posts to a local PHP endpoint on dhosting, so the site still
+          ships as static output.
+        </p>
       </div>
     </div>
   );

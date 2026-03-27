@@ -19,7 +19,7 @@
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "sass": "^1.98.0",
-    "typescript": "5.9.3",
+    "typescript": "6.0.2",
     "use-scramble": "^2.2.15"
   },
   "devDependencies": {

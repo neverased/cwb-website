@@ -2,12 +2,10 @@
 
 declare(strict_types=1);
 
+require_once __DIR__ . '/contact_antispam.php';
+
 const CONTACT_RECIPIENT = 'mail@wojciechbajer.com';
 const CONTACT_FROM = 'mail@wojciechbajer.com';
-const MAX_NAME_LENGTH = 120;
-const MAX_EMAIL_LENGTH = 160;
-const MAX_SCOPE_LENGTH = 160;
-const MAX_MESSAGE_LENGTH = 5000;
 
 function redirect_with_status(string $status): never
 {
@@ -15,57 +13,32 @@ function redirect_with_status(string $status): never
     exit;
 }
 
-function clean_line(string $value): string
-{
-    return trim(str_replace(["\r", "\n"], ' ', $value));
-}
-
-function compact_whitespace(string $value): string
-{
-    return trim((string) preg_replace('/\s+/u', ' ', $value));
-}
-
-function string_length(string $value): int
-{
-    if (function_exists('mb_strlen')) {
-        return mb_strlen($value);
-    }
-
-    return strlen($value);
-}
-
 if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
     redirect_with_status('error');
 }
 
-$honeypot = trim((string) ($_POST['website'] ?? ''));
-
-if ($honeypot !== '') {
-    redirect_with_status('sent');
+try {
+    $evaluation = contact_evaluate_submission($_SERVER, $_POST);
+} catch (Throwable $throwable) {
+    redirect_with_status('error');
 }
 
-$name = compact_whitespace((string) ($_POST['name'] ?? ''));
-$email = trim((string) ($_POST['email'] ?? ''));
-$scope = compact_whitespace((string) ($_POST['scope'] ?? ''));
-$message = trim((string) ($_POST['message'] ?? ''));
-
-$isValid = $name !== ''
-    && $message !== ''
-    && filter_var($email, FILTER_VALIDATE_EMAIL) !== false
-    && string_length($name) <= MAX_NAME_LENGTH
-    && string_length($email) <= MAX_EMAIL_LENGTH
-    && string_length($scope) <= MAX_SCOPE_LENGTH
-    && string_length($message) <= MAX_MESSAGE_LENGTH;
-
-if (!$isValid) {
+if (($evaluation['classification'] ?? 'reject') === 'reject') {
     redirect_with_status('invalid');
 }
 
-$safeName = clean_line($name);
-$safeEmail = clean_line($email);
-$safeScope = $scope !== '' ? clean_line($scope) : 'not specified';
-$safeUserAgent = clean_line((string) ($_SERVER['HTTP_USER_AGENT'] ?? 'unknown'));
-$safeRemoteAddress = clean_line((string) ($_SERVER['REMOTE_ADDR'] ?? 'unknown'));
+if (($evaluation['classification'] ?? null) === 'quarantine') {
+    redirect_with_status('sent');
+}
+
+$fields = $evaluation['fields'] ?? [];
+$safeName = contact_clean_line((string) ($fields['name'] ?? ''));
+$safeEmail = contact_clean_line((string) ($fields['email'] ?? ''));
+$scope = (string) ($fields['scope'] ?? '');
+$message = (string) ($fields['message'] ?? '');
+$safeScope = $scope !== '' ? contact_clean_line($scope) : 'not specified';
+$safeUserAgent = contact_clean_line((string) ($evaluation['user_agent'] ?? 'unknown'));
+$safeRemoteAddress = contact_clean_line((string) ($evaluation['remote_address'] ?? 'unknown'));
 
 $body = implode(PHP_EOL . PHP_EOL, [
     'New contact form message from wojciechbajer.com',

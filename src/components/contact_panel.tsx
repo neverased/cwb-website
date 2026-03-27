@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 
 import styles from "./contact_panel.module.css";
 
+const CONTACT_EMAIL = "mail@wojciechbajer.com";
+
 const CONTACT_FEEDBACK = {
   sent: {
     title: "Transmission received.",
@@ -19,6 +21,37 @@ const CONTACT_FEEDBACK = {
   },
 } as const;
 
+interface ContactBootstrap {
+  challenge_first: number;
+  challenge_prompt: string;
+  challenge_second: number;
+  issued_at: number;
+  nonce: string;
+  token: string;
+}
+
+type BootstrapState =
+  | { status: "loading" }
+  | { status: "ready"; data: ContactBootstrap }
+  | { status: "unavailable" };
+
+const isContactBootstrap = (value: unknown): value is ContactBootstrap => {
+  if (typeof value !== "object" || value === null) {
+    return false;
+  }
+
+  const candidate = value as Record<string, unknown>;
+
+  return (
+    typeof candidate.nonce === "string" &&
+    typeof candidate.issued_at === "number" &&
+    typeof candidate.token === "string" &&
+    typeof candidate.challenge_prompt === "string" &&
+    typeof candidate.challenge_first === "number" &&
+    typeof candidate.challenge_second === "number"
+  );
+};
+
 interface ContactPanelProps {
   className?: string;
 }
@@ -27,6 +60,9 @@ export const ContactPanel = ({ className }: ContactPanelProps) => {
   const [contactStatus, setContactStatus] = useState<
     keyof typeof CONTACT_FEEDBACK | null
   >(null);
+  const [bootstrapState, setBootstrapState] = useState<BootstrapState>({
+    status: "loading",
+  });
 
   useEffect(() => {
     const status = new URLSearchParams(window.location.search).get("contact");
@@ -35,6 +71,62 @@ export const ContactPanel = ({ className }: ContactPanelProps) => {
       setContactStatus(status);
     }
   }, []);
+
+  useEffect(() => {
+    const abortController = new AbortController();
+
+    const loadBootstrap = async () => {
+      try {
+        const response = await fetch("/contact_bootstrap.php", {
+          cache: "no-store",
+          signal: abortController.signal,
+        });
+
+        if (!response.ok) {
+          throw new Error("bootstrap request failed");
+        }
+
+        const payload: unknown = await response.json();
+
+        if (!isContactBootstrap(payload)) {
+          throw new Error("invalid bootstrap payload");
+        }
+
+        setBootstrapState({
+          status: "ready",
+          data: payload,
+        });
+      } catch (error) {
+        if (abortController.signal.aborted) {
+          return;
+        }
+
+        setBootstrapState({
+          status: "unavailable",
+        });
+      }
+    };
+
+    void loadBootstrap();
+
+    return () => {
+      abortController.abort();
+    };
+  }, []);
+
+  const isBootstrapReady = bootstrapState.status === "ready";
+  const secureStatus =
+    bootstrapState.status === "loading"
+      ? {
+          title: "Secure challenge loading.",
+          text: "The anti-spam check is loading. If it does not appear, use direct email instead.",
+        }
+      : bootstrapState.status === "unavailable"
+        ? {
+            title: "Secure channel unavailable.",
+            text: "The protected form is unavailable right now. Use direct email instead.",
+          }
+        : null;
 
   return (
     <div
@@ -59,11 +151,53 @@ export const ContactPanel = ({ className }: ContactPanelProps) => {
           </div>
         ) : null}
 
+        {secureStatus ? (
+          <div className={[styles.statusBanner, styles.statusInfo].join(" ")}>
+            <strong>{secureStatus.title}</strong>
+            <p>
+              {secureStatus.text}{" "}
+              <a className={styles.inlineLink} href={`mailto:${CONTACT_EMAIL}`}>
+                {CONTACT_EMAIL}
+              </a>
+            </p>
+          </div>
+        ) : null}
+
         <form
           className={styles.terminalForm}
           action="/contact.php"
           method="post"
         >
+          {isBootstrapReady ? (
+            <>
+              <input
+                type="hidden"
+                name="contact_nonce"
+                value={bootstrapState.data.nonce}
+              />
+              <input
+                type="hidden"
+                name="contact_issued_at"
+                value={bootstrapState.data.issued_at}
+              />
+              <input
+                type="hidden"
+                name="contact_token"
+                value={bootstrapState.data.token}
+              />
+              <input
+                type="hidden"
+                name="challenge_first"
+                value={bootstrapState.data.challenge_first}
+              />
+              <input
+                type="hidden"
+                name="challenge_second"
+                value={bootstrapState.data.challenge_second}
+              />
+            </>
+          ) : null}
+
           <div className={styles.formGrid}>
             <label className={styles.fieldGroup}>
               <span className={styles.fieldLabel}>name</span>
@@ -115,6 +249,30 @@ export const ContactPanel = ({ className }: ContactPanelProps) => {
               />
             </label>
 
+            <label className={[styles.fieldGroup, styles.fieldSpan].join(" ")}>
+              <span className={styles.fieldLabel}>human check</span>
+              {isBootstrapReady ? (
+                <p className={styles.challengePrompt}>
+                  {bootstrapState.data.challenge_prompt}
+                </p>
+              ) : (
+                <p className={styles.challengePrompt}>
+                  Waiting for secure challenge.
+                </p>
+              )}
+              <input
+                className={styles.terminalInput}
+                type="text"
+                name="challenge_answer"
+                autoComplete="off"
+                inputMode="numeric"
+                maxLength={12}
+                required={isBootstrapReady}
+                disabled={!isBootstrapReady}
+                placeholder="Enter the answer"
+              />
+            </label>
+
             <div className={styles.formTrap} aria-hidden="true">
               <label className={styles.fieldGroup}>
                 <span className={styles.fieldLabel}>website</span>
@@ -126,6 +284,26 @@ export const ContactPanel = ({ className }: ContactPanelProps) => {
                   autoComplete="off"
                 />
               </label>
+              <label className={styles.fieldGroup}>
+                <span className={styles.fieldLabel}>company</span>
+                <input
+                  className={styles.terminalInput}
+                  type="text"
+                  name="company"
+                  tabIndex={-1}
+                  autoComplete="organization"
+                />
+              </label>
+              <label className={styles.fieldGroup}>
+                <span className={styles.fieldLabel}>full name confirm</span>
+                <input
+                  className={styles.terminalInput}
+                  type="text"
+                  name="full_name_confirm"
+                  tabIndex={-1}
+                  autoComplete="name"
+                />
+              </label>
             </div>
           </div>
 
@@ -133,7 +311,11 @@ export const ContactPanel = ({ className }: ContactPanelProps) => {
             <p className={styles.formHint}>
               I usually respond within 24 hours.
             </p>
-            <button className={styles.submitButton} type="submit">
+            <button
+              className={styles.submitButton}
+              type="submit"
+              disabled={!isBootstrapReady}
+            >
               Transmit inquiry
             </button>
           </div>
@@ -142,8 +324,8 @@ export const ContactPanel = ({ className }: ContactPanelProps) => {
 
       <div className={styles.contactCard}>
         <p className={styles.contactLabel}>preferred channel</p>
-        <a className={styles.contactValue} href="mailto:mail@wojciechbajer.com">
-          mail@wojciechbajer.com
+        <a className={styles.contactValue} href={`mailto:${CONTACT_EMAIL}`}>
+          {CONTACT_EMAIL}
         </a>
         <p className={styles.contactText}>
           Best for consulting requests, architecture reviews, audits, and

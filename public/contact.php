@@ -13,22 +13,49 @@ function redirect_with_status(string $status): never
     exit;
 }
 
+function request_wants_json(): bool
+{
+    $accept = strtolower((string) ($_SERVER['HTTP_ACCEPT'] ?? ''));
+
+    return str_contains($accept, 'application/json');
+}
+
+function respond_with_status(string $status): never
+{
+    if (!request_wants_json()) {
+        redirect_with_status($status);
+    }
+
+    $statusCode = match ($status) {
+        'sent' => 200,
+        'invalid' => 422,
+        default => 500,
+    };
+
+    http_response_code($statusCode);
+    header('Content-Type: application/json; charset=UTF-8');
+    echo json_encode([
+        'status' => $status,
+    ], JSON_UNESCAPED_SLASHES);
+    exit;
+}
+
 if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
-    redirect_with_status('error');
+    respond_with_status('error');
 }
 
 try {
     $evaluation = contact_evaluate_submission($_SERVER, $_POST);
 } catch (Throwable $throwable) {
-    redirect_with_status('error');
+    respond_with_status('error');
 }
 
 if (($evaluation['classification'] ?? 'reject') === 'reject') {
-    redirect_with_status('invalid');
+    respond_with_status('invalid');
 }
 
 if (($evaluation['classification'] ?? null) === 'quarantine') {
-    redirect_with_status('sent');
+    respond_with_status('sent');
 }
 
 $fields = $evaluation['fields'] ?? [];
@@ -65,4 +92,4 @@ $isSent = mail(
     implode("\r\n", $headers)
 );
 
-redirect_with_status($isSent ? 'sent' : 'error');
+respond_with_status($isSent ? 'sent' : 'error');

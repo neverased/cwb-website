@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { type FormEvent, useEffect, useState } from "react";
 
 import styles from "./contact_panel.module.css";
 
@@ -35,6 +35,12 @@ type BootstrapState =
   | { status: "ready"; data: ContactBootstrap }
   | { status: "unavailable" };
 
+type ContactStatus = keyof typeof CONTACT_FEEDBACK;
+
+interface ContactResponse {
+  status: ContactStatus;
+}
+
 const isContactBootstrap = (value: unknown): value is ContactBootstrap => {
   if (typeof value !== "object" || value === null) {
     return false;
@@ -52,22 +58,58 @@ const isContactBootstrap = (value: unknown): value is ContactBootstrap => {
   );
 };
 
+const isContactStatus = (value: string | null): value is ContactStatus => {
+  return value === "sent" || value === "invalid" || value === "error";
+};
+
+const isContactResponse = (value: unknown): value is ContactResponse => {
+  if (typeof value !== "object" || value === null) {
+    return false;
+  }
+
+  const candidate = value as Record<string, unknown>;
+
+  return (
+    typeof candidate.status === "string" && isContactStatus(candidate.status)
+  );
+};
+
+const fetchContactBootstrap = async (
+  signal?: AbortSignal,
+): Promise<ContactBootstrap> => {
+  const response = await fetch("/contact_bootstrap.php", {
+    cache: "no-store",
+    signal,
+  });
+
+  if (!response.ok) {
+    throw new Error("bootstrap request failed");
+  }
+
+  const payload: unknown = await response.json();
+
+  if (!isContactBootstrap(payload)) {
+    throw new Error("invalid bootstrap payload");
+  }
+
+  return payload;
+};
+
 interface ContactPanelProps {
   className?: string;
 }
 
 export const ContactPanel = ({ className }: ContactPanelProps) => {
-  const [contactStatus, setContactStatus] = useState<
-    keyof typeof CONTACT_FEEDBACK | null
-  >(null);
+  const [contactStatus, setContactStatus] = useState<ContactStatus | null>(null);
   const [bootstrapState, setBootstrapState] = useState<BootstrapState>({
     status: "loading",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     const status = new URLSearchParams(window.location.search).get("contact");
 
-    if (status === "sent" || status === "invalid" || status === "error") {
+    if (isContactStatus(status)) {
       setContactStatus(status);
     }
   }, []);
@@ -77,21 +119,7 @@ export const ContactPanel = ({ className }: ContactPanelProps) => {
 
     const loadBootstrap = async () => {
       try {
-        const response = await fetch("/contact_bootstrap.php", {
-          cache: "no-store",
-          signal: abortController.signal,
-        });
-
-        if (!response.ok) {
-          throw new Error("bootstrap request failed");
-        }
-
-        const payload: unknown = await response.json();
-
-        if (!isContactBootstrap(payload)) {
-          throw new Error("invalid bootstrap payload");
-        }
-
+        const payload = await fetchContactBootstrap(abortController.signal);
         setBootstrapState({
           status: "ready",
           data: payload,
@@ -115,6 +143,7 @@ export const ContactPanel = ({ className }: ContactPanelProps) => {
   }, []);
 
   const isBootstrapReady = bootstrapState.status === "ready";
+  const isFormDisabled = !isBootstrapReady || isSubmitting;
   const secureStatus =
     bootstrapState.status === "loading"
       ? {
@@ -127,6 +156,60 @@ export const ContactPanel = ({ className }: ContactPanelProps) => {
             text: "The protected form is unavailable right now. Use direct email instead.",
           }
         : null;
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    if (!isBootstrapReady || isSubmitting) {
+      return;
+    }
+
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    setContactStatus(null);
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: new FormData(form),
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      const payload: unknown = await response.json();
+
+      if (!isContactResponse(payload)) {
+        throw new Error("invalid contact response");
+      }
+
+      setContactStatus(payload.status);
+
+      if (payload.status === "sent") {
+        form.reset();
+      }
+    } catch (error) {
+      setContactStatus("error");
+    } finally {
+      setBootstrapState({
+        status: "loading",
+      });
+
+      try {
+        const payload = await fetchContactBootstrap();
+        setBootstrapState({
+          status: "ready",
+          data: payload,
+        });
+      } catch (error) {
+        setBootstrapState({
+          status: "unavailable",
+        });
+      }
+
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div
@@ -167,6 +250,7 @@ export const ContactPanel = ({ className }: ContactPanelProps) => {
           className={styles.terminalForm}
           action="/contact.php"
           method="post"
+          onSubmit={handleSubmit}
         >
           {isBootstrapReady ? (
             <>
@@ -208,6 +292,7 @@ export const ContactPanel = ({ className }: ContactPanelProps) => {
                 autoComplete="name"
                 required
                 maxLength={120}
+                disabled={isFormDisabled}
               />
             </label>
 
@@ -220,6 +305,7 @@ export const ContactPanel = ({ className }: ContactPanelProps) => {
                 autoComplete="email"
                 required
                 maxLength={160}
+                disabled={isFormDisabled}
               />
             </label>
 
@@ -232,6 +318,7 @@ export const ContactPanel = ({ className }: ContactPanelProps) => {
                 autoComplete="organization-title"
                 maxLength={160}
                 placeholder="audit / architecture / multimedia / build"
+                disabled={isFormDisabled}
               />
             </label>
 
@@ -246,6 +333,7 @@ export const ContactPanel = ({ className }: ContactPanelProps) => {
                 minLength={20}
                 maxLength={5000}
                 placeholder="What is noisy, blocked, underbuilt, or worth reviewing?"
+                disabled={isFormDisabled}
               />
             </label>
 
@@ -268,7 +356,7 @@ export const ContactPanel = ({ className }: ContactPanelProps) => {
                 inputMode="numeric"
                 maxLength={12}
                 required={isBootstrapReady}
-                disabled={!isBootstrapReady}
+                disabled={isFormDisabled}
                 placeholder="Enter the answer"
               />
             </label>
@@ -282,6 +370,7 @@ export const ContactPanel = ({ className }: ContactPanelProps) => {
                   name="website"
                   tabIndex={-1}
                   autoComplete="off"
+                  disabled={isSubmitting}
                 />
               </label>
               <label className={styles.fieldGroup}>
@@ -292,6 +381,7 @@ export const ContactPanel = ({ className }: ContactPanelProps) => {
                   name="company"
                   tabIndex={-1}
                   autoComplete="organization"
+                  disabled={isSubmitting}
                 />
               </label>
               <label className={styles.fieldGroup}>
@@ -302,6 +392,7 @@ export const ContactPanel = ({ className }: ContactPanelProps) => {
                   name="full_name_confirm"
                   tabIndex={-1}
                   autoComplete="name"
+                  disabled={isSubmitting}
                 />
               </label>
             </div>
@@ -314,9 +405,9 @@ export const ContactPanel = ({ className }: ContactPanelProps) => {
             <button
               className={styles.submitButton}
               type="submit"
-              disabled={!isBootstrapReady}
+              disabled={isFormDisabled}
             >
-              Transmit inquiry
+              {isSubmitting ? "Transmitting..." : "Transmit inquiry"}
             </button>
           </div>
         </form>

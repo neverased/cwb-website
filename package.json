@@ -9,31 +9,31 @@
     "lint": "eslint \"{src,apps,libs,test}/**/*.{ts,tsx}\" --fix"
   },
   "dependencies": {
-    "@types/node": "25.5.2",
+    "@types/node": "25.6.0",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "@uit/glitch-image": "^0.0.11",
     "highlight.js": "^11.11.1",
     "jquery": "^4.0.0",
-    "next": "^16.2.2",
-    "react": "^19.2.4",
-    "react-dom": "^19.2.4",
+    "next": "^16.2.3",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
     "sass": "^1.99.0",
     "typescript": "6.0.2",
     "use-scramble": "^2.2.15"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@next/eslint-plugin-next": "^16.2.2",
+    "@next/eslint-plugin-next": "^16.2.3",
     "coffeescript": "^2.7.0",
     "eslint": "10.2.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.5",
     "eslint-plugin-simple-import-sort": "^13.0.0",
-    "globals": "^17.4.0",
+    "globals": "^17.5.0",
     "jest": "^30.3.0",
-    "prettier": "^3.8.1",
-    "typescript-eslint": "^8.58.1"
+    "prettier": "^3.8.3",
+    "typescript-eslint": "^8.58.2"
   },
   "packageManager": "pnpm@10.33.0"
 }

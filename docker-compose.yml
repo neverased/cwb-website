@@ -1,0 +1,28 @@
+services:
+  web:
+    image: cwb-website:local
+    build:
+      context: .
+      target: runner
+    environment:
+      CONTACT_FORM_SECRET: ${CONTACT_FORM_SECRET:-}
+      CONTACT_FROM: ${CONTACT_FROM:-mail@wojciechbajer.com}
+      CONTACT_RECIPIENT: ${CONTACT_RECIPIENT:-mail@wojciechbajer.com}
+      CONTACT_STORAGE_DIR: /app/storage/contact
+      HOSTNAME: 0.0.0.0
+      NEXT_TELEMETRY_DISABLED: "1"
+      NODE_ENV: production
+      PORT: 3000
+      SMTP_HOST: ${SMTP_HOST:-}
+      SMTP_PASSWORD: ${SMTP_PASSWORD:-}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_SECURE: ${SMTP_SECURE:-false}
+      SMTP_USER: ${SMTP_USER:-}
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+    volumes:
+      - contact-data:/app/storage/contact
+
+volumes:
+  contact-data:

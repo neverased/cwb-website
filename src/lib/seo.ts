@@ -77,8 +77,8 @@ export const openGraphImagePath = (path = "/") => {
   const normalizedPath = normalizePath(path);
 
   return normalizedPath === "/"
-    ? "/opengraph-image.png"
-    : `${normalizedPath}opengraph-image.png`;
+    ? "/opengraph-image"
+    : `${normalizedPath}opengraph-image`;
 };
 
 interface MetadataOptions {

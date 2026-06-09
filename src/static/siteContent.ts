@@ -129,7 +129,7 @@ export const operatingSignals = [
   {
     label: "publishing mode",
     value: "notes shipped in code",
-    detail: "Static output keeps the site simple, direct, and easy to host.",
+    detail: "Runtime deployment keeps the site direct while leaving room for server-side contact handling.",
   },
   {
     label: "engagement filter",

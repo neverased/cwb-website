@@ -417,7 +417,7 @@ export const HomePage = () => {
             <div className={styles.sectionLead}>
               <p className={styles.sectionDescription}>
                 The structure is static and code-driven, which keeps deploys
-                simple and works cleanly with export-based hosting.
+                simple and works cleanly with Docker runtime hosting.
               </p>
               <Link className={styles.sectionRoute} href="/notes">
                 Open notes page

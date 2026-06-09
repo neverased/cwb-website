@@ -1,5 +1,6 @@
 allowBuilds:
   '@parcel/watcher': true
+  esbuild: true
   sharp: true
   unrs-resolver: true
 ignoredBuiltDependencies:
@@ -19,4 +20,5 @@ minimumReleaseAgeExclude:
   - prettier@3.8.4
   - typescript-eslint@8.61.0
 onlyBuiltDependencies:
+  - esbuild
   - unrs-resolver

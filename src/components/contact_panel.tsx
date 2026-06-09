@@ -77,7 +77,7 @@ const isContactResponse = (value: unknown): value is ContactResponse => {
 const fetchContactBootstrap = async (
   signal?: AbortSignal,
 ): Promise<ContactBootstrap> => {
-  const response = await fetch("/contact_bootstrap.php", {
+  const response = await fetch("/api/contact/bootstrap/", {
     cache: "no-store",
     signal,
   });
@@ -124,7 +124,7 @@ export const ContactPanel = ({ className }: ContactPanelProps) => {
           status: "ready",
           data: payload,
         });
-      } catch (error) {
+      } catch {
         if (abortController.signal.aborted) {
           return;
         }
@@ -188,7 +188,7 @@ export const ContactPanel = ({ className }: ContactPanelProps) => {
       if (payload.status === "sent") {
         form.reset();
       }
-    } catch (error) {
+    } catch {
       setContactStatus("error");
     } finally {
       setBootstrapState({
@@ -201,7 +201,7 @@ export const ContactPanel = ({ className }: ContactPanelProps) => {
           status: "ready",
           data: payload,
         });
-      } catch (error) {
+      } catch {
         setBootstrapState({
           status: "unavailable",
         });
@@ -248,7 +248,7 @@ export const ContactPanel = ({ className }: ContactPanelProps) => {
 
         <form
           className={styles.terminalForm}
-          action="/contact.php"
+          action="/api/contact/"
           method="post"
           onSubmit={handleSubmit}
         >

@@ -78,19 +78,19 @@ export default function ContactPage() {
             />
             <p className={styles.description}>
               If the system is noisy, unclear, or underbuilt, send the brief
-              directly. The site stays static, while the form is handled by PHP
-              on hosting.
+              directly. The site now runs in a Dockerized Next.js runtime, with
+              the protected form handled by the same app.
             </p>
           </div>
 
           <aside className={styles.panel}>
             <p className={styles.panelLabel}>delivery route</p>
             <h2 className={styles.panelTitle}>
-              Static frontend, local PHP handler.
+              Dockerized frontend, local contact handler.
             </h2>
             <p className={styles.panelText}>
-              No external form backend is required on dhosting. The landing page
-              and this route both submit to the same contact.php.
+              No external form backend is required. The landing page and this
+              route both submit to the same protected Next.js endpoint.
             </p>
           </aside>
         </section>

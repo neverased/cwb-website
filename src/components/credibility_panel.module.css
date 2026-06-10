@@ -15,11 +15,11 @@
       circle at top left,
       rgba(126, 255, 203, 0.05),
       transparent 40%
-    );
+  );
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.04),
-    0 1.5rem 3rem rgba(0, 0, 0, 0.24);
-  backdrop-filter: blur(18px);
+    0 0.45rem 0.8rem rgba(0, 0, 0, 0.26);
+  backdrop-filter: blur(12px);
 }
 
 .panel::before {
@@ -65,7 +65,7 @@
     rgba(217, 255, 140, 0.18),
     transparent
   );
-  filter: blur(10px);
+  filter: blur(8px);
   transform: skewX(-18deg);
   opacity: 0.18;
   animation: credibilitySweep 16s ease-in-out infinite;
@@ -108,7 +108,7 @@
 .kicker {
   color: #8ddfba;
   font-size: 0.74rem;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
@@ -120,7 +120,7 @@
   font-family: var(--font-display), "Fira Code", monospace;
   color: #f4fff8;
   font-size: clamp(1.9rem, 3.4vw, 3rem);
-  line-height: 0.98;
+  line-height: 1.04;
   letter-spacing: -0.04em;
   text-transform: uppercase;
 }
@@ -136,7 +136,7 @@
 
 .description {
   max-width: 48ch;
-  color: rgba(214, 236, 225, 0.78);
+  color: rgba(226, 247, 237, 0.86);
   line-height: 1.75;
 }
 
@@ -169,16 +169,14 @@
     rgba(221, 255, 139, 0.18)
   );
   color: #f6fff8;
-  font-size: 0.76rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  font-size: 0.84rem;
+  letter-spacing: 0.02em;
 }
 
 .link {
   color: #d9ff8c;
   font-size: 0.78rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  letter-spacing: 0.02em;
   word-break: break-all;
 }
 

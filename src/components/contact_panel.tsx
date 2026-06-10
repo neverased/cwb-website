@@ -8,16 +8,16 @@ const CONTACT_EMAIL = "mail@wojciechbajer.com";
 
 const CONTACT_FEEDBACK = {
   sent: {
-    title: "Transmission received.",
-    text: "Your message was delivered. I will reply directly by email.",
+    title: "Message sent.",
+    text: "I received your inquiry and will reply directly by email.",
   },
   invalid: {
-    title: "Transmission rejected.",
-    text: "Please check the required fields and try again.",
+    title: "Check the form.",
+    text: "Please complete the required fields and try again.",
   },
   error: {
-    title: "Delivery failed.",
-    text: "The message could not be sent right now. Please use direct email.",
+    title: "Message not sent.",
+    text: "The form is not available right now. Please use direct email.",
   },
 } as const;
 
@@ -218,7 +218,7 @@ export const ContactPanel = ({ className }: ContactPanelProps) => {
         .join(" ")}
     >
       <div className={[styles.contactCard, styles.contactFormCard].join(" ")}>
-        <p className={styles.contactLabel}>terminal form</p>
+        <p className={styles.contactLabel}>project inquiry</p>
 
         {contactStatus ? (
           <div
@@ -407,14 +407,14 @@ export const ContactPanel = ({ className }: ContactPanelProps) => {
               type="submit"
               disabled={isFormDisabled}
             >
-              {isSubmitting ? "Transmitting..." : "Transmit inquiry"}
+              {isSubmitting ? "Sending..." : "Send inquiry"}
             </button>
           </div>
         </form>
       </div>
 
       <div className={styles.contactCard}>
-        <p className={styles.contactLabel}>preferred channel</p>
+        <p className={styles.contactLabel}>direct email</p>
         <a className={styles.contactValue} href={`mailto:${CONTACT_EMAIL}`}>
           {CONTACT_EMAIL}
         </a>

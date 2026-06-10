@@ -66,6 +66,18 @@
   animation: homeShellSweep 18s linear infinite;
 }
 
+.srOnly {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  inline-size: 1px;
+  block-size: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  white-space: nowrap;
+}
+
 @keyframes homeAmbientDrift {
   0%,
   100% {
@@ -169,50 +181,12 @@
   }
 }
 
-.bootLayer {
-  position: fixed;
-  inset: 0;
-  z-index: 10;
-  display: grid;
-  place-items: center;
-  padding: clamp(1rem, 4vw, 2rem);
-  background:
-    linear-gradient(180deg, rgba(2, 8, 7, 0.96), rgba(3, 12, 10, 0.98)),
-    radial-gradient(
-      circle at 12% 16%,
-      rgba(116, 255, 191, 0.08),
-      transparent 26%
-    );
-  transition:
-    opacity 0.8s ease,
-    visibility 0.8s ease,
-    transform 0.8s ease;
-}
-
-.bootLayerHidden {
-  opacity: 0;
-  visibility: hidden;
-  transform: scale(1.02);
-  pointer-events: none;
-}
-
-.bootShell,
 .siteShell {
   position: relative;
   width: min(1220px, 100%);
   z-index: 1;
 }
 
-.bootShell {
-  --boot-panel-height: min(42rem, calc(100dvh - 4rem));
-  --boot-panel-min-height: min(29rem, calc(100dvh - 4rem));
-  display: grid;
-  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
-  gap: clamp(1rem, 3vw, 2rem);
-  align-items: stretch;
-}
-
-.bootCopy,
 .commandDeck,
 .signalCard,
 .processConsole,
@@ -233,11 +207,10 @@
     );
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.04),
-    0 1.5rem 3rem rgba(0, 0, 0, 0.24);
-  backdrop-filter: blur(18px);
+    0 0.45rem 0.8rem rgba(0, 0, 0, 0.26);
+  backdrop-filter: blur(12px);
 }
 
-.bootCopy::before,
 .commandDeck::before,
 .capabilityCard::before,
 .processCard::before,
@@ -260,67 +233,34 @@
   pointer-events: none;
 }
 
-.bootCopy,
 .commandDeck {
   padding: clamp(1.4rem, 3vw, 2.2rem);
   border-radius: 1.75rem;
 }
 
-.bootCopy {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  gap: 1.35rem;
-  padding-block-end: clamp(2rem, 4vw, 3rem);
-  block-size: var(--boot-panel-height);
-  min-block-size: var(--boot-panel-min-height);
-}
-
 .kicker {
   color: #8ddfba;
   font-size: 0.76rem;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
 }
 
-.bootTitle,
 .heroTitle,
 .sectionTitle {
   font-family: var(--font-display), "Fira Code", monospace;
   color: #f4fff8;
 }
 
-.bootTitle {
-  max-width: 10ch;
-  font-size: clamp(2.35rem, 5.4vw, 4rem);
-  line-height: 0.92;
-  letter-spacing: -0.04em;
-}
-
-.bootDescription,
 .heroDescription,
 .sectionDescription,
 .capabilityCard p,
 .processCard p,
 .noteCard p,
 .contactText {
-  color: rgba(214, 236, 225, 0.78);
+  color: rgba(226, 247, 237, 0.86);
   line-height: 1.75;
 }
 
-.bootDescription {
-  max-width: 40ch;
-  font-size: 1rem;
-}
-
-.bootMeta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-top: auto;
-}
-
-.bootMeta span,
 .heroFootnote span,
 .noteMeta span {
   display: inline-flex;
@@ -336,7 +276,6 @@
   text-transform: uppercase;
 }
 
-.skipButton,
 .primaryAction,
 .secondaryAction,
 .contactValue {
@@ -347,23 +286,6 @@
     color 180ms ease;
 }
 
-.skipButton {
-  align-self: flex-start;
-  margin-top: 0.35rem;
-  margin-bottom: clamp(1rem, 2.5vw, 1.75rem);
-  width: fit-content;
-  padding: 0.8rem 1rem;
-  border: 1px solid rgba(126, 255, 203, 0.22);
-  border-radius: 999px;
-  background: rgba(10, 24, 20, 0.7);
-  color: #d8ffee;
-  font: inherit;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  cursor: pointer;
-}
-
-.skipButton:hover,
 .primaryAction:hover,
 .secondaryAction:hover,
 .contactValue:hover {
@@ -375,15 +297,6 @@
   padding: 1rem clamp(1rem, 3vw, 1.75rem) 4.5rem;
   display: grid;
   gap: clamp(3rem, 6vw, 5rem);
-  opacity: 0;
-  transform: translateY(2rem);
-  pointer-events: none;
-  transition:
-    opacity 0.7s ease 0.15s,
-    transform 0.7s ease 0.15s;
-}
-
-.siteShellVisible {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
@@ -481,7 +394,7 @@
     rgba(120, 255, 208, 0.06),
     transparent
   );
-  filter: blur(18px);
+  filter: blur(12px);
   animation: homeHudSweep 16s linear infinite;
 }
 
@@ -508,7 +421,7 @@
   border-radius: 50%;
   box-shadow:
     inset 0 0 0 1px rgba(255, 255, 255, 0.03),
-    0 0 4rem rgba(126, 255, 203, 0.08);
+    0 0 0.75rem rgba(126, 255, 203, 0.12);
   animation: homeMarkerPulse 8s ease-in-out infinite;
 }
 
@@ -554,7 +467,7 @@
 .heroTitle {
   max-width: 11ch;
   font-size: clamp(2.05rem, 4.2vw, 4.1rem);
-  line-height: 0.98;
+  line-height: 1.04;
   letter-spacing: -0.04em;
 }
 
@@ -575,11 +488,10 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.03);
-  color: rgba(226, 247, 236, 0.78);
+  color: rgba(232, 248, 239, 0.86);
   font: inherit;
-  font-size: 0.76rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
   cursor: pointer;
   transition:
     border-color 180ms ease,
@@ -672,7 +584,7 @@
 .signalCardText {
   position: relative;
   z-index: 1;
-  color: rgba(214, 236, 225, 0.78);
+  color: rgba(226, 247, 237, 0.86);
   line-height: 1.7;
 }
 
@@ -690,9 +602,8 @@
   min-height: 3.25rem;
   padding: 0.9rem 1.15rem;
   border-radius: 999px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  font-size: 0.76rem;
+  letter-spacing: 0.02em;
+  font-size: 0.84rem;
 }
 
 .primaryAction {
@@ -703,7 +614,7 @@
     rgba(221, 255, 139, 0.18)
   );
   color: #f6fff8;
-  box-shadow: 0 0 2rem rgba(112, 255, 185, 0.14);
+  box-shadow: 0 0 0.75rem rgba(112, 255, 185, 0.14);
 }
 
 .secondaryAction {
@@ -740,7 +651,7 @@
     rgba(126, 255, 203, 0.16),
     transparent
   );
-  filter: blur(18px);
+  filter: blur(10px);
   opacity: 0.22;
   animation: homeHudSweep 15s linear infinite;
   pointer-events: none;
@@ -791,7 +702,7 @@
 .noteMeta {
   color: #8ddfba;
   font-size: 0.74rem;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
@@ -951,8 +862,8 @@
     rgba(126, 255, 203, 0.04),
     transparent
   );
-  filter: blur(24px);
-  opacity: 0.18;
+  filter: blur(12px);
+  opacity: 0.14;
   pointer-events: none;
   animation: homeHudSweep 20s linear infinite;
 }
@@ -973,7 +884,7 @@
 .sectionTitle {
   max-width: 14ch;
   font-size: clamp(2.2rem, 4vw, 3.6rem);
-  line-height: 1;
+  line-height: 1.06;
   letter-spacing: -0.04em;
 }
 
@@ -992,9 +903,8 @@
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.03);
   color: #f6fff8;
-  font-size: 0.74rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-size: 0.84rem;
+  letter-spacing: 0.02em;
   transition:
     transform 180ms ease,
     border-color 180ms ease,
@@ -1010,6 +920,7 @@
 
 .capabilityGrid,
 .collaborationGrid,
+.proofStrip,
 .processGrid,
 .noteGrid,
 .contactGrid {
@@ -1020,6 +931,10 @@
 .collaborationGrid,
 .capabilityGrid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.proofStrip {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .processGrid {
@@ -1057,8 +972,8 @@
     rgba(126, 255, 203, 0.16),
     transparent
   );
-  filter: blur(22px);
-  opacity: 0.2;
+  filter: blur(12px);
+  opacity: 0.14;
   pointer-events: none;
   animation: homeHudSweep 22s linear infinite;
 }
@@ -1115,6 +1030,7 @@
 }
 
 .collaborationCard,
+.proofPoint,
 .capabilityCard,
 .processCard,
 .noteCard,
@@ -1140,8 +1056,8 @@
     );
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.04),
-    0 1.5rem 3rem rgba(0, 0, 0, 0.24);
-  backdrop-filter: blur(18px);
+    0 0.45rem 0.8rem rgba(0, 0, 0, 0.26);
+  backdrop-filter: blur(12px);
 }
 
 .collaborationCard::before {
@@ -1170,7 +1086,7 @@
   height: 0.55rem;
   border-radius: 999px;
   background: #d9ff8c;
-  box-shadow: 0 0 1rem rgba(217, 255, 140, 0.55);
+  box-shadow: 0 0 0.65rem rgba(217, 255, 140, 0.42);
   opacity: 0.52;
   animation: homeMarkerPulse 7s ease-in-out infinite;
   pointer-events: none;
@@ -1179,6 +1095,23 @@
 .collaborationCard > * {
   position: relative;
   z-index: 1;
+}
+
+.proofPoint {
+  position: relative;
+  display: grid;
+  gap: 0.55rem;
+  border: 1px solid rgba(126, 255, 203, 0.1);
+  background:
+    linear-gradient(180deg, rgba(9, 18, 16, 0.78), rgba(4, 11, 10, 0.9)),
+    rgba(255, 255, 255, 0.02);
+}
+
+.proofPoint p:last-child {
+  position: relative;
+  z-index: 1;
+  color: rgba(226, 247, 237, 0.86);
+  line-height: 1.65;
 }
 
 .collaborationSurface {
@@ -1212,7 +1145,7 @@
     rgba(255, 255, 255, 0.28),
     transparent
   );
-  filter: blur(12px);
+  filter: blur(8px);
   opacity: 0.22;
   transform: skewX(-18deg);
   animation: homeHudSweep 18s linear infinite;
@@ -1399,7 +1332,7 @@
 
 .statusBanner p,
 .formHint {
-  color: rgba(214, 236, 225, 0.78);
+  color: rgba(226, 247, 237, 0.86);
   line-height: 1.65;
 }
 
@@ -1455,7 +1388,7 @@
 }
 
 .terminalInput::placeholder {
-  color: rgba(173, 206, 189, 0.48);
+  color: rgba(198, 225, 211, 0.72);
 }
 
 .terminalInput:focus {
@@ -1516,7 +1449,6 @@
 }
 
 @media (max-width: 1080px) {
-  .bootShell,
   .hero {
     grid-template-columns: 1fr;
   }
@@ -1543,11 +1475,6 @@
 }
 
 @media (max-width: 760px) {
-  .bootShell {
-    --boot-panel-height: min(36rem, calc(100dvh - 2rem));
-    --boot-panel-min-height: min(24rem, calc(100dvh - 2rem));
-  }
-
   .siteShell {
     padding-inline: 1rem;
   }
@@ -1564,7 +1491,6 @@
     justify-content: flex-start;
   }
 
-  .bootTitle,
   .heroTitle,
   .sectionTitle {
     max-width: none;
@@ -1587,6 +1513,7 @@
 
   .capabilityGrid,
   .collaborationGrid,
+  .proofStrip,
   .processGrid,
   .signalStrip,
   .noteGrid,
@@ -1627,9 +1554,7 @@
   .processConsole::after,
   .collaborationCard::after,
   .collaborationSurface::before,
-  .bootLayer,
   .siteShell,
-  .skipButton,
   .primaryAction,
   .secondaryAction,
   .sectionRoute,

@@ -3,7 +3,7 @@ import Link from "next/link";
 import styles from "./site_header.module.css";
 
 const NAV_ITEMS = [
-  { href: "/", label: "Landing" },
+  { href: "/", label: "Home" },
   { href: "/profile", label: "Profile" },
   { href: "/services", label: "Services" },
   { href: "/process", label: "Process" },
@@ -18,7 +18,7 @@ interface SiteHeaderProps {
 export const SiteHeader = ({ currentPath }: SiteHeaderProps) => {
   const routePrompt =
     currentPath === "/"
-      ? "cwb://profile"
+      ? "cwb://home"
       : currentPath === "/profile"
         ? "cwb://profile/about"
         : `cwb://profile${currentPath}`;

@@ -7,10 +7,10 @@ export const alt = "Wojciech Bajer homepage";
 
 export default function OpenGraphImage() {
   return createOgImage({
-    eyebrow: "Landing",
+    eyebrow: "Home",
     title: "Multimedia, software systems, and clearer technical decisions.",
     summary:
-      "Terminal-grade personal brand site for Wojciech Bajer across multimedia, software engineering, architecture, and audits.",
-    terminalPath: "cwb://landing",
+      "A direct technical practice for multimedia systems, software engineering, architecture, and independent audits.",
+    terminalPath: "cwb://home",
   });
 }

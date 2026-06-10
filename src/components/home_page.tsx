@@ -2,15 +2,15 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { startTransition, useCallback, useLayoutEffect, useState } from "react";
+import { useState } from "react";
 
 import styles from "@/app/page.module.css";
 import { ContactPanel } from "@/components/contact_panel";
 import { CredibilityPanel } from "@/components/credibility_panel";
 import { ScrambleText } from "@/components/scramble_text";
 import { SiteHeader } from "@/components/site_header";
-import { TerminalLoader } from "@/components/use_scramble";
 import {
+  collaborationProofPoints,
   coreSignals,
   executionConsole,
   focusModules,
@@ -20,60 +20,11 @@ import {
   selectedCollaborations,
   terminalFacts,
 } from "@/static/siteContent";
-import { HACKING } from "@/static/staticText/start";
-
-const BOOT_SESSION_KEY = "cwb.boot.completed";
-
-let hasBootedInMemory = false;
-
-const readPersistedBootState = () => {
-  if (typeof window === "undefined") {
-    return false;
-  }
-
-  try {
-    return window.sessionStorage.getItem(BOOT_SESSION_KEY) === "1";
-  } catch {
-    return false;
-  }
-};
-
-const persistBootState = () => {
-  hasBootedInMemory = true;
-
-  if (typeof window === "undefined") {
-    return;
-  }
-
-  try {
-    window.sessionStorage.setItem(BOOT_SESSION_KEY, "1");
-  } catch {
-    // Ignore storage failures and keep the in-memory session flag.
-  }
-};
 
 export const HomePage = () => {
-  const [hasBooted, setHasBooted] = useState(hasBootedInMemory);
   const [activeFocusId, setActiveFocusId] = useState<
     (typeof focusModules)[number]["id"]
   >(focusModules[0].id);
-
-  useLayoutEffect(() => {
-    if (!readPersistedBootState()) {
-      return;
-    }
-
-    hasBootedInMemory = true;
-    setHasBooted(true);
-  }, []);
-
-  const enterSite = useCallback(() => {
-    persistBootState();
-
-    startTransition(() => {
-      setHasBooted(true);
-    });
-  }, []);
 
   const activeFocus =
     focusModules.find(({ id }) => id === activeFocusId) ?? focusModules[0];
@@ -85,49 +36,7 @@ export const HomePage = () => {
 
   return (
     <main className={styles.page}>
-      <div
-        className={[styles.bootLayer, hasBooted ? styles.bootLayerHidden : ""]
-          .filter(Boolean)
-          .join(" ")}
-      >
-        <div className={styles.bootShell}>
-          <div className={styles.bootCopy}>
-            <p className={styles.kicker}>Boot sequence</p>
-            <ScrambleText
-              as="h1"
-              className={styles.bootTitle}
-              text="Initializing a sharper public interface."
-              speed={0.8}
-              step={3}
-            />
-            <p className={styles.bootDescription}>
-              A temporary terminal veil, then the actual destination: personal
-              brand, operating model, and room for future writing.
-            </p>
-
-            <div className={styles.bootMeta}>
-              <span>Operator: Wojciech Bajer</span>
-              <span>Output: multimedia + engineering + audits</span>
-            </div>
-
-            <button
-              className={styles.skipButton}
-              type="button"
-              onClick={enterSite}
-            >
-              Skip boot
-            </button>
-          </div>
-
-          <TerminalLoader texts={HACKING} loop={false} onComplete={enterSite} />
-        </div>
-      </div>
-
-      <div
-        className={[styles.siteShell, hasBooted ? styles.siteShellVisible : ""]
-          .filter(Boolean)
-          .join(" ")}
-      >
+      <div className={styles.siteShell}>
         <SiteHeader currentPath="/" />
 
         <section className={styles.hero} id="top">
@@ -139,7 +48,7 @@ export const HomePage = () => {
           </div>
 
           <div className={styles.heroCopy}>
-            <p className={styles.kicker}>Terminal-grade personal brand</p>
+            <p className={styles.kicker}>Independent technical operator</p>
             <ScrambleText
               as="h1"
               className={styles.heroTitle}
@@ -149,10 +58,9 @@ export const HomePage = () => {
               step={3}
             />
             <p className={styles.heroDescription}>
-              I work across multimedia production, software engineering,
-              application architecture, and product or company audits. The
-              common theme is signal quality: reducing noise, exposing weak
-              links, and shipping systems that hold up under pressure.
+              I help companies turn unclear technical situations into workable
+              decisions, cleaner delivery paths, and systems that hold up under
+              real pressure.
             </p>
 
             <div className={styles.focusTabs}>
@@ -178,7 +86,7 @@ export const HomePage = () => {
 
             <div className={styles.focusPanel}>
               <div className={styles.focusPanelHeader}>
-                <p className={styles.deckLabel}>active module</p>
+                <p className={styles.deckLabel}>best fit</p>
                 <span>{activeFocus.status}</span>
               </div>
               <p className={styles.focusPanelTitle}>{activeFocus.label}</p>
@@ -190,7 +98,7 @@ export const HomePage = () => {
                 className={styles.primaryAction}
                 href="mailto:mail@wojciechbajer.com"
               >
-                mail@wojciechbajer.com
+                Email Wojciech
               </a>
               <Link className={styles.secondaryAction} href="/services">
                 Open service map
@@ -230,7 +138,7 @@ export const HomePage = () => {
 
             <div className={styles.focusConsole}>
               <div className={styles.focusConsoleHeader}>
-                <p className={styles.deckLabel}>mission brief</p>
+                <p className={styles.deckLabel}>current read</p>
                 <span>{activeFocus.status}</span>
               </div>
               <p className={styles.focusConsoleText}>{activeFocus.summary}</p>
@@ -249,7 +157,7 @@ export const HomePage = () => {
             </div>
 
             <div className={styles.deckBlock}>
-              <p className={styles.deckLabel}>loaded tools</p>
+              <p className={styles.deckLabel}>what I handle</p>
               <ul className={styles.signalList}>
                 {activeFocus.stack.map((signal) => (
                   <li key={signal}>{signal}</li>
@@ -260,6 +168,7 @@ export const HomePage = () => {
         </section>
 
         <section className={styles.signalSection}>
+          <h2 className={styles.srOnly}>Operating signals</h2>
           <div className={styles.signalStrip}>
             {operatingSignals.map(({ label, value, detail }) => (
               <article key={label} className={styles.signalCard}>
@@ -277,7 +186,6 @@ export const HomePage = () => {
 
         <section className={styles.section} id="collaborations">
           <div className={styles.sectionHeading}>
-            <p className={styles.kicker}>Selected collaborations</p>
             <ScrambleText
               as="h2"
               className={styles.sectionTitle}
@@ -286,9 +194,19 @@ export const HomePage = () => {
             />
             <p className={styles.sectionDescription}>
               A few organizations I have worked with across multimedia,
-              engineering, and delivery contexts. The section keeps the same
-              terminal frame, but now uses the actual partner marks.
+              engineering, and delivery contexts. The relevant proof is not the
+              logo alone, but the ability to work where quality, timing, and
+              technical judgment all matter.
             </p>
+          </div>
+
+          <div className={styles.proofStrip}>
+            {collaborationProofPoints.map(({ label, text }) => (
+              <article key={label} className={styles.proofPoint}>
+                <p className={styles.deckLabel}>{label}</p>
+                <p>{text}</p>
+              </article>
+            ))}
           </div>
 
           <div className={styles.collaborationGrid}>
@@ -328,7 +246,6 @@ export const HomePage = () => {
 
         <section className={styles.section} id="capabilities">
           <div className={styles.sectionHeading}>
-            <p className={styles.kicker}>Capabilities</p>
             <ScrambleText
               as="h2"
               className={styles.sectionTitle}
@@ -363,7 +280,6 @@ export const HomePage = () => {
 
         <section className={styles.section} id="process">
           <div className={styles.sectionHeading}>
-            <p className={styles.kicker}>Operating model</p>
             <ScrambleText
               as="h2"
               className={styles.sectionTitle}
@@ -372,9 +288,9 @@ export const HomePage = () => {
             />
             <div className={styles.sectionLead}>
               <p className={styles.sectionDescription}>
-                The landing page now keeps only the compressed overview. The
-                full process gets its own route, so this section can stay
-                readable instead of trying to carry everything at once.
+                The work starts with evidence, then turns into a practical map:
+                what is fragile, what needs correction, and what should happen
+                next.
               </p>
               <Link className={styles.sectionRoute} href="/process">
                 Open full process page
@@ -407,17 +323,17 @@ export const HomePage = () => {
 
         <section className={styles.section} id="notes">
           <div className={styles.sectionHeading}>
-            <p className={styles.kicker}>Field notes</p>
             <ScrambleText
               as="h2"
               className={styles.sectionTitle}
-              text="Room for essays, breakdowns, and post-audit observations."
+              text="Diagnostic topics I cover."
               delay={620}
             />
             <div className={styles.sectionLead}>
               <p className={styles.sectionDescription}>
-                The structure is static and code-driven, which keeps deploys
-                simple and works cleanly with Docker runtime hosting.
+                These are the problem areas I keep seeing inside teams,
+                products, and delivery systems. They are useful entry points
+                when the exact brief is still unclear.
               </p>
               <Link className={styles.sectionRoute} href="/notes">
                 Open notes page
@@ -430,7 +346,7 @@ export const HomePage = () => {
               <article key={title} className={styles.noteCard}>
                 <div className={styles.noteMeta}>
                   <span>{status}</span>
-                  <span>signal draft</span>
+                  <span>review area</span>
                 </div>
                 <h3>{title}</h3>
                 <p>{summary}</p>
@@ -444,7 +360,6 @@ export const HomePage = () => {
           id="contact"
         >
           <div className={styles.sectionHeading}>
-            <p className={styles.kicker}>Contact</p>
             <ScrambleText
               as="h2"
               className={styles.sectionTitle}
@@ -453,7 +368,8 @@ export const HomePage = () => {
             />
             <div className={styles.sectionLead}>
               <p className={styles.sectionDescription}>
-                Contact me short and sweet, or longer and more detailed.
+                Send the problem as it stands. A short note is enough when the
+                situation is urgent or still messy.
               </p>
               <Link className={styles.sectionRoute} href="/contact">
                 Open contact page

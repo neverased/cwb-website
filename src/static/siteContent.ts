@@ -127,9 +127,9 @@ export const operatingSignals = [
     detail: "Creative and technical work share the same operating logic here.",
   },
   {
-    label: "publishing mode",
-    value: "notes shipped in code",
-    detail: "Runtime deployment keeps the site direct while leaving room for server-side contact handling.",
+    label: "handoff mode",
+    value: "decisions documented",
+    detail: "Useful work leaves a map, not just a meeting.",
   },
   {
     label: "engagement filter",
@@ -390,19 +390,19 @@ export const signalStack = [
 
 export const noteQueue = [
   {
-    status: "Queued",
+    status: "Topic",
     title: "Architecture reviews before scale gets expensive",
     summary:
       "How I assess product structure, coupling, delivery risk, and where teams usually hide technical debt.",
   },
   {
-    status: "Queued",
+    status: "Topic",
     title: "What multimedia work teaches about software delivery",
     summary:
       "Signal flow, timing, and production discipline translate surprisingly well to digital product execution.",
   },
   {
-    status: "Queued",
+    status: "Topic",
     title: "Audit patterns that reveal product confusion early",
     summary:
       "The recurring technical and organizational indicators I look for when a company feels busy but not aligned.",
@@ -477,5 +477,20 @@ export const selectedCollaborations = [
     width: 57,
     height: 52,
     surface: "dark",
+  },
+] as const;
+
+export const collaborationProofPoints = [
+  {
+    label: "scope",
+    text: "Work spans multimedia delivery, software systems, architecture, and independent review.",
+  },
+  {
+    label: "role",
+    text: "Useful where a direct specialist needs to stay close to the technical and delivery details.",
+  },
+  {
+    label: "output",
+    text: "Cleaner execution paths, visible tradeoffs, and artifacts teams can keep using after handoff.",
   },
 ] as const;

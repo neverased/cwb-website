@@ -17,7 +17,7 @@ import styles from "../subpage.module.css";
 
 const NOTES_TITLE = "Notes | Wojciech Bajer";
 const NOTES_DESCRIPTION =
-  "Static-first notes page for essays, breakdowns, and field observations on architecture, multimedia systems, and audit work.";
+  "Diagnostic topics and field observations on architecture, multimedia systems, delivery, and audit work.";
 
 export const metadata = buildMetadata({
   title: NOTES_TITLE,
@@ -89,23 +89,23 @@ export default function NotesPage() {
             <ScrambleText
               as="h1"
               className={styles.title}
-              text="Essays, breakdowns, and field observations."
+              text="Diagnostic topics and field observations."
               speed={0.8}
               step={3}
             />
             <p className={styles.description}>
-              This page is the normal home for writing outside the landing page.
-              For now the notes are still curated in code, which keeps the site
-              static, direct, and easy to deploy.
+              These are the themes I use to explain recurring architecture,
+              delivery, multimedia, and audit problems. They double as useful
+              entry points when a brief is still forming.
             </p>
           </div>
 
           <aside className={styles.panel}>
-            <p className={styles.panelLabel}>publishing setup</p>
-            <h2 className={styles.panelTitle}>Static first, depth later.</h2>
+            <p className={styles.panelLabel}>topic map</p>
+            <h2 className={styles.panelTitle}>Start with the problem area.</h2>
             <p className={styles.panelText}>
-              Articles can stay code-driven for now and later move to MDX
-              without changing the public structure of the site.
+              If one of these areas matches what you are seeing, it is usually
+              enough context to begin a focused review.
             </p>
           </aside>
         </section>
@@ -118,7 +118,7 @@ export default function NotesPage() {
             >
               <div className={styles.noteMeta}>
                 <span>{status}</span>
-                <span>signal draft</span>
+                <span>review area</span>
               </div>
               <h2 className={styles.noteTitle}>{title}</h2>
               <p className={styles.noteText}>{summary}</p>

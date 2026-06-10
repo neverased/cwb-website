@@ -1,20 +1,26 @@
 .page {
   position: relative;
-  min-height: 100vh;
+  min-height: 100dvh;
   overflow: clip;
   isolation: isolate;
   background:
     radial-gradient(
-      circle at top left,
-      rgba(116, 255, 191, 0.12),
-      transparent 28%
+      circle at 8% 6%,
+      rgba(126, 255, 198, 0.18),
+      transparent 24%
     ),
     radial-gradient(
-      circle at 88% 12%,
-      rgba(255, 208, 107, 0.1),
-      transparent 20%
+      circle at 86% 14%,
+      rgba(217, 255, 140, 0.13),
+      transparent 18%
     ),
-    linear-gradient(180deg, #020807 0%, #041111 38%, #020807 100%);
+    radial-gradient(circle at 52% 78%, rgba(126, 255, 203, 0.08), transparent 28%),
+    linear-gradient(
+      180deg,
+      var(--page-background) 0%,
+      #061412 40%,
+      var(--page-background) 100%
+    );
 }
 
 .page::before,
@@ -27,24 +33,19 @@
 
 .page::before {
   background:
-    linear-gradient(90deg, rgba(102, 255, 198, 0.06) 1px, transparent 1px),
-    linear-gradient(rgba(102, 255, 198, 0.05) 1px, transparent 1px);
-  background-size: 80px 80px;
-  mask-image: radial-gradient(circle at center, black, transparent 80%);
-  opacity: 0.35;
+    radial-gradient(circle at 18% 18%, rgba(126, 255, 203, 0.08), transparent 1px),
+    radial-gradient(circle at 78% 38%, rgba(217, 255, 140, 0.06), transparent 1px);
+  background-size:
+    36px 36px,
+    52px 52px;
+  mask-image: radial-gradient(circle at center, black, transparent 78%);
+  opacity: 0.3;
   animation: homeAmbientDrift 34s ease-in-out infinite;
 }
 
 .page::after {
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 14%),
-    repeating-linear-gradient(
-      180deg,
-      rgba(123, 255, 202, 0.04),
-      rgba(123, 255, 202, 0.04) 1px,
-      transparent 1px,
-      transparent 5px
-    ),
     linear-gradient(
       90deg,
       transparent,
@@ -52,13 +53,11 @@
       rgba(120, 255, 207, 0.08),
       transparent
     );
-  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-repeat: no-repeat, no-repeat;
   background-size:
-    auto,
     auto,
     36% 100%;
   background-position:
-    0 0,
     0 0,
     -140% 0;
   mix-blend-mode: screen;
@@ -95,7 +94,6 @@
   0% {
     background-position:
       0 0,
-      0 0,
       -140% 0;
     opacity: 0.16;
   }
@@ -110,7 +108,6 @@
 
   100% {
     background-position:
-      0 0,
       0 0,
       220% 0;
     opacity: 0.16;
@@ -214,18 +211,20 @@
 .topbar {
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(126, 255, 203, 0.12);
+  border: 1px solid rgba(126, 255, 203, 0.16);
+  border-radius: var(--radius-hard);
+  clip-path: polygon(
+    0 0,
+    calc(100% - var(--corner-cut)) 0,
+    100% var(--corner-cut),
+    100% 100%,
+    var(--corner-cut) 100%,
+    0 calc(100% - var(--corner-cut))
+  );
   background:
-    linear-gradient(180deg, rgba(10, 18, 17, 0.9), rgba(5, 11, 11, 0.96)),
-    radial-gradient(
-      circle at top left,
-      rgba(126, 255, 203, 0.05),
-      transparent 40%
-    );
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.04),
-    0 0.45rem 0.8rem rgba(0, 0, 0, 0.26);
-  backdrop-filter: blur(12px);
+    linear-gradient(90deg, rgba(126, 255, 203, 0.08), transparent 44%),
+    linear-gradient(180deg, rgba(7, 18, 16, 0.98), rgba(1, 6, 5, 0.98));
+  box-shadow: inset 0 -1px 0 rgba(126, 255, 203, 0.09);
 }
 
 .commandDeck::before,
@@ -234,21 +233,20 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 14%),
-    repeating-linear-gradient(
-      180deg,
-      rgba(126, 255, 203, 0.04),
-      rgba(126, 255, 203, 0.04) 1px,
-      transparent 1px,
-      transparent 4px
-    );
-  opacity: 0.4;
+    linear-gradient(rgba(126, 255, 203, 0.18), rgba(126, 255, 203, 0.18)) left
+      top / 2.6rem 1px no-repeat,
+    linear-gradient(rgba(126, 255, 203, 0.18), rgba(126, 255, 203, 0.18)) left
+      top / 1px 2.6rem no-repeat,
+    linear-gradient(rgba(126, 255, 203, 0.16), rgba(126, 255, 203, 0.16)) right
+      bottom / 2.6rem 1px no-repeat,
+    linear-gradient(rgba(126, 255, 203, 0.16), rgba(126, 255, 203, 0.16)) right
+      bottom / 1px 2.6rem no-repeat;
+  opacity: 0.78;
   pointer-events: none;
 }
 
 .commandDeck {
   padding: clamp(1.4rem, 3vw, 2.2rem);
-  border-radius: 1.75rem;
 }
 
 .heroTitle,
@@ -261,7 +259,7 @@
 .sectionDescription,
 .capabilityCard p,
 .processCard p {
-  color: rgba(226, 247, 237, 0.86);
+  color: var(--text-muted);
   line-height: 1.75;
 }
 
@@ -279,6 +277,14 @@
   transform: translateY(-2px);
 }
 
+.primaryAction:focus-visible,
+.secondaryAction:focus-visible,
+.sectionRoute:focus-visible,
+.focusTab:focus-visible {
+  outline: 2px solid rgba(126, 255, 203, 0.72);
+  outline-offset: 0.25rem;
+}
+
 .siteShell {
   margin: 0 auto;
   padding: 1rem clamp(1rem, 3vw, 1.75rem) 4.5rem;
@@ -294,7 +300,6 @@
   top: 1rem;
   z-index: 3;
   padding: 0.9rem 1.1rem;
-  border-radius: 999px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -349,7 +354,7 @@
   isolation: isolate;
   display: grid;
   grid-template-columns: minmax(0, 1.18fr) minmax(300px, 0.72fr);
-  gap: 2.5rem;
+  gap: clamp(2.2rem, 5vw, 4.2rem);
   align-items: start;
 }
 
@@ -360,9 +365,11 @@
 
 .heroBackdrop {
   position: absolute;
-  inset: -1.75rem -1.5rem -1.75rem 44%;
+  inset: -2rem -1.5rem -1.5rem 40%;
   overflow: hidden;
-  border-radius: 2rem;
+  border: 1px solid rgba(126, 255, 203, 0.08);
+  border-radius: var(--radius-hard);
+  clip-path: polygon(0 0, calc(100% - 2rem) 0, 100% 2rem, 100% 100%, 2rem 100%, 0 calc(100% - 2rem));
   pointer-events: none;
   z-index: 0;
 }
@@ -372,8 +379,7 @@
   position: absolute;
   left: -30%;
   right: -30%;
-  height: 7.5rem;
-  border-radius: 999px;
+  height: 5rem;
   background: linear-gradient(
     90deg,
     transparent,
@@ -400,15 +406,14 @@
 
 .heroRing {
   position: absolute;
-  top: 6%;
+  top: 2.25rem;
   right: 1.5rem;
-  width: min(24rem, 45%);
-  aspect-ratio: 1;
+  width: min(23rem, 46%);
+  aspect-ratio: 1.35;
   border: 1px solid rgba(126, 255, 203, 0.16);
-  border-radius: 50%;
-  box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.03),
-    0 0 0.75rem rgba(126, 255, 203, 0.12);
+  border-radius: var(--radius-hard);
+  clip-path: polygon(0 0, calc(100% - 1.2rem) 0, 100% 1.2rem, 100% 100%, 1.2rem 100%, 0 calc(100% - 1.2rem));
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
   animation: homeMarkerPulse 8s ease-in-out infinite;
 }
 
@@ -416,8 +421,8 @@
 .heroRing::after {
   content: "";
   position: absolute;
-  border: 1px dashed rgba(126, 255, 203, 0.14);
-  border-radius: 50%;
+  border: 1px solid rgba(126, 255, 203, 0.12);
+  border-radius: 0;
 }
 
 .heroRing::before {
@@ -448,24 +453,23 @@
   display: grid;
   align-content: start;
   gap: 1.25rem;
-  padding: 4.5rem 0 0;
+  padding: clamp(2.4rem, 7vw, 5.25rem) 0 0;
 }
 
 .heroLogo {
-  width: min(18rem, 68%);
+  width: min(19rem, 72%);
   height: auto;
-  filter: drop-shadow(0 1rem 2rem rgba(0, 0, 0, 0.24));
 }
 
 .heroTitle {
-  max-width: 18ch;
-  font-size: 3.35rem;
-  line-height: 1.04;
+  max-width: 18.5ch;
+  font-size: clamp(3rem, 5.4vw, 4.95rem);
+  line-height: 0.96;
   letter-spacing: 0;
 }
 
 .heroDescription {
-  max-width: 60ch;
+  max-width: 54ch;
   font-size: 1.08rem;
 }
 
@@ -485,7 +489,8 @@
   min-height: 2.35rem;
   padding: 0.55rem 0.7rem;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 0.85rem;
+  border-radius: 0.12rem;
+  clip-path: polygon(0 0, calc(100% - 0.5rem) 0, 100% 0.5rem, 100% 100%, 0 100%);
   background: rgba(255, 255, 255, 0.03);
   color: rgba(232, 248, 239, 0.86);
   font: inherit;
@@ -518,7 +523,6 @@
   position: relative;
   overflow: hidden;
   border: 1px solid rgba(126, 255, 203, 0.1);
-  border-radius: 1.2rem;
   background:
     linear-gradient(180deg, rgba(9, 18, 16, 0.88), rgba(4, 11, 10, 0.96)),
     rgba(255, 255, 255, 0.02);
@@ -531,14 +535,12 @@
   inset: 0;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 16%),
-    repeating-linear-gradient(
-      180deg,
-      rgba(126, 255, 203, 0.03),
-      rgba(126, 255, 203, 0.03) 1px,
-      transparent 1px,
-      transparent 4px
+    radial-gradient(
+      circle at 18% 12%,
+      rgba(126, 255, 203, 0.06),
+      transparent 36%
     );
-  opacity: 0.4;
+  opacity: 0.5;
   pointer-events: none;
 }
 
@@ -577,9 +579,10 @@
   overflow: hidden;
   padding: 0.85rem;
   border: 1px solid rgba(126, 255, 203, 0.1);
-  border-radius: 1rem;
+  border-radius: 0.12rem;
+  clip-path: polygon(0 0, calc(100% - 0.75rem) 0, 100% 0.75rem, 100% 100%, 0 100%);
   background:
-    linear-gradient(180deg, rgba(1, 8, 7, 0.88), rgba(0, 0, 0, 0.72)),
+    linear-gradient(180deg, rgba(1, 8, 7, 0.96), rgba(0, 0, 0, 0.82)),
     radial-gradient(
       circle at top right,
       rgba(217, 255, 140, 0.08),
@@ -615,20 +618,21 @@
   justify-content: center;
   min-height: 3.25rem;
   padding: 0.9rem 1.15rem;
-  border-radius: 999px;
+  border-radius: 0.12rem;
+  clip-path: polygon(0 0, calc(100% - 0.65rem) 0, 100% 0.65rem, 100% 100%, 0 100%);
   letter-spacing: 0;
   font-size: 0.84rem;
 }
 
 .primaryAction {
-  border: 1px solid rgba(126, 255, 203, 0.24);
+  border: 1px solid rgba(126, 255, 203, 0.38);
   background: linear-gradient(
     90deg,
-    rgba(115, 255, 190, 0.16),
-    rgba(221, 255, 139, 0.18)
+    rgba(115, 255, 190, 0.28),
+    rgba(221, 255, 139, 0.24)
   );
   color: #f6fff8;
-  box-shadow: 0 0 0.75rem rgba(112, 255, 185, 0.14);
+  box-shadow: inset 0 -1px 0 rgba(126, 255, 203, 0.14);
 }
 
 .secondaryAction {
@@ -643,10 +647,9 @@
   display: grid;
   align-self: start;
   justify-self: end;
-  width: min(100%, 27rem);
+  width: min(100%, 28rem);
   gap: 0.85rem;
-  padding: 1rem;
-  border-radius: 1.35rem;
+  padding: 1.05rem;
 }
 
 .commandDeck::after {
@@ -656,7 +659,6 @@
   bottom: 22%;
   left: -18%;
   width: 20%;
-  border-radius: 999px;
   background: linear-gradient(
     90deg,
     transparent,
@@ -689,9 +691,9 @@
 }
 
 .deckWindowControls span {
-  width: 0.7rem;
-  height: 0.7rem;
-  border-radius: 999px;
+  width: 1.15rem;
+  height: 0.28rem;
+  border-radius: 0.16rem;
 }
 
 .deckWindowControls span:nth-child(1) {
@@ -726,7 +728,8 @@
   overflow: hidden;
   padding: 0.9rem;
   border: 1px solid rgba(126, 255, 203, 0.1);
-  border-radius: 1rem;
+  border-radius: 0.12rem;
+  clip-path: polygon(0 0, calc(100% - 0.75rem) 0, 100% 0.75rem, 100% 100%, 0 100%);
   background:
     linear-gradient(180deg, rgba(9, 18, 16, 0.88), rgba(4, 11, 10, 0.96)),
     rgba(255, 255, 255, 0.02);
@@ -739,14 +742,12 @@
   inset: 0;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 18%),
-    repeating-linear-gradient(
-      180deg,
-      rgba(126, 255, 203, 0.028),
-      rgba(126, 255, 203, 0.028) 1px,
-      transparent 1px,
-      transparent 4px
+    radial-gradient(
+      circle at 12% 18%,
+      rgba(126, 255, 203, 0.045),
+      transparent 34%
     );
-  opacity: 0.4;
+  opacity: 0.55;
   pointer-events: none;
 }
 
@@ -846,8 +847,23 @@
   position: relative;
   isolation: isolate;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.95fr);
   gap: 1rem;
+}
+
+.signalStrip .signalCard:first-child {
+  grid-row: span 3;
+  align-content: end;
+  min-height: 21rem;
+  padding: clamp(1.4rem, 3vw, 2rem);
+  background:
+    radial-gradient(circle at 12% 10%, rgba(126, 255, 203, 0.18), transparent 30%),
+    linear-gradient(180deg, rgba(9, 24, 21, 0.94), rgba(1, 7, 6, 0.76));
+}
+
+.signalStrip .signalCard:first-child h3 {
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  line-height: 1.18;
 }
 
 .signalStrip::before {
@@ -899,7 +915,8 @@
   min-height: 3rem;
   padding: 0.8rem 1.05rem;
   border: 1px solid rgba(126, 255, 203, 0.22);
-  border-radius: 999px;
+  border-radius: 0.12rem;
+  clip-path: polygon(0 0, calc(100% - 0.6rem) 0, 100% 0.6rem, 100% 100%, 0 100%);
   background: rgba(255, 255, 255, 0.03);
   color: #f6fff8;
   font-size: 0.84rem;
@@ -926,7 +943,26 @@
 }
 
 .capabilityGrid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.capabilityCard:nth-child(1) {
+  grid-column: span 5;
+  grid-row: span 2;
+  min-height: 19rem;
+  align-content: end;
+  background:
+    linear-gradient(135deg, rgba(126, 255, 203, 0.1), transparent 44%),
+    linear-gradient(180deg, rgba(6, 17, 15, 0.72), transparent);
+}
+
+.capabilityCard:nth-child(2) {
+  grid-column: span 7;
+}
+
+.capabilityCard:nth-child(3),
+.capabilityCard:nth-child(4) {
+  grid-column: span 3;
 }
 
 .collaborationGrid {
@@ -943,18 +979,21 @@
 .processGrid {
   position: relative;
   isolation: isolate;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  border-top: 1px solid rgba(126, 255, 203, 0.2);
+  border-bottom: 1px solid rgba(126, 255, 203, 0.1);
 }
 
 .processGrid::before {
   content: "";
   position: absolute;
-  top: 1.5rem;
-  bottom: 1.5rem;
-  left: 50%;
-  width: 1px;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
   background: linear-gradient(
-    180deg,
+    90deg,
     transparent,
     rgba(126, 255, 203, 0.42),
     rgba(126, 255, 203, 0.2),
@@ -968,7 +1007,6 @@
   position: absolute;
   inset: 16% 24% auto;
   height: 5rem;
-  border-radius: 999px;
   background: linear-gradient(
     90deg,
     transparent,
@@ -985,7 +1023,8 @@
   position: relative;
   padding: 1.2rem;
   border: 1px solid rgba(126, 255, 203, 0.08);
-  border-radius: 1rem;
+  border-radius: var(--radius-hard);
+  clip-path: polygon(0 0, calc(100% - 0.75rem) 0, 100% 0.75rem, 100% 100%, 0 100%);
   background:
     linear-gradient(180deg, rgba(7, 17, 15, 0.72), rgba(3, 10, 9, 0.42)),
     rgba(126, 255, 203, 0.02);
@@ -1032,30 +1071,24 @@
 .capabilityCard,
 .processCard {
   padding: 1.35rem;
-  border-radius: 1.5rem;
+  border-radius: var(--radius-hard);
 }
 
 .collaborationCard {
   position: relative;
   overflow: hidden;
   display: grid;
-  gap: 1rem;
+  gap: 0.65rem;
   align-content: start;
   flex: 1 1 10.75rem;
   max-width: 15rem;
-  min-height: 8.6rem;
-  border: 1px solid rgba(126, 255, 203, 0.12);
-  background:
-    linear-gradient(180deg, rgba(10, 18, 17, 0.9), rgba(5, 11, 11, 0.96)),
-    radial-gradient(
-      circle at top left,
-      rgba(126, 255, 203, 0.05),
-      transparent 40%
-    );
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.04),
-    0 0.45rem 0.8rem rgba(0, 0, 0, 0.26);
-  backdrop-filter: blur(12px);
+  min-height: 7.4rem;
+  border-top: 1px solid rgba(126, 255, 203, 0.18);
+  border-bottom: 1px solid rgba(126, 255, 203, 0.08);
+  border-left: 0;
+  border-right: 0;
+  background: linear-gradient(180deg, rgba(126, 255, 203, 0.035), transparent);
+  clip-path: none;
 }
 
 .collaborationCard::before {
@@ -1064,30 +1097,17 @@
   inset: 0;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 14%),
-    repeating-linear-gradient(
-      180deg,
-      rgba(126, 255, 203, 0.04),
-      rgba(126, 255, 203, 0.04) 1px,
-      transparent 1px,
-      transparent 4px
+    radial-gradient(
+      circle at 24% 12%,
+      rgba(126, 255, 203, 0.055),
+      transparent 36%
     );
-  opacity: 0.4;
+  opacity: 0.5;
   pointer-events: none;
 }
 
 .collaborationCard::after {
-  content: "";
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  width: 0.55rem;
-  height: 0.55rem;
-  border-radius: 999px;
-  background: #d9ff8c;
-  box-shadow: 0 0 0.65rem rgba(217, 255, 140, 0.42);
-  opacity: 0.52;
-  animation: homeMarkerPulse 7s ease-in-out infinite;
-  pointer-events: none;
+  content: none;
 }
 
 .collaborationCard > * {
@@ -1099,10 +1119,10 @@
   position: relative;
   display: grid;
   gap: 0.55rem;
-  border: 1px solid rgba(126, 255, 203, 0.1);
-  background:
-    linear-gradient(180deg, rgba(9, 18, 16, 0.78), rgba(4, 11, 10, 0.9)),
-    rgba(255, 255, 255, 0.02);
+  border-top: 1px solid rgba(126, 255, 203, 0.16);
+  border-bottom: 1px solid rgba(126, 255, 203, 0.08);
+  background: transparent;
+  clip-path: none;
 }
 
 .proofPoint p:last-child {
@@ -1120,7 +1140,8 @@
   padding: 0.85rem;
   display: grid;
   place-items: center;
-  border-radius: 1.15rem;
+  border-radius: 0.12rem;
+  clip-path: polygon(0 0, calc(100% - 0.65rem) 0, 100% 0.65rem, 100% 100%, 0 100%);
   border: 1px solid rgba(126, 255, 203, 0.12);
   background:
     linear-gradient(180deg, rgba(16, 28, 25, 0.92), rgba(9, 17, 16, 0.98)),
@@ -1129,7 +1150,7 @@
       rgba(126, 255, 203, 0.07),
       transparent 44%
     );
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  box-shadow: inset 0 -1px 0 rgba(126, 255, 203, 0.08);
 }
 
 .collaborationSurface::before {
@@ -1211,11 +1232,20 @@
 .processCard {
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(126, 255, 203, 0.1);
-  border-radius: 1rem;
-  background:
-    linear-gradient(90deg, rgba(126, 255, 203, 0.06), transparent 52%),
-    linear-gradient(180deg, rgba(8, 18, 16, 0.76), rgba(3, 10, 9, 0.48));
+  border-top: 1px solid rgba(126, 255, 203, 0.2);
+  border-bottom: 1px solid rgba(126, 255, 203, 0.08);
+  background: linear-gradient(90deg, rgba(126, 255, 203, 0.045), transparent 62%);
+  clip-path: none;
+}
+
+.processCard {
+  border-top: 0;
+  border-bottom: 0;
+  border-right: 1px solid rgba(126, 255, 203, 0.1);
+}
+
+.processCard:last-child {
+  border-right: 0;
 }
 
 .capabilityCard h3,
@@ -1305,6 +1335,12 @@
   .signalStrip {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .signalStrip .signalCard:first-child {
+    grid-row: auto;
+    grid-column: 1 / -1;
+    min-height: auto;
+  }
 }
 
 @media (max-width: 760px) {
@@ -1322,7 +1358,6 @@
 
   .topbar {
     position: static;
-    border-radius: 1.4rem;
     padding: 1rem;
     flex-direction: column;
     align-items: flex-start;
@@ -1378,6 +1413,29 @@
   .processGrid,
   .signalStrip {
     grid-template-columns: 1fr;
+  }
+
+  .signalStrip .signalCard:first-child {
+    grid-column: auto;
+  }
+
+  .capabilityCard:nth-child(1),
+  .capabilityCard:nth-child(2),
+  .capabilityCard:nth-child(3),
+  .capabilityCard:nth-child(4) {
+    grid-column: auto;
+    grid-row: auto;
+    min-height: auto;
+  }
+
+  .processGrid {
+    border: 0;
+    gap: 1rem;
+  }
+
+  .processCard {
+    border-right: 0;
+    border-top: 1px solid rgba(126, 255, 203, 0.18);
   }
 
   .capabilityHeader,

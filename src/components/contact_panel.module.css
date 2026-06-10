@@ -10,19 +10,20 @@
   isolation: isolate;
   min-height: 100%;
   padding: 1.35rem;
-  border: 1px solid rgba(126, 255, 203, 0.12);
-  border-radius: 1.5rem;
+  border: 1px solid rgba(126, 255, 203, 0.18);
+  border-radius: var(--radius-hard);
+  clip-path: polygon(
+    0 0,
+    calc(100% - var(--corner-cut)) 0,
+    100% var(--corner-cut),
+    100% 100%,
+    var(--corner-cut) 100%,
+    0 calc(100% - var(--corner-cut))
+  );
   background:
-    linear-gradient(180deg, rgba(10, 18, 17, 0.9), rgba(5, 11, 11, 0.96)),
-    radial-gradient(
-      circle at top left,
-      rgba(126, 255, 203, 0.05),
-      transparent 40%
-    );
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.04),
-    0 0.45rem 0.8rem rgba(0, 0, 0, 0.26);
-  backdrop-filter: blur(12px);
+    linear-gradient(90deg, rgba(126, 255, 203, 0.07), transparent 46%),
+    linear-gradient(180deg, rgba(6, 17, 15, 0.98), rgba(1, 6, 5, 0.98));
+  box-shadow: inset 0 -1px 0 rgba(126, 255, 203, 0.08);
 }
 
 .contactCard::before {
@@ -30,15 +31,11 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 14%),
-    repeating-linear-gradient(
-      180deg,
-      rgba(126, 255, 203, 0.04),
-      rgba(126, 255, 203, 0.04) 1px,
-      transparent 1px,
-      transparent 4px
-    );
-  opacity: 0.4;
+    linear-gradient(rgba(126, 255, 203, 0.16), rgba(126, 255, 203, 0.16)) left
+      top / 2.4rem 1px no-repeat,
+    linear-gradient(rgba(126, 255, 203, 0.16), rgba(126, 255, 203, 0.16)) right
+      bottom / 2.4rem 1px no-repeat;
+  opacity: 0.78;
   pointer-events: none;
 }
 
@@ -50,7 +47,6 @@
   bottom: 1.25rem;
   width: 28%;
   height: 3.4rem;
-  border-radius: 999px;
   background: linear-gradient(
     90deg,
     transparent,
@@ -78,10 +74,10 @@
   align-content: start;
   gap: 1rem;
   background:
-    linear-gradient(180deg, rgba(9, 22, 18, 0.94), rgba(3, 10, 9, 0.98)),
+    linear-gradient(180deg, rgba(8, 28, 22, 0.96), rgba(2, 9, 8, 0.98)),
     radial-gradient(
       circle at top left,
-      rgba(217, 255, 140, 0.12),
+      rgba(217, 255, 140, 0.18),
       transparent 42%
     );
 }
@@ -91,10 +87,11 @@
   position: absolute;
   top: 1rem;
   right: 1rem;
-  width: 5.5rem;
-  height: 5.5rem;
+  width: 6.4rem;
+  height: 3.6rem;
   border: 1px solid rgba(126, 255, 203, 0.16);
-  border-radius: 50%;
+  border-radius: var(--radius-hard);
+  clip-path: polygon(0 0, calc(100% - 0.8rem) 0, 100% 0.8rem, 100% 100%, 0 100%);
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
   opacity: 0.22;
   animation: contactPulse 7s ease-in-out infinite;
@@ -126,7 +123,8 @@
   align-items: center;
   padding: 0.7rem 0.9rem;
   border: 1px solid rgba(126, 255, 203, 0.22);
-  border-radius: 999px;
+  border-radius: 0.12rem;
+  clip-path: polygon(0 0, calc(100% - 0.6rem) 0, 100% 0.6rem, 100% 100%, 0 100%);
   background: rgba(126, 255, 203, 0.07);
   color: #f6fff8;
   font-size: 1rem;
@@ -142,6 +140,13 @@
   border-color: rgba(126, 255, 203, 0.34);
   background: rgba(126, 255, 203, 0.1);
   transform: translateY(-2px);
+}
+
+.contactValue:focus-visible,
+.inlineLink:focus-visible,
+.submitButton:focus-visible {
+  outline: 2px solid rgba(126, 255, 203, 0.72);
+  outline-offset: 0.25rem;
 }
 
 .contactSignalGrid {
@@ -172,7 +177,7 @@
   gap: 0.35rem;
   padding: 0.95rem 1rem;
   border: 1px solid rgba(126, 255, 203, 0.14);
-  border-radius: 1rem;
+  border-radius: 0.12rem;
   background: rgba(255, 255, 255, 0.03);
 }
 
@@ -236,7 +241,7 @@
   min-height: 3.2rem;
   padding: 0.85rem 0.95rem;
   border: 1px solid rgba(126, 255, 203, 0.12);
-  border-radius: 1rem;
+  border-radius: 0.12rem;
   background:
     linear-gradient(180deg, rgba(11, 22, 20, 0.92), rgba(4, 11, 10, 0.98)),
     rgba(255, 255, 255, 0.02);
@@ -305,12 +310,13 @@
 .submitButton {
   min-height: 3.2rem;
   padding: 0.85rem 1.15rem;
-  border: 1px solid rgba(126, 255, 203, 0.22);
-  border-radius: 999px;
+  border: 1px solid rgba(126, 255, 203, 0.36);
+  border-radius: 0.12rem;
+  clip-path: polygon(0 0, calc(100% - 0.6rem) 0, 100% 0.6rem, 100% 100%, 0 100%);
   background: linear-gradient(
     90deg,
-    rgba(115, 255, 190, 0.16),
-    rgba(221, 255, 139, 0.18)
+    rgba(115, 255, 190, 0.26),
+    rgba(221, 255, 139, 0.22)
   );
   color: #f6fff8;
   font: inherit;

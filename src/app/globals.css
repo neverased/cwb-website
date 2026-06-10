@@ -4,7 +4,23 @@
     "Fira Code", ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
     "Roboto Mono", "Source Code Pro", monospace;
   --page-background: #020807;
+  --page-background-soft: #041111;
   --page-foreground: #f4fff8;
+  --surface-panel: #06100f;
+  --surface-panel-strong: #0a1513;
+  --surface-ink: #010504;
+  --accent-mint: #7effc6;
+  --accent-mint-soft: #8ddfba;
+  --accent-command: #d9ff8c;
+  --accent-warning: #ffaa78;
+  --text-muted: rgba(226, 247, 237, 0.86);
+  --text-subtle: rgba(214, 236, 225, 0.72);
+  --border-mint: rgba(126, 255, 203, 0.18);
+  --border-mint-strong: rgba(126, 255, 203, 0.34);
+  --corner-cut: 0.9rem;
+  --radius-hard: 0.35rem;
+  --rule-soft: rgba(126, 255, 203, 0.12);
+  --rule-strong: rgba(126, 255, 203, 0.28);
 }
 
 * {
@@ -25,7 +41,7 @@ body {
 }
 
 body {
-  min-height: 100vh;
+  min-height: 100dvh;
   color: var(--page-foreground);
   background: var(--page-background);
   text-rendering: optimizeLegibility;

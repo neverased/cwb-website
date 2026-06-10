@@ -7,19 +7,20 @@
   gap: 1.25rem;
   align-items: end;
   padding: 1.4rem;
-  border: 1px solid rgba(126, 255, 203, 0.12);
-  border-radius: 1.5rem;
+  border: 1px solid rgba(126, 255, 203, 0.18);
+  border-radius: var(--radius-hard);
+  clip-path: polygon(
+    0 0,
+    calc(100% - var(--corner-cut)) 0,
+    100% var(--corner-cut),
+    100% 100%,
+    var(--corner-cut) 100%,
+    0 calc(100% - var(--corner-cut))
+  );
   background:
-    linear-gradient(180deg, rgba(10, 18, 17, 0.9), rgba(5, 11, 11, 0.96)),
-    radial-gradient(
-      circle at top left,
-      rgba(126, 255, 203, 0.05),
-      transparent 40%
-    );
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.04),
-    0 0.45rem 0.8rem rgba(0, 0, 0, 0.26);
-  backdrop-filter: blur(12px);
+    linear-gradient(90deg, rgba(225, 69, 69, 0.1), transparent 32%),
+    linear-gradient(180deg, rgba(6, 17, 15, 0.98), rgba(1, 6, 5, 0.98));
+  box-shadow: inset 0 -1px 0 rgba(126, 255, 203, 0.08);
 }
 
 .panel::before {
@@ -27,15 +28,11 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 14%),
-    repeating-linear-gradient(
-      180deg,
-      rgba(126, 255, 203, 0.04),
-      rgba(126, 255, 203, 0.04) 1px,
-      transparent 1px,
-      transparent 4px
-    );
-  opacity: 0.4;
+    linear-gradient(rgba(225, 69, 69, 0.22), rgba(225, 69, 69, 0.22)) left top /
+      2.5rem 1px no-repeat,
+    linear-gradient(rgba(126, 255, 203, 0.16), rgba(126, 255, 203, 0.16)) right
+      bottom / 2.5rem 1px no-repeat;
+  opacity: 0.78;
   pointer-events: none;
 }
 
@@ -75,10 +72,11 @@
   position: absolute;
   top: 1.1rem;
   right: 1.1rem;
-  width: 6.25rem;
-  height: 6.25rem;
+  width: 7rem;
+  height: 3.8rem;
   border: 1px solid rgba(126, 255, 203, 0.16);
-  border-radius: 50%;
+  border-radius: var(--radius-hard);
+  clip-path: polygon(0 0, calc(100% - 0.8rem) 0, 100% 0.8rem, 100% 100%, 0 100%);
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
   opacity: 0.24;
   animation: credibilityPulse 7.5s ease-in-out infinite;
@@ -88,7 +86,7 @@
 .verificationPulse::after {
   content: "";
   position: absolute;
-  border-radius: 50%;
+  border-radius: 0;
   border: 1px dashed rgba(126, 255, 203, 0.14);
 }
 
@@ -161,12 +159,13 @@
   justify-content: center;
   min-height: 3.1rem;
   padding: 0.8rem 1.1rem;
-  border: 1px solid rgba(126, 255, 203, 0.22);
-  border-radius: 999px;
+  border: 1px solid rgba(126, 255, 203, 0.36);
+  border-radius: 0.12rem;
+  clip-path: polygon(0 0, calc(100% - 0.6rem) 0, 100% 0.6rem, 100% 100%, 0 100%);
   background: linear-gradient(
     90deg,
-    rgba(115, 255, 190, 0.16),
-    rgba(221, 255, 139, 0.18)
+    rgba(115, 255, 190, 0.26),
+    rgba(221, 255, 139, 0.22)
   );
   color: #f6fff8;
   font-size: 0.84rem;
@@ -183,6 +182,12 @@
 .button:hover,
 .link:hover {
   transform: translateY(-2px);
+}
+
+.button:focus-visible,
+.link:focus-visible {
+  outline: 2px solid rgba(126, 255, 203, 0.72);
+  outline-offset: 0.25rem;
 }
 
 @keyframes credibilitySweep {

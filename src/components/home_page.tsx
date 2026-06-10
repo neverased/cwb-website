@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import styles from "@/app/page.module.css";
 import { ContactPanel } from "@/components/contact_panel";
@@ -58,6 +58,11 @@ export const HomePage = () => {
     (typeof focusModules)[number]["id"]
   >(focusModules[0].id);
 
+  const completeBoot = useCallback(() => {
+    persistBootState();
+    setHasBooted(true);
+  }, []);
+
   useEffect(() => {
     if (!readPersistedBootState()) {
       return;
@@ -67,10 +72,28 @@ export const HomePage = () => {
     setHasBooted(true);
   }, []);
 
-  const completeBoot = () => {
-    persistBootState();
-    setHasBooted(true);
-  };
+  useEffect(() => {
+    if (hasBooted) {
+      return;
+    }
+
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    if (reduceMotion) {
+      completeBoot();
+      return;
+    }
+
+    const fallbackTimer = window.setTimeout(() => {
+      completeBoot();
+    }, 4800);
+
+    return () => {
+      window.clearTimeout(fallbackTimer);
+    };
+  }, [completeBoot, hasBooted]);
 
   const activeFocus =
     focusModules.find(({ id }) => id === activeFocusId) ?? focusModules[0];
@@ -81,30 +104,20 @@ export const HomePage = () => {
 
   return (
     <main className={styles.page}>
-      <div
-        className={[styles.bootLayer, hasBooted ? styles.bootLayerHidden : ""]
-          .filter(Boolean)
-          .join(" ")}
-        aria-hidden="true"
-      >
-        <TerminalLoader
-          texts={HACKING}
-          loop={false}
-          onComplete={completeBoot}
-        />
-      </div>
+      {!hasBooted ? (
+        <div className={styles.bootLayer} aria-hidden="true">
+          <TerminalLoader
+            texts={HACKING}
+            loop={false}
+            onComplete={completeBoot}
+          />
+        </div>
+      ) : null}
 
       <div className={styles.siteShell}>
         <SiteHeader currentPath="/" />
 
         <section className={styles.hero} id="top">
-          <div className={styles.heroBackdrop} aria-hidden="true">
-            <span className={styles.heroSweep} />
-            <span className={styles.heroSweepSecondary} />
-            <span className={styles.heroRing} />
-            <span className={styles.heroRail} />
-          </div>
-
           <div className={styles.heroCopy}>
             <Image
               className={styles.heroLogo}
@@ -124,8 +137,10 @@ export const HomePage = () => {
               step={3}
             />
             <p className={styles.heroDescription}>
-              I help teams turn media, software, architecture, and audit
-              problems into decisions and working systems.
+              For founders, product leads, and hiring teams facing unclear
+              technical decisions: I turn messy media, software, architecture,
+              and audit work into usable plans, artifacts, and hands-on
+              delivery.
             </p>
 
             <div className={styles.heroActions}>
@@ -133,11 +148,16 @@ export const HomePage = () => {
                 className={styles.primaryAction}
                 href="mailto:mail@wojciechbajer.com"
               >
-                Email Wojciech
+                Send project brief
               </a>
               <Link className={styles.secondaryAction} href="/services">
-                Open service map
+                Review services
               </Link>
+            </div>
+
+            <div className={styles.heroProof} aria-label="Credibility signals">
+              <span>RZETELNA Firma member</span>
+              <span>Selected work across media, product, and systems</span>
             </div>
           </div>
 
@@ -155,9 +175,9 @@ export const HomePage = () => {
 
             <div
               className={styles.focusTabs}
-              aria-label="Choose the problem type"
+              aria-label="Common client situations"
             >
-              <p className={styles.focusTabsLabel}>Choose the problem type</p>
+              <p className={styles.focusTabsLabel}>Common client situations</p>
               {focusModules.map((module) => (
                 <button
                   key={module.id}
@@ -180,7 +200,7 @@ export const HomePage = () => {
 
             <div className={styles.routeCard}>
               <div className={styles.routeCardHeader}>
-                <p className={styles.deckLabel}>active route</p>
+                <p className={styles.deckLabel}>what this fixes</p>
                 <span>{activeFocus.status}</span>
               </div>
               <h2 className={styles.routeCardTitle}>{activeFocus.label}</h2>
@@ -194,8 +214,8 @@ export const HomePage = () => {
 
             <div className={styles.terminalViewport}>
               <div className={styles.terminalViewportHeader}>
-                <p className={styles.deckLabel}>working terminal</p>
-                <span>live read</span>
+                <p className={styles.deckLabel}>diagnostic output</p>
+                <span>sample read</span>
               </div>
               <div aria-label="Working diagnostic terminal output">
                 {deckTerminalLines.map((line) => (
@@ -294,16 +314,17 @@ export const HomePage = () => {
             <ScrambleText
               as="h2"
               className={styles.sectionTitle}
-              text="Four routes into one operating model."
+              text="Four ways to remove technical uncertainty."
               delay={420}
             />
             <div className={styles.sectionLead}>
               <p className={styles.sectionDescription}>
-                Each entry point uses the same operating style: find the weak
-                signal, map the constraint, and turn it into a usable next move.
+                Each service starts with the same discipline: inspect the
+                current reality, name the constraint, and leave a next move the
+                team can use.
               </p>
               <Link className={styles.sectionRoute} href="/services">
-                Open service map
+                Review services
               </Link>
             </div>
           </div>
@@ -336,7 +357,7 @@ export const HomePage = () => {
                 artifacts the team can keep using.
               </p>
               <Link className={styles.sectionRoute} href="/process">
-                Open process map
+                See process
               </Link>
             </div>
           </div>
@@ -382,7 +403,7 @@ export const HomePage = () => {
                 change.
               </p>
               <Link className={styles.sectionRoute} href="/contact">
-                Open contact route
+                Start contact
               </Link>
             </div>
           </div>

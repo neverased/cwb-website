@@ -18,7 +18,6 @@
     0 calc(100% - var(--corner-cut))
   );
   background:
-    linear-gradient(90deg, rgba(126, 255, 203, 0.09), transparent 34%),
     linear-gradient(180deg, rgba(6, 16, 14, 0.98), rgba(1, 6, 5, 0.98));
   box-shadow: inset 0 -1px 0 rgba(126, 255, 203, 0.1);
 }
@@ -103,13 +102,38 @@
   .topbar {
     position: static;
     border-radius: var(--radius-hard);
-    padding: 1rem;
+    padding: 0.72rem;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
+    gap: 0.62rem;
+  }
+
+  .brandLockup {
+    grid-template-columns: auto auto;
+    justify-content: start;
+    align-items: baseline;
+    column-gap: 0.6rem;
+  }
+
+  .brandPrompt {
+    font-size: 0.62rem;
+  }
+
+  .brandName {
+    font-size: 0.86rem;
   }
 
   .nav {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, auto));
     justify-content: flex-start;
+    gap: 0.4rem 0.45rem;
+  }
+
+  .navLink {
+    min-height: 2rem;
+    padding: 0.38rem 0.5rem;
+    font-size: 0.72rem;
   }
 }
 

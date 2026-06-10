@@ -39,13 +39,13 @@ export const focusModules = [
     label: "Multimedia",
     status: "media delivery",
     summary:
-      "For launches, showrooms, branded experiences, and content operations where media quality and timing cannot drift.",
-    command: "$ plan media goal=launch-ready risk=visible",
+      "For launches, showrooms, branded experiences, and content operations where media quality, timing, and responsibility need one controlled delivery path.",
+    command: "$ plan media output=launch-ready owner=clear",
     stack: [
-      "audio and video pipelines",
-      "capture to delivery workflows",
-      "interactive presentation surfaces",
-      "quality control under real deadlines",
+      "workflow map",
+      "production supervision",
+      "quality control checkpoints",
+      "launch-ready media surface",
     ],
   },
   {
@@ -53,13 +53,13 @@ export const focusModules = [
     label: "Software",
     status: "product build",
     summary:
-      "For teams that need product interfaces, integrations, or internal tools shipped without creating avoidable debt.",
-    command: "$ build product scope=focused handoff=durable",
+      "For teams that need product interfaces, integrations, or internal tools shipped with enough structure to survive handoff.",
+    command: "$ build product output=working-system handoff=durable",
     stack: [
-      "frontend systems and interfaces",
-      "integration and internal tooling",
-      "developer workflow cleanup",
-      "delivery without unnecessary ceremony",
+      "frontend implementation",
+      "integration path",
+      "workflow cleanup",
+      "handoff notes",
     ],
   },
   {
@@ -67,13 +67,13 @@ export const focusModules = [
     label: "Architecture",
     status: "technical direction",
     summary:
-      "For decisions about structure, coupling, ownership, and platform shape before uncertainty becomes cost.",
-    command: "$ map architecture trace=dependencies choose=route",
+      "For teams that need a clear read on structure, coupling, ownership, and platform shape before uncertainty becomes cost.",
+    command: "$ map architecture output=decision-route risk=visible",
     stack: [
-      "platform shape and boundaries",
-      "dependency mapping and risk zones",
-      "handoff-ready technical direction",
-      "decision support for product teams",
+      "system map",
+      "dependency review",
+      "risk zones",
+      "decision route",
     ],
   },
   {
@@ -81,13 +81,13 @@ export const focusModules = [
     label: "Audits",
     status: "outside review",
     summary:
-      "For companies that need an independent read on what is working, what is fragile, and what should happen next.",
-    command: "$ audit company mode=product-tech output=decisions",
+      "For companies that need an independent read on what works, what is fragile, and which correction should happen first.",
+    command: "$ audit company output=priority-map evidence=real",
     stack: [
-      "technical and product audits",
-      "delivery friction diagnosis",
-      "process and ownership review",
-      "concrete next-step recommendations",
+      "findings report",
+      "priority map",
+      "ownership review",
+      "next-step recommendations",
     ],
   },
 ] as const;
@@ -144,7 +144,7 @@ export const clientOutcomes = [
     label: "Clarity",
     value: "Know what is broken, risky, or worth building next.",
     detail:
-      "Useful when a project feels noisy and nobody fully trusts the current picture.",
+      "Useful when a project feels noisy and nobody fully trusts the current technical picture.",
   },
   {
     label: "Execution",
@@ -156,7 +156,8 @@ export const clientOutcomes = [
     label: "Reduced risk",
     value:
       "Expose weak architecture, delivery gaps, and hidden product cost early.",
-    detail: "Useful before complexity hardens into expensive operating habits.",
+    detail:
+      "Useful before technical uncertainty hardens into expensive operating habits.",
   },
   {
     label: "Durable handoff",
@@ -176,7 +177,7 @@ export const workingTerminalLines = [
   "$ intake brief=client-problem",
   "reading stack, process, pressure, ownership",
   "finding hidden constraints",
-  "$ route surface=media software architecture audits",
+  "$ route work=media software architecture audits",
   "mapping risks, dependencies, and next actions",
   "$ output format=decisions artifacts implementation",
   "ready for direct handoff",

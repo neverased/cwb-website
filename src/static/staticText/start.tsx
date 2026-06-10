@@ -14,23 +14,12 @@ export const COOKIES = `Did you know that cookies are not only delicious
 but also useful? [Sure, I know that]`;
 
 export const HACKING = [
-  "Opening diagnostic console...",
-  "",
+  "Opening diagnostic console",
   "Operator: Wojciech Bajer",
-  "Mode: consulting / audits / delivery",
-  "",
   "$ intake brief=client-problem",
   "reading stack, process, pressure, ownership",
-  "",
-  "$ route surface=media software architecture audits",
-  "mapping risks, dependencies, and next actions",
-  "",
-  "$ check constraints=timeline budget quality",
-  "finding hidden constraints",
-  "",
+  "$ route work=media software architecture audits",
   "$ output format=decisions artifacts implementation",
-  "preparing durable handoff",
-  "",
-  "Signal control room ready",
+  "handoff artifacts ready",
   "$ launch cwb-interface",
 ] as const;

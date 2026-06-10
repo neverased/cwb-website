@@ -1,68 +1,14 @@
 .page {
   position: relative;
   min-height: 100dvh;
-  overflow: clip;
+  overflow: visible;
   isolation: isolate;
-  background:
-    radial-gradient(
-      circle at 8% 6%,
-      rgba(126, 255, 198, 0.18),
-      transparent 24%
-    ),
-    radial-gradient(
-      circle at 86% 14%,
-      rgba(217, 255, 140, 0.13),
-      transparent 18%
-    ),
-    radial-gradient(circle at 52% 78%, rgba(126, 255, 203, 0.08), transparent 28%),
-    linear-gradient(
-      180deg,
-      var(--page-background) 0%,
-      #061412 40%,
-      var(--page-background) 100%
-    );
+  background: linear-gradient(180deg, #020807 0%, #061412 42%, #020807 100%);
 }
 
 .page::before,
 .page::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-}
-
-.page::before {
-  background:
-    radial-gradient(circle at 18% 18%, rgba(126, 255, 203, 0.08), transparent 1px),
-    radial-gradient(circle at 78% 38%, rgba(217, 255, 140, 0.06), transparent 1px);
-  background-size:
-    36px 36px,
-    52px 52px;
-  mask-image: radial-gradient(circle at center, black, transparent 78%);
-  opacity: 0.3;
-  animation: homeAmbientDrift 34s ease-in-out infinite;
-}
-
-.page::after {
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 14%),
-    linear-gradient(
-      90deg,
-      transparent,
-      rgba(120, 255, 207, 0.18),
-      rgba(120, 255, 207, 0.08),
-      transparent
-    );
-  background-repeat: no-repeat, no-repeat;
-  background-size:
-    auto,
-    36% 100%;
-  background-position:
-    0 0,
-    -140% 0;
-  mix-blend-mode: screen;
-  opacity: 0.2;
-  animation: homeShellSweep 18s linear infinite;
+  content: none;
 }
 
 .srOnly {
@@ -189,21 +135,14 @@
   right: clamp(1rem, 3vw, 1.75rem);
   bottom: clamp(1rem, 3vw, 1.75rem);
   z-index: 4;
-  width: min(25rem, calc(100vw - 2rem));
-  --boot-panel-height: 13.5rem;
-  --boot-panel-min-height: 13.5rem;
+  width: min(20.5rem, calc(100vw - 2rem));
+  --boot-panel-height: 9.6rem;
+  --boot-panel-min-height: 9.6rem;
   pointer-events: none;
   transition:
     opacity 0.45s ease,
     visibility 0.45s ease,
     transform 0.45s ease;
-}
-
-.bootLayerHidden {
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(0.75rem);
-  pointer-events: none;
 }
 
 .commandDeck,
@@ -222,7 +161,6 @@
     0 calc(100% - var(--corner-cut))
   );
   background:
-    linear-gradient(90deg, rgba(126, 255, 203, 0.08), transparent 44%),
     linear-gradient(180deg, rgba(7, 18, 16, 0.98), rgba(1, 6, 5, 0.98));
   box-shadow: inset 0 -1px 0 rgba(126, 255, 203, 0.09);
 }
@@ -350,7 +288,7 @@
 
 .hero {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   isolation: isolate;
   display: grid;
   grid-template-columns: minmax(0, 1.18fr) minmax(300px, 0.72fr);
@@ -361,92 +299,6 @@
 .hero > * {
   position: relative;
   z-index: 1;
-}
-
-.heroBackdrop {
-  position: absolute;
-  inset: -2rem -1.5rem -1.5rem 40%;
-  overflow: hidden;
-  border: 1px solid rgba(126, 255, 203, 0.08);
-  border-radius: var(--radius-hard);
-  clip-path: polygon(0 0, calc(100% - 2rem) 0, 100% 2rem, 100% 100%, 2rem 100%, 0 calc(100% - 2rem));
-  pointer-events: none;
-  z-index: 0;
-}
-
-.heroSweep,
-.heroSweepSecondary {
-  position: absolute;
-  left: -30%;
-  right: -30%;
-  height: 5rem;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(120, 255, 208, 0.18),
-    rgba(120, 255, 208, 0.06),
-    transparent
-  );
-  filter: blur(12px);
-  animation: homeHudSweep 16s linear infinite;
-}
-
-.heroSweep {
-  top: 16%;
-  transform: rotate(-8deg);
-}
-
-.heroSweepSecondary {
-  top: 58%;
-  height: 5rem;
-  opacity: 0.55;
-  transform: rotate(7deg);
-  animation-delay: -8s;
-}
-
-.heroRing {
-  position: absolute;
-  top: 2.25rem;
-  right: 1.5rem;
-  width: min(23rem, 46%);
-  aspect-ratio: 1.35;
-  border: 1px solid rgba(126, 255, 203, 0.16);
-  border-radius: var(--radius-hard);
-  clip-path: polygon(0 0, calc(100% - 1.2rem) 0, 100% 1.2rem, 100% 100%, 1.2rem 100%, 0 calc(100% - 1.2rem));
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
-  animation: homeMarkerPulse 8s ease-in-out infinite;
-}
-
-.heroRing::before,
-.heroRing::after {
-  content: "";
-  position: absolute;
-  border: 1px solid rgba(126, 255, 203, 0.12);
-  border-radius: 0;
-}
-
-.heroRing::before {
-  inset: 1.25rem;
-}
-
-.heroRing::after {
-  inset: 2.8rem;
-}
-
-.heroRail {
-  position: absolute;
-  top: 12%;
-  bottom: 12%;
-  left: 1.5rem;
-  width: 1px;
-  background: linear-gradient(
-    180deg,
-    transparent,
-    rgba(126, 255, 203, 0.52),
-    rgba(217, 255, 140, 0.36),
-    transparent
-  );
-  box-shadow: 0 0 1rem rgba(126, 255, 203, 0.12);
 }
 
 .heroCopy {
@@ -469,8 +321,27 @@
 }
 
 .heroDescription {
-  max-width: 54ch;
+  max-width: 64ch;
   font-size: 1.08rem;
+}
+
+.heroProof {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  max-width: 58ch;
+  color: rgba(229, 248, 239, 0.84);
+  font-size: 0.78rem;
+}
+
+.heroProof span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: 0.42rem 0.62rem;
+  border: 1px solid rgba(126, 255, 203, 0.14);
+  border-radius: 0.12rem;
+  background: rgba(3, 14, 12, 0.72);
 }
 
 .focusTabs {
@@ -511,11 +382,7 @@
 
 .focusTabActive {
   border-color: rgba(126, 255, 203, 0.24);
-  background: linear-gradient(
-    90deg,
-    rgba(115, 255, 190, 0.14),
-    rgba(221, 255, 139, 0.14)
-  );
+  background: rgba(126, 255, 203, 0.1);
   color: #f6fff8;
 }
 
@@ -533,13 +400,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 16%),
-    radial-gradient(
-      circle at 18% 12%,
-      rgba(126, 255, 203, 0.06),
-      transparent 36%
-    );
+  background: rgba(255, 255, 255, 0.025);
   opacity: 0.5;
   pointer-events: none;
 }
@@ -582,12 +443,7 @@
   border-radius: 0.12rem;
   clip-path: polygon(0 0, calc(100% - 0.75rem) 0, 100% 0.75rem, 100% 100%, 0 100%);
   background:
-    linear-gradient(180deg, rgba(1, 8, 7, 0.96), rgba(0, 0, 0, 0.82)),
-    radial-gradient(
-      circle at top right,
-      rgba(217, 255, 140, 0.08),
-      transparent 42%
-    );
+    linear-gradient(180deg, rgba(1, 8, 7, 0.96), rgba(0, 0, 0, 0.82));
   font-size: 0.8rem;
   line-height: 1.45;
 }
@@ -626,11 +482,7 @@
 
 .primaryAction {
   border: 1px solid rgba(126, 255, 203, 0.38);
-  background: linear-gradient(
-    90deg,
-    rgba(115, 255, 190, 0.28),
-    rgba(221, 255, 139, 0.24)
-  );
+  background: rgba(126, 255, 203, 0.14);
   color: #f6fff8;
   box-shadow: inset 0 -1px 0 rgba(126, 255, 203, 0.14);
 }
@@ -647,7 +499,7 @@
   display: grid;
   align-self: start;
   justify-self: end;
-  width: min(100%, 28rem);
+  width: min(100%, 26.5rem);
   gap: 0.85rem;
   padding: 1.05rem;
 }
@@ -740,13 +592,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 18%),
-    radial-gradient(
-      circle at 12% 18%,
-      rgba(126, 255, 203, 0.045),
-      transparent 34%
-    );
+  background: rgba(255, 255, 255, 0.024);
   opacity: 0.55;
   pointer-events: none;
 }
@@ -854,11 +700,10 @@
 .signalStrip .signalCard:first-child {
   grid-row: span 3;
   align-content: end;
-  min-height: 21rem;
+  min-height: 16.5rem;
   padding: clamp(1.4rem, 3vw, 2rem);
   background:
-    radial-gradient(circle at 12% 10%, rgba(126, 255, 203, 0.18), transparent 30%),
-    linear-gradient(180deg, rgba(9, 24, 21, 0.94), rgba(1, 7, 6, 0.76));
+    linear-gradient(180deg, rgba(8, 21, 18, 0.94), rgba(1, 7, 6, 0.76));
 }
 
 .signalStrip .signalCard:first-child h3 {
@@ -878,7 +723,7 @@
     transparent
   );
   filter: blur(12px);
-  opacity: 0.14;
+  opacity: 0.08;
   pointer-events: none;
   animation: homeHudSweep 20s linear infinite;
 }
@@ -947,22 +792,24 @@
 }
 
 .capabilityCard:nth-child(1) {
-  grid-column: span 5;
-  grid-row: span 2;
-  min-height: 19rem;
+  grid-column: span 6;
+  grid-row: auto;
+  min-height: 15.5rem;
   align-content: end;
   background:
-    linear-gradient(135deg, rgba(126, 255, 203, 0.1), transparent 44%),
-    linear-gradient(180deg, rgba(6, 17, 15, 0.72), transparent);
+    linear-gradient(180deg, rgba(6, 17, 15, 0.86), rgba(3, 10, 9, 0.52));
 }
 
 .capabilityCard:nth-child(2) {
-  grid-column: span 7;
+  grid-column: span 6;
 }
 
-.capabilityCard:nth-child(3),
+.capabilityCard:nth-child(3) {
+  grid-column: span 5;
+}
+
 .capabilityCard:nth-child(4) {
-  grid-column: span 3;
+  grid-column: span 7;
 }
 
 .collaborationGrid {
@@ -1026,8 +873,7 @@
   border-radius: var(--radius-hard);
   clip-path: polygon(0 0, calc(100% - 0.75rem) 0, 100% 0.75rem, 100% 100%, 0 100%);
   background:
-    linear-gradient(180deg, rgba(7, 17, 15, 0.72), rgba(3, 10, 9, 0.42)),
-    rgba(126, 255, 203, 0.02);
+    linear-gradient(180deg, rgba(7, 17, 15, 0.78), rgba(3, 10, 9, 0.58));
 }
 
 .signalCard::after,
@@ -1052,7 +898,7 @@
       bottom / 1.1rem 1px no-repeat,
     linear-gradient(rgba(126, 255, 203, 0.18), rgba(126, 255, 203, 0.18)) right
       bottom / 1px 1.1rem no-repeat;
-  opacity: 0.24;
+  opacity: 0.16;
   pointer-events: none;
   animation: homeRailBlink 7s ease-in-out infinite;
 }
@@ -1087,7 +933,7 @@
   border-bottom: 1px solid rgba(126, 255, 203, 0.08);
   border-left: 0;
   border-right: 0;
-  background: linear-gradient(180deg, rgba(126, 255, 203, 0.035), transparent);
+  background: rgba(4, 14, 12, 0.42);
   clip-path: none;
 }
 
@@ -1095,13 +941,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 14%),
-    radial-gradient(
-      circle at 24% 12%,
-      rgba(126, 255, 203, 0.055),
-      transparent 36%
-    );
+  background: rgba(255, 255, 255, 0.025);
   opacity: 0.5;
   pointer-events: none;
 }
@@ -1144,12 +984,7 @@
   clip-path: polygon(0 0, calc(100% - 0.65rem) 0, 100% 0.65rem, 100% 100%, 0 100%);
   border: 1px solid rgba(126, 255, 203, 0.12);
   background:
-    linear-gradient(180deg, rgba(16, 28, 25, 0.92), rgba(9, 17, 16, 0.98)),
-    radial-gradient(
-      circle at top left,
-      rgba(126, 255, 203, 0.07),
-      transparent 44%
-    );
+    linear-gradient(180deg, rgba(16, 28, 25, 0.92), rgba(9, 17, 16, 0.98));
   box-shadow: inset 0 -1px 0 rgba(126, 255, 203, 0.08);
 }
 
@@ -1204,12 +1039,7 @@
 
 .collaborationSurfaceDark {
   background:
-    linear-gradient(180deg, rgba(11, 21, 19, 0.98), rgba(6, 12, 11, 1)),
-    radial-gradient(
-      circle at top left,
-      rgba(126, 255, 203, 0.1),
-      transparent 46%
-    );
+    linear-gradient(180deg, rgba(11, 21, 19, 0.98), rgba(6, 12, 11, 1));
 }
 
 .collaborationSurfaceYellow {
@@ -1234,7 +1064,7 @@
   overflow: hidden;
   border-top: 1px solid rgba(126, 255, 203, 0.2);
   border-bottom: 1px solid rgba(126, 255, 203, 0.08);
-  background: linear-gradient(90deg, rgba(126, 255, 203, 0.045), transparent 62%);
+  background: rgba(4, 14, 12, 0.36);
   clip-path: none;
 }
 
@@ -1316,18 +1146,6 @@
     grid-template-columns: 1fr;
   }
 
-  .heroBackdrop {
-    inset: -1rem -1rem auto -1rem;
-    min-height: 22rem;
-  }
-
-  .heroRing {
-    top: -1rem;
-    right: -2rem;
-    width: min(18rem, 52%);
-  }
-
-  .heroRail,
   .processGrid::before {
     display: none;
   }
@@ -1345,15 +1163,16 @@
 
 @media (max-width: 760px) {
   .bootLayer {
-    right: 1rem;
-    bottom: 1rem;
-    width: calc(100vw - 2rem);
-    --boot-panel-height: 11.5rem;
-    --boot-panel-min-height: 11.5rem;
+    right: 0.75rem;
+    bottom: 0.75rem;
+    width: min(18.5rem, calc(100vw - 1.5rem));
+    --boot-panel-height: 8.4rem;
+    --boot-panel-min-height: 8.4rem;
   }
 
   .siteShell {
     padding-inline: 1rem;
+    gap: 2.25rem;
   }
 
   .topbar {
@@ -1373,7 +1192,7 @@
   }
 
   .heroTitle {
-    font-size: 2.55rem;
+    font-size: 2.35rem;
   }
 
   .heroLogo {
@@ -1388,18 +1207,13 @@
     font-size: 1rem;
   }
 
+  .heroProof {
+    gap: 0.45rem;
+    font-size: 0.875rem;
+  }
+
   .heroCopy {
-    padding-top: 0.75rem;
-  }
-
-  .heroBackdrop {
-    inset: -0.5rem -0.5rem auto;
-    min-height: 18rem;
-    opacity: 0.8;
-  }
-
-  .heroRing {
-    width: 12rem;
+    padding-top: 0;
   }
 
   .sectionLead {
@@ -1444,14 +1258,23 @@
   .processConsoleHeader {
     flex-direction: column;
   }
+
+  .routeCard {
+    order: 1;
+  }
+
+  .terminalViewport {
+    order: 2;
+  }
+
+  .focusTabs {
+    order: 3;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .page::before,
   .page::after,
-  .heroSweep,
-  .heroSweepSecondary,
-  .heroRing,
   .commandDeck::after,
   .signalStrip::before,
   .signalCard::after,
@@ -1471,9 +1294,6 @@
 
   .page::before,
   .page::after,
-  .heroSweep,
-  .heroSweepSecondary,
-  .heroRing,
   .commandDeck::after,
   .signalStrip::before,
   .signalCard::after,

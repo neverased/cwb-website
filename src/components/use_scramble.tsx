@@ -12,29 +12,29 @@ interface TerminalLoaderProps {
 const STAGES = [
   {
     limit: 24,
-    label: "auth handshake",
-    detail: "validating operator credentials",
+    label: "brief intake",
+    detail: "reading client context",
   },
   {
     limit: 54,
-    label: "kernel patch",
-    detail: "warming runtime and secure modules",
+    label: "constraint map",
+    detail: "checking pressure and ownership",
   },
   {
     limit: 82,
-    label: "swarm uplink",
-    detail: "linking remote nodes and caching assets",
+    label: "route select",
+    detail: "mapping delivery options",
   },
   {
     limit: 100,
-    label: "interface launch",
-    detail: "rendering the brand shell",
+    label: "handoff ready",
+    detail: "opening the site interface",
   },
 ] as const;
 
 const COMPLETE_STAGE = {
-  label: "handoff complete",
-  detail: "opening destination interface",
+  label: "interface ready",
+  detail: "site ready for review",
 } as const;
 
 const getLineTone = (line: string) => {

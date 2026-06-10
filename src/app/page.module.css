@@ -181,12 +181,50 @@
   }
 }
 
+.bootShell,
 .siteShell {
   position: relative;
   width: min(1220px, 100%);
   z-index: 1;
 }
 
+.bootLayer {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: grid;
+  place-items: center;
+  padding: clamp(1rem, 4vw, 2rem);
+  background:
+    linear-gradient(180deg, rgba(2, 8, 7, 0.96), rgba(3, 12, 10, 0.98)),
+    radial-gradient(
+      circle at 12% 16%,
+      rgba(116, 255, 191, 0.08),
+      transparent 26%
+    );
+  transition:
+    opacity 0.8s ease,
+    visibility 0.8s ease,
+    transform 0.8s ease;
+}
+
+.bootLayerHidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.02);
+  pointer-events: none;
+}
+
+.bootShell {
+  --boot-panel-height: min(42rem, calc(100dvh - 4rem));
+  --boot-panel-min-height: min(29rem, calc(100dvh - 4rem));
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  gap: clamp(1rem, 3vw, 2rem);
+  align-items: stretch;
+}
+
+.bootCopy,
 .commandDeck,
 .signalCard,
 .processConsole,
@@ -211,6 +249,7 @@
   backdrop-filter: blur(12px);
 }
 
+.bootCopy::before,
 .commandDeck::before,
 .capabilityCard::before,
 .processCard::before,
@@ -233,9 +272,20 @@
   pointer-events: none;
 }
 
+.bootCopy,
 .commandDeck {
   padding: clamp(1.4rem, 3vw, 2.2rem);
   border-radius: 1.75rem;
+}
+
+.bootCopy {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 1.35rem;
+  padding-block-end: clamp(2rem, 4vw, 3rem);
+  block-size: var(--boot-panel-height);
+  min-block-size: var(--boot-panel-min-height);
 }
 
 .kicker {
@@ -245,12 +295,21 @@
   text-transform: uppercase;
 }
 
+.bootTitle,
 .heroTitle,
 .sectionTitle {
   font-family: var(--font-display), "Fira Code", monospace;
   color: #f4fff8;
 }
 
+.bootTitle {
+  max-width: 10ch;
+  font-size: clamp(2.35rem, 5.4vw, 4rem);
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+}
+
+.bootDescription,
 .heroDescription,
 .sectionDescription,
 .capabilityCard p,
@@ -261,6 +320,19 @@
   line-height: 1.75;
 }
 
+.bootDescription {
+  max-width: 42ch;
+  font-size: 1rem;
+}
+
+.bootMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: auto;
+}
+
+.bootMeta span,
 .heroFootnote span,
 .noteMeta span {
   display: inline-flex;
@@ -276,6 +348,7 @@
   text-transform: uppercase;
 }
 
+.skipButton,
 .primaryAction,
 .secondaryAction,
 .contactValue {
@@ -286,6 +359,22 @@
     color 180ms ease;
 }
 
+.skipButton {
+  align-self: flex-start;
+  margin-top: 0.35rem;
+  margin-bottom: clamp(1rem, 2.5vw, 1.75rem);
+  width: fit-content;
+  padding: 0.8rem 1rem;
+  border: 1px solid rgba(126, 255, 203, 0.22);
+  border-radius: 999px;
+  background: rgba(10, 24, 20, 0.7);
+  color: #d8ffee;
+  font: inherit;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+}
+
+.skipButton:hover,
 .primaryAction:hover,
 .secondaryAction:hover,
 .contactValue:hover {
@@ -297,6 +386,15 @@
   padding: 1rem clamp(1rem, 3vw, 1.75rem) 4.5rem;
   display: grid;
   gap: clamp(3rem, 6vw, 5rem);
+  opacity: 0;
+  transform: translateY(2rem);
+  pointer-events: none;
+  transition:
+    opacity 0.7s ease 0.15s,
+    transform 0.7s ease 0.15s;
+}
+
+.siteShellVisible {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
@@ -1449,6 +1547,7 @@
 }
 
 @media (max-width: 1080px) {
+  .bootShell,
   .hero {
     grid-template-columns: 1fr;
   }
@@ -1475,6 +1574,11 @@
 }
 
 @media (max-width: 760px) {
+  .bootShell {
+    --boot-panel-height: min(36rem, calc(100dvh - 2rem));
+    --boot-panel-min-height: min(24rem, calc(100dvh - 2rem));
+  }
+
   .siteShell {
     padding-inline: 1rem;
   }
@@ -1491,6 +1595,7 @@
     justify-content: flex-start;
   }
 
+  .bootTitle,
   .heroTitle,
   .sectionTitle {
     max-width: none;
@@ -1554,7 +1659,9 @@
   .processConsole::after,
   .collaborationCard::after,
   .collaborationSurface::before,
+  .bootLayer,
   .siteShell,
+  .skipButton,
   .primaryAction,
   .secondaryAction,
   .sectionRoute,

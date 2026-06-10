@@ -2,13 +2,14 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { startTransition, useCallback, useLayoutEffect, useState } from "react";
 
 import styles from "@/app/page.module.css";
 import { ContactPanel } from "@/components/contact_panel";
 import { CredibilityPanel } from "@/components/credibility_panel";
 import { ScrambleText } from "@/components/scramble_text";
 import { SiteHeader } from "@/components/site_header";
+import { TerminalLoader } from "@/components/use_scramble";
 import {
   collaborationProofPoints,
   coreSignals,
@@ -20,11 +21,60 @@ import {
   selectedCollaborations,
   terminalFacts,
 } from "@/static/siteContent";
+import { HACKING } from "@/static/staticText/start";
+
+const BOOT_SESSION_KEY = "cwb.boot.completed";
+
+let hasBootedInMemory = false;
+
+const readPersistedBootState = () => {
+  if (typeof window === "undefined") {
+    return false;
+  }
+
+  try {
+    return window.sessionStorage.getItem(BOOT_SESSION_KEY) === "1";
+  } catch {
+    return false;
+  }
+};
+
+const persistBootState = () => {
+  hasBootedInMemory = true;
+
+  if (typeof window === "undefined") {
+    return;
+  }
+
+  try {
+    window.sessionStorage.setItem(BOOT_SESSION_KEY, "1");
+  } catch {
+    // Keep the in-memory session flag if storage is unavailable.
+  }
+};
 
 export const HomePage = () => {
+  const [hasBooted, setHasBooted] = useState(hasBootedInMemory);
   const [activeFocusId, setActiveFocusId] = useState<
     (typeof focusModules)[number]["id"]
   >(focusModules[0].id);
+
+  useLayoutEffect(() => {
+    if (!readPersistedBootState()) {
+      return;
+    }
+
+    hasBootedInMemory = true;
+    setHasBooted(true);
+  }, []);
+
+  const enterSite = useCallback(() => {
+    persistBootState();
+
+    startTransition(() => {
+      setHasBooted(true);
+    });
+  }, []);
 
   const activeFocus =
     focusModules.find(({ id }) => id === activeFocusId) ?? focusModules[0];
@@ -36,7 +86,49 @@ export const HomePage = () => {
 
   return (
     <main className={styles.page}>
-      <div className={styles.siteShell}>
+      <div
+        className={[styles.bootLayer, hasBooted ? styles.bootLayerHidden : ""]
+          .filter(Boolean)
+          .join(" ")}
+      >
+        <div className={styles.bootShell}>
+          <div className={styles.bootCopy}>
+            <p className={styles.kicker}>Boot sequence</p>
+            <ScrambleText
+              as="h1"
+              className={styles.bootTitle}
+              text="Initializing signal control room."
+              speed={0.8}
+              step={3}
+            />
+            <p className={styles.bootDescription}>
+              Loading a working map for multimedia systems, software delivery,
+              architecture, and independent audits.
+            </p>
+
+            <div className={styles.bootMeta}>
+              <span>Operator: Wojciech Bajer</span>
+              <span>Mode: consulting + audits + delivery</span>
+            </div>
+
+            <button
+              className={styles.skipButton}
+              type="button"
+              onClick={enterSite}
+            >
+              Skip boot
+            </button>
+          </div>
+
+          <TerminalLoader texts={HACKING} loop={false} onComplete={enterSite} />
+        </div>
+      </div>
+
+      <div
+        className={[styles.siteShell, hasBooted ? styles.siteShellVisible : ""]
+          .filter(Boolean)
+          .join(" ")}
+      >
         <SiteHeader currentPath="/" />
 
         <section className={styles.hero} id="top">

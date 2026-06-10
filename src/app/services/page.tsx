@@ -99,9 +99,9 @@ export default function ServicesPage() {
             />
             <p className={styles.description}>
               The entry point can be media delivery, software build,
-              architecture direction, or an independent audit. The goal is the
-              same: make the situation clearer, expose the real constraints, and
-              leave work your team can use.
+              architecture direction, or an independent audit. The result
+              should be the same: a clearer situation, visible constraints, and
+              work your team can keep using.
             </p>
           </div>
 
@@ -149,7 +149,7 @@ export default function ServicesPage() {
             <ScrambleText
               as="h2"
               className={styles.sectionTitle}
-              text="What comes in, what happens, and what leaves."
+              text="What comes in, what changes, and what leaves."
               speed={0.78}
               step={3}
             />
@@ -237,7 +237,6 @@ export default function ServicesPage() {
                 <div className={styles.matrixStack}>
                   {items.map((item) => (
                     <div key={item} className={styles.matrixRow}>
-                      <span className={styles.matrixDot} />
                       <p className={styles.matrixValue}>{item}</p>
                     </div>
                   ))}

@@ -77,9 +77,9 @@ export default function ContactPage() {
               step={3}
             />
             <p className={styles.description}>
-              If the system is noisy, unclear, or underbuilt, send the brief
-              directly. A short description of the problem is enough to start a
-              focused conversation.
+              If the system is noisy, unclear, or underbuilt, send the useful
+              context directly. Start with what is blocked, risky, or worth
+              reviewing.
             </p>
           </div>
 

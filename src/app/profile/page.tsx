@@ -82,14 +82,14 @@ export default function ProfilePage() {
             <ScrambleText
               as="h1"
               className={styles.title}
-              text="One technical partner across media, product, and system design."
+              text="One technical operator across media, product, and system design."
               speed={0.8}
               step={3}
             />
             <p className={styles.description}>
-              I work as a direct specialist for projects that need clearer
-              structure, sharper execution, or an outside technical read across
-              multimedia, software, architecture, and audits.
+              Use this route to check fit: the work, the operating style, the
+              collaboration signals, and where I usually help teams make better
+              technical decisions.
             </p>
           </div>
 
@@ -98,7 +98,6 @@ export default function ProfilePage() {
             <div className={styles.matrixStack}>
               {terminalFacts.map(({ label, value }) => (
                 <div key={label} className={styles.matrixRow}>
-                  <span className={styles.matrixDot} />
                   <p className={styles.matrixValue}>
                     <strong>{label}</strong>
                     {" // "}
@@ -116,7 +115,7 @@ export default function ProfilePage() {
             <ScrambleText
               as="h2"
               className={styles.sectionTitle}
-              text="A profile built around four connected workstreams."
+              text="Four connected workstreams, one way of operating."
               speed={0.78}
               step={3}
             />

@@ -95,8 +95,8 @@ export default function ProcessPage() {
             />
             <p className={styles.description}>
               The process is simple on purpose: understand what is actually
-              happening, map the system, correct what matters, and leave
-              something durable behind.
+              happening, map the system, correct what matters, and leave the
+              team with decisions it can reuse.
             </p>
           </div>
 

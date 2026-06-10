@@ -5,7 +5,7 @@ export const coreSignals = [
     description:
       "Media-heavy launches and experiences that need reliable planning, production logic, and quality control.",
     detail:
-      "Audio, video, interactive surfaces, delivery pipelines, and production supervision.",
+      "Audio, video, interactive surfaces, delivery pipelines, and production supervision under real deadlines.",
   },
   {
     id: "02",
@@ -13,7 +13,7 @@ export const coreSignals = [
     description:
       "Product interfaces, internal tools, and integration work delivered with maintainable technical discipline.",
     detail:
-      "Frontend systems, workflow cleanup, integrations, and practical implementation support.",
+      "Frontend systems, workflow cleanup, integrations, and implementation support that can survive handoff.",
   },
   {
     id: "03",
@@ -40,7 +40,7 @@ export const focusModules = [
     status: "media delivery",
     summary:
       "For launches, showrooms, branded experiences, and content operations where media quality and timing cannot drift.",
-    command: "$ plan media --goal launch-ready --risk visible",
+    command: "$ plan media goal=launch-ready risk=visible",
     stack: [
       "audio and video pipelines",
       "capture to delivery workflows",
@@ -53,8 +53,8 @@ export const focusModules = [
     label: "Software",
     status: "product build",
     summary:
-      "For teams that need product interfaces, integrations, or internal tools shipped without creating avoidable technical debt.",
-    command: "$ build product --scope focused --handoff durable",
+      "For teams that need product interfaces, integrations, or internal tools shipped without creating avoidable debt.",
+    command: "$ build product scope=focused handoff=durable",
     stack: [
       "frontend systems and interfaces",
       "integration and internal tooling",
@@ -67,8 +67,8 @@ export const focusModules = [
     label: "Architecture",
     status: "technical direction",
     summary:
-      "For decisions about structure, coupling, ownership, and platform shape before scale turns uncertainty into cost.",
-    command: "$ map architecture --trace dependencies --choose route",
+      "For decisions about structure, coupling, ownership, and platform shape before uncertainty becomes cost.",
+    command: "$ map architecture trace=dependencies choose=route",
     stack: [
       "platform shape and boundaries",
       "dependency mapping and risk zones",
@@ -82,7 +82,7 @@ export const focusModules = [
     status: "outside review",
     summary:
       "For companies that need an independent read on what is working, what is fragile, and what should happen next.",
-    command: "$ audit company --mode product-tech --output decisions",
+    command: "$ audit company mode=product-tech output=decisions",
     stack: [
       "technical and product audits",
       "delivery friction diagnosis",
@@ -101,7 +101,7 @@ export const operatingModel = [
   {
     step: "02",
     title: "Map the system",
-    text: "Then I turn it into a concrete operating model: architecture, priorities, dependencies, and decision points.",
+    text: "Then I turn it into an operating model: architecture, priorities, dependencies, and decision points.",
   },
   {
     step: "03",
@@ -173,12 +173,12 @@ export const executionConsole = [
 ] as const;
 
 export const workingTerminalLines = [
-  "$ intake --brief client-problem",
+  "$ intake brief=client-problem",
   "reading stack, process, pressure, ownership",
   "finding hidden constraints",
-  "$ route --surface media software architecture audits",
+  "$ route surface=media software architecture audits",
   "mapping risks, dependencies, and next actions",
-  "$ output --format decisions artifacts implementation",
+  "$ output format=decisions artifacts implementation",
   "ready for direct handoff",
 ] as const;
 
@@ -227,7 +227,7 @@ export const serviceBoards = [
       "interactive surface alignment",
     ],
     fit: "Best when media work carries product pressure and real deadlines.",
-    command: "$ inspect --surface media --goal launch-ready --signal clean",
+    command: "$ inspect surface=media goal=launch-ready signal=clean",
   },
   {
     id: "software",
@@ -258,7 +258,7 @@ export const serviceBoards = [
       "developer workflow cleanup",
     ],
     fit: "Best when execution matters as much as the architectural call.",
-    command: "$ deploy --surface product --mode engineering --risk visible",
+    command: "$ deploy surface=product mode=engineering risk=visible",
   },
   {
     id: "architecture",
@@ -289,7 +289,7 @@ export const serviceBoards = [
       "handoff-ready direction",
     ],
     fit: "Best when teams feel momentum, but the system underneath is still blurry.",
-    command: "$ map --surface architecture --trace dependencies --expose debt",
+    command: "$ map surface=architecture trace=dependencies expose=debt",
   },
   {
     id: "audits",
@@ -320,7 +320,7 @@ export const serviceBoards = [
       "recommended next steps",
     ],
     fit: "Best when the team is busy, but nobody fully trusts the picture.",
-    command: "$ audit --surface company --mode product-tech --output signal",
+    command: "$ audit surface=company mode=product-tech output=signal",
   },
 ] as const;
 

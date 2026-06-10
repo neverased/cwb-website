@@ -124,8 +124,8 @@ export const HomePage = () => {
               step={3}
             />
             <p className={styles.heroDescription}>
-              I help companies solve messy media, software, architecture, and
-              audit problems with direct technical execution.
+              I help teams turn media, software, architecture, and audit
+              problems into decisions and working systems.
             </p>
 
             <div className={styles.heroActions}>
@@ -237,13 +237,13 @@ export const HomePage = () => {
             <ScrambleText
               as="h2"
               className={styles.sectionTitle}
-              text="Proof without case-study theater."
+              text="Work seen under real delivery pressure."
               delay={400}
             />
             <p className={styles.sectionDescription}>
               Selected organizations from multimedia, engineering, and delivery
-              contexts. The signal is not logo collecting, it is operating where
-              quality, timing, and technical judgment all matter.
+              contexts where timing, quality, and technical judgment all had to
+              hold together.
             </p>
           </div>
 
@@ -294,7 +294,7 @@ export const HomePage = () => {
             <ScrambleText
               as="h2"
               className={styles.sectionTitle}
-              text="Choose the route that matches the problem."
+              text="Four routes into one operating model."
               delay={420}
             />
             <div className={styles.sectionLead}>
@@ -303,7 +303,7 @@ export const HomePage = () => {
                 signal, map the constraint, and turn it into a usable next move.
               </p>
               <Link className={styles.sectionRoute} href="/services">
-                Open services page
+                Open service map
               </Link>
             </div>
           </div>
@@ -327,16 +327,16 @@ export const HomePage = () => {
             <ScrambleText
               as="h2"
               className={styles.sectionTitle}
-              text="The work moves from evidence to handoff."
+              text="Evidence first, then decisions teams can use."
               delay={520}
             />
             <div className={styles.sectionLead}>
               <p className={styles.sectionDescription}>
-                No generic workshop loop. The output is a cleaner picture of
-                risk, a decision route, and artifacts the team can keep using.
+                The output is a cleaner picture of risk, a decision route, and
+                artifacts the team can keep using.
               </p>
               <Link className={styles.sectionRoute} href="/process">
-                Open full process page
+                Open process map
               </Link>
             </div>
           </div>
@@ -372,7 +372,7 @@ export const HomePage = () => {
             <ScrambleText
               as="h2"
               className={styles.sectionTitle}
-              text="Send the problem directly."
+              text="Send the useful context directly."
               delay={720}
             />
             <div className={styles.sectionLead}>
@@ -382,7 +382,7 @@ export const HomePage = () => {
                 change.
               </p>
               <Link className={styles.sectionRoute} href="/contact">
-                Open contact page
+                Open contact route
               </Link>
             </div>
           </div>

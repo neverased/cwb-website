@@ -181,7 +181,6 @@
   }
 }
 
-.bootShell,
 .siteShell {
   position: relative;
   width: min(1220px, 100%);
@@ -190,48 +189,28 @@
 
 .bootLayer {
   position: fixed;
-  inset: 0;
-  z-index: 10;
-  display: grid;
-  place-items: center;
-  padding: clamp(1rem, 4vw, 2rem);
-  background:
-    linear-gradient(180deg, rgba(2, 8, 7, 0.96), rgba(3, 12, 10, 0.98)),
-    radial-gradient(
-      circle at 12% 16%,
-      rgba(116, 255, 191, 0.08),
-      transparent 26%
-    );
+  right: clamp(1rem, 3vw, 1.75rem);
+  bottom: clamp(1rem, 3vw, 1.75rem);
+  z-index: 4;
+  width: min(25rem, calc(100vw - 2rem));
+  --boot-panel-height: 13.5rem;
+  --boot-panel-min-height: 13.5rem;
+  pointer-events: none;
   transition:
-    opacity 0.8s ease,
-    visibility 0.8s ease,
-    transform 0.8s ease;
+    opacity 0.45s ease,
+    visibility 0.45s ease,
+    transform 0.45s ease;
 }
 
 .bootLayerHidden {
   opacity: 0;
   visibility: hidden;
-  transform: scale(1.02);
+  transform: translateY(0.75rem);
   pointer-events: none;
 }
 
-.bootShell {
-  --boot-panel-height: min(42rem, calc(100dvh - 4rem));
-  --boot-panel-min-height: min(29rem, calc(100dvh - 4rem));
-  display: grid;
-  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
-  gap: clamp(1rem, 3vw, 2rem);
-  align-items: stretch;
-}
-
-.bootCopy,
 .commandDeck,
-.signalCard,
 .processConsole,
-.capabilityCard,
-.processCard,
-.noteCard,
-.contactCard,
 .topbar {
   position: relative;
   overflow: hidden;
@@ -249,12 +228,7 @@
   backdrop-filter: blur(12px);
 }
 
-.bootCopy::before,
 .commandDeck::before,
-.capabilityCard::before,
-.processCard::before,
-.noteCard::before,
-.contactCard::before,
 .topbar::before {
   content: "";
   position: absolute;
@@ -272,85 +246,27 @@
   pointer-events: none;
 }
 
-.bootCopy,
 .commandDeck {
   padding: clamp(1.4rem, 3vw, 2.2rem);
   border-radius: 1.75rem;
 }
 
-.bootCopy {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  gap: 1.35rem;
-  padding-block-end: clamp(2rem, 4vw, 3rem);
-  block-size: var(--boot-panel-height);
-  min-block-size: var(--boot-panel-min-height);
-}
-
-.kicker {
-  color: #8ddfba;
-  font-size: 0.76rem;
-  letter-spacing: 0;
-  text-transform: uppercase;
-}
-
-.bootTitle,
 .heroTitle,
 .sectionTitle {
   font-family: var(--font-display), "Fira Code", monospace;
   color: #f4fff8;
 }
 
-.bootTitle {
-  max-width: 10ch;
-  font-size: 3.45rem;
-  line-height: 1.02;
-  letter-spacing: 0;
-}
-
-.bootDescription,
 .heroDescription,
 .sectionDescription,
 .capabilityCard p,
-.processCard p,
-.noteCard p,
-.contactText {
+.processCard p {
   color: rgba(226, 247, 237, 0.86);
   line-height: 1.75;
 }
 
-.bootDescription {
-  max-width: 42ch;
-  font-size: 1rem;
-}
-
-.bootMeta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-top: auto;
-}
-
-.bootMeta span,
-.noteMeta span {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  padding: 0.55rem 0.8rem;
-  border: 1px solid rgba(126, 255, 203, 0.12);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.03);
-  color: rgba(226, 247, 236, 0.82);
-  font-size: 0.75rem;
-  letter-spacing: 0;
-  text-transform: uppercase;
-}
-
-.skipButton,
 .primaryAction,
-.secondaryAction,
-.contactValue {
+.secondaryAction {
   transition:
     transform 180ms ease,
     border-color 180ms ease,
@@ -358,25 +274,8 @@
     color 180ms ease;
 }
 
-.skipButton {
-  align-self: flex-start;
-  margin-top: 0.35rem;
-  margin-bottom: clamp(1rem, 2.5vw, 1.75rem);
-  width: fit-content;
-  padding: 0.8rem 1rem;
-  border: 1px solid rgba(126, 255, 203, 0.22);
-  border-radius: 999px;
-  background: rgba(10, 24, 20, 0.7);
-  color: #d8ffee;
-  font: inherit;
-  letter-spacing: 0;
-  cursor: pointer;
-}
-
-.skipButton:hover,
 .primaryAction:hover,
-.secondaryAction:hover,
-.contactValue:hover {
+.secondaryAction:hover {
   transform: translateY(-2px);
 }
 
@@ -385,15 +284,6 @@
   padding: 1rem clamp(1rem, 3vw, 1.75rem) 4.5rem;
   display: grid;
   gap: clamp(3rem, 6vw, 5rem);
-  opacity: 0;
-  transform: translateY(2rem);
-  pointer-events: none;
-  transition:
-    opacity 0.7s ease 0.15s,
-    transform 0.7s ease 0.15s;
-}
-
-.siteShellVisible {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
@@ -458,9 +348,9 @@
   overflow: hidden;
   isolation: isolate;
   display: grid;
-  grid-template-columns: minmax(0, 1.16fr) minmax(320px, 0.84fr);
-  gap: 2rem;
-  align-items: stretch;
+  grid-template-columns: minmax(0, 1.18fr) minmax(300px, 0.72fr);
+  gap: 2.5rem;
+  align-items: start;
 }
 
 .hero > * {
@@ -557,8 +447,14 @@
 .heroCopy {
   display: grid;
   align-content: start;
-  gap: 1.35rem;
+  gap: 1.25rem;
   padding: 4.5rem 0 0;
+}
+
+.heroLogo {
+  width: min(18rem, 68%);
+  height: auto;
+  filter: drop-shadow(0 1rem 2rem rgba(0, 0, 0, 0.24));
 }
 
 .heroTitle {
@@ -574,28 +470,29 @@
 }
 
 .focusTabs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem;
 }
 
 .focusTabsLabel {
-  flex-basis: 100%;
+  grid-column: 1 / -1;
   color: rgba(141, 223, 186, 0.86);
   font-size: 0.78rem;
 }
 
 .focusTab {
-  min-height: 2.8rem;
-  padding: 0.7rem 0.95rem;
+  min-height: 2.35rem;
+  padding: 0.55rem 0.7rem;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 999px;
+  border-radius: 0.85rem;
   background: rgba(255, 255, 255, 0.03);
   color: rgba(232, 248, 239, 0.86);
   font: inherit;
-  font-size: 0.8rem;
+  font-size: 0.76rem;
   letter-spacing: 0;
   cursor: pointer;
+  text-align: left;
   transition:
     border-color 180ms ease,
     background-color 180ms ease,
@@ -617,7 +514,6 @@
   color: #f6fff8;
 }
 
-.focusConsole,
 .processConsole {
   position: relative;
   overflow: hidden;
@@ -628,7 +524,6 @@
     rgba(255, 255, 255, 0.02);
 }
 
-.focusConsole::before,
 .processConsole::before,
 .signalCard::before {
   content: "";
@@ -647,7 +542,9 @@
   pointer-events: none;
 }
 
-.focusConsoleHeader {
+.routeCardHeader,
+.terminalViewportHeader,
+.processConsoleHeader {
   position: relative;
   z-index: 1;
   display: flex;
@@ -656,14 +553,15 @@
   align-items: center;
 }
 
-.focusConsoleHeader span {
+.routeCardHeader span,
+.terminalViewportHeader span,
+.processConsoleHeader span {
   color: rgba(228, 247, 236, 0.76);
   font-size: 0.72rem;
   letter-spacing: 0;
   text-transform: uppercase;
 }
 
-.focusConsoleText,
 .signalCardText {
   position: relative;
   z-index: 1;
@@ -675,10 +573,9 @@
   position: relative;
   z-index: 1;
   display: grid;
-  gap: 0.32rem;
-  max-height: 11.8rem;
+  gap: 0.6rem;
   overflow: hidden;
-  padding: 0.95rem 1rem;
+  padding: 0.85rem;
   border: 1px solid rgba(126, 255, 203, 0.1);
   border-radius: 1rem;
   background:
@@ -690,15 +587,6 @@
     );
   font-size: 0.8rem;
   line-height: 1.45;
-}
-
-.terminalViewport::after {
-  content: "";
-  position: absolute;
-  inset: auto 0 0;
-  height: 3rem;
-  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.82));
-  pointer-events: none;
 }
 
 .terminalCommand,
@@ -752,18 +640,22 @@
 .commandDeck {
   position: relative;
   isolation: isolate;
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
+  display: grid;
+  align-self: start;
+  justify-self: end;
+  width: min(100%, 27rem);
+  gap: 0.85rem;
+  padding: 1rem;
+  border-radius: 1.35rem;
 }
 
 .commandDeck::after {
   content: "";
   position: absolute;
-  top: 8%;
-  bottom: 10%;
+  top: 12%;
+  bottom: 22%;
   left: -18%;
-  width: 26%;
+  width: 20%;
   border-radius: 999px;
   background: linear-gradient(
     90deg,
@@ -826,88 +718,75 @@
   text-transform: uppercase;
 }
 
-.logoModule {
+.routeCard {
   position: relative;
   z-index: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 11rem;
-  padding: 1.4rem;
+  display: grid;
+  gap: 0.65rem;
+  overflow: hidden;
+  padding: 0.9rem;
   border: 1px solid rgba(126, 255, 203, 0.1);
-  border-radius: 1.4rem;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.04),
-      rgba(255, 255, 255, 0.02)
-    ),
-    linear-gradient(135deg, rgba(33, 47, 44, 0.45), rgba(6, 12, 12, 0.2));
-}
-
-.logo {
-  width: min(100%, 28rem);
-  height: auto;
-  filter: drop-shadow(0 1rem 2rem rgba(0, 0, 0, 0.28));
-}
-
-.deckFacts,
-.deckBlock {
-  position: relative;
-  z-index: 1;
-}
-
-.deckFacts {
-  display: grid;
-  gap: 0.8rem;
-}
-
-.factRow {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 1px solid rgba(126, 255, 203, 0.08);
-}
-
-.factRow span {
-  color: rgba(153, 201, 179, 0.72);
-  font-size: 0.75rem;
-  letter-spacing: 0;
-  text-transform: uppercase;
-}
-
-.factRow strong {
-  color: #edfef4;
-  font-size: 0.92rem;
-  font-weight: 500;
-  text-align: right;
-}
-
-.deckBlock {
-  padding: 1rem 1.1rem;
-  border: 1px solid rgba(126, 255, 203, 0.08);
-  border-radius: 1.2rem;
-  background: rgba(255, 255, 255, 0.03);
-}
-
-.focusConsole {
-  display: grid;
-  gap: 0.8rem;
-  padding: 1rem 1.1rem;
-}
-
-.commandPreview {
-  position: relative;
-  z-index: 1;
-  padding: 0.95rem 1rem;
-  border: 1px solid rgba(126, 255, 203, 0.08);
   border-radius: 1rem;
-  background: rgba(0, 0, 0, 0.24);
+  background:
+    linear-gradient(180deg, rgba(9, 18, 16, 0.88), rgba(4, 11, 10, 0.96)),
+    rgba(255, 255, 255, 0.02);
+}
+
+.routeCard::before,
+.terminalViewport::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 18%),
+    repeating-linear-gradient(
+      180deg,
+      rgba(126, 255, 203, 0.028),
+      rgba(126, 255, 203, 0.028) 1px,
+      transparent 1px,
+      transparent 4px
+    );
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.routeCard > *,
+.terminalViewport > * {
+  position: relative;
+  z-index: 1;
+}
+
+.routeCardTitle {
+  color: #f4fff8;
+  font-size: 1.35rem;
+  line-height: 1.16;
+}
+
+.routeCardText {
+  color: rgba(226, 247, 237, 0.84);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.routeOutputList {
+  list-style: none;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.routeOutputList li {
+  position: relative;
+  padding-left: 1rem;
+  color: rgba(231, 245, 237, 0.82);
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+.routeOutputList li::before {
+  content: ">";
+  position: absolute;
+  left: 0;
   color: #d9ff8c;
-  font-size: 0.82rem;
-  line-height: 1.6;
-  white-space: pre-wrap;
 }
 
 .signalList {
@@ -1041,16 +920,20 @@
 .capabilityGrid,
 .collaborationGrid,
 .proofStrip,
-.processGrid,
-.noteGrid,
-.contactGrid {
+.processGrid {
   display: grid;
   gap: 1rem;
 }
 
-.collaborationGrid,
 .capabilityGrid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.collaborationGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.85rem;
 }
 
 .proofStrip {
@@ -1098,19 +981,14 @@
   animation: homeHudSweep 22s linear infinite;
 }
 
-.noteGrid,
-.contactGrid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.contactGrid {
-  grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
-}
-
 .signalCard {
   position: relative;
   padding: 1.2rem;
-  border-radius: 1.4rem;
+  border: 1px solid rgba(126, 255, 203, 0.08);
+  border-radius: 1rem;
+  background:
+    linear-gradient(180deg, rgba(7, 17, 15, 0.72), rgba(3, 10, 9, 0.42)),
+    rgba(126, 255, 203, 0.02);
 }
 
 .signalCard::after,
@@ -1152,9 +1030,7 @@
 .collaborationCard,
 .proofPoint,
 .capabilityCard,
-.processCard,
-.noteCard,
-.contactCard {
+.processCard {
   padding: 1.35rem;
   border-radius: 1.5rem;
 }
@@ -1165,7 +1041,9 @@
   display: grid;
   gap: 1rem;
   align-content: start;
-  min-height: 12.5rem;
+  flex: 1 1 10.75rem;
+  max-width: 15rem;
+  min-height: 8.6rem;
   border: 1px solid rgba(126, 255, 203, 0.12);
   background:
     linear-gradient(180deg, rgba(10, 18, 17, 0.9), rgba(5, 11, 11, 0.96)),
@@ -1238,8 +1116,8 @@
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  min-height: 8.25rem;
-  padding: 1rem;
+  min-height: 5.9rem;
+  padding: 0.85rem;
   display: grid;
   place-items: center;
   border-radius: 1.15rem;
@@ -1324,14 +1202,24 @@
   z-index: 1;
   width: 100%;
   height: auto;
-  max-width: 15rem;
-  max-height: 4.5rem;
+  max-width: 10.5rem;
+  max-height: 3.5rem;
   object-fit: contain;
 }
 
+.capabilityCard,
+.processCard {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(126, 255, 203, 0.1);
+  border-radius: 1rem;
+  background:
+    linear-gradient(90deg, rgba(126, 255, 203, 0.06), transparent 52%),
+    linear-gradient(180deg, rgba(8, 18, 16, 0.76), rgba(3, 10, 9, 0.48));
+}
+
 .capabilityCard h3,
-.processCard h3,
-.noteCard h3 {
+.processCard h3 {
   position: relative;
   z-index: 1;
   margin-top: 0.95rem;
@@ -1340,8 +1228,7 @@
   line-height: 1.4;
 }
 
-.capabilityHeader,
-.noteMeta {
+.capabilityHeader {
   position: relative;
   z-index: 1;
   display: flex;
@@ -1394,175 +1281,7 @@
   padding-bottom: 1rem;
 }
 
-.contactCard {
-  min-height: 100%;
-}
-
-.contactFormCard {
-  display: grid;
-  gap: 1rem;
-}
-
-.contactLabel {
-  position: relative;
-  z-index: 1;
-  margin-bottom: 0.85rem;
-}
-
-.contactValue {
-  position: relative;
-  z-index: 1;
-  display: inline-flex;
-  margin-bottom: 1rem;
-  color: #f6fff8;
-  font-size: 1.25rem;
-  line-height: 1.4;
-}
-
-.statusBanner,
-.terminalForm,
-.fieldGroup,
-.formFooter {
-  position: relative;
-  z-index: 1;
-}
-
-.statusBanner {
-  display: grid;
-  gap: 0.35rem;
-  padding: 0.95rem 1rem;
-  border: 1px solid rgba(126, 255, 203, 0.14);
-  border-radius: 1rem;
-  background: rgba(255, 255, 255, 0.03);
-}
-
-.statusBanner strong {
-  color: #f4fff8;
-  font-size: 0.9rem;
-  letter-spacing: 0;
-  text-transform: uppercase;
-}
-
-.statusBanner p,
-.formHint {
-  color: rgba(226, 247, 237, 0.86);
-  line-height: 1.65;
-}
-
-.statusSuccess {
-  border-color: rgba(116, 255, 191, 0.28);
-  background: rgba(116, 255, 191, 0.08);
-}
-
-.statusError {
-  border-color: rgba(255, 170, 120, 0.28);
-  background: rgba(255, 170, 120, 0.08);
-}
-
-.terminalForm {
-  display: grid;
-  gap: 1rem;
-}
-
-.formGrid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.9rem;
-}
-
-.fieldGroup {
-  display: grid;
-  gap: 0.45rem;
-}
-
-.fieldSpan {
-  grid-column: 1 / -1;
-}
-
-.fieldLabel {
-  color: #8ddfba;
-  font-size: 0.7rem;
-  letter-spacing: 0;
-  text-transform: uppercase;
-}
-
-.terminalInput {
-  width: 100%;
-  min-height: 3.2rem;
-  padding: 0.85rem 0.95rem;
-  border: 1px solid rgba(126, 255, 203, 0.12);
-  border-radius: 1rem;
-  background:
-    linear-gradient(180deg, rgba(11, 22, 20, 0.92), rgba(4, 11, 10, 0.98)),
-    rgba(255, 255, 255, 0.02);
-  color: #f4fff8;
-  font: inherit;
-  caret-color: #7effc6;
-}
-
-.terminalInput::placeholder {
-  color: rgba(198, 225, 211, 0.72);
-}
-
-.terminalInput:focus {
-  outline: none;
-  border-color: rgba(126, 255, 203, 0.36);
-  box-shadow: 0 0 0 1px rgba(126, 255, 203, 0.16);
-}
-
-.terminalTextarea {
-  min-height: 11rem;
-  resize: vertical;
-}
-
-.formTrap {
-  position: absolute;
-  left: -9999px;
-  inline-size: 1px;
-  block-size: 1px;
-  overflow: hidden;
-}
-
-.formFooter {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 1rem;
-}
-
-.formHint {
-  max-width: 34ch;
-  font-size: 0.86rem;
-}
-
-.submitButton {
-  min-height: 3.2rem;
-  padding: 0.85rem 1.15rem;
-  border: 1px solid rgba(126, 255, 203, 0.22);
-  border-radius: 999px;
-  background: linear-gradient(
-    90deg,
-    rgba(115, 255, 190, 0.16),
-    rgba(221, 255, 139, 0.18)
-  );
-  color: #f6fff8;
-  font: inherit;
-  letter-spacing: 0;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition:
-    transform 180ms ease,
-    border-color 180ms ease,
-    background-color 180ms ease,
-    color 180ms ease;
-}
-
-.submitButton:hover {
-  transform: translateY(-2px);
-}
-
 @media (max-width: 1080px) {
-  .bootShell,
   .hero {
     grid-template-columns: 1fr;
   }
@@ -1589,9 +1308,12 @@
 }
 
 @media (max-width: 760px) {
-  .bootShell {
-    --boot-panel-height: min(36rem, calc(100dvh - 2rem));
-    --boot-panel-min-height: min(24rem, calc(100dvh - 2rem));
+  .bootLayer {
+    right: 1rem;
+    bottom: 1rem;
+    width: calc(100vw - 2rem);
+    --boot-panel-height: 11.5rem;
+    --boot-panel-min-height: 11.5rem;
   }
 
   .siteShell {
@@ -1610,18 +1332,17 @@
     justify-content: flex-start;
   }
 
-  .bootTitle,
   .heroTitle,
   .sectionTitle {
     max-width: none;
   }
 
-  .bootTitle {
-    font-size: 2.45rem;
-  }
-
   .heroTitle {
     font-size: 2.55rem;
+  }
+
+  .heroLogo {
+    width: min(13.5rem, 76%);
   }
 
   .sectionTitle {
@@ -1655,26 +1376,14 @@
   .collaborationGrid,
   .proofStrip,
   .processGrid,
-  .signalStrip,
-  .noteGrid,
-  .contactGrid,
-  .formGrid {
+  .signalStrip {
     grid-template-columns: 1fr;
   }
 
-  .factRow,
   .capabilityHeader,
-  .noteMeta,
-  .focusConsoleHeader {
-    flex-direction: column;
-  }
-
-  .factRow strong {
-    text-align: left;
-  }
-
-  .formFooter {
-    align-items: stretch;
+  .routeCardHeader,
+  .terminalViewportHeader,
+  .processConsoleHeader {
     flex-direction: column;
   }
 }
@@ -1695,12 +1404,9 @@
   .collaborationSurface::before,
   .bootLayer,
   .siteShell,
-  .skipButton,
   .primaryAction,
   .secondaryAction,
   .sectionRoute,
-  .contactValue,
-  .submitButton,
   .focusTab {
     transition: none;
   }

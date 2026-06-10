@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { startTransition, useCallback, useLayoutEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import styles from "@/app/page.module.css";
 import { ContactPanel } from "@/components/contact_panel";
@@ -16,10 +16,8 @@ import {
   coreSignals,
   executionConsole,
   focusModules,
-  noteQueue,
   operatingModel,
   selectedCollaborations,
-  terminalFacts,
   workingTerminalLines,
 } from "@/static/siteContent";
 import { HACKING } from "@/static/staticText/start";
@@ -60,7 +58,7 @@ export const HomePage = () => {
     (typeof focusModules)[number]["id"]
   >(focusModules[0].id);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!readPersistedBootState()) {
       return;
     }
@@ -69,21 +67,17 @@ export const HomePage = () => {
     setHasBooted(true);
   }, []);
 
-  const enterSite = useCallback(() => {
+  const completeBoot = () => {
     persistBootState();
-
-    startTransition(() => {
-      setHasBooted(true);
-    });
-  }, []);
+    setHasBooted(true);
+  };
 
   const activeFocus =
     focusModules.find(({ id }) => id === activeFocusId) ?? focusModules[0];
-  const activeFacts = terminalFacts.map((fact) =>
-    fact.label === "focus"
-      ? { ...fact, value: `${activeFocus.label.toLowerCase()} active` }
-      : fact,
-  );
+  const deckTerminalLines = [
+    activeFocus.command,
+    ...workingTerminalLines.slice(1, 4),
+  ];
 
   return (
     <main className={styles.page}>
@@ -91,45 +85,16 @@ export const HomePage = () => {
         className={[styles.bootLayer, hasBooted ? styles.bootLayerHidden : ""]
           .filter(Boolean)
           .join(" ")}
+        aria-hidden="true"
       >
-        <div className={styles.bootShell}>
-          <div className={styles.bootCopy}>
-            <p className={styles.kicker}>Boot sequence</p>
-            <ScrambleText
-              as="h1"
-              className={styles.bootTitle}
-              text="Initializing signal control room."
-              speed={0.8}
-              step={3}
-            />
-            <p className={styles.bootDescription}>
-              Loading a working map for multimedia systems, software delivery,
-              architecture, and independent audits.
-            </p>
-
-            <div className={styles.bootMeta}>
-              <span>Operator: Wojciech Bajer</span>
-              <span>Mode: consulting + audits + delivery</span>
-            </div>
-
-            <button
-              className={styles.skipButton}
-              type="button"
-              onClick={enterSite}
-            >
-              Skip boot
-            </button>
-          </div>
-
-          <TerminalLoader texts={HACKING} loop={false} onComplete={enterSite} />
-        </div>
+        <TerminalLoader
+          texts={HACKING}
+          loop={false}
+          onComplete={completeBoot}
+        />
       </div>
 
-      <div
-        className={[styles.siteShell, hasBooted ? styles.siteShellVisible : ""]
-          .filter(Boolean)
-          .join(" ")}
-      >
+      <div className={styles.siteShell}>
         <SiteHeader currentPath="/" />
 
         <section className={styles.hero} id="top">
@@ -141,7 +106,15 @@ export const HomePage = () => {
           </div>
 
           <div className={styles.heroCopy}>
-            <p className={styles.kicker}>Independent technical operator</p>
+            <Image
+              className={styles.heroLogo}
+              src="/wbc_logo_alpha_kolor_neg.png"
+              alt="Consulting Wojciech Bajer logo"
+              width={3667}
+              height={700}
+              style={{ height: "auto" }}
+              priority
+            />
             <ScrambleText
               as="h1"
               className={styles.heroTitle}
@@ -180,18 +153,10 @@ export const HomePage = () => {
               </span>
             </div>
 
-            <div className={styles.logoModule}>
-              <Image
-                className={styles.logo}
-                src="/wbc_logo_alpha_kolor_neg.png"
-                alt="Consulting Wojciech Bajer logo"
-                width={3667}
-                height={700}
-                priority
-              />
-            </div>
-
-            <div className={styles.focusTabs}>
+            <div
+              className={styles.focusTabs}
+              aria-label="Choose the problem type"
+            >
               <p className={styles.focusTabsLabel}>Choose the problem type</p>
               {focusModules.map((module) => (
                 <button
@@ -213,17 +178,27 @@ export const HomePage = () => {
               ))}
             </div>
 
-            <div className={styles.focusConsole}>
-              <div className={styles.focusConsoleHeader}>
-                <p className={styles.deckLabel}>working terminal</p>
+            <div className={styles.routeCard}>
+              <div className={styles.routeCardHeader}>
+                <p className={styles.deckLabel}>active route</p>
                 <span>{activeFocus.status}</span>
               </div>
-              <p className={styles.focusConsoleText}>{activeFocus.summary}</p>
-              <div
-                className={styles.terminalViewport}
-                aria-label="Working diagnostic terminal output"
-              >
-                {workingTerminalLines.map((line) => (
+              <h2 className={styles.routeCardTitle}>{activeFocus.label}</h2>
+              <p className={styles.routeCardText}>{activeFocus.summary}</p>
+              <ul className={styles.routeOutputList}>
+                {activeFocus.stack.slice(0, 2).map((signal) => (
+                  <li key={signal}>{signal}</li>
+                ))}
+              </ul>
+            </div>
+
+            <div className={styles.terminalViewport}>
+              <div className={styles.terminalViewportHeader}>
+                <p className={styles.deckLabel}>working terminal</p>
+                <span>live read</span>
+              </div>
+              <div aria-label="Working diagnostic terminal output">
+                {deckTerminalLines.map((line) => (
                   <p
                     key={line}
                     className={
@@ -236,27 +211,6 @@ export const HomePage = () => {
                   </p>
                 ))}
               </div>
-              <pre className={styles.commandPreview}>
-                <code>{activeFocus.command}</code>
-              </pre>
-            </div>
-
-            <div className={styles.deckFacts}>
-              {activeFacts.map(({ label, value }) => (
-                <div key={label} className={styles.factRow}>
-                  <span>{label}</span>
-                  <strong>{value}</strong>
-                </div>
-              ))}
-            </div>
-
-            <div className={styles.deckBlock}>
-              <p className={styles.deckLabel}>what I handle</p>
-              <ul className={styles.signalList}>
-                {activeFocus.stack.map((signal) => (
-                  <li key={signal}>{signal}</li>
-                ))}
-              </ul>
             </div>
           </aside>
         </section>
@@ -283,14 +237,13 @@ export const HomePage = () => {
             <ScrambleText
               as="h2"
               className={styles.sectionTitle}
-              text="Work delivered for recognized teams and larger systems."
+              text="Proof without case-study theater."
               delay={400}
             />
             <p className={styles.sectionDescription}>
-              A few organizations I have worked with across multimedia,
-              engineering, and delivery contexts. The relevant proof is not the
-              logo alone, but the ability to work where quality, timing, and
-              technical judgment all matter.
+              Selected organizations from multimedia, engineering, and delivery
+              contexts. The signal is not logo collecting, it is operating where
+              quality, timing, and technical judgment all matter.
             </p>
           </div>
 
@@ -341,14 +294,13 @@ export const HomePage = () => {
             <ScrambleText
               as="h2"
               className={styles.sectionTitle}
-              text="Built for more than a digital business card."
+              text="Choose the route that matches the problem."
               delay={420}
             />
             <div className={styles.sectionLead}>
               <p className={styles.sectionDescription}>
-                These are distinct entry points into the same way of working:
-                technical clarity, cleaner systems, and a stronger signal
-                between idea, product, and execution.
+                Each entry point uses the same operating style: find the weak
+                signal, map the constraint, and turn it into a usable next move.
               </p>
               <Link className={styles.sectionRoute} href="/services">
                 Open services page
@@ -375,14 +327,13 @@ export const HomePage = () => {
             <ScrambleText
               as="h2"
               className={styles.sectionTitle}
-              text="A practical process for audits, architecture, and delivery."
+              text="The work moves from evidence to handoff."
               delay={520}
             />
             <div className={styles.sectionLead}>
               <p className={styles.sectionDescription}>
-                The work starts with evidence, then turns into a practical map:
-                what is fragile, what needs correction, and what should happen
-                next.
+                No generic workshop loop. The output is a cleaner picture of
+                risk, a decision route, and artifacts the team can keep using.
               </p>
               <Link className={styles.sectionRoute} href="/process">
                 Open full process page
@@ -401,7 +352,7 @@ export const HomePage = () => {
           </div>
 
           <aside className={styles.processConsole}>
-            <div className={styles.focusConsoleHeader}>
+            <div className={styles.processConsoleHeader}>
               <p className={styles.deckLabel}>execution loop</p>
               <span>landing summary</span>
             </div>
@@ -413,40 +364,6 @@ export const HomePage = () => {
           </aside>
         </section>
 
-        <section className={styles.section} id="notes">
-          <div className={styles.sectionHeading}>
-            <ScrambleText
-              as="h2"
-              className={styles.sectionTitle}
-              text="Diagnostic topics I cover."
-              delay={620}
-            />
-            <div className={styles.sectionLead}>
-              <p className={styles.sectionDescription}>
-                These are the problem areas I keep seeing inside teams,
-                products, and delivery systems. They are useful entry points
-                when the exact brief is still unclear.
-              </p>
-              <Link className={styles.sectionRoute} href="/notes">
-                Open notes page
-              </Link>
-            </div>
-          </div>
-
-          <div className={styles.noteGrid}>
-            {noteQueue.map(({ status, title, summary }) => (
-              <article key={title} className={styles.noteCard}>
-                <div className={styles.noteMeta}>
-                  <span>{status}</span>
-                  <span>review area</span>
-                </div>
-                <h3>{title}</h3>
-                <p>{summary}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
         <section
           className={[styles.section, styles.contactSection].join(" ")}
           id="contact"
@@ -455,13 +372,14 @@ export const HomePage = () => {
             <ScrambleText
               as="h2"
               className={styles.sectionTitle}
-              text="If the system is noisy, unclear, or underbuilt, I can help."
+              text="Send the problem directly."
               delay={720}
             />
             <div className={styles.sectionLead}>
               <p className={styles.sectionDescription}>
-                Send the problem as it stands. A short note is enough when the
-                situation is urgent or still messy.
+                A short note is enough when the situation is urgent, messy, or
+                hard to frame. Start with what is blocked and what has to
+                change.
               </p>
               <Link className={styles.sectionRoute} href="/contact">
                 Open contact page

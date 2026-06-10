@@ -1,0 +1,281 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-10T09:34:16+02:00",
+  "title": "Design System: Wojciech Bajer Consulting",
+  "extensions": {
+    "colorMeta": {
+      "page-background": {
+        "role": "primary",
+        "displayName": "Control-Room Black",
+        "canonical": "#020807",
+        "tonalRamp": [
+          "oklch(15% 0.02 170)",
+          "oklch(22% 0.025 170)",
+          "oklch(30% 0.03 170)",
+          "oklch(40% 0.035 170)",
+          "oklch(52% 0.04 170)",
+          "oklch(66% 0.035 170)",
+          "oklch(80% 0.025 170)",
+          "oklch(94% 0.012 170)"
+        ]
+      },
+      "page-background-soft": {
+        "role": "primary",
+        "displayName": "Deep Runtime Teal",
+        "canonical": "#041111",
+        "tonalRamp": [
+          "oklch(16% 0.022 180)",
+          "oklch(24% 0.028 180)",
+          "oklch(32% 0.035 180)",
+          "oklch(42% 0.04 180)",
+          "oklch(54% 0.04 180)",
+          "oklch(68% 0.035 180)",
+          "oklch(82% 0.026 180)",
+          "oklch(95% 0.012 180)"
+        ]
+      },
+      "foreground": {
+        "role": "neutral",
+        "displayName": "Terminal Ink",
+        "canonical": "#f4fff8",
+        "tonalRamp": [
+          "oklch(18% 0.015 160)",
+          "oklch(28% 0.015 160)",
+          "oklch(40% 0.014 160)",
+          "oklch(54% 0.013 160)",
+          "oklch(68% 0.012 160)",
+          "oklch(80% 0.01 160)",
+          "oklch(90% 0.008 160)",
+          "oklch(98% 0.006 160)"
+        ]
+      },
+      "mint-signal": {
+        "role": "primary",
+        "displayName": "Mint Signal",
+        "canonical": "#8ddfba",
+        "tonalRamp": [
+          "oklch(20% 0.05 160)",
+          "oklch(30% 0.07 160)",
+          "oklch(42% 0.09 160)",
+          "oklch(54% 0.11 160)",
+          "oklch(66% 0.12 160)",
+          "oklch(76% 0.115 160)",
+          "oklch(86% 0.08 160)",
+          "oklch(95% 0.035 160)"
+        ]
+      },
+      "lime-command": {
+        "role": "secondary",
+        "displayName": "Lime Command",
+        "canonical": "#d9ff8c",
+        "tonalRamp": [
+          "oklch(22% 0.055 125)",
+          "oklch(34% 0.08 125)",
+          "oklch(46% 0.105 125)",
+          "oklch(58% 0.13 125)",
+          "oklch(70% 0.14 125)",
+          "oklch(82% 0.115 125)",
+          "oklch(90% 0.075 125)",
+          "oklch(96% 0.035 125)"
+        ]
+      },
+      "credibility-red": {
+        "role": "tertiary",
+        "displayName": "Credibility Red",
+        "canonical": "#e14545",
+        "tonalRamp": [
+          "oklch(20% 0.07 28)",
+          "oklch(30% 0.1 28)",
+          "oklch(42% 0.14 28)",
+          "oklch(54% 0.17 28)",
+          "oklch(65% 0.16 28)",
+          "oklch(76% 0.12 28)",
+          "oklch(88% 0.07 28)",
+          "oklch(96% 0.03 28)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Route H1s and decisive brand claims only."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section titles and signature proof panels."
+      },
+      "body": {
+        "displayName": "Operator Body",
+        "purpose": "Primary reading text, direct explanations, and service descriptions."
+      },
+      "label": {
+        "displayName": "Terminal Label",
+        "purpose": "Route prompts, metadata, chips, controls, and form labels."
+      }
+    },
+    "shadows": [
+      {
+        "name": "panel-depth",
+        "value": "inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 1.5rem 3rem rgba(0, 0, 0, 0.24)",
+        "purpose": "Major cards, sticky header, contact panels, credibility panels, and command decks."
+      },
+      {
+        "name": "terminal-depth",
+        "value": "inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 2rem 5rem rgba(0, 0, 0, 0.35)",
+        "purpose": "Boot terminal and dense console modules."
+      },
+      {
+        "name": "focus-ring",
+        "value": "0 0 0 1px rgba(126, 255, 203, 0.16)",
+        "purpose": "Focused inputs and compact active elements."
+      }
+    ],
+    "motion": [
+      {
+        "name": "state-transition",
+        "value": "180ms ease",
+        "purpose": "Button, link, nav, and input state changes."
+      },
+      {
+        "name": "shell-sweep",
+        "value": "18s-26s linear infinite",
+        "purpose": "Slow diagnostic scan sweeps across page shells and panels."
+      },
+      {
+        "name": "marker-pulse",
+        "value": "7s-8s ease-in-out infinite",
+        "purpose": "Low-amplitude pulse for verification rings and active markers."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "lg",
+        "value": "1080px"
+      },
+      {
+        "name": "md",
+        "value": "760px"
+      },
+      {
+        "name": "sm",
+        "value": "700px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Command Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Main action button for direct routes and proof panels.",
+      "html": "<button class=\"ds-button-primary\">Open service map</button>",
+      "css": ".ds-button-primary { display: inline-flex; align-items: center; justify-content: center; min-height: 3.2rem; padding: 0.85rem 1.15rem; border: 1px solid rgba(126, 255, 203, 0.22); border-radius: 999px; background: linear-gradient(90deg, rgba(115, 255, 190, 0.16), rgba(221, 255, 139, 0.18)); color: #f6fff8; font-family: Fira Code, ui-monospace, Menlo, Monaco, monospace; font-size: 0.76rem; letter-spacing: 0.12em; text-transform: uppercase; transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease, color 180ms ease; } .ds-button-primary:hover { transform: translateY(-2px); border-color: rgba(126, 255, 203, 0.32); } .ds-button-primary:focus-visible { outline: none; box-shadow: 0 0 0 1px rgba(126, 255, 203, 0.16); }"
+    },
+    {
+      "name": "Secondary Route Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Quiet secondary route for navigation-adjacent actions.",
+      "html": "<button class=\"ds-button-secondary\">Open contact page</button>",
+      "css": ".ds-button-secondary { display: inline-flex; align-items: center; justify-content: center; min-height: 3.2rem; padding: 0.85rem 1.15rem; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 999px; background: rgba(255, 255, 255, 0.03); color: rgba(228, 246, 236, 0.84); font-family: Fira Code, ui-monospace, Menlo, Monaco, monospace; font-size: 0.76rem; letter-spacing: 0.1em; text-transform: uppercase; transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease, color 180ms ease; } .ds-button-secondary:hover { transform: translateY(-2px); color: #f6fff8; border-color: rgba(126, 255, 203, 0.22); } .ds-button-secondary:focus-visible { outline: none; box-shadow: 0 0 0 1px rgba(126, 255, 203, 0.16); }"
+    },
+    {
+      "name": "Terminal Card",
+      "kind": "card",
+      "refersTo": "terminal-card",
+      "description": "Default structural panel for services, proof, notes, and command content.",
+      "html": "<article class=\"ds-terminal-card\"><p class=\"ds-card-label\">active module</p><h3 class=\"ds-card-title\">Architecture</h3><p class=\"ds-card-text\">Expose weak points before scale turns them into cost.</p></article>",
+      "css": ".ds-terminal-card { position: relative; overflow: hidden; isolation: isolate; display: grid; gap: 0.8rem; padding: 1.35rem; border: 1px solid rgba(126, 255, 203, 0.12); border-radius: 1.5rem; background: linear-gradient(180deg, rgba(10, 18, 17, 0.9), rgba(5, 11, 11, 0.96)), radial-gradient(circle at top left, rgba(126, 255, 203, 0.05), transparent 40%); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 1.5rem 3rem rgba(0, 0, 0, 0.24); backdrop-filter: blur(18px); color: #f4fff8; } .ds-terminal-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 14%), repeating-linear-gradient(180deg, rgba(126, 255, 203, 0.04), rgba(126, 255, 203, 0.04) 1px, transparent 1px, transparent 4px); opacity: 0.4; pointer-events: none; } .ds-terminal-card > * { position: relative; z-index: 1; } .ds-card-label { color: #8ddfba; font: 400 0.74rem/1.2 Fira Code, ui-monospace, Menlo, Monaco, monospace; letter-spacing: 0.18em; text-transform: uppercase; } .ds-card-title { color: #f4fff8; font: 400 1.1rem/1.45 Fira Code, ui-monospace, Menlo, Monaco, monospace; letter-spacing: 0.08em; text-transform: uppercase; } .ds-card-text { color: rgba(214, 236, 225, 0.78); font: 400 1rem/1.75 Fira Code, ui-monospace, Menlo, Monaco, monospace; }"
+    },
+    {
+      "name": "Terminal Input",
+      "kind": "input",
+      "refersTo": "terminal-input",
+      "description": "Protected contact form field.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">message</span><textarea class=\"ds-terminal-input\" placeholder=\"Describe the system pressure\"></textarea></label>",
+      "css": ".ds-field { display: grid; gap: 0.45rem; color: #f4fff8; font-family: Fira Code, ui-monospace, Menlo, Monaco, monospace; } .ds-field-label { color: #8ddfba; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; } .ds-terminal-input { width: 100%; min-height: 7rem; padding: 0.85rem 0.95rem; border: 1px solid rgba(126, 255, 203, 0.12); border-radius: 1rem; background: linear-gradient(180deg, rgba(11, 22, 20, 0.92), rgba(4, 11, 10, 0.98)), rgba(255, 255, 255, 0.02); color: #f4fff8; font: inherit; caret-color: #7effc6; resize: vertical; } .ds-terminal-input::placeholder { color: rgba(173, 206, 189, 0.48); } .ds-terminal-input:focus { outline: none; border-color: rgba(126, 255, 203, 0.36); box-shadow: 0 0 0 1px rgba(126, 255, 203, 0.16); }"
+    },
+    {
+      "name": "Navigation Pill",
+      "kind": "nav",
+      "refersTo": "nav-pill-active",
+      "description": "Primary nav item with active state.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-link\" href=\"#\">Services</a><a class=\"ds-nav-link ds-nav-link-active\" href=\"#\">Contact</a></nav>",
+      "css": ".ds-nav { display: flex; flex-wrap: wrap; gap: 0.75rem; font-family: Fira Code, ui-monospace, Menlo, Monaco, monospace; } .ds-nav-link { padding: 0.45rem 0.7rem; border-radius: 999px; color: rgba(227, 245, 236, 0.8); font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; transition: color 180ms ease, background-color 180ms ease, transform 180ms ease; } .ds-nav-link:hover { color: #f5fff8; transform: translateY(-1px); } .ds-nav-link:focus-visible { outline: none; box-shadow: 0 0 0 1px rgba(126, 255, 203, 0.16); } .ds-nav-link-active { background: rgba(126, 255, 203, 0.1); color: #f5fff8; }"
+    },
+    {
+      "name": "Signal Chip",
+      "kind": "chip",
+      "refersTo": "nav-pill-active",
+      "description": "Small metadata chip for status, tags, and route hints.",
+      "html": "<span class=\"ds-signal-chip\">runtime execution</span>",
+      "css": ".ds-signal-chip { display: inline-flex; align-items: center; min-height: 2.1rem; padding: 0.45rem 0.8rem; border: 1px solid rgba(126, 255, 203, 0.12); border-radius: 999px; background: rgba(255, 255, 255, 0.03); color: rgba(226, 247, 236, 0.82); font: 400 0.75rem/1.2 Fira Code, ui-monospace, Menlo, Monaco, monospace; letter-spacing: 0.12em; text-transform: uppercase; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Signal Control Room",
+    "overview": "This system should feel like a live diagnostic surface for a one-person technical operator: dark, concentrated, direct, and built around signal quality. The interface is a brand surface, but it behaves like a working instrument panel. It shows capability, routing, process, and contact without pretending to be a large anonymous agency.\n\nThe current identity is terminal-grade: near-black teal depth, mint linework, acid-lime command accents, dense mono labels, and controlled scanning motion. Improvements should preserve that identity while making each screen easier to read, route, and trust. Visual drama is allowed when it reinforces diagnosis, evidence, or controlled execution.\n\nThe system explicitly rejects generic agency polish, bloated SaaS landing-page patterns, vague innovation language, decorative case-study theater, and portfolio design that feels more interested in presentation than problem solving.",
+    "keyCharacteristics": [
+      "Dark teal-black operating surface with mint diagnostic linework.",
+      "Mono-forward body voice with Space Grotesk reserved for large display moments.",
+      "Dense but orderly modules, with direct routes and evidence-bearing panels.",
+      "Motion that reads as scanning, loading, or routing, not decoration.",
+      "One-person accountability: direct labels, direct contact, no corporate abstraction."
+    ],
+    "rules": [
+      {
+        "name": "The Mint Wire Rule",
+        "body": "Mint borders stay thin and structural. Use 1px strokes, glow rings, and subtle overlays; do not use thick side stripes as decoration.",
+        "section": "colors"
+      },
+      {
+        "name": "The Command Accent Rule",
+        "body": "Lime is for system output and command emphasis. Keep it rare enough that a visitor can instantly identify it as an active signal.",
+        "section": "colors"
+      },
+      {
+        "name": "The Black Surface Rule",
+        "body": "Do not drift into generic navy, purple SaaS gradients, or beige editorial restraint. The brand lives in black-green runtime space.",
+        "section": "colors"
+      },
+      {
+        "name": "The Operator Voice Rule",
+        "body": "Mono is legitimate here because the brand is technical and diagnostic. Use it for the working surface, but reserve Space Grotesk for decisive hierarchy so the site does not become a costume terminal.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tight Display Rule",
+        "body": "Display letter spacing stops at -0.04em. Do not tighten further; the current brand already uses the maximum safe compression.",
+        "section": "typography"
+      },
+      {
+        "name": "The Instrument Panel Rule",
+        "body": "Shadows must support layered instrumentation. If an element looks like a floating SaaS card, reduce the shadow or replace it with a border, scanline, or tonal shift.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Blur With Purpose Rule",
+        "body": "Backdrop blur belongs on terminal panels and sticky chrome. Do not introduce decorative glass panels where no system layer is being implied.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do preserve the terminal-grade identity: black-green surfaces, mint wire borders, lime command accents, and operator-style labels.",
+      "Do connect technical choices to business value in copy and hierarchy.",
+      "Do keep direct contact and direct accountability visible because the one-person operator model is part of the trust signal.",
+      "Do use real partner marks and credibility proof as evidence-bearing visual elements.",
+      "Do keep reduced-motion fallbacks for boot, scramble, sweep, pulse, and scan animations.",
+      "Do verify contrast whenever muted phosphor text sits on dark tinted panels."
+    ],
+    "donts": [
+      "Don't use generic agency polish.",
+      "Don't use bloated SaaS landing-page patterns.",
+      "Don't use vague innovation language.",
+      "Don't use decorative case-study theater.",
+      "Don't make the portfolio design feel more interested in presentation than problem solving.",
+      "Don't make the site feel like a large anonymous consultancy.",
+      "Don't use thick colored side-stripe borders, gradient text, or repeated decorative card grids.",
+      "Don't turn every section label into a repeated tiny uppercase eyebrow pattern unless it is serving the terminal route language already present in the site."
+    ]
+  }
+}

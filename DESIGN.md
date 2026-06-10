@@ -1,6 +1,6 @@
 ---
 name: "Wojciech Bajer Consulting"
-description: "A terminal-grade brand system for a one-person IT services practice."
+description: "A terminal-grade brand system for a one-person technical consulting and delivery practice."
 colors:
   page-background: "#020807"
   page-background-soft: "#041111"
@@ -9,13 +9,19 @@ colors:
   foreground: "#f4fff8"
   foreground-strong: "#f6fff8"
   text-muted: "#d6ece1c7"
+  text-muted-strong: "#e2f7eddb"
   mint-signal: "#8ddfba"
   mint-active: "#7effc6"
   lime-command: "#d9ff8c"
-  mint-border: "#7effcb1f"
-  white-sheen: "#ffffff08"
   warm-warning: "#ffaa78"
   credibility-red: "#e14545"
+  mint-border: "#7effcb1f"
+  mint-border-strong: "#7effcb38"
+  white-sheen: "#ffffff08"
+  terminal-black: "#030a09"
+  mac-red: "#ff5f57"
+  mac-amber: "#febc2e"
+  mac-green: "#28c840"
 typography:
   display:
     fontFamily: "Space Grotesk, Fira Code, monospace"
@@ -43,15 +49,17 @@ typography:
     letterSpacing: "normal"
   label:
     fontFamily: "Fira Code, ui-monospace, Menlo, Monaco, monospace"
-    fontSize: "0.76rem"
+    fontSize: "0.72rem"
     fontWeight: 400
     lineHeight: 1.2
     letterSpacing: "0.18em"
 rounded:
   input: "1rem"
-  module: "1.2rem"
+  module: "1.15rem"
   card: "1.5rem"
+  hero-panel: "2rem"
   panel: "1.75rem"
+  mobile-panel: "1.4rem"
   pill: "999px"
 spacing:
   xs: "0.45rem"
@@ -59,36 +67,51 @@ spacing:
   md: "1rem"
   lg: "1.35rem"
   xl: "2.2rem"
+  section-gap: "clamp(3rem, 6vw, 5rem)"
+  page-x: "clamp(1rem, 3vw, 1.75rem)"
   page-bottom: "4.5rem"
 components:
   button-primary:
-    backgroundColor: "{colors.white-sheen}"
+    backgroundColor: "linear-gradient(135deg, rgba(115,255,190,0.16), rgba(221,255,139,0.18))"
+    borderColor: "{colors.mint-border-strong}"
     textColor: "{colors.foreground-strong}"
     rounded: "{rounded.pill}"
     padding: "0.85rem 1.15rem"
-    height: "3.2rem"
+    minHeight: "3.2rem"
   button-secondary:
     backgroundColor: "{colors.white-sheen}"
-    textColor: "{colors.text-muted}"
+    borderColor: "#ffffff1a"
+    textColor: "{colors.text-muted-strong}"
     rounded: "{rounded.pill}"
     padding: "0.85rem 1.15rem"
-    height: "3.2rem"
+    minHeight: "3.2rem"
   nav-pill-active:
-    backgroundColor: "{colors.mint-border}"
+    backgroundColor: "rgba(126, 255, 203, 0.1)"
     textColor: "{colors.foreground-strong}"
     rounded: "{rounded.pill}"
     padding: "0.45rem 0.7rem"
   terminal-input:
     backgroundColor: "{colors.panel-bottom}"
+    borderColor: "#7effcb24"
     textColor: "{colors.foreground}"
     rounded: "{rounded.input}"
     padding: "0.85rem 0.95rem"
-    height: "3.2rem"
-  terminal-card:
+    minHeight: "3.2rem"
+  terminal-panel:
     backgroundColor: "{colors.panel-bottom}"
+    borderColor: "{colors.mint-border}"
     textColor: "{colors.foreground}"
     rounded: "{rounded.card}"
     padding: "1.35rem"
+  route-tab:
+    backgroundColor: "{colors.white-sheen}"
+    activeBackgroundColor: "rgba(126, 255, 203, 0.08)"
+    textColor: "{colors.text-muted-strong}"
+    rounded: "0.85rem"
+  credibility-panel:
+    accentColor: "{colors.credibility-red}"
+    backgroundColor: "{colors.panel-bottom}"
+    borderColor: "{colors.mint-border}"
 ---
 
 # Design System: Wojciech Bajer Consulting
@@ -97,145 +120,264 @@ components:
 
 **Creative North Star: "Signal Control Room"**
 
-This system should feel like a live diagnostic surface for a one-person technical operator: dark, concentrated, direct, and built around signal quality. The interface is a brand surface, but it behaves like a working instrument panel. It shows capability, routing, process, and contact without pretending to be a large anonymous agency.
+This brand system is a working diagnostic surface for a one-person technical operator. It should feel dark, concentrated, controlled, and useful. The interface is allowed to look technical because the service is technical, but the terminal identity must help clients understand the offer instead of forcing them to decode it.
 
-The current identity is terminal-grade: near-black teal depth, mint linework, acid-lime command accents, dense mono labels, and controlled scanning motion. Improvements should preserve that identity while making each screen easier to read, route, and trust. Visual drama is allowed when it reinforces diagnosis, evidence, or controlled execution.
+The site is a brand surface with conversion intent. Its job is to route potential clients from a messy concern into a clear next action: email Wojciech, open the service map, review the process, or check credibility. The one-person model is part of the trust signal. Avoid corporate abstraction.
 
-The system explicitly rejects generic agency polish, bloated SaaS landing-page patterns, vague innovation language, decorative case-study theater, and portfolio design that feels more interested in presentation than problem solving.
+The current identity is terminal-grade: near-black teal depth, mint linework, acid-lime command accents, dense mono labels, Space Grotesk display type, selected partner marks, RZETELNA credibility, and controlled scanning or scramble motion.
 
 **Key Characteristics:**
 - Dark teal-black operating surface with mint diagnostic linework.
-- Mono-forward body voice with Space Grotesk reserved for large display moments.
-- Dense but orderly modules, with direct routes and evidence-bearing panels.
-- Motion that reads as scanning, loading, or routing, not decoration.
-- One-person accountability: direct labels, direct contact, no corporate abstraction.
+- Mono-forward interface voice with Space Grotesk for decisive hierarchy.
+- Dense but organized modules that explain routing, fit, process, proof, and contact.
+- Motion that reads as booting, scanning, routing, or terminal output.
+- Direct accountability: email, operator name, and no anonymous agency posture.
 
-## 2. Colors
+## 2. Site Structure
 
-The palette is a restrained control-room palette: black-green depth carries most of the surface, mint defines system state, and acid lime is reserved for command output.
+Primary routes:
+
+- `/`: homepage, hero route selection, outcomes, proof, capabilities, process summary, contact.
+- `/profile`: operator profile, core workstreams, selected collaborations, credibility, direct routes.
+- `/services`: service map for multimedia, software, architecture, and audits.
+- `/process`: operating model from diagnosis to handoff.
+- `/notes`: topic queue and diagnostic writing entry points.
+- `/contact`: direct email, credibility, protected form.
+
+Primary navigation labels must remain: `Home`, `Profile`, `Services`, `Process`, `Notes`, `Contact`.
+
+Primary conversion path:
+
+1. Hero direct email.
+2. Contact section email.
+3. `/contact` email panel.
+4. Protected contact form.
+
+The protected form is secondary. It must always preserve the direct email route when loading, disabled, or unavailable.
+
+## 3. Colors
+
+The palette is a control-room palette. Black-green depth carries the site, mint defines structure and system state, lime marks active command output, and red is reserved for the RZETELNA credibility mark.
 
 ### Primary
-- **Control-Room Black:** Use `page-background` for the body and full-page base. It is the default environmental color and should stay dominant.
-- **Deep Runtime Teal:** Use `page-background-soft`, `panel-top`, and `panel-bottom` for page gradients, cards, console modules, and input surfaces.
-- **Mint Signal:** Use `mint-signal` and `mint-active` for labels, borders, caret color, focus rings, and active diagnostic states.
+
+- **Control-Room Black:** `#020807` for the page base and full-page atmosphere.
+- **Runtime Teal:** `#041111`, `#0a1211`, and `#050b0b` for page gradients, panels, cards, shells, and input surfaces.
+- **Mint Signal:** `#8ddfba` and `#7effc6` for active labels, borders, focus rings, carets, route dots, and diagnostic states.
 
 ### Secondary
-- **Lime Command:** Use `lime-command` for command prompts, chevrons, selected output, and small high-signal details. It should never compete with primary calls to action.
-- **Credibility Red:** Use `credibility-red` only where the RZETELNA brand mark or credibility artifact needs its own emphasis.
+
+- **Lime Command:** `#d9ff8c` for terminal prompts, command output, active markers, and high-signal details. Keep it rare.
+- **Warm Warning:** `#ffaa78` for failed or unavailable form states.
+- **Credibility Red:** `#e14545` only for the RZETELNA accent. It should not become a general brand color.
 
 ### Neutral
-- **Terminal Ink:** Use `foreground` and `foreground-strong` for headings, buttons, active nav, and high-contrast copy.
-- **Muted Phosphor:** Use `text-muted` for descriptive body copy and explanatory helper text.
-- **Mint Wire:** Use `mint-border` for 1px structural borders, dividers, and chip outlines.
-- **White Sheen:** Use `white-sheen` for light panel overlays and inactive filled surfaces.
 
-### Named Rules
+- **Terminal Ink:** `#f4fff8` and `#f6fff8` for headings, main copy, buttons, and active nav.
+- **Muted Phosphor:** `rgba(214, 236, 225, 0.78)` and `rgba(226, 247, 237, 0.86)` for descriptive copy.
+- **Mint Wire:** low-alpha mint for structural borders, dividers, chips, scanlines, and corner brackets.
+- **White Sheen:** `rgba(255,255,255,0.03)` to `rgba(255,255,255,0.08)` for subtle panel overlays.
 
-**The Mint Wire Rule.** Mint borders stay thin and structural. Use 1px strokes, glow rings, and subtle overlays; do not use thick side stripes as decoration.
+### Rules
 
-**The Command Accent Rule.** Lime is for system output and command emphasis. Keep it rare enough that a visitor can instantly identify it as an active signal.
+**The Black Surface Rule.** Do not drift into navy SaaS, purple gradients, beige editorial restraint, or generic dark tech. The brand lives in black-green runtime space.
 
-**The Black Surface Rule.** Do not drift into generic navy, purple SaaS gradients, or beige editorial restraint. The brand lives in black-green runtime space.
+**The Mint Wire Rule.** Mint borders stay thin and structural. Use 1px strokes, corner brackets, focus rings, scanlines, and subtle glow. Do not use thick colored side borders.
 
-## 3. Typography
+**The Command Accent Rule.** Lime marks active output or command intent. It should guide the eye, not decorate every component.
+
+## 4. Typography
 
 **Display Font:** Space Grotesk, with Fira Code and monospace fallback.
 **Body Font:** Fira Code, with system monospace fallbacks.
-**Label/Mono Font:** Fira Code, shared with body.
+**Label Font:** Fira Code.
 
-**Character:** The pairing is technical and mechanical without becoming anonymous. Space Grotesk gives the big claims width and presence; Fira Code keeps the rest of the site in an operator voice.
+The pairing is intentionally technical. Space Grotesk gives the largest statements enough width and business legibility. Fira Code keeps the working surface in an operator voice.
 
 ### Hierarchy
 
-- **Display** (400, `clamp(2.5rem, 5vw, 4.8rem)`, `0.98`): Use for route H1s and large strategic statements. Keep max line length tight, usually 10-11ch.
-- **Headline** (400, `clamp(1.9rem, 3vw, 3.1rem)`, `1.02`): Use for section-level claims and signature panels.
-- **Title** (400, `1.1rem`, `1.45`): Use for module titles, active focus labels, and compact card headings.
-- **Body** (400, `1rem`, `1.75`): Use for explanatory copy. Keep normal prose around 60-70ch; tighter module copy may sit at 40-52ch.
-- **Label** (400, `0.70rem-0.76rem`, `0.14em-0.22em`, uppercase): Use for route labels, panel labels, nav, chips, form labels, and command metadata.
+- **Display:** `clamp(2.5rem, 5vw, 4.8rem)`, 400, `0.98`, `-0.04em`. Use for route H1s and the homepage hero.
+- **Section headline:** `clamp(1.9rem, 3vw, 3.1rem)`, 400, `1.02`, `-0.04em`. Use for major section claims.
+- **Panel title:** `1.1rem` to `1.35rem`, 400, `1.35` to `1.45`. Use in route cards, process cards, and contact panels.
+- **Body:** `1rem`, 400, `1.65` to `1.75`. Keep prose around 60 to 70ch on content surfaces and tighter inside modules.
+- **Labels:** `0.7rem` to `0.76rem`, uppercase, `0.14em` to `0.22em`. Use for route prompts, metadata, form labels, and command status.
 
-### Named Rules
+### Rules
 
-**The Operator Voice Rule.** Mono is legitimate here because the brand is technical and diagnostic. Use it for the working surface, but reserve Space Grotesk for decisive hierarchy so the site does not become a costume terminal.
+**The Operator Voice Rule.** Mono is allowed because the brand is a technical operator. Use Space Grotesk for hierarchy so the site reads as a client-facing business surface, not a terminal costume.
 
-**The Tight Display Rule.** Display letter spacing stops at `-0.04em`. Do not tighten further; the current brand already uses the maximum safe compression.
+**The Tight Display Rule.** `-0.04em` is the floor. Do not tighten display text further.
 
-## 4. Elevation
+**The Clear Client Rule.** Technical labels can stay, but surrounding copy must explain the business value in plain language.
 
-Depth is a hybrid of tonal layering, glass-like blur, scanline overlays, and soft ambient shadow. Cards and panels are not flat, but the shadow should feel like monitor depth, not paper elevation. The dominant shell pattern uses a mint border, a black-green vertical gradient, an inset white hairline, a soft black shadow, and `backdrop-filter: blur(18px)`.
+## 5. Layout
 
-### Shadow Vocabulary
+### Global Page
 
-- **Panel Depth** (`inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 1.5rem 3rem rgba(0, 0, 0, 0.24)`): Use on major cards, header, contact panels, credibility panels, and command decks.
-- **Terminal Depth** (`inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 2rem 5rem rgba(0, 0, 0, 0.35)`): Use only for the boot terminal and high-density console modules.
-- **Focus Ring** (`0 0 0 1px rgba(126, 255, 203, 0.16)`): Use for focused inputs and small active elements.
-- **Signal Glow** (`0 0 1rem rgba(217, 255, 140, 0.55)` or softer): Use for active markers and lime command dots.
+The page uses a dark full-width atmospheric background with radial mint and warm highlights, subtle grid lines, scanline overlays, and a constrained shell. Use `page-x` side padding and `section-gap` vertical rhythm. Avoid floating page-section cards. Cards are for modules and repeated items only.
 
-### Named Rules
+### Homepage
 
-**The Instrument Panel Rule.** Shadows must support layered instrumentation. If an element looks like a floating SaaS card, reduce the shadow or replace it with a border, scanline, or tonal shift.
+The homepage opens with a two-column hero:
 
-**The Blur With Purpose Rule.** Backdrop blur belongs on terminal panels and sticky chrome. Do not introduce decorative glass panels where no system layer is being implied.
+- Left: brand logo, H1, plain value proposition, direct email CTA, service-map CTA.
+- Right: interactive command deck with problem-type tabs, active route card, and terminal output.
 
-## 5. Components
+Below the hero, the flow is:
 
-### Buttons
+1. Outcome strip.
+2. Credibility panel.
+3. Collaboration proof and logo wall.
+4. Capability cards.
+5. Process summary and execution console.
+6. Contact section.
 
-- **Shape:** Full-pill command controls (`999px`) with a minimum height around `3.1rem-3.25rem`.
-- **Primary:** Mint-to-lime translucent gradient over dark surface, `1px` mint border, foreground text, uppercase mono label, and padding around `0.85rem 1.15rem`.
-- **Hover / Focus:** Hover lifts by `translateY(-2px)` and shifts border or background intensity. Focus should use a visible mint ring, not only color.
-- **Secondary / Ghost:** Transparent or white-sheen fill with low-contrast border. Use for route navigation and secondary actions only.
+The hero terminal element must not overpower the headline. It should feel like a useful diagnostic control, not a giant decorative widget.
 
-### Chips
+### Subpages
 
-- **Style:** Pill chips with `1px` mint borders, translucent white or mint background, uppercase mono text, and compact padding.
-- **State:** Active chips increase mint background and foreground contrast. Inactive chips stay quiet enough to read as metadata.
+Subpages use a consistent lead pattern:
 
-### Cards / Containers
+- Header.
+- Lead copy with route kicker, scrambled H1, description.
+- Right-side panel, diagram, or digest.
+- Content sections using panels, cards, IO grids, timelines, or logo surfaces.
 
-- **Corner Style:** Standard cards use a confident radius (`1.5rem`); smaller internal modules use `1rem-1.2rem`; hero boot panels may use `1.75rem`.
-- **Background:** Black-green panel gradients with low-opacity radial mint accents and scanline overlays.
-- **Shadow Strategy:** Use Panel Depth. Avoid stacking multiple framed cards inside another framed card unless the inner module has a real interactive or diagnostic role.
-- **Border:** `1px` mint border at low alpha is the default structural edge.
-- **Internal Padding:** Standard card padding is `1.35rem`; dense modules use `0.95rem-1.1rem`; hero/boot panels use fluid padding up to `2.2rem`.
+Use this pattern for `/profile`, `/services`, `/process`, `/notes`, and `/contact` so the site feels like one system.
 
-### Inputs / Fields
+### Responsive Rules
 
-- **Style:** Dark terminal fields with `1rem` radius, `1px` mint border, Fira Code text, and a mint caret.
-- **Focus:** Remove default outline and replace it with stronger mint border plus the Focus Ring shadow.
-- **Error / Disabled:** Error states use warm-warning border and tinted background. Disabled or unavailable states must still provide a direct email route.
+- Desktop: use asymmetrical two-column layouts where they clarify route and action.
+- Tablet and mobile: collapse hero, panels, route boards, process grids, logos, and form grids to one column.
+- Header becomes a static stacked panel around `760px`.
+- Keep text inside buttons, tabs, cards, and route nodes from overflowing. Reduce copy or scale locally before allowing layout breakage.
 
-### Navigation
+## 6. Components
 
-- **Style:** Sticky pill header on desktop, stacked rounded panel on mobile. The brand lockup uses a route prompt above the uppercase name. Nav links use compact uppercase mono labels with pill active state.
-- **States:** Hover lifts or brightens text. Active nav uses a mint translucent fill and foreground-strong text.
-- **Mobile:** Header becomes static, vertical, and left-aligned at `760px` and below.
+### Site Header
 
-### Signature Component: Terminal Loader
+Sticky pill header on desktop. Mobile becomes a stacked rounded panel. The brand lockup has a route prompt (`cwb://...`) above the uppercase name. Active nav uses a mint translucent pill. Keep labels unchanged.
 
-The boot loader is a controlled brand entrance, not a loading spinner. It uses a large terminal panel, status chips, a progress track, blinking cursor, and scanline overlays. It should always have a skip route and reduced-motion fallback.
+### Hero Logo
 
-### Signature Component: Credibility Panel
+Use the existing `wbc_logo_alpha_kolor_neg.png` treatment in the hero. It should be visible enough to carry the brand, but not compete with the H1. Preserve the negative logo treatment on dark backgrounds.
 
-The credibility panel combines a document-like proof point with the terminal system. Keep the RZETELNA accent red intact, but do not let it define the broader palette.
+### Command Deck
 
-## 6. Do's and Don'ts
+The homepage command deck is the main terminal identity object after the boot sequence. It includes:
 
-### Do:
+- Window controls.
+- Active route status.
+- Problem-type tabs.
+- Route summary card.
+- Working terminal viewport.
 
-- **Do** preserve the terminal-grade identity: black-green surfaces, mint wire borders, lime command accents, and operator-style labels.
-- **Do** connect technical choices to business value in copy and hierarchy.
-- **Do** keep direct contact and direct accountability visible because the one-person operator model is part of the trust signal.
-- **Do** use real partner marks and credibility proof as evidence-bearing visual elements.
-- **Do** keep reduced-motion fallbacks for boot, scramble, sweep, pulse, and scan animations.
-- **Do** verify contrast whenever muted phosphor text sits on dark tinted panels.
+Tabs should behave like clear controls, not decorative chips. Active state must be visible through fill, border, and text contrast.
 
-### Don't:
+### Terminal Loader
 
-- **Don't** use generic agency polish.
-- **Don't** use bloated SaaS landing-page patterns.
-- **Don't** use vague innovation language.
-- **Don't** use decorative case-study theater.
-- **Don't** make the portfolio design feel more interested in presentation than problem solving.
-- **Don't** make the site feel like a large anonymous consultancy.
-- **Don't** use thick colored side-stripe borders, gradient text, or repeated decorative card grids.
-- **Don't** turn every section label into a repeated tiny uppercase eyebrow pattern unless it is serving the terminal route language already present in the site.
+The boot sequence is a brand entrance, not a loading spinner. It uses a terminal shell, progress bar, stage labels, command lines, tone colors, cursor, and auto-scroll. It should complete reliably, preserve a readable default state, and avoid blocking access after the first session. Reduced motion must disable pulsing and blinking where needed.
+
+### Scramble Text
+
+Use scramble on hero and section headings as a terminal-grade reveal. It must not be the only source of content meaning: the rendered element keeps `aria-label` set to the final text.
+
+### Cards and Panels
+
+Standard panels use:
+
+- 1px low-alpha mint border.
+- Black-green vertical gradient.
+- Subtle scanlines.
+- Inset white hairline.
+- Soft black depth.
+- Radius between `1rem` and `1.75rem`, with `2rem` reserved for the hero command deck.
+
+Do not nest decorative cards. Inner modules need a real role: route stage, IO cell, terminal line, contact field, credibility proof, or logo surface.
+
+### Buttons and Links
+
+Primary action: mint-to-lime translucent fill, mint border, foreground text, pill radius.
+
+Secondary action: white-sheen fill or transparent surface, quiet border, muted foreground.
+
+Labels should describe the action: `Email Wojciech`, `Open service map`, `Open contact page`, `Send inquiry`.
+
+### Contact Panel
+
+Contact uses a two-column grid:
+
+- Direct route card with `mail@wojciechbajer.com`.
+- Protected form card.
+
+Fields: `name`, `email`, `scope`, `message`, `challenge_answer`, plus hidden anti-spam and challenge fields. Keep field names unchanged unless explicitly approved.
+
+States:
+
+- Loading: form disabled, email still ready.
+- Ready: challenge prompt visible and form enabled.
+- Sent: success banner.
+- Invalid: validation banner.
+- Error or unavailable: direct email banner.
+
+### Credibility Panel
+
+The RZETELNA Firma panel is proof, not decoration. Preserve the red `RZETELNA` accent, certificate link, display URL, sweep, and pulse. Do not let red spread into unrelated UI.
+
+### Collaboration Logos
+
+Partner marks live in controlled logo surfaces. Light, dark, and yellow surfaces may differ to protect mark legibility. The grid should read as proof of real delivery contexts, not a logo-collecting wall.
+
+## 7. Motion
+
+Motion language:
+
+- Boot sequence: terminal initialization.
+- Hero background: scanning rail, sweep, and ring movement.
+- Command deck and panels: subtle HUD sweeps.
+- Credibility: verification sweep and pulse.
+- Scramble: route and section heading reveal.
+- Contact: channel sweep and signal pulse.
+
+Rules:
+
+- Motion must communicate scanning, routing, loading, verification, or output.
+- Do not animate layout properties when transform, opacity, or background-position can do the job.
+- Every animation family needs a `prefers-reduced-motion: reduce` fallback.
+- Content must be visible by default. Do not gate readability on JS animation completion.
+
+## 8. SEO And Platform Notes
+
+The site uses Next.js App Router conventions:
+
+- `src/app/layout.tsx` owns root metadata, viewport, Google fonts, and global CSS.
+- Each route exports metadata through `buildMetadata`.
+- `sitemap.ts` and `robots.ts` are static route files.
+- `opengraph-image.tsx` files generate route-level OG images.
+- Structured data uses `WebSite`, `Person`, `WebPage`, `CollectionPage`, `ContactPage`, `ProfilePage`, breadcrumbs, item lists, and service nodes.
+- Contact uses route handlers under `/api/contact` and `/api/contact/bootstrap`.
+
+Keep canonical paths, sitemap routes, and nav labels aligned when adding pages.
+
+## 9. Do's And Don'ts
+
+### Do
+
+- Preserve the black-green, mint, lime, mono-forward terminal identity.
+- Make the offer understandable to non-technical clients.
+- Keep direct email and direct accountability visible.
+- Connect technical work to clarity, risk reduction, execution, and durable handoff.
+- Use selected collaborations and RZETELNA proof as evidence-bearing elements.
+- Keep reduced-motion fallbacks for boot, scan, sweep, pulse, and scramble effects.
+- Keep contrast high on dark tinted panels.
+
+### Don't
+
+- Do not use generic agency polish.
+- Do not use bloated SaaS landing-page patterns.
+- Do not use vague innovation language.
+- Do not use decorative case-study theater.
+- Do not make the site feel like a large anonymous consultancy.
+- Do not make the terminal identity so loud that clients cannot tell what is delivered.
+- Do not use gradient text, thick side-stripe borders, glass cards as decoration, repeated icon cards, or repeated tiny uppercase labels unless the route language truly needs them.
+- Do not change URL structure, nav labels, form field names, logo treatment, or legal and credibility copy without explicit approval.

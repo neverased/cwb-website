@@ -3,31 +3,31 @@ export const coreSignals = [
     id: "01",
     title: "Multimedia systems",
     description:
-      "Audio, video, and interactive experiences designed with the same rigor as product infrastructure.",
+      "Media-heavy launches and experiences that need reliable planning, production logic, and quality control.",
     detail:
-      "Direction, production workflows, signal quality, delivery pipelines.",
+      "Audio, video, interactive surfaces, delivery pipelines, and production supervision.",
   },
   {
     id: "02",
     title: "Software engineering",
     description:
-      "Product delivery with clean interfaces, maintainable code, and the technical discipline to scale.",
+      "Product interfaces, internal tools, and integration work delivered with maintainable technical discipline.",
     detail:
-      "Frontend systems, integration work, internal tools, fast execution.",
+      "Frontend systems, workflow cleanup, integrations, and practical implementation support.",
   },
   {
     id: "03",
     title: "Application architecture",
     description:
-      "System design that exposes weak points early and gives teams a clearer path to build on.",
+      "Architecture reviews and system maps that expose weak points before they become expensive.",
     detail:
-      "Architecture reviews, tradeoff mapping, platform structure, resilience.",
+      "Boundaries, dependencies, tradeoff mapping, platform shape, and resilience.",
   },
   {
     id: "04",
     title: "Company and product audits",
     description:
-      "Independent assessment of delivery, technology, and product decisions before complexity gets expensive.",
+      "Independent assessment when product, process, or technology decisions need a cleaner outside read.",
     detail:
       "Technical audits, process diagnostics, product signal, operational clarity.",
   },
@@ -37,10 +37,10 @@ export const focusModules = [
   {
     id: "multimedia",
     label: "Multimedia",
-    status: "signal routing",
+    status: "media delivery",
     summary:
-      "Audio, video, and interactive delivery designed like systems work, not like disconnected production tasks.",
-    command: "$ inspect --surface media --goal launch-ready --signal clean",
+      "For launches, showrooms, branded experiences, and content operations where media quality and timing cannot drift.",
+    command: "$ plan media --goal launch-ready --risk visible",
     stack: [
       "audio and video pipelines",
       "capture to delivery workflows",
@@ -51,10 +51,10 @@ export const focusModules = [
   {
     id: "software",
     label: "Software",
-    status: "runtime execution",
+    status: "product build",
     summary:
-      "Shipping interfaces and product systems with maintainable code, fast iteration, and fewer hidden liabilities.",
-    command: "$ deploy --surface product --mode engineering --risk visible",
+      "For teams that need product interfaces, integrations, or internal tools shipped without creating avoidable technical debt.",
+    command: "$ build product --scope focused --handoff durable",
     stack: [
       "frontend systems and interfaces",
       "integration and internal tooling",
@@ -65,10 +65,10 @@ export const focusModules = [
   {
     id: "architecture",
     label: "Architecture",
-    status: "system mapping",
+    status: "technical direction",
     summary:
-      "Clarifying structure, coupling, and tradeoffs before scale turns small design mistakes into permanent cost.",
-    command: "$ map --surface architecture --trace dependencies --expose debt",
+      "For decisions about structure, coupling, ownership, and platform shape before scale turns uncertainty into cost.",
+    command: "$ map architecture --trace dependencies --choose route",
     stack: [
       "platform shape and boundaries",
       "dependency mapping and risk zones",
@@ -79,10 +79,10 @@ export const focusModules = [
   {
     id: "audits",
     label: "Audits",
-    status: "diagnostic mode",
+    status: "outside review",
     summary:
-      "Independent review of product, process, and technology when a company needs a cleaner read on reality.",
-    command: "$ audit --surface company --mode product-tech --output signal",
+      "For companies that need an independent read on what is working, what is fragile, and what should happen next.",
+    command: "$ audit company --mode product-tech --output decisions",
     stack: [
       "technical and product audits",
       "delivery friction diagnosis",
@@ -139,11 +139,47 @@ export const operatingSignals = [
   },
 ] as const;
 
+export const clientOutcomes = [
+  {
+    label: "Clarity",
+    value: "Know what is broken, risky, or worth building next.",
+    detail:
+      "Useful when a project feels noisy and nobody fully trusts the current picture.",
+  },
+  {
+    label: "Execution",
+    value: "Move from analysis into implementation without losing context.",
+    detail:
+      "Useful when the same person needs to understand the problem and help correct it.",
+  },
+  {
+    label: "Reduced risk",
+    value:
+      "Expose weak architecture, delivery gaps, and hidden product cost early.",
+    detail: "Useful before complexity hardens into expensive operating habits.",
+  },
+  {
+    label: "Durable handoff",
+    value: "Leave maps, decisions, and artifacts teams can keep using.",
+    detail: "Useful when the result has to survive after the engagement ends.",
+  },
+] as const;
+
 export const executionConsole = [
   "capture current signal",
   "surface hidden constraints",
   "reduce technical noise",
   "ship a cleaner system state",
+] as const;
+
+export const workingTerminalLines = [
+  "$ intake --brief client-problem",
+  "reading stack, process, pressure, ownership",
+  "finding hidden constraints",
+  "$ route --surface media software architecture audits",
+  "mapping risks, dependencies, and next actions",
+  "$ output --format decisions artifacts implementation",
+  "ready for direct handoff",
 ] as const;
 
 export const serviceRouting = {

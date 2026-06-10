@@ -18,7 +18,7 @@
       circle at top left,
       rgba(126, 255, 203, 0.05),
       transparent 40%
-  );
+    );
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.04),
     0 0.45rem 0.8rem rgba(0, 0, 0, 0.26);
@@ -100,7 +100,7 @@
   margin-bottom: 0.85rem;
   color: #8ddfba;
   font-size: 0.74rem;
-  letter-spacing: 0.14em;
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 
@@ -110,7 +110,7 @@
   display: inline-flex;
   margin-bottom: 1rem;
   color: #f6fff8;
-  font-size: clamp(1.05rem, 2vw, 1.45rem);
+  font-size: 1.25rem;
   line-height: 1.4;
   transition:
     transform 180ms ease,
@@ -150,7 +150,7 @@
 .statusBanner strong {
   color: #f4fff8;
   font-size: 0.9rem;
-  letter-spacing: 0.08em;
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 
@@ -198,7 +198,7 @@
 .fieldLabel {
   color: #8ddfba;
   font-size: 0.7rem;
-  letter-spacing: 0.14em;
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 
@@ -285,7 +285,7 @@
   );
   color: #f6fff8;
   font: inherit;
-  letter-spacing: 0.02em;
+  letter-spacing: 0;
   cursor: pointer;
   transition:
     transform 180ms ease,

@@ -15,7 +15,7 @@
       circle at top left,
       rgba(126, 255, 203, 0.05),
       transparent 40%
-  );
+    );
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.04),
     0 0.45rem 0.8rem rgba(0, 0, 0, 0.26);
@@ -53,14 +53,14 @@
 .brandPrompt {
   color: rgba(151, 224, 190, 0.84);
   font-size: 0.7rem;
-  letter-spacing: 0.12em;
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 
 .brandName {
   color: #f2fff6;
   font-size: 0.98rem;
-  letter-spacing: 0.08em;
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 
@@ -76,7 +76,7 @@
   border-radius: 999px;
   color: rgba(232, 248, 239, 0.88);
   font-size: 0.8rem;
-  letter-spacing: 0.04em;
+  letter-spacing: 0;
   transition:
     color 180ms ease,
     background-color 180ms ease,

@@ -11,15 +11,16 @@ import { ScrambleText } from "@/components/scramble_text";
 import { SiteHeader } from "@/components/site_header";
 import { TerminalLoader } from "@/components/use_scramble";
 import {
+  clientOutcomes,
   collaborationProofPoints,
   coreSignals,
   executionConsole,
   focusModules,
   noteQueue,
   operatingModel,
-  operatingSignals,
   selectedCollaborations,
   terminalFacts,
+  workingTerminalLines,
 } from "@/static/siteContent";
 import { HACKING } from "@/static/staticText/start";
 
@@ -144,46 +145,15 @@ export const HomePage = () => {
             <ScrambleText
               as="h1"
               className={styles.heroTitle}
-              text="I build media-heavy products, software systems, and clearer technical decisions."
+              text="Clear decisions. Cleaner delivery."
               delay={240}
               speed={0.9}
               step={3}
             />
             <p className={styles.heroDescription}>
-              I help companies turn unclear technical situations into workable
-              decisions, cleaner delivery paths, and systems that hold up under
-              real pressure.
+              I help companies solve messy media, software, architecture, and
+              audit problems with direct technical execution.
             </p>
-
-            <div className={styles.focusTabs}>
-              {focusModules.map((module) => (
-                <button
-                  key={module.id}
-                  className={[
-                    styles.focusTab,
-                    module.id === activeFocus.id ? styles.focusTabActive : "",
-                  ]
-                    .filter(Boolean)
-                    .join(" ")}
-                  type="button"
-                  aria-pressed={module.id === activeFocus.id}
-                  onClick={() => {
-                    setActiveFocusId(module.id);
-                  }}
-                >
-                  {module.label}
-                </button>
-              ))}
-            </div>
-
-            <div className={styles.focusPanel}>
-              <div className={styles.focusPanelHeader}>
-                <p className={styles.deckLabel}>best fit</p>
-                <span>{activeFocus.status}</span>
-              </div>
-              <p className={styles.focusPanelTitle}>{activeFocus.label}</p>
-              <p className={styles.focusPanelText}>{activeFocus.summary}</p>
-            </div>
 
             <div className={styles.heroActions}>
               <a
@@ -195,13 +165,6 @@ export const HomePage = () => {
               <Link className={styles.secondaryAction} href="/services">
                 Open service map
               </Link>
-            </div>
-
-            <div className={styles.heroFootnote}>
-              <span>Based in Poland</span>
-              <span>Working worldwide</span>
-              <span>Available for selected collaborations</span>
-              <span>{activeFocus.status}</span>
             </div>
           </div>
 
@@ -228,12 +191,51 @@ export const HomePage = () => {
               />
             </div>
 
+            <div className={styles.focusTabs}>
+              <p className={styles.focusTabsLabel}>Choose the problem type</p>
+              {focusModules.map((module) => (
+                <button
+                  key={module.id}
+                  className={[
+                    styles.focusTab,
+                    module.id === activeFocus.id ? styles.focusTabActive : "",
+                  ]
+                    .filter(Boolean)
+                    .join(" ")}
+                  type="button"
+                  aria-pressed={module.id === activeFocus.id}
+                  onClick={() => {
+                    setActiveFocusId(module.id);
+                  }}
+                >
+                  {module.label}
+                </button>
+              ))}
+            </div>
+
             <div className={styles.focusConsole}>
               <div className={styles.focusConsoleHeader}>
-                <p className={styles.deckLabel}>current read</p>
+                <p className={styles.deckLabel}>working terminal</p>
                 <span>{activeFocus.status}</span>
               </div>
               <p className={styles.focusConsoleText}>{activeFocus.summary}</p>
+              <div
+                className={styles.terminalViewport}
+                aria-label="Working diagnostic terminal output"
+              >
+                {workingTerminalLines.map((line) => (
+                  <p
+                    key={line}
+                    className={
+                      line.startsWith("$")
+                        ? styles.terminalCommand
+                        : styles.terminalOutput
+                    }
+                  >
+                    {line}
+                  </p>
+                ))}
+              </div>
               <pre className={styles.commandPreview}>
                 <code>{activeFocus.command}</code>
               </pre>
@@ -260,9 +262,9 @@ export const HomePage = () => {
         </section>
 
         <section className={styles.signalSection}>
-          <h2 className={styles.srOnly}>Operating signals</h2>
+          <h2 className={styles.srOnly}>Client outcomes</h2>
           <div className={styles.signalStrip}>
-            {operatingSignals.map(({ label, value, detail }) => (
+            {clientOutcomes.map(({ label, value, detail }) => (
               <article key={label} className={styles.signalCard}>
                 <p className={styles.deckLabel}>{label}</p>
                 <h3>{value}</h3>
@@ -303,9 +305,8 @@ export const HomePage = () => {
 
           <div className={styles.collaborationGrid}>
             {selectedCollaborations.map(
-              ({ name, tag, src, width, height, surface }) => (
+              ({ name, src, width, height, surface }) => (
                 <article key={name} className={styles.collaborationCard}>
-                  <p className={styles.deckLabel}>{tag}</p>
                   <div
                     className={[
                       styles.collaborationSurface,
@@ -329,7 +330,6 @@ export const HomePage = () => {
                       sizes="(max-width: 720px) calc(100vw - 5rem), (max-width: 1100px) calc(50vw - 3rem), 26rem"
                     />
                   </div>
-                  <p className={styles.collaborationName}>{name}</p>
                 </article>
               ),
             )}

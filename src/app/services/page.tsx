@@ -93,15 +93,15 @@ export default function ServicesPage() {
             <ScrambleText
               as="h1"
               className={styles.title}
-              text="Four surfaces, one operating style."
+              text="Choose the workstream that matches the problem."
               speed={0.8}
               step={3}
             />
             <p className={styles.description}>
-              The work shifts shape depending on what needs clarity: multimedia,
-              software, architecture, or audits. The standard stays the same:
-              cleaner systems, sharper decisions, and execution that does not
-              collapse into noise.
+              The entry point can be media delivery, software build,
+              architecture direction, or an independent audit. The goal is the
+              same: make the situation clearer, expose the real constraints, and
+              leave work your team can use.
             </p>
           </div>
 
@@ -149,14 +149,14 @@ export default function ServicesPage() {
             <ScrambleText
               as="h2"
               className={styles.sectionTitle}
-              text="Less brochure, more routing board."
+              text="What comes in, what happens, and what leaves."
               speed={0.78}
               step={3}
             />
             <p className={styles.description}>
-              Each surface is framed as a workstream: what enters, what happens
-              in the middle, and what leaves the system when the engagement is
-              done.
+              Each service is framed as a workstream so the business value is
+              visible before the technical details: the trigger, the operation,
+              and the usable output.
             </p>
           </div>
 

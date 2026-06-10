@@ -82,15 +82,14 @@ export default function ProfilePage() {
             <ScrambleText
               as="h1"
               className={styles.title}
-              text="A technical operator across media, product, and system design."
+              text="One technical partner across media, product, and system design."
               speed={0.8}
               step={3}
             />
             <p className={styles.description}>
-              This is the cleaner profile route behind the landing page:
-              expertise, collaboration signals, and the way I usually enter
-              projects that need clearer structure, sharper execution, or an
-              outside technical read.
+              I work as a direct specialist for projects that need clearer
+              structure, sharper execution, or an outside technical read across
+              multimedia, software, architecture, and audits.
             </p>
           </div>
 
@@ -158,12 +157,11 @@ export default function ProfilePage() {
 
           <div className={styles.logoGrid}>
             {selectedCollaborations.map(
-              ({ name, src, width, height, surface, tag }) => (
+              ({ name, src, width, height, surface }) => (
                 <article
                   key={name}
                   className={[styles.card, styles.logoCard].join(" ")}
                 >
-                  <p className={styles.cardLabel}>{tag}</p>
                   <div
                     className={[
                       styles.logoSurface,
@@ -183,7 +181,6 @@ export default function ProfilePage() {
                       sizes="(max-width: 760px) calc(100vw - 4rem), (max-width: 1080px) calc(50vw - 3rem), 21rem"
                     />
                   </div>
-                  <p className={styles.logoName}>{name}</p>
                 </article>
               ),
             )}

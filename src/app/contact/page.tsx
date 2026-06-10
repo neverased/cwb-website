@@ -78,19 +78,20 @@ export default function ContactPage() {
             />
             <p className={styles.description}>
               If the system is noisy, unclear, or underbuilt, send the brief
-              directly. The site now runs in a Dockerized Next.js runtime, with
-              the protected form handled by the same app.
+              directly. A short description of the problem is enough to start a
+              focused conversation.
             </p>
           </div>
 
           <aside className={styles.panel}>
-            <p className={styles.panelLabel}>delivery route</p>
+            <p className={styles.panelLabel}>best fit</p>
             <h2 className={styles.panelTitle}>
-              Dockerized frontend, local contact handler.
+              Problems where clarity and execution both matter.
             </h2>
             <p className={styles.panelText}>
-              No external form backend is required. The landing page and this
-              route both submit to the same protected Next.js endpoint.
+              Useful for architecture reviews, technical audits, media-heavy
+              delivery, internal tools, and situations where a direct outside
+              read would reduce risk.
             </p>
           </aside>
         </section>

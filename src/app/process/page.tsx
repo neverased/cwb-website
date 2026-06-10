@@ -89,15 +89,14 @@ export default function ProcessPage() {
             <ScrambleText
               as="h1"
               className={styles.title}
-              text="The operating model, with more air around it."
+              text="A clear path from diagnosis to usable output."
               speed={0.8}
               step={3}
             />
             <p className={styles.description}>
-              This is the part that was too compressed on the landing page. The
-              process is simple on purpose: understand the actual signal, map
-              the system, correct what matters, and leave something durable
-              behind.
+              The process is simple on purpose: understand what is actually
+              happening, map the system, correct what matters, and leave
+              something durable behind.
             </p>
           </div>
 
@@ -122,7 +121,7 @@ export default function ProcessPage() {
             <ScrambleText
               as="h2"
               className={styles.sectionTitle}
-              text="A connected pipeline instead of a stack of paragraphs."
+              text="A connected pipeline for technical work."
               speed={0.78}
               step={3}
             />

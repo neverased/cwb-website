@@ -100,7 +100,9 @@ interface ContactPanelProps {
 }
 
 export const ContactPanel = ({ className }: ContactPanelProps) => {
-  const [contactStatus, setContactStatus] = useState<ContactStatus | null>(null);
+  const [contactStatus, setContactStatus] = useState<ContactStatus | null>(
+    null,
+  );
   const [bootstrapState, setBootstrapState] = useState<BootstrapState>({
     status: "loading",
   });
@@ -145,17 +147,12 @@ export const ContactPanel = ({ className }: ContactPanelProps) => {
   const isBootstrapReady = bootstrapState.status === "ready";
   const isFormDisabled = !isBootstrapReady || isSubmitting;
   const secureStatus =
-    bootstrapState.status === "loading"
+    bootstrapState.status === "unavailable"
       ? {
-          title: "Secure challenge loading.",
-          text: "The anti-spam check is loading. If it does not appear, use direct email instead.",
+          title: "Secure channel unavailable.",
+          text: "The protected form is unavailable right now. Direct email is ready.",
         }
-      : bootstrapState.status === "unavailable"
-        ? {
-            title: "Secure channel unavailable.",
-            text: "The protected form is unavailable right now. Use direct email instead.",
-          }
-        : null;
+      : null;
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     if (!isBootstrapReady || isSubmitting) {
@@ -217,8 +214,34 @@ export const ContactPanel = ({ className }: ContactPanelProps) => {
         .filter(Boolean)
         .join(" ")}
     >
+      <div className={[styles.contactCard, styles.contactDirectCard].join(" ")}>
+        <p className={styles.contactLabel}>direct route</p>
+        <a className={styles.contactValue} href={`mailto:${CONTACT_EMAIL}`}>
+          {CONTACT_EMAIL}
+        </a>
+        <p className={styles.contactText}>
+          Best for consulting requests, architecture reviews, audits, and
+          media-heavy digital product work.
+        </p>
+
+        <div className={styles.contactSignalGrid}>
+          <div>
+            <p className={styles.contactLabel}>engagement fit</p>
+            <p className={styles.contactText}>
+              strategy, execution, independent review
+            </p>
+          </div>
+          <div>
+            <p className={styles.contactLabel}>first note</p>
+            <p className={styles.contactText}>
+              What is blocked, risky, underbuilt, or worth reviewing?
+            </p>
+          </div>
+        </div>
+      </div>
+
       <div className={[styles.contactCard, styles.contactFormCard].join(" ")}>
-        <p className={styles.contactLabel}>project inquiry</p>
+        <p className={styles.contactLabel}>protected form</p>
 
         {contactStatus ? (
           <div
@@ -345,7 +368,7 @@ export const ContactPanel = ({ className }: ContactPanelProps) => {
                 </p>
               ) : (
                 <p className={styles.challengePrompt}>
-                  Waiting for secure challenge.
+                  Form channel is preparing. Direct email is ready now.
                 </p>
               )}
               <input
@@ -400,42 +423,21 @@ export const ContactPanel = ({ className }: ContactPanelProps) => {
 
           <div className={styles.formFooter}>
             <p className={styles.formHint}>
-              I usually respond within 24 hours.
+              Form route is optional. Direct email is fastest.
             </p>
             <button
               className={styles.submitButton}
               type="submit"
               disabled={isFormDisabled}
             >
-              {isSubmitting ? "Sending..." : "Send inquiry"}
+              {isSubmitting
+                ? "Sending..."
+                : bootstrapState.status === "loading"
+                  ? "Preparing form"
+                  : "Send inquiry"}
             </button>
           </div>
         </form>
-      </div>
-
-      <div className={styles.contactCard}>
-        <p className={styles.contactLabel}>direct email</p>
-        <a className={styles.contactValue} href={`mailto:${CONTACT_EMAIL}`}>
-          {CONTACT_EMAIL}
-        </a>
-        <p className={styles.contactText}>
-          Best for consulting requests, architecture reviews, audits, and
-          media-heavy digital product work.
-        </p>
-
-        <p className={styles.contactLabel}>engagement fit</p>
-        <p className={styles.contactValue}>
-          strategy, execution, independent review
-        </p>
-        <p className={styles.contactText}>
-          Short diagnostic work, longer architecture engagements, and selected
-          builds where the technical direction matters.
-        </p>
-
-        <p className={styles.contactLabel}>delivery route</p>
-        <p className={styles.contactText}>
-          Let's talk about your project and how I can help.
-        </p>
       </div>
     </div>
   );

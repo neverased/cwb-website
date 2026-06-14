@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import styles from "@/app/page.module.css";
 import { ContactPanel } from "@/components/contact_panel";
@@ -61,6 +61,7 @@ export const HomePage = () => {
   const [activeFocusId, setActiveFocusId] = useState<
     (typeof focusModules)[number]["id"]
   >(focusModules[0].id);
+  const skipButtonRef = useRef<HTMLButtonElement>(null);
 
   const completeBoot = useCallback(() => {
     persistBootState();
@@ -85,6 +86,8 @@ export const HomePage = () => {
     if (bootPhase !== "booting") {
       return;
     }
+
+    skipButtonRef.current?.focus();
 
     const reduceMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
@@ -135,7 +138,9 @@ export const HomePage = () => {
           ]
             .filter(Boolean)
             .join(" ")}
-          aria-hidden="true"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Site initialization"
         >
           <div className={styles.bootConsole}>
             <TerminalLoader
@@ -144,6 +149,7 @@ export const HomePage = () => {
               onComplete={completeBoot}
             />
             <button
+              ref={skipButtonRef}
               type="button"
               className={styles.bootSkip}
               onClick={skipBoot}
@@ -161,6 +167,8 @@ export const HomePage = () => {
         ]
           .filter(Boolean)
           .join(" ")}
+        inert={bootPhase !== "ready" ? true : undefined}
+        aria-hidden={bootPhase !== "ready" ? true : undefined}
       >
         <SiteHeader currentPath="/" />
 
@@ -253,9 +261,9 @@ export const HomePage = () => {
                 <p className={styles.deckLabel}>{activeFocus.status}</p>
               </div>
               <div aria-label="Working diagnostic terminal output">
-                {deckTerminalLines.map((line) => (
+                {deckTerminalLines.map((line, index) => (
                   <p
-                    key={line}
+                    key={`${activeFocusId}-${index}`}
                     className={
                       line.startsWith("$")
                         ? styles.terminalCommand
@@ -313,8 +321,9 @@ export const HomePage = () => {
 
           <div className={styles.collaborationGrid}>
             {selectedCollaborations.map(
-              ({ name, src, width, height, surface }) => (
+              ({ name, tag, src, width, height, surface }) => (
                 <article key={name} className={styles.collaborationCard}>
+                  <p className={styles.collaborationTag}>{tag}</p>
                   <div
                     className={[
                       styles.collaborationSurface,
@@ -368,7 +377,6 @@ export const HomePage = () => {
             {coreSignals.map(({ id, title, description, detail }) => (
               <article key={id} className={styles.capabilityCard}>
                 <div className={styles.capabilityHeader}>
-                  <span>{id}</span>
                   <p>{title}</p>
                 </div>
                 <h3>{description}</h3>
@@ -400,7 +408,6 @@ export const HomePage = () => {
           <div className={styles.processGrid}>
             {operatingModel.map(({ step, title, text }) => (
               <article key={step} className={styles.processCard}>
-                <span className={styles.processStep}>{step}</span>
                 <h3>{title}</h3>
                 <p>{text}</p>
               </article>

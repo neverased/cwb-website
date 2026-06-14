@@ -18,6 +18,14 @@ type ScrambleTextProps<T extends ElementType> = {
   step?: number;
 } & Omit<ComponentPropsWithoutRef<T>, "as" | "children" | "className">;
 
+const readReducedMotionPreference = () => {
+  if (typeof window === "undefined") {
+    return false;
+  }
+
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+};
+
 export const ScrambleText = <T extends ElementType = "span">({
   as,
   text,
@@ -28,8 +36,23 @@ export const ScrambleText = <T extends ElementType = "span">({
   step = 2,
   ...rest
 }: ScrambleTextProps<T>) => {
+  const [reduceMotion, setReduceMotion] = useState(readReducedMotionPreference);
   const [isActive, setIsActive] = useState(delay === 0);
   const Tag = (as ?? "span") as ElementType;
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => {
+      setReduceMotion(mediaQuery.matches);
+    };
+
+    update();
+    mediaQuery.addEventListener("change", update);
+
+    return () => {
+      mediaQuery.removeEventListener("change", update);
+    };
+  }, []);
 
   useEffect(() => {
     if (delay === 0) {
@@ -49,15 +72,23 @@ export const ScrambleText = <T extends ElementType = "span">({
   }, [delay, text]);
 
   const { ref } = useScramble({
-    text: isActive ? text : "",
+    text: isActive && !reduceMotion ? text : "",
     tick,
     speed,
     step,
   });
 
+  if (reduceMotion) {
+    return (
+      <Tag className={className} {...rest}>
+        {text}
+      </Tag>
+    );
+  }
+
   return (
     <Tag className={className} aria-label={text} {...rest}>
-      <span ref={ref} />
+      <span ref={ref}>{text}</span>
     </Tag>
   );
 };

@@ -13,11 +13,6 @@ export const CredibilityPanel = ({ className }: CredibilityPanelProps) => {
       className={[styles.panel, className ?? ""].filter(Boolean).join(" ")}
       aria-label={credibilitySignal.kicker}
     >
-      <div className={styles.verificationLayer} aria-hidden="true">
-        <span className={styles.verificationSweep} />
-        <span className={styles.verificationPulse} />
-      </div>
-
       <div className={styles.copy}>
         <p className={styles.kicker}>{credibilitySignal.kicker}</p>
         <h2 className={styles.title} aria-label={credibilitySignal.title}>

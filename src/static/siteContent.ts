@@ -452,7 +452,7 @@ export const credibilitySignal = {
   titleAccent: "RZETELNA",
   titleSuffix: "Firma member",
   description:
-    "We participate in the program. Review the company profile and our credibility certificate.",
+    "I participate in the program. Review the company profile and my credibility certificate.",
   actionLabel: "View certificate",
   displayUrl: "rzetelnafirma.pl/D72SOALK4C2PIGNR",
   href: "https://www.rzetelnafirma.pl/D72SOALK4C2PIGNR",

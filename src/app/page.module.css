@@ -111,8 +111,7 @@
 }
 
 .commandDeck,
-.processConsole,
-.topbar {
+.processConsole {
   position: relative;
   overflow: hidden;
   border: 1px solid rgba(126, 255, 203, 0.16);
@@ -191,54 +190,6 @@
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
-}
-
-.topbar {
-  position: sticky;
-  top: 1rem;
-  z-index: 3;
-  padding: 0.9rem 1.1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-}
-
-.brandLockup {
-  display: grid;
-  gap: 0.15rem;
-}
-
-.brandPrompt {
-  color: rgba(140, 214, 179, 0.72);
-  font-size: 0.7rem;
-  letter-spacing: 0;
-  text-transform: uppercase;
-}
-
-.brandName {
-  color: #f2fff6;
-  font-size: 0.98rem;
-  letter-spacing: 0;
-  text-transform: uppercase;
-}
-
-.nav {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  gap: 1rem;
-}
-
-.nav a {
-  color: rgba(227, 245, 236, 0.8);
-  font-size: 0.82rem;
-  letter-spacing: 0;
-  text-transform: uppercase;
-}
-
-.nav a:hover {
-  color: #f5fff8;
 }
 
 .hero,
@@ -462,8 +413,6 @@
 .deckStatus,
 .deckLabel,
 .contactLabel,
-.capabilityHeader span,
-.processStep,
 .noteMeta {
   color: #8ddfba;
   font-size: 0.74rem;
@@ -800,6 +749,13 @@
   z-index: 1;
 }
 
+.collaborationTag {
+  color: #8ddfba;
+  font-size: 0.74rem;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
 .proofPoint {
   position: relative;
   display: grid;
@@ -918,9 +874,6 @@
 .capabilityHeader {
   position: relative;
   z-index: 1;
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
 }
 
 .capabilityHeader p {
@@ -930,11 +883,8 @@
   text-transform: uppercase;
 }
 
-.processStep {
-  position: relative;
-  z-index: 1;
-  display: inline-flex;
-  margin-bottom: 0.8rem;
+.processCard h3 {
+  margin-top: 0;
 }
 
 .processConsole {
@@ -1003,17 +953,6 @@
   .siteShell {
     padding-inline: 1rem;
     gap: clamp(3rem, 11vw, 4rem);
-  }
-
-  .topbar {
-    position: static;
-    padding: 1rem;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .nav {
-    justify-content: flex-start;
   }
 
   .heroTitle,
@@ -1085,15 +1024,21 @@
   }
 
   .routeCard {
-    order: 1;
-  }
-
-  .terminalViewport {
     order: 2;
   }
 
-  .focusTabs {
+  .terminalViewport {
     order: 3;
+  }
+
+  .focusTabs {
+    order: 1;
+    gap: 0.65rem;
+  }
+
+  .focusTab {
+    min-height: 2.75rem;
+    padding: 0.65rem 0.75rem;
   }
 }
 

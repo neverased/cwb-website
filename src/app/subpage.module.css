@@ -848,6 +848,13 @@
   gap: 0.9rem;
 }
 
+.logoTag {
+  color: #8ddfba;
+  font-size: 0.74rem;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
 .logoSurface {
   display: flex;
   align-items: center;

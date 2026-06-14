@@ -156,11 +156,12 @@ export default function ProfilePage() {
 
           <div className={styles.logoGrid}>
             {selectedCollaborations.map(
-              ({ name, src, width, height, surface }) => (
+              ({ name, tag, src, width, height, surface }) => (
                 <article
                   key={name}
                   className={[styles.card, styles.logoCard].join(" ")}
                 >
+                  <p className={styles.logoTag}>{tag}</p>
                   <div
                     className={[
                       styles.logoSurface,

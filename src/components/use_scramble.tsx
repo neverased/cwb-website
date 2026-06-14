@@ -158,7 +158,7 @@ export const TerminalLoader = ({
   return (
     <div className={styles.shell}>
       <div className={styles.header}>
-        <div className={styles.windowControls}>
+        <div className={styles.windowControls} aria-hidden="true">
           <span className={styles.controlRed} />
           <span className={styles.controlAmber} />
           <span className={styles.controlGreen} />

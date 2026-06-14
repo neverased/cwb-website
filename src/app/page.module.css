@@ -165,21 +165,16 @@
   box-shadow: inset 0 -1px 0 rgba(126, 255, 203, 0.09);
 }
 
-.commandDeck::before,
-.topbar::before {
+.commandDeck::before {
   content: "";
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(rgba(126, 255, 203, 0.18), rgba(126, 255, 203, 0.18)) left
+    linear-gradient(rgba(126, 255, 203, 0.16), rgba(126, 255, 203, 0.16)) left
       top / 2.6rem 1px no-repeat,
-    linear-gradient(rgba(126, 255, 203, 0.18), rgba(126, 255, 203, 0.18)) left
-      top / 1px 2.6rem no-repeat,
-    linear-gradient(rgba(126, 255, 203, 0.16), rgba(126, 255, 203, 0.16)) right
-      bottom / 2.6rem 1px no-repeat,
-    linear-gradient(rgba(126, 255, 203, 0.16), rgba(126, 255, 203, 0.16)) right
-      bottom / 1px 2.6rem no-repeat;
-  opacity: 0.78;
+    linear-gradient(rgba(126, 255, 203, 0.16), rgba(126, 255, 203, 0.16)) left
+      top / 1px 2.6rem no-repeat;
+  opacity: 0.4;
   pointer-events: none;
 }
 
@@ -323,25 +318,6 @@
 .heroDescription {
   max-width: 64ch;
   font-size: 1.08rem;
-}
-
-.heroProof {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.55rem;
-  max-width: 58ch;
-  color: rgba(229, 248, 239, 0.84);
-  font-size: 0.78rem;
-}
-
-.heroProof span {
-  display: inline-flex;
-  align-items: center;
-  min-height: 2rem;
-  padding: 0.42rem 0.62rem;
-  border: 1px solid rgba(126, 255, 203, 0.14);
-  border-radius: 0.12rem;
-  background: rgba(3, 14, 12, 0.72);
 }
 
 .focusTabs {
@@ -504,25 +480,6 @@
   padding: 1.05rem;
 }
 
-.commandDeck::after {
-  content: "";
-  position: absolute;
-  top: 12%;
-  bottom: 22%;
-  left: -18%;
-  width: 20%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(126, 255, 203, 0.16),
-    transparent
-  );
-  filter: blur(10px);
-  opacity: 0.22;
-  animation: homeHudSweep 15s linear infinite;
-  pointer-events: none;
-}
-
 .commandDeck > * {
   position: relative;
   z-index: 1;
@@ -535,29 +492,6 @@
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
-}
-
-.deckWindowControls {
-  display: flex;
-  gap: 0.55rem;
-}
-
-.deckWindowControls span {
-  width: 1.15rem;
-  height: 0.28rem;
-  border-radius: 0.16rem;
-}
-
-.deckWindowControls span:nth-child(1) {
-  background: #ff5f57;
-}
-
-.deckWindowControls span:nth-child(2) {
-  background: #febc2e;
-}
-
-.deckWindowControls span:nth-child(3) {
-  background: #28c840;
 }
 
 .deckStatus,
@@ -711,23 +645,6 @@
   line-height: 1.18;
 }
 
-.signalStrip::before {
-  content: "";
-  position: absolute;
-  inset: -1.2rem -2rem;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(126, 255, 203, 0.14),
-    rgba(126, 255, 203, 0.04),
-    transparent
-  );
-  filter: blur(12px);
-  opacity: 0.08;
-  pointer-events: none;
-  animation: homeHudSweep 20s linear infinite;
-}
-
 .sectionHeading {
   display: grid;
   gap: 0.9rem;
@@ -849,23 +766,6 @@
   pointer-events: none;
 }
 
-.processGrid::after {
-  content: "";
-  position: absolute;
-  inset: 16% 24% auto;
-  height: 5rem;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(126, 255, 203, 0.16),
-    transparent
-  );
-  filter: blur(12px);
-  opacity: 0.14;
-  pointer-events: none;
-  animation: homeHudSweep 22s linear infinite;
-}
-
 .signalCard {
   position: relative;
   padding: 1.2rem;
@@ -874,33 +774,6 @@
   clip-path: polygon(0 0, calc(100% - 0.75rem) 0, 100% 0.75rem, 100% 100%, 0 100%);
   background:
     linear-gradient(180deg, rgba(7, 17, 15, 0.78), rgba(3, 10, 9, 0.58));
-}
-
-.signalCard::after,
-.processCard::after {
-  content: "";
-  position: absolute;
-  inset: 0.8rem;
-  background:
-    linear-gradient(rgba(126, 255, 203, 0.18), rgba(126, 255, 203, 0.18)) left
-      top / 1.1rem 1px no-repeat,
-    linear-gradient(rgba(126, 255, 203, 0.18), rgba(126, 255, 203, 0.18)) left
-      top / 1px 1.1rem no-repeat,
-    linear-gradient(rgba(126, 255, 203, 0.18), rgba(126, 255, 203, 0.18)) right
-      top / 1.1rem 1px no-repeat,
-    linear-gradient(rgba(126, 255, 203, 0.18), rgba(126, 255, 203, 0.18)) right
-      top / 1px 1.1rem no-repeat,
-    linear-gradient(rgba(126, 255, 203, 0.18), rgba(126, 255, 203, 0.18)) left
-      bottom / 1.1rem 1px no-repeat,
-    linear-gradient(rgba(126, 255, 203, 0.18), rgba(126, 255, 203, 0.18)) left
-      bottom / 1px 1.1rem no-repeat,
-    linear-gradient(rgba(126, 255, 203, 0.18), rgba(126, 255, 203, 0.18)) right
-      bottom / 1.1rem 1px no-repeat,
-    linear-gradient(rgba(126, 255, 203, 0.18), rgba(126, 255, 203, 0.18)) right
-      bottom / 1px 1.1rem no-repeat;
-  opacity: 0.16;
-  pointer-events: none;
-  animation: homeRailBlink 7s ease-in-out infinite;
 }
 
 .signalCard h3 {
@@ -986,24 +859,6 @@
   background:
     linear-gradient(180deg, rgba(16, 28, 25, 0.92), rgba(9, 17, 16, 0.98));
   box-shadow: inset 0 -1px 0 rgba(126, 255, 203, 0.08);
-}
-
-.collaborationSurface::before {
-  content: "";
-  position: absolute;
-  inset: -22% auto -22% -30%;
-  width: 36%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.28),
-    transparent
-  );
-  filter: blur(8px);
-  opacity: 0.22;
-  transform: skewX(-18deg);
-  animation: homeHudSweep 18s linear infinite;
-  pointer-events: none;
 }
 
 .collaborationSurface::after {
@@ -1205,11 +1060,6 @@
 
   .heroDescription {
     font-size: 1rem;
-  }
-
-  .heroProof {
-    gap: 0.45rem;
-    font-size: 0.875rem;
   }
 
   .heroCopy {

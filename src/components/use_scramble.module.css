@@ -33,6 +33,22 @@
   pointer-events: none;
 }
 
+.shell::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(126, 255, 203, 0.045),
+    rgba(126, 255, 203, 0.045) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  opacity: 0.6;
+  pointer-events: none;
+}
+
 .header,
 .progressBlock,
 .screen,
@@ -143,11 +159,11 @@
 .screen {
   flex: 1 1 auto;
   min-height: 0;
-  padding: 1.2rem 1.25rem 0.4rem;
+  padding: clamp(1.2rem, 3vw, 2rem) clamp(1.25rem, 3vw, 2rem) 0.6rem;
   overflow-y: auto;
   overflow-x: hidden;
-  font-size: 0.95rem;
-  line-height: 1.7;
+  font-size: clamp(0.95rem, 0.7rem + 0.7vw, 1.18rem);
+  line-height: 1.85;
   color: #d5ffea;
   white-space: pre-wrap;
   scrollbar-width: thin;

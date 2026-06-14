@@ -52,15 +52,24 @@ const persistBootState = () => {
   }
 };
 
+type BootPhase = "booting" | "revealing" | "ready";
+
 export const HomePage = () => {
-  const [hasBooted, setHasBooted] = useState(hasBootedInMemory);
+  const [bootPhase, setBootPhase] = useState<BootPhase>(
+    hasBootedInMemory ? "ready" : "booting",
+  );
   const [activeFocusId, setActiveFocusId] = useState<
     (typeof focusModules)[number]["id"]
   >(focusModules[0].id);
 
   const completeBoot = useCallback(() => {
     persistBootState();
-    setHasBooted(true);
+    setBootPhase((current) => (current === "booting" ? "revealing" : current));
+  }, []);
+
+  const skipBoot = useCallback(() => {
+    persistBootState();
+    setBootPhase("ready");
   }, []);
 
   useEffect(() => {
@@ -69,11 +78,11 @@ export const HomePage = () => {
     }
 
     hasBootedInMemory = true;
-    setHasBooted(true);
+    setBootPhase("ready");
   }, []);
 
   useEffect(() => {
-    if (hasBooted) {
+    if (bootPhase !== "booting") {
       return;
     }
 
@@ -82,18 +91,32 @@ export const HomePage = () => {
     ).matches;
 
     if (reduceMotion) {
-      completeBoot();
+      skipBoot();
       return;
     }
 
     const fallbackTimer = window.setTimeout(() => {
       completeBoot();
-    }, 4800);
+    }, 6400);
 
     return () => {
       window.clearTimeout(fallbackTimer);
     };
-  }, [completeBoot, hasBooted]);
+  }, [bootPhase, completeBoot, skipBoot]);
+
+  useEffect(() => {
+    if (bootPhase !== "revealing") {
+      return;
+    }
+
+    const revealTimer = window.setTimeout(() => {
+      setBootPhase("ready");
+    }, 720);
+
+    return () => {
+      window.clearTimeout(revealTimer);
+    };
+  }, [bootPhase]);
 
   const activeFocus =
     focusModules.find(({ id }) => id === activeFocusId) ?? focusModules[0];
@@ -104,17 +127,41 @@ export const HomePage = () => {
 
   return (
     <main className={styles.page}>
-      {!hasBooted ? (
-        <div className={styles.bootLayer} aria-hidden="true">
-          <TerminalLoader
-            texts={HACKING}
-            loop={false}
-            onComplete={completeBoot}
-          />
+      {bootPhase !== "ready" ? (
+        <div
+          className={[
+            styles.bootLayer,
+            bootPhase === "revealing" ? styles.bootExiting : "",
+          ]
+            .filter(Boolean)
+            .join(" ")}
+          aria-hidden="true"
+        >
+          <div className={styles.bootConsole}>
+            <TerminalLoader
+              texts={HACKING}
+              loop={false}
+              onComplete={completeBoot}
+            />
+            <button
+              type="button"
+              className={styles.bootSkip}
+              onClick={skipBoot}
+            >
+              skip intro
+            </button>
+          </div>
         </div>
       ) : null}
 
-      <div className={styles.siteShell}>
+      <div
+        className={[
+          styles.siteShell,
+          bootPhase === "booting" ? "" : styles.siteShellEnter,
+        ]
+          .filter(Boolean)
+          .join(" ")}
+      >
         <SiteHeader currentPath="/" />
 
         <section className={styles.hero} id="top">
@@ -137,10 +184,8 @@ export const HomePage = () => {
               step={3}
             />
             <p className={styles.heroDescription}>
-              For founders, product leads, and hiring teams facing unclear
-              technical decisions: I turn messy media, software, architecture,
-              and audit work into usable plans, artifacts, and hands-on
-              delivery.
+              For founders, product leads, and hiring teams: I turn messy media,
+              software, and architecture work into usable plans and delivery.
             </p>
 
             <div className={styles.heroActions}>
@@ -154,20 +199,11 @@ export const HomePage = () => {
                 Review services
               </Link>
             </div>
-
-            <div className={styles.heroProof} aria-label="Credibility signals">
-              <span>RZETELNA Firma member</span>
-              <span>Selected work across media, product, and systems</span>
-            </div>
           </div>
 
           <aside className={styles.commandDeck}>
             <div className={styles.deckHeader}>
-              <div className={styles.deckWindowControls}>
-                <span />
-                <span />
-                <span />
-              </div>
+              <span className={styles.deckPrompt}>cwb://focus</span>
               <span className={styles.deckStatus}>
                 {activeFocus.label} active
               </span>
@@ -214,8 +250,7 @@ export const HomePage = () => {
 
             <div className={styles.terminalViewport}>
               <div className={styles.terminalViewportHeader}>
-                <p className={styles.deckLabel}>diagnostic output</p>
-                <span>sample read</span>
+                <p className={styles.deckLabel}>{activeFocus.status}</p>
               </div>
               <div aria-label="Working diagnostic terminal output">
                 {deckTerminalLines.map((line) => (

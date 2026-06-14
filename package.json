@@ -11,7 +11,7 @@
     "lint": "eslint \"{src,apps,libs,test}/**/*.{ts,tsx}\" --fix"
   },
   "dependencies": {
-    "@types/node": "25.9.2",
+    "@types/node": "25.9.3",
     "@types/react": "19.2.17",
     "@types/react-dom": "19.2.3",
     "@uit/glitch-image": "^0.0.11",
@@ -21,16 +21,16 @@
     "nodemailer": "^8.0.11",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
-    "sass": "^1.100.0",
+    "sass": "^1.101.0",
     "typescript": "6.0.3",
     "use-scramble": "^2.2.15"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@next/eslint-plugin-next": "^16.2.9",
-    "@types/nodemailer": "^8.0.0",
+    "@types/nodemailer": "^8.0.1",
     "coffeescript": "^2.7.0",
-    "eslint": "10.4.1",
+    "eslint": "10.5.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.6",
     "eslint-plugin-simple-import-sort": "^13.0.0",
@@ -40,5 +40,5 @@
     "tsx": "^4.22.4",
     "typescript-eslint": "^8.61.0"
   },
-  "packageManager": "pnpm@11.5.3"
+  "packageManager": "pnpm@11.6.0"
 }

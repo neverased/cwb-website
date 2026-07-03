@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-06-14T16:05:00+02:00",
+  "generatedAt": "2026-07-03T12:55:00+02:00",
   "title": "Design System: Wojciech Bajer Consulting",
   "extensions": {
     "colorMeta": {
@@ -113,15 +113,15 @@
     "typographyMeta": {
       "display": {
         "displayName": "Display",
-        "purpose": "Homepage hero H1 and route H1s only. Space Grotesk, scrambled on reveal, capped under 5rem."
+        "purpose": "Homepage hero H1 (clamp to 4.95rem) and subpage H1s (3.35rem). Space Grotesk, scrambled on reveal, capped under 5rem."
       },
       "headline": {
         "displayName": "Headline",
-        "purpose": "Major section claims. Space Grotesk at 2.65rem."
+        "purpose": "Major section claims. Space Grotesk at 2.65rem on the homepage, 2.35rem on subpages."
       },
       "title": {
         "displayName": "Panel Title",
-        "purpose": "Route cards, capability/process cards, and panel headings. Fira Code."
+        "purpose": "Route cards, capability/process cards, service surface headlines, and panel headings. Fira Code, 1.1-1.55rem."
       },
       "body": {
         "displayName": "Operator Body",
@@ -141,14 +141,14 @@
       {
         "name": "focus-ring",
         "value": "0 0 0 1px rgba(126, 255, 203, 0.16)",
-        "purpose": "Focused inputs and interactive elements, paired with a 2px mint outline. State feedback, not elevation."
+        "purpose": "Focused inputs and interactive elements, paired with a 2px mint outline at 0.25rem offset. State feedback, not elevation."
       }
     ],
     "motion": [
       {
         "name": "state-transition",
         "value": "180ms ease",
-        "purpose": "Button, link, nav, and input state changes. Hover lift is translateY(-2px), not a shadow bloom."
+        "purpose": "Button, link, nav, and input state changes. Hover lift is translateY(-2px), 1px for nav links, not a shadow bloom."
       },
       {
         "name": "scroll-reveal",
@@ -156,14 +156,24 @@
         "purpose": "CSS scroll-driven section reveals that enhance an already-visible default; gated behind @supports and reduced-motion."
       },
       {
-        "name": "verification-sweep",
-        "value": "18s linear infinite",
-        "purpose": "Slow diagnostic scan sweep on the contact and credibility panels only."
+        "name": "ambient-drift",
+        "value": "40s ease-in-out infinite",
+        "purpose": "Very low-opacity drifting dot field behind subpage shells. Removed under reduced motion."
       },
       {
-        "name": "verification-pulse",
-        "value": "7s ease-in-out infinite",
-        "purpose": "Low-amplitude pulse for the credibility verification ring."
+        "name": "shell-sweep",
+        "value": "24s linear infinite",
+        "purpose": "Slow horizontal diagnostic sweep across subpage backgrounds and lead sections at 0.12-0.2 opacity."
+      },
+      {
+        "name": "panel-pulse",
+        "value": "9s ease-in-out infinite",
+        "purpose": "Faint inner corner brackets on subpage panels pulsing between 0.14 and 0.28 opacity."
+      },
+      {
+        "name": "boot-caret",
+        "value": "blink 1s steps(1, end) infinite",
+        "purpose": "Boot loader caret and status pulse; disabled under reduced motion, where the boot sequence is skipped entirely."
       }
     ],
     "breakpoints": [
@@ -182,7 +192,7 @@
       "name": "Primary Command Button",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "Main action for direct routes and proof panels. Flat mint-translucent fill with a chamfered notch.",
+      "description": "Main action for direct routes and proof panels. Flat mint-translucent fill with a single-cut chamfered notch.",
       "html": "<button class=\"ds-button-primary\">Send project brief</button>",
       "css": ".ds-button-primary { display: inline-flex; align-items: center; justify-content: center; min-height: 3.25rem; padding: 0.9rem 1.15rem; border: 1px solid rgba(126, 255, 203, 0.38); border-radius: 0.12rem; clip-path: polygon(0 0, calc(100% - 0.6rem) 0, 100% 0.6rem, 100% 100%, 0 100%); background: rgba(126, 255, 203, 0.14); color: #f6fff8; font-family: 'Fira Code', ui-monospace, Menlo, Monaco, monospace; font-size: 0.92rem; letter-spacing: 0; transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease, color 180ms ease; } .ds-button-primary:hover { transform: translateY(-2px); background: rgba(126, 255, 203, 0.2); } .ds-button-primary:focus-visible { outline: 2px solid rgba(126, 255, 203, 0.72); outline-offset: 0.25rem; }"
     },
@@ -198,9 +208,17 @@
       "name": "Terminal Panel",
       "kind": "card",
       "refersTo": "terminal-panel",
-      "description": "Default structural panel for services, proof, notes, and command content. Notched, flat, gradient depth.",
+      "description": "Structural panel with the signature double-cut notch: topbar, command deck, contact cards, credibility panel, subpage panels.",
       "html": "<article class=\"ds-terminal-panel\"><p class=\"ds-card-label\">active module</p><h3 class=\"ds-card-title\">Architecture</h3><p class=\"ds-card-text\">Expose weak points before scale turns them into cost.</p></article>",
       "css": ".ds-terminal-panel { position: relative; isolation: isolate; display: grid; gap: 0.8rem; padding: 1.35rem; border: 1px solid rgba(126, 255, 203, 0.18); border-radius: 0.35rem; clip-path: polygon(0 0, calc(100% - 0.9rem) 0, 100% 0.9rem, 100% 100%, 0.9rem 100%, 0 calc(100% - 0.9rem)); background: linear-gradient(180deg, rgba(7, 18, 16, 0.98), rgba(1, 6, 5, 0.98)); box-shadow: inset 0 -1px 0 rgba(126, 255, 203, 0.08); color: #f4fff8; } .ds-terminal-panel::before { content: ''; position: absolute; inset: 0; background: linear-gradient(rgba(126, 255, 203, 0.18), rgba(126, 255, 203, 0.18)) left top / 2.5rem 1px no-repeat, linear-gradient(rgba(126, 255, 203, 0.18), rgba(126, 255, 203, 0.18)) right bottom / 2.5rem 1px no-repeat; opacity: 0.8; pointer-events: none; } .ds-terminal-panel > * { position: relative; z-index: 1; } .ds-card-label { color: #8ddfba; font: 400 0.72rem/1.2 'Fira Code', ui-monospace, Menlo, Monaco, monospace; letter-spacing: 0; text-transform: uppercase; } .ds-card-title { color: #f4fff8; font: 400 1.2rem/1.4 'Fira Code', ui-monospace, Menlo, Monaco, monospace; letter-spacing: 0; } .ds-card-text { color: rgba(226, 247, 237, 0.86); font: 400 1rem/1.75 'Fira Code', ui-monospace, Menlo, Monaco, monospace; }"
+    },
+    {
+      "name": "Ledger Row Card",
+      "kind": "card",
+      "refersTo": "terminal-panel",
+      "description": "Quiet repeated-content treatment for capability, proof, and collaboration cards: top and bottom mint hairlines, no notch, reads as a row in a log.",
+      "html": "<article class=\"ds-ledger-row\"><p class=\"ds-ledger-label\">workstream 02</p><h3 class=\"ds-ledger-title\">Software engineering</h3><p class=\"ds-ledger-text\">A dependable build your team can keep using after handoff.</p></article>",
+      "css": ".ds-ledger-row { position: relative; display: grid; gap: 0.65rem; padding: 1.35rem; border-top: 1px solid rgba(126, 255, 203, 0.2); border-bottom: 1px solid rgba(126, 255, 203, 0.08); border-radius: 0.35rem; background: rgba(4, 14, 12, 0.36); color: #f4fff8; } .ds-ledger-label { color: #8ddfba; font: 400 0.74rem/1.2 'Fira Code', ui-monospace, Menlo, Monaco, monospace; letter-spacing: 0; text-transform: uppercase; } .ds-ledger-title { color: #f4fff8; font: 400 1.2rem/1.4 'Fira Code', ui-monospace, Menlo, Monaco, monospace; letter-spacing: 0; } .ds-ledger-text { color: rgba(226, 247, 237, 0.86); font: 400 1rem/1.75 'Fira Code', ui-monospace, Menlo, Monaco, monospace; }"
     },
     {
       "name": "Terminal Input",
@@ -221,22 +239,23 @@
     {
       "name": "Signal Chip",
       "kind": "chip",
-      "refersTo": "focus-tab",
-      "description": "Small metadata chip for status, tags, and route hints.",
+      "refersTo": "chip",
+      "description": "Small metadata chip for deliverables, status, tags, and route hints.",
       "html": "<span class=\"ds-signal-chip\">runtime execution</span>",
-      "css": ".ds-signal-chip { display: inline-flex; align-items: center; min-height: 2.1rem; padding: 0.45rem 0.8rem; border: 1px solid rgba(126, 255, 203, 0.12); border-radius: 0.12rem; clip-path: polygon(0 0, calc(100% - 0.45rem) 0, 100% 0.45rem, 100% 100%, 0 100%); background: rgba(255, 255, 255, 0.03); color: rgba(226, 247, 237, 0.86); font: 400 0.72rem/1.2 'Fira Code', ui-monospace, Menlo, Monaco, monospace; letter-spacing: 0; text-transform: uppercase; }"
+      "css": ".ds-signal-chip { display: inline-flex; align-items: center; min-height: 2.1rem; padding: 0.45rem 0.8rem; border: 1px solid rgba(126, 255, 203, 0.12); border-radius: 0.12rem; clip-path: polygon(0 0, calc(100% - 0.45rem) 0, 100% 0.45rem, 100% 100%, 0 100%); background: rgba(126, 255, 203, 0.06); color: rgba(228, 246, 236, 0.82); font: 400 0.72rem/1.2 'Fira Code', ui-monospace, Menlo, Monaco, monospace; letter-spacing: 0; text-transform: uppercase; }"
     }
   ],
   "narrative": {
     "northStar": "Signal Control Room",
-    "overview": "This is a working diagnostic surface for a one-person technical operator, not an agency brochure. It runs on near-black teal depth, mint structural linework, and acid-lime command output, with Space Grotesk carrying decisive hierarchy over a Fira Code operator voice. The interface is allowed to read as technical because the service is technical, but the terminal identity exists to organize the client's decision, not to obscure it.\n\nThe signature structural move is the chamfered notch: panels, cards, buttons, inputs, and nav links are cut with a clip-path polygon on a near-sharp 0.35rem base radius. This is the brand's fingerprint. It is deliberately not soft, rounded, or pill-shaped. Depth is carried by dark vertical gradients, 1px low-alpha mint borders, inset hairlines, faint corner grid ticks, and scanlines, never by large drop shadows.\n\nThis system explicitly rejects generic agency polish, bloated SaaS landing-page patterns, vague innovation language, decorative case-study theater, and the anonymous-consultancy posture. It also rejects the warm-paper editorial AI default and the navy-and-gold fintech default: the brand lives only in black-green runtime space.",
+    "overview": "This is a working diagnostic surface for a one-person technical operator, not an agency brochure. It runs on near-black teal depth, mint structural linework, and acid-lime command output, with Space Grotesk carrying decisive hierarchy over a Fira Code operator voice. The interface is allowed to read as technical because the service is technical, but the terminal identity exists to organize the client's decision, not to prove technical depth. The control room has a chair for the client: warm precision, business outcome first, technical evidence second.\n\nThe signature structural move is the chamfered notch, at two tiers: large panels are cut with a clip-path polygon at the top-right and bottom-left on a near-sharp 0.35rem base radius; small controls cut only the top-right corner. Repeated content rows use a quieter ledger treatment of top and bottom mint hairlines with no notch. Depth is carried by dark vertical gradients, 1px low-alpha mint borders, inset hairlines, faint corner grid ticks, and scanlines, never by large drop shadows.\n\nThis system explicitly rejects generic agency polish, bloated SaaS landing-page patterns, vague innovation language, decorative case-study theater, the anonymous-consultancy posture, and AI-consultancy hype. It also rejects the warm-paper editorial AI default and the navy-and-gold fintech default: the brand lives only in black-green runtime space.",
     "keyCharacteristics": [
       "Black-green operating surface (#020807) with mint diagnostic linework.",
-      "Chamfered-notch geometry on every panel, card, and control (not rounded, not pill).",
+      "Two-tier chamfered-notch geometry: double-cut panels, single-cut controls, hairline ledger rows (never rounded, never pill).",
       "Mono-forward voice (Fira Code) with Space Grotesk for client-facing hierarchy.",
       "Flat by default: depth from gradient, hairline border, and notch, not shadow.",
       "Motion that reads as booting, scanning, routing, verifying, or output, with reduced-motion fallbacks.",
-      "Direct accountability: operator name, direct email, no abstract company language."
+      "Direct accountability: operator name, direct email, no abstract company language.",
+      "Business-first copy: outcome stated in plain language before the technical texture."
     ],
     "rules": [
       {
@@ -271,7 +290,7 @@
       },
       {
         "name": "The Clear Client Rule",
-        "body": "Technical labels can stay, but the copy around them must state business value in plain language: risk reduced, delivery cleaner, handoff durable.",
+        "body": "Technical labels can stay, but the copy around them must state business value in plain language first: risk reduced, delivery unblocked, decision de-risked, handoff durable. A non-technical founder should feel smarter after reading a section, not tested by it. No AI hype verbs: revolutionize, unlock, supercharge, 10x.",
         "section": "typography"
       },
       {
@@ -281,16 +300,17 @@
       },
       {
         "name": "The Lift-Is-Motion Rule",
-        "body": "Interactive lift is a 2px upward translateY on hover, not a shadow bloom. The element moves; it does not float.",
+        "body": "Interactive lift is a 2px upward translateY on hover (1px for nav links), not a shadow bloom. The element moves; it does not float.",
         "section": "elevation"
       }
     ],
     "dos": [
       "Do keep the black-green (#020807), mint (#7effc6), lime (#d9ff8c), mono-forward terminal identity.",
-      "Do apply the chamfered notch (clip-path polygon + 0.12-0.35rem radius) to every panel, card, and control; it is the brand's fingerprint.",
+      "Do pick the right notch tier: double-cut panels for structure, single-cut chips for controls, hairline ledger rows for repeated content.",
       "Do build depth from gradient + 1px mint border + inset hairline + notch. Flat by default.",
       "Do keep direct email and the operator name visible; the one-person model is a trust signal.",
-      "Do translate media, software, architecture, and audit work into clarity, risk reduction, execution, and durable handoff.",
+      "Do state the business outcome in plain language before the technical texture: risk reduced, delivery unblocked, decision de-risked, handoff durable.",
+      "Do keep all four entry routes (audit, delivery, fractional leadership, AI/LLM engineering) legible to a non-technical buyer.",
       "Do use selected collaborations and RZETELNA as evidence-bearing proof.",
       "Do ship reduced-motion fallbacks for boot, scan, sweep, pulse, scramble, and scroll reveals.",
       "Do keep body copy above 4.5:1 on the teal panels; bump toward #f4fff8 if a muted value is borderline."
@@ -298,12 +318,13 @@
     "donts": [
       "Don't use generic agency polish, bloated SaaS landing patterns, vague innovation language, or decorative case-study theater.",
       "Don't make the site feel like a large anonymous consultancy or bury the operator behind abstract company language.",
-      "Don't let the terminal identity get so loud that clients cannot tell what is delivered.",
+      "Don't let the terminal identity get so loud that clients cannot tell what is delivered; the business message always outranks the texture.",
+      "Don't use AI-consultancy hype language around the AI offer: no revolutionize, unlock, supercharge, or 10x.",
       "Don't introduce rounded >=0.5rem cards or 999px pill buttons; the system is sharp + notched, not soft.",
       "Don't use gradient text, glassmorphism as decoration, thick colored side-stripe borders, repeated identical icon cards, or the big-number hero-metric template.",
       "Don't pair a 1px border with a soft wide drop shadow (blur >= 16px) on the same element (the ghost-card tell).",
       "Don't add wide-tracked uppercase eyebrows above every section, or numbered 01 / 02 / 03 section markers as default scaffolding.",
-      "Don't spread the lime credibility accent or boot window-dot colors into unrelated UI.",
+      "Don't spread the lime credibility accent or boot window-bar colors into unrelated UI.",
       "Don't use em dashes anywhere in copy; use commas, colons, semicolons, periods, or parentheses.",
       "Don't change URL structure, nav labels, form field names, logo treatment, or legal and credibility copy without explicit approval."
     ]

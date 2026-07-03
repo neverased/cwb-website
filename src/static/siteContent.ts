@@ -31,6 +31,22 @@ export const coreSignals = [
     detail:
       "Technical audits, process diagnostics, product signal, operational clarity.",
   },
+  {
+    id: "05",
+    title: "Fractional technical leadership",
+    description:
+      "Ongoing senior direction and accountability without the cost or risk of a full-time hire.",
+    detail:
+      "Technical strategy, delivery oversight, hiring support, and a named decision owner your team can reach.",
+  },
+  {
+    id: "06",
+    title: "AI and LLM engineering",
+    description:
+      "AI features and LLM integrations taken from idea or prototype to dependable production behavior.",
+    detail:
+      "Product integrations, agent systems, evaluation setups, and model or vendor decisions grounded in evidence.",
+  },
 ] as const;
 
 export const focusModules = [
@@ -88,6 +104,34 @@ export const focusModules = [
       "priority map",
       "ownership review",
       "next-step recommendations",
+    ],
+  },
+  {
+    id: "fractional",
+    label: "Fractional lead",
+    status: "ongoing direction",
+    summary:
+      "For companies that need senior technical judgment on call: continuing direction, delivery oversight, and one accountable owner without a full-time hire.",
+    command: "$ retain lead cadence=ongoing owner=named",
+    stack: [
+      "technical strategy",
+      "delivery oversight",
+      "hiring support",
+      "decision log",
+    ],
+  },
+  {
+    id: "ai",
+    label: "AI / LLM",
+    status: "applied ai",
+    summary:
+      "For products that need AI features, LLM integrations, or agent systems moved from a promising prototype to dependable production behavior.",
+    command: "$ ship ai from=prototype to=production behavior=dependable",
+    stack: [
+      "llm integrations",
+      "agent systems",
+      "evaluation setup",
+      "feasibility read",
     ],
   },
 ] as const;
@@ -167,17 +211,17 @@ export const clientOutcomes = [
 ] as const;
 
 export const executionConsole = [
-  "capture current signal",
-  "surface hidden constraints",
-  "reduce technical noise",
-  "ship a cleaner system state",
+  "understand what is actually happening",
+  "name the real blockers and risks",
+  "fix what slows delivery down",
+  "hand off a cleaner, documented system",
 ] as const;
 
 export const workingTerminalLines = [
   "$ intake brief=client-problem",
   "reading stack, process, pressure, ownership",
   "finding hidden constraints",
-  "$ route work=media software architecture audits",
+  "$ route work=media software architecture audits leadership ai",
   "mapping risks, dependencies, and next actions",
   "$ output format=decisions artifacts implementation",
   "ready for direct handoff",
@@ -189,13 +233,24 @@ export const serviceRouting = {
     "unclear technical direction",
     "media-heavy complexity",
     "independent review needed",
+    "no senior technical owner",
+    "ai plans without a production path",
   ],
-  surfaces: ["multimedia", "software", "architecture", "audits"],
+  surfaces: [
+    "multimedia",
+    "software",
+    "architecture",
+    "audits",
+    "fractional lead",
+    "ai / llm",
+  ],
   outgoing: [
     "cleaner execution path",
     "visible tradeoffs",
     "working system map",
     "durable next actions",
+    "a named decision owner",
+    "ai behavior you can rely on",
   ],
 } as const;
 
@@ -323,6 +378,67 @@ export const serviceBoards = [
     fit: "Best when the team is busy, but nobody fully trusts the picture.",
     command: "$ audit surface=company mode=product-tech output=signal",
   },
+  {
+    id: "fractional",
+    label: "Fractional lead",
+    status: "ongoing direction",
+    headline:
+      "Keep senior technical direction in the room without a full-time hire.",
+    intro:
+      "A continuing engagement for companies that need decisions owned, delivery watched, and technical risk managed between builds.",
+    stages: [
+      {
+        label: "signal in",
+        value: "roadmap, team shape, standing technical questions",
+      },
+      {
+        label: "operation",
+        value: "direction, delivery oversight, decision support",
+      },
+      {
+        label: "signal out",
+        value: "steady technical calls with a named owner",
+      },
+    ],
+    deliverables: [
+      "technical strategy",
+      "delivery oversight",
+      "hiring support",
+      "decision log",
+    ],
+    fit: "Best when the company has outgrown ad hoc advice, but a full-time hire is premature.",
+    command: "$ retain surface=leadership cadence=ongoing owner=named",
+  },
+  {
+    id: "ai",
+    label: "AI / LLM",
+    status: "applied ai",
+    headline: "Move AI features from promising demo to dependable product.",
+    intro:
+      "LLM integrations, agent systems, and AI-dependent features engineered to behave predictably under real usage, cost, and quality constraints.",
+    stages: [
+      {
+        label: "signal in",
+        value: "use case, data reality, prototype state",
+      },
+      {
+        label: "operation",
+        value: "integration, evaluation, agent and pipeline engineering",
+      },
+      {
+        label: "signal out",
+        value: "ai behavior your product can rely on",
+      },
+    ],
+    deliverables: [
+      "llm integrations",
+      "agent systems",
+      "evaluation harness",
+      "model and vendor read",
+    ],
+    fit: "Best when the demo already works, but nobody trusts it in production yet.",
+    command: "$ ship surface=ai from=prototype to=production risk=measured",
+  },
 ] as const;
 
 export const serviceSignals = [
@@ -333,6 +449,8 @@ export const serviceSignals = [
       "delivery surface is fragile",
       "media stack is too ad hoc",
       "team needs an outside technical read",
+      "nobody senior owns the technical calls",
+      "the ai demo works, production does not",
     ],
   },
   {
@@ -342,6 +460,8 @@ export const serviceSignals = [
       "clearer execution route",
       "visible risks and tradeoffs",
       "deliverables teams can actually use",
+      "a named owner for ongoing decisions",
+      "ai features that hold up in production",
     ],
   },
 ] as const;
@@ -520,11 +640,11 @@ export const selectedCollaborations = [
 export const collaborationProofPoints = [
   {
     label: "scope",
-    text: "Work spans multimedia delivery, software systems, architecture, and independent review.",
+    text: "Work spans multimedia delivery, software systems, architecture, independent review, ongoing technical leadership, and applied AI.",
   },
   {
     label: "role",
-    text: "Useful where a direct specialist needs to stay close to the technical and delivery details.",
+    text: "One accountable specialist stays close to the technical and delivery details, from first read to handoff.",
   },
   {
     label: "output",

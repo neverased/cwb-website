@@ -192,8 +192,9 @@ export const HomePage = () => {
               step={3}
             />
             <p className={styles.heroDescription}>
-              For founders, product leads, and hiring teams: I turn messy media,
-              software, and architecture work into usable plans and delivery.
+              For founders, product leaders, and agencies: I turn messy media,
+              software, architecture, and AI work into usable plans, delivery,
+              and ongoing technical direction.
             </p>
 
             <div className={styles.heroActions}>
@@ -201,7 +202,7 @@ export const HomePage = () => {
                 className={styles.primaryAction}
                 href="mailto:mail@wojciechbajer.com"
               >
-                Send project brief
+                Send a short brief
               </a>
               <Link className={styles.secondaryAction} href="/services">
                 Review services
@@ -219,9 +220,9 @@ export const HomePage = () => {
 
             <div
               className={styles.focusTabs}
-              aria-label="Common client situations"
+              aria-label="Pick the problem area"
             >
-              <p className={styles.focusTabsLabel}>Common client situations</p>
+              <p className={styles.focusTabsLabel}>Pick the problem area</p>
               {focusModules.map((module) => (
                 <button
                   key={module.id}
@@ -358,7 +359,7 @@ export const HomePage = () => {
             <ScrambleText
               as="h2"
               className={styles.sectionTitle}
-              text="Four ways to remove technical uncertainty."
+              text="Six ways to remove technical uncertainty."
               delay={420}
             />
             <div className={styles.sectionLead}>
@@ -417,7 +418,7 @@ export const HomePage = () => {
           <aside className={styles.processConsole}>
             <div className={styles.processConsoleHeader}>
               <p className={styles.deckLabel}>execution loop</p>
-              <span>landing summary</span>
+              <span>every engagement</span>
             </div>
             <ul className={styles.signalList}>
               {executionConsole.map((item) => (
@@ -445,7 +446,7 @@ export const HomePage = () => {
                 change.
               </p>
               <Link className={styles.sectionRoute} href="/contact">
-                Start contact
+                See contact options
               </Link>
             </div>
           </div>

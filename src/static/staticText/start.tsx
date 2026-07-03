@@ -18,7 +18,7 @@ export const HACKING = [
   "Operator: Wojciech Bajer",
   "$ intake brief=client-problem",
   "reading stack, process, pressure, ownership",
-  "$ route work=media software architecture audits",
+  "$ route work=media software architecture audits leadership ai",
   "$ output format=decisions artifacts implementation",
   "handoff artifacts ready",
   "$ launch cwb-interface",

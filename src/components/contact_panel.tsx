@@ -149,8 +149,8 @@ export const ContactPanel = ({ className }: ContactPanelProps) => {
   const secureStatus =
     bootstrapState.status === "unavailable"
       ? {
-          title: "Secure channel unavailable.",
-          text: "The protected form is unavailable right now. Direct email is ready.",
+          title: "Form unavailable right now.",
+          text: "Direct email works and reaches the same inbox:",
         }
       : null;
 
@@ -220,15 +220,15 @@ export const ContactPanel = ({ className }: ContactPanelProps) => {
           {CONTACT_EMAIL}
         </a>
         <p className={styles.contactText}>
-          Best for consulting requests, architecture reviews, audits, and
-          media-heavy digital product work.
+          Best for audits, builds, architecture direction, ongoing technical
+          leadership, and AI or media-heavy product work.
         </p>
 
         <div className={styles.contactSignalGrid}>
           <div>
             <p className={styles.contactLabel}>engagement fit</p>
             <p className={styles.contactText}>
-              strategy, execution, independent review
+              strategy, execution, review, ongoing direction
             </p>
           </div>
           <div>
@@ -340,7 +340,7 @@ export const ContactPanel = ({ className }: ContactPanelProps) => {
                 name="scope"
                 autoComplete="organization-title"
                 maxLength={160}
-                placeholder="audit / architecture / multimedia / build"
+                placeholder="audit / build / architecture / leadership / ai"
                 disabled={isFormDisabled}
               />
             </label>
@@ -368,7 +368,7 @@ export const ContactPanel = ({ className }: ContactPanelProps) => {
                 </p>
               ) : (
                 <p className={styles.challengePrompt}>
-                  Form channel is preparing. Direct email is ready now.
+                  The form is loading. Direct email works right now.
                 </p>
               )}
               <input

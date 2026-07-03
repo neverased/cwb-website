@@ -20,6 +20,8 @@ export const metadata = buildMetadata({
     "application audits",
     "technology consulting",
     "multimedia systems",
+    "fractional technical leadership",
+    "AI engineering",
   ],
 });
 
@@ -49,6 +51,14 @@ const homePageJsonLd = buildJsonLdGraph([
       {
         "@type": "Thing",
         name: "Technical audits",
+      },
+      {
+        "@type": "Thing",
+        name: "Fractional technical leadership",
+      },
+      {
+        "@type": "Thing",
+        name: "AI and LLM engineering",
       },
     ],
     mainEntity: {

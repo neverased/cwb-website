@@ -21,7 +21,7 @@ import styles from "../subpage.module.css";
 
 const SERVICES_TITLE = "Services | Wojciech Bajer";
 const SERVICES_DESCRIPTION =
-  "Service map for multimedia systems, software engineering, application architecture, and independent product or technology audits by Wojciech Bajer.";
+  "Service map for multimedia systems, software engineering, application architecture, independent audits, fractional technical leadership, and AI or LLM engineering by Wojciech Bajer.";
 
 export const metadata = buildMetadata({
   title: SERVICES_TITLE,
@@ -32,6 +32,10 @@ export const metadata = buildMetadata({
     "software engineering consulting",
     "application architecture consulting",
     "technical audit services",
+    "fractional technical leadership",
+    "fractional CTO services",
+    "AI engineering services",
+    "LLM integration consulting",
   ],
 });
 
@@ -98,10 +102,11 @@ export default function ServicesPage() {
               step={3}
             />
             <p className={styles.description}>
-              The entry point can be media delivery, software build,
-              architecture direction, or an independent audit. The result
-              should be the same: a clearer situation, visible constraints, and
-              work your team can keep using.
+              The entry point can be media delivery, a software build,
+              architecture direction, an independent audit, ongoing technical
+              leadership, or an AI feature that has to become dependable. The
+              result should be the same: a clearer situation, visible
+              constraints, and work your team can keep using.
             </p>
           </div>
 

@@ -138,13 +138,13 @@ export const createOgImage = ({
             <div
               style={{
                 display: "flex",
-                fontSize: 18,
-                letterSpacing: "0.16em",
+                fontSize: 16,
+                letterSpacing: "0.12em",
                 textTransform: "uppercase",
                 color: "rgba(228,246,236,0.72)",
               }}
             >
-              multimedia / software / architecture / audits
+              media / software / architecture / audits / leadership / ai
             </div>
 
             <div

@@ -8,9 +8,9 @@ export const alt = "Wojciech Bajer services page";
 export default function OpenGraphImage() {
   return createOgImage({
     eyebrow: "Services",
-    title: "Multimedia systems, software delivery, architecture, and audits.",
+    title: "Media, software, architecture, audits, leadership, and AI.",
     summary:
-      "Service map for multimedia work, software engineering, application architecture, and independent product or technology audits.",
+      "Service map for multimedia work, software engineering, application architecture, independent audits, fractional technical leadership, and AI or LLM engineering.",
     terminalPath: "cwb://profile/services",
   });
 }

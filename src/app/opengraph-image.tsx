@@ -10,7 +10,7 @@ export default function OpenGraphImage() {
     eyebrow: "Home",
     title: "Multimedia, software systems, and clearer technical decisions.",
     summary:
-      "A direct technical practice for multimedia systems, software engineering, architecture, and independent audits.",
+      "A direct technical practice for multimedia systems, software engineering, architecture, independent audits, fractional leadership, and applied AI.",
     terminalPath: "cwb://home",
   });
 }

@@ -650,6 +650,14 @@
   grid-column: span 7;
 }
 
+.capabilityCard:nth-child(5) {
+  grid-column: span 7;
+}
+
+.capabilityCard:nth-child(6) {
+  grid-column: span 5;
+}
+
 .collaborationGrid {
   display: flex;
   flex-wrap: wrap;
@@ -997,10 +1005,7 @@
     grid-column: auto;
   }
 
-  .capabilityCard:nth-child(1),
-  .capabilityCard:nth-child(2),
-  .capabilityCard:nth-child(3),
-  .capabilityCard:nth-child(4) {
+  .capabilityCard {
     grid-column: auto;
     grid-row: auto;
     min-height: auto;

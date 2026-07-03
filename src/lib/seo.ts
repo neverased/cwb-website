@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 export const SITE_URL = "https://wojciechbajer.com";
 export const SITE_NAME = "Wojciech Bajer";
 export const DEFAULT_TITLE =
-  "Wojciech Bajer | Multimedia, Software, Architecture, Audits";
+  "Wojciech Bajer | Multimedia, Software, Architecture, Audits, AI";
 export const DEFAULT_DESCRIPTION =
-  "Wojciech Bajer works across multimedia, software engineering, application architecture, and independent product or technology audits.";
+  "Wojciech Bajer works across multimedia, software engineering, application architecture, independent audits, fractional technical leadership, and AI or LLM engineering.";
 export const PERSON_NAME = "Wojciech Bajer";
 export const CONTACT_EMAIL = "mail@wojciechbajer.com";
 export const PROFILE_PATH = "/profile/";
@@ -20,6 +20,10 @@ export const DEFAULT_KEYWORDS = [
   "video",
   "frontend systems",
   "consulting",
+  "fractional technical leadership",
+  "fractional CTO",
+  "AI engineering",
+  "LLM integrations",
 ] as const;
 
 const hasFileExtension = (path: string) => /\.[a-z0-9]+$/i.test(path);
@@ -200,7 +204,7 @@ export const personGraphNode = {
   url: absoluteUrl(PROFILE_PATH),
   email: `mailto:${CONTACT_EMAIL}`,
   jobTitle:
-    "Multimedia consultant, software engineer, application architect, and auditor",
+    "Multimedia consultant, software engineer, application architect, auditor, fractional technical leader, and AI engineer",
   description: DEFAULT_DESCRIPTION,
   image: absoluteUrl(openGraphImagePath("/")),
   knowsAbout: [
@@ -212,6 +216,10 @@ export const personGraphNode = {
     "Application architecture",
     "Technical audits",
     "Product audits",
+    "Fractional technical leadership",
+    "AI engineering",
+    "LLM integrations",
+    "Agent systems",
   ],
 };
 

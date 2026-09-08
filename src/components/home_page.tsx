@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import styles from "@/app/page.module.css";
+import styles from "@/app/(frontend)/page.module.css";
 import { SelectedWork } from "@/components/selected_work";
 import { ServiceExplorer } from "@/components/service_explorer";
 import { ContactCallout, SiteShell } from "@/components/site_shell";

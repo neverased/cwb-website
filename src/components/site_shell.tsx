@@ -27,7 +27,7 @@ export const SiteShell = ({
       </div>
       <nav aria-label="Footer">
         <Link href="/services/">Services</Link>
-        <Link href="/notes/">Topics</Link>
+        <Link href="/notes/">Notes</Link>
         <a href={`mailto:${CONTACT_EMAIL}`}>Email</a>
       </nav>
       <span className={styles.location}>

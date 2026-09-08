@@ -8,7 +8,8 @@ ENV PATH="${PNPM_HOME}:${PATH}"
 
 WORKDIR /app
 
-RUN npm install --global --no-audit --no-fund pnpm@11.5.2
+COPY package.json ./
+RUN npm install --global --no-audit --no-fund "$(node -p 'require("./package.json").packageManager')"
 
 FROM base AS deps
 
@@ -34,7 +35,7 @@ ENV PORT=3000
 
 WORKDIR /app
 
-RUN mkdir -p /app/storage/contact && chown -R node:node /app/storage
+RUN mkdir -p /app/storage/contact /app/storage/media && chown -R node:node /app/storage
 
 COPY --from=builder --chown=node:node /app/public ./public
 COPY --from=builder --chown=node:node /app/.next/standalone ./

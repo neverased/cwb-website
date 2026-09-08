@@ -8,6 +8,7 @@ const NAV_ITEMS = [
   { href: "/#work", label: "Collaborations" },
   { href: "/profile/", label: "About" },
   { href: "/process/", label: "Process" },
+  { href: "/notes/", label: "Notes" },
 ] as const;
 
 export const SiteHeader = ({ currentPath }: { currentPath: string }) => {

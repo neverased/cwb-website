@@ -1,0 +1,75 @@
+.post {
+  max-width: 780px;
+  margin-inline: auto;
+  padding: clamp(2rem, 6vw, 5rem) 0;
+  overflow-wrap: anywhere;
+}
+.header {
+  margin: 2.5rem 0;
+}
+.header h1 {
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  letter-spacing: -0.045em;
+  margin: 1rem 0;
+}
+.header p {
+  color: var(--text-muted);
+  font-size: 1.15rem;
+}
+.cover {
+  width: 100%;
+  height: auto;
+  margin-bottom: 2.5rem;
+}
+.content {
+  font-size: 1.075rem;
+  line-height: 1.85;
+}
+.content p,
+.content ul,
+.content ol,
+.content blockquote {
+  margin-bottom: 1.4rem;
+}
+.content h2,
+.content h3,
+.content h4 {
+  margin: 2.5rem 0 1rem;
+  line-height: 1.25;
+}
+.content h2 {
+  font-size: 2rem;
+}
+.content h3 {
+  font-size: 1.5rem;
+}
+.content ul,
+.content ol {
+  padding-left: 1.5rem;
+}
+.content a {
+  color: var(--accent-mint);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+.content blockquote {
+  border-left: 2px solid var(--accent-mint);
+  padding-left: 1.5rem;
+  color: var(--text-muted);
+}
+.content code {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.85em;
+  background: var(--surface-panel-strong);
+  padding: 0.15em 0.3em;
+}
+.content img {
+  max-width: 100%;
+  height: auto;
+  margin: 2rem 0;
+}
+.content hr {
+  border: 0;
+  border-top: 1px solid var(--rule-soft);
+  margin: 2rem 0;
+}

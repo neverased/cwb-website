@@ -4,7 +4,14 @@ services:
     build:
       context: .
       target: runner
+    depends_on:
+      db:
+        condition: service_healthy
     environment:
+      DATABASE_URL: postgres://cwb:${POSTGRES_PASSWORD:?Run pnpm cms:setup first}@db:5432/cwb
+      PAYLOAD_SECRET: ${PAYLOAD_SECRET:?Run pnpm cms:setup first}
+      PAYLOAD_UPLOAD_DIR: /app/storage/media
+      PAYLOAD_PUBLIC_SERVER_URL: ${PAYLOAD_PUBLIC_SERVER_URL:-}
       CONTACT_FORM_SECRET: ${CONTACT_FORM_SECRET:-}
       CONTACT_FROM: ${CONTACT_FROM:-mail@wojciechbajer.com}
       CONTACT_RECIPIENT: ${CONTACT_RECIPIENT:-mail@wojciechbajer.com}
@@ -19,10 +26,28 @@ services:
       SMTP_SECURE: ${SMTP_SECURE:-false}
       SMTP_USER: ${SMTP_USER:-}
     ports:
-      - "3000:3000"
+      - "${WEB_BIND_ADDRESS:-127.0.0.1}:${WEB_PORT:-3000}:3000"
     restart: unless-stopped
     volumes:
       - contact-data:/app/storage/contact
+      - media-data:/app/storage/media
+
+  db:
+    image: postgres:17-bookworm
+    environment:
+      POSTGRES_DB: cwb
+      POSTGRES_USER: cwb
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Run pnpm cms:setup first}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cwb -d cwb"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
 
 volumes:
   contact-data:
+  media-data:
+  postgres-data:

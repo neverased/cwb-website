@@ -1,0 +1,5 @@
+# Publish only the database for running Next.js on the host with `pnpm dev`.
+services:
+  db:
+    ports:
+      - "127.0.0.1:${POSTGRES_PORT:-54329}:5432"

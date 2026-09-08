@@ -12,6 +12,9 @@ node_modules
 out
 build
 coverage
+storage
+.agents
+.playwright-mcp
 
 Dockerfile
 docker-compose*.yml

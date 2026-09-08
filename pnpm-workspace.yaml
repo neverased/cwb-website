@@ -7,20 +7,8 @@ ignoredBuiltDependencies:
   - '@parcel/watcher'
   - sharp
 minimumReleaseAgeExclude:
-  - '@typescript-eslint/eslint-plugin@8.61.0 || 8.70.0'
-  - '@typescript-eslint/parser@8.61.0 || 8.70.0'
-  - '@typescript-eslint/project-service@8.61.0 || 8.70.0'
-  - '@typescript-eslint/scope-manager@8.61.0 || 8.70.0'
-  - '@typescript-eslint/tsconfig-utils@8.61.0 || 8.70.0'
-  - '@typescript-eslint/type-utils@8.61.0 || 8.70.0'
-  - '@typescript-eslint/types@8.61.0 || 8.70.0'
-  - '@typescript-eslint/typescript-estree@8.61.0 || 8.70.0'
-  - '@typescript-eslint/utils@8.61.0 || 8.70.0'
-  - '@typescript-eslint/visitor-keys@8.61.0 || 8.70.0'
   - prettier@3.8.4
-  - typescript-eslint@8.61.0 || 8.70.0
   - '@next/env@16.2.9'
-  - '@next/eslint-plugin-next@16.2.9'
   - '@next/swc-darwin-arm64@16.2.9'
   - '@next/swc-darwin-x64@16.2.9'
   - '@next/swc-linux-arm64-gnu@16.2.9'
@@ -33,6 +21,29 @@ minimumReleaseAgeExclude:
   - nodemailer@8.0.11 || 9.0.0 || 10.0.1
   - tsx@4.22.5
   - '@types/node@26.5.0'
+  - '@oxlint/binding-android-arm-eabi@1.82.0'
+  - '@oxlint/binding-android-arm64@1.82.0'
+  - '@oxlint/binding-darwin-arm64@1.82.0'
+  - '@oxlint/binding-darwin-x64@1.82.0'
+  - '@oxlint/binding-freebsd-x64@1.82.0'
+  - '@oxlint/binding-linux-arm-gnueabihf@1.82.0'
+  - '@oxlint/binding-linux-arm-musleabihf@1.82.0'
+  - '@oxlint/binding-linux-arm64-gnu@1.82.0'
+  - '@oxlint/binding-linux-arm64-musl@1.82.0'
+  - '@oxlint/binding-linux-ppc64-gnu@1.82.0'
+  - '@oxlint/binding-linux-riscv64-gnu@1.82.0'
+  - '@oxlint/binding-linux-riscv64-musl@1.82.0'
+  - '@oxlint/binding-linux-s390x-gnu@1.82.0'
+  - '@oxlint/binding-linux-x64-gnu@1.82.0'
+  - '@oxlint/binding-linux-x64-musl@1.82.0'
+  - '@oxlint/binding-openharmony-arm64@1.82.0'
+  - '@oxlint/binding-win32-arm64-msvc@1.82.0'
+  - '@oxlint/binding-win32-ia32-msvc@1.82.0'
+  - '@oxlint/binding-win32-x64-msvc@1.82.0'
+  - oxlint@1.82.0
 onlyBuiltDependencies:
   - esbuild
   - unrs-resolver
+overrides:
+  # Oxlint supplies the ESLint-compatible API used by this plugin.
+  eslint-plugin-simple-import-sort@14.0.0>eslint: '-'

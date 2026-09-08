@@ -85,11 +85,23 @@ The contact form is handled by Next.js route handlers under `/api/contact`. Conf
 Useful checks:
 
 ```bash
+pnpm lint
 pnpm test:contact
 pnpm build
 docker build -t cwb-website:local .
 docker compose config
 ```
+
+Linting uses Oxlint with the migrated ESLint/TypeScript recommended rules and
+`eslint-plugin-simple-import-sort` for import/export ordering. The sorting plugin
+runs through Oxlint's JavaScript plugin support; ESLint and the TypeScript 6 API
+are not required. `pnpm lint` checks `src` without changing files; use
+`pnpm lint:fix` to apply automatic fixes. CI runs the same lint check before tests
+and the build. Prettier remains available for formatting.
+
+Rules are listed explicitly in `.oxlintrc.json` to preserve the previous lint
+policy. The old `no-octal` rule is covered by the parser's rejection of legacy
+octal literals in TypeScript modules. Type checking remains part of `pnpm build`.
 
 ## Contributions
 

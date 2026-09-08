@@ -6,7 +6,7 @@ Identify reusable patterns, components, and design tokens, then extract and cons
 
 Find the design system, component library, or shared UI directory. Understand its structure: component organization, naming conventions, design token structure, import/export conventions.
 
-**CRITICAL**: If no design system exists, STOP and use Codex's structured user-input/question tool when available; if unavailable, ask directly in chat to clarify what you cannot infer. before creating one. Understand the preferred location and structure first.
+If no design system exists, infer the smallest appropriate extraction destination from the request and repository conventions. Preserve existing structure. Ask only if a material location or ownership decision remains unresolved; do not create a broad new system outside the requested scope.
 
 ## Step 2: Identify Patterns
 
@@ -66,4 +66,3 @@ Update design system documentation:
 - Skip proper TypeScript types or prop documentation
 - Create tokens for every single value (tokens should have semantic meaning)
 - Extract things that differ in intent (two buttons that look similar but serve different purposes should stay separate)
-

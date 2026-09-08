@@ -29,7 +29,7 @@ Analyze where motion would improve the experience:
    - Who's the audience? (Motion-sensitive users? Power users who want speed?)
    - What matters most? (One hero animation vs many micro-interactions?)
 
-If any of these are unclear from the codebase, ask the user directly to clarify what you cannot infer.
+Resolve these points from the request and inspected code. Ask only about material unresolved decisions; use existing conventions for routine reversible choices and continue independent work.
 
 **CRITICAL**: Respect `prefers-reduced-motion`. Always provide non-animated alternatives for users who need them.
 

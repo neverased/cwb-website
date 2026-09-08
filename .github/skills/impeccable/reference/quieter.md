@@ -28,7 +28,7 @@ Analyze what makes the design feel too intense:
    - What's working? (Don't throw away good ideas)
    - What's the core message? (Preserve what matters)
 
-If any of these are unclear from the codebase, ask the user directly to clarify what you cannot infer.
+Resolve these points from the request and inspected code. Ask only about material unresolved decisions; use existing conventions for routine reversible choices and continue independent work.
 
 **CRITICAL**: "Quieter" doesn't mean boring or generic. It means refined and easier on the eyes. Think luxury, not laziness.
 

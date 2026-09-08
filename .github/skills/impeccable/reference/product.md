@@ -29,9 +29,9 @@ Product defaults to Restrained. A single surface can earn Committed (a dashboard
 
 ## Components
 
-Every interactive component has: default, hover, focus, active, disabled, loading, error. Don't ship with half of these.
+Implement the interaction states each component actually needs: default, focus, active, and applicable hover, disabled, loading, or error states.
 
-- Skeleton states for loading, not spinners in the middle of content.
+- Use loading feedback suited to the task; skeletons help when the coming layout is predictable.
 - Empty states that teach the interface, not "nothing here."
 - Consistent affordances across the surface. Same button shape. Same form-control vocabulary. Same icon style.
 

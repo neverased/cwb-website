@@ -51,7 +51,7 @@ ask the user directly to clarify what you cannot infer. Ask only about what you 
 
 If the repo is empty or the user's brief is sparse, run a short interview before proposing PRODUCT.md. Do **not** turn a one-sentence request into a complete inferred PRODUCT.md and ask for blanket confirmation.
 
-- Use the harness's structured question tool when one exists. Otherwise, ask directly in chat and stop.
+- Use an available supported question tool or concise chat question only for material missing information; skip facts already supplied or established by the repository.
 - Ask **2-3 questions per round**, then wait for answers.
 - Use inferred answers as hypotheses or options, not as finished facts.
 - Complete at least one real user-answer round before drafting PRODUCT.md, unless every required answer is directly discoverable from repo docs.

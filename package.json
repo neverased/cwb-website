@@ -23,8 +23,7 @@
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "sass": "^1.104.0",
-    "typescript": "7.0.2",
-    "use-scramble": "^2.2.15"
+    "typescript": "7.0.2"
   },
   "devDependencies": {
     "@types/nodemailer": "^8.0.1",

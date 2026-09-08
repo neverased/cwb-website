@@ -45,4 +45,20 @@ jobs:
         run: test -f .next/standalone/server.js
 
       - name: Build Docker image
-        run: docker build --target runner -t cwb-website:ci .
+        run: docker build --target runner -t cwb-website:local .
+
+      - name: Start CMS test stack
+        run: |
+          pnpm cms:setup
+          WEB_PORT=3100 docker compose -p cwb-cms-test up -d --wait --wait-timeout 120
+
+      - name: Verify CMS publishing and persistence
+        env:
+          CMS_TEST_ALLOW_WRITES: "1"
+          CMS_TEST_BOOTSTRAP: "1"
+          CMS_TEST_RESTART_PROJECT: cwb-cms-test
+        run: pnpm test:cms
+
+      - name: Stop CMS test stack
+        if: always()
+        run: docker compose -p cwb-cms-test down --volumes

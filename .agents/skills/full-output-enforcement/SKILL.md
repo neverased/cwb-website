@@ -1,16 +1,49 @@
 ---
 name: full-output-enforcement
-description: "Use when the user explicitly requests a complete file, full implementation, or exhaustive artifact with no omitted deliverables."
+description: Overrides default LLM truncation behavior. Enforces complete code generation, bans placeholder patterns, and handles token-limit splits cleanly. Apply to any task requiring exhaustive, unabridged output.
 ---
 
-# Complete requested output
+# Full-Output Enforcement
 
-Deliver every item the user requested at the requested level of completeness. A full-file request needs the full file; a requested patch or focused excerpt does not need unrelated surrounding code. Match the artifact's scope and risk rather than treating every task as production-critical.
+## Baseline
 
-Do not replace required implementation with a skeleton, omitted section, or a comment saying to implement it later. Ordinary language ellipses, spread syntax, and legitimate TODOs outside the requested scope are not automatically errors.
+Treat every task as production-critical. A partial output is a broken output. Do not optimize for brevity — optimize for completeness. If the user asks for a full file, deliver the full file. If the user asks for 5 components, deliver 5 components. No exceptions.
 
-Track the requested deliverables and finish them before reporting completion. For a long artifact, write complete workspace files when available and provide links with a concise explanation. Continue necessary work across tool calls or context continuation instead of imposing an arbitrary "send continue" checkpoint.
+## Banned Output Patterns
 
-If a real tool or context limit prevents completion, state exactly what is complete, what remains, and the limiting condition. Do not present a partial artifact as finished or fabricate a successful run.
+The following patterns are hard failures. Never produce them:
 
-Verify the artifact in a way appropriate to its type and changes. Report actual verification and unresolved limitations. Completeness does not require unsolicited features, unrelated files, or repeated test suites after the relevant checks pass.
+**In code blocks:** `// ...`, `// rest of code`, `// implement here`, `// TODO`, `/* ... */`, `// similar to above`, `// continue pattern`, `// add more as needed`, bare `...` standing in for omitted code
+
+**In prose:** "Let me know if you want me to continue", "I can provide more details if needed", "for brevity", "the rest follows the same pattern", "similarly for the remaining", "and so on" (when replacing actual content), "I'll leave that as an exercise"
+
+**Structural shortcuts:** Outputting a skeleton when the request was for a full implementation. Showing the first and last section while skipping the middle. Replacing repeated logic with one example and a description. Describing what code should do instead of writing it.
+
+## Execution Process
+
+1. **Scope** — Read the full request. Count how many distinct deliverables are expected (files, functions, sections, answers). Lock that number.
+2. **Build** — Generate every deliverable completely. No partial drafts, no "you can extend this later."
+3. **Cross-check** — Before output, re-read the original request. Compare your deliverable count against the scope count. If anything is missing, add it before responding.
+
+## Handling Long Outputs
+
+When a response approaches the token limit:
+
+- Do not compress remaining sections to squeeze them in.
+- Do not skip ahead to a conclusion.
+- Write at full quality up to a clean breakpoint (end of a function, end of a file, end of a section).
+- End with:
+
+```
+[PAUSED — X of Y complete. Send "continue" to resume from: next section name]
+```
+
+On "continue", pick up exactly where you stopped. No recap, no repetition.
+
+## Quick Check
+
+Before finalizing any response, verify:
+- No banned patterns from the list above appear anywhere in the output
+- Every item the user requested is present and finished
+- Code blocks contain actual runnable code, not descriptions of what code would do
+- Nothing was shortened to save space

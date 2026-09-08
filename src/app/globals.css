@@ -1,68 +1,177 @@
 :root {
-  --font-display: "Space Grotesk";
-  --font-mono:
-    "Fira Code", ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
-    "Roboto Mono", "Source Code Pro", monospace;
-  --page-background: #020807;
-  --page-background-soft: #041111;
-  --page-foreground: #f4fff8;
-  --surface-panel: #06100f;
-  --surface-panel-strong: #0a1513;
-  --surface-ink: #010504;
-  --accent-mint: #7effc6;
-  --accent-mint-soft: #8ddfba;
-  --accent-command: #d9ff8c;
-  --accent-warning: #ffaa78;
-  --text-muted: rgba(226, 247, 237, 0.86);
-  --text-subtle: rgba(214, 236, 225, 0.72);
-  --border-mint: rgba(126, 255, 203, 0.18);
-  --border-mint-strong: rgba(126, 255, 203, 0.34);
-  --corner-cut: 0.9rem;
-  --radius-hard: 0.35rem;
-  --rule-soft: rgba(126, 255, 203, 0.12);
-  --rule-strong: rgba(126, 255, 203, 0.28);
+  --page-background: #0b0f10;
+  --page-background-soft: #101617;
+  --page-foreground: #edf2ef;
+  --surface-panel: #111819;
+  --surface-panel-strong: #192223;
+  --surface-ink: #080c0d;
+  --accent-mint: #a3e8be;
+  --accent-mint-soft: #a3e8be;
+  --accent-command: #c9dfa5;
+  --accent-warning: #f4b394;
+  --text-muted: #a8b5b0;
+  --text-subtle: #8c9d96;
+  --border-mint: #293633;
+  --border-mint-strong: #566e61;
+  --rule-soft: #26322f;
+  --rule-strong: #566e61;
+  --radius-hard: 0.5rem;
+  --corner-cut: 0.5rem;
 }
-
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
-
 html {
   color-scheme: dark;
-  scroll-behavior: smooth;
+  scroll-padding-top: 7rem;
 }
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
 body {
   min-height: 100dvh;
   color: var(--page-foreground);
   background: var(--page-background);
+  font-family: var(--font-display), Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
-
-body,
 button,
 input,
 textarea,
 select {
-  font-family: var(--font-mono);
+  font: inherit;
 }
-
+button,
+a,
+input,
+textarea,
+select,
+summary {
+  -webkit-tap-highlight-color: transparent;
+}
+button,
+summary {
+  cursor: pointer;
+}
 a {
   color: inherit;
   text-decoration: none;
 }
-
+button {
+  color: inherit;
+}
 img {
   display: block;
   max-width: 100%;
+}
+h1,
+h2,
+h3 {
+  line-height: 1.12;
+  font-weight: 500;
+  text-wrap: balance;
+}
+p {
+  text-wrap: pretty;
+}
+::selection {
+  color: #0b0f10;
+  background: var(--accent-mint);
+}
+:focus-visible {
+  outline: 2px solid var(--accent-mint);
+  outline-offset: 5px;
+}
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline-offset: 3px;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+.eyebrow {
+  color: var(--text-muted);
+  font:
+    0.7rem/1.6 var(--font-mono),
+    monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.4rem;
+  min-height: 3rem;
+  padding: 0.8rem 1.2rem;
+  border: 1px solid var(--accent-mint);
+  border-radius: 0.25rem;
+  background: var(--accent-mint);
+  color: #102017;
+  font-size: 0.92rem;
+  font-weight: 600;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    transform 160ms ease;
+}
+.button:hover {
+  background: #c0f3d3;
+  border-color: #c0f3d3;
+}
+.button:active {
+  transform: translateY(1px);
+}
+.button-secondary {
+  border-color: var(--rule-strong);
+  background: transparent;
+  color: var(--page-foreground);
+}
+.button-secondary:hover {
+  background: var(--surface-panel-strong);
+  border-color: var(--text-muted);
+}
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  min-height: 2.75rem;
+  color: var(--accent-mint);
+  font-size: 0.9rem;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 0.3em;
+}
+.text-link:hover {
+  text-decoration-color: currentColor;
+}
+.section-title {
+  font-size: clamp(2rem, 3.7vw, 3.3rem);
+  letter-spacing: -0.04em;
+  max-width: 24ch;
+}
+.section-copy {
+  color: var(--text-muted);
+  max-width: 58ch;
+  font-size: 1.05rem;
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation: none !important;
+    transition: none !important;
+  }
 }

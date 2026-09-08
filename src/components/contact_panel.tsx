@@ -2,6 +2,9 @@
 
 import { type FormEvent, useEffect, useState } from "react";
 
+import { type ServiceId } from "@/lib/services";
+import { services } from "@/static/siteContent";
+
 import styles from "./contact_panel.module.css";
 
 const CONTACT_EMAIL = "mail@wojciechbajer.com";
@@ -13,11 +16,11 @@ const CONTACT_FEEDBACK = {
   },
   invalid: {
     title: "Check the form.",
-    text: "Please complete the required fields and try again.",
+    text: "Review your details and answer the new human check, then try again. Your message is still here.",
   },
   error: {
     title: "Message not sent.",
-    text: "The form is not available right now. Please use direct email.",
+    text: "Your message is still here. Try again, or send it by direct email.",
   },
 } as const;
 
@@ -97,9 +100,13 @@ const fetchContactBootstrap = async (
 
 interface ContactPanelProps {
   className?: string;
+  initialService?: ServiceId;
 }
 
-export const ContactPanel = ({ className }: ContactPanelProps) => {
+export const ContactPanel = ({
+  className,
+  initialService,
+}: ContactPanelProps) => {
   const [contactStatus, setContactStatus] = useState<ContactStatus | null>(
     null,
   );
@@ -107,104 +114,75 @@ export const ContactPanel = ({ className }: ContactPanelProps) => {
     status: "loading",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [retry, setRetry] = useState(0);
+  const [copyStatus, setCopyStatus] = useState("");
 
   useEffect(() => {
     const status = new URLSearchParams(window.location.search).get("contact");
-
-    if (isContactStatus(status)) {
-      setContactStatus(status);
-    }
+    if (isContactStatus(status)) setContactStatus(status);
   }, []);
 
   useEffect(() => {
-    const abortController = new AbortController();
-
-    const loadBootstrap = async () => {
-      try {
-        const payload = await fetchContactBootstrap(abortController.signal);
-        setBootstrapState({
-          status: "ready",
-          data: payload,
-        });
-      } catch {
-        if (abortController.signal.aborted) {
-          return;
-        }
-
-        setBootstrapState({
-          status: "unavailable",
-        });
-      }
-    };
-
-    void loadBootstrap();
-
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), 10000);
+    let active = true;
+    setBootstrapState({ status: "loading" });
+    void fetchContactBootstrap(controller.signal)
+      .then((data) => {
+        if (active) setBootstrapState({ status: "ready", data });
+      })
+      .catch(() => {
+        if (active) setBootstrapState({ status: "unavailable" });
+      })
+      .finally(() => window.clearTimeout(timeout));
     return () => {
-      abortController.abort();
+      active = false;
+      controller.abort();
+      window.clearTimeout(timeout);
     };
-  }, []);
+  }, [retry]);
 
-  const isBootstrapReady = bootstrapState.status === "ready";
-  const isFormDisabled = !isBootstrapReady || isSubmitting;
-  const secureStatus =
-    bootstrapState.status === "unavailable"
-      ? {
-          title: "Form unavailable right now.",
-          text: "Direct email works and reaches the same inbox:",
-        }
-      : null;
+  const ready = bootstrapState.status === "ready";
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(CONTACT_EMAIL);
+      setCopyStatus("Email address copied.");
+    } catch {
+      setCopyStatus("Select the email address above to copy it.");
+    }
+  };
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    if (!isBootstrapReady || isSubmitting) {
-      return;
-    }
-
     event.preventDefault();
-
+    if (!ready || isSubmitting) return;
     const form = event.currentTarget;
+    const body = new FormData(form);
     setContactStatus(null);
     setIsSubmitting(true);
-
     try {
       const response = await fetch(form.action, {
-        method: form.method,
-        body: new FormData(form),
-        headers: {
-          Accept: "application/json",
-        },
+        method: "POST",
+        body,
+        headers: { Accept: "application/json" },
       });
-
       const payload: unknown = await response.json();
-
-      if (!isContactResponse(payload)) {
+      if (
+        !isContactResponse(payload) ||
+        (payload.status === "sent" && !response.ok)
+      ) {
         throw new Error("invalid contact response");
       }
-
       setContactStatus(payload.status);
-
-      if (payload.status === "sent") {
-        form.reset();
-      }
+      if (payload.status === "sent") form.reset();
     } catch {
       setContactStatus("error");
     } finally {
-      setBootstrapState({
-        status: "loading",
-      });
-
-      try {
-        const payload = await fetchContactBootstrap();
-        setBootstrapState({
-          status: "ready",
-          data: payload,
-        });
-      } catch {
-        setBootstrapState({
-          status: "unavailable",
-        });
-      }
-
+      // A nonce is single-use. Keep the message, but request a fresh challenge.
+      const answer = form.elements.namedItem("challenge_answer");
+      if (answer instanceof HTMLInputElement) answer.value = "";
+      setBootstrapState({ status: "loading" });
       setIsSubmitting(false);
+      setRetry((value) => value + 1);
     }
   };
 
@@ -214,68 +192,61 @@ export const ContactPanel = ({ className }: ContactPanelProps) => {
         .filter(Boolean)
         .join(" ")}
     >
-      <div className={[styles.contactCard, styles.contactDirectCard].join(" ")}>
-        <p className={styles.contactLabel}>direct route</p>
-        <a className={styles.contactValue} href={`mailto:${CONTACT_EMAIL}`}>
+      <aside className={styles.direct} aria-label="Direct email">
+        <p className="eyebrow">01 / Direct email</p>
+        <a className={styles.email} href={`mailto:${CONTACT_EMAIL}`}>
           {CONTACT_EMAIL}
         </a>
-        <p className={styles.contactText}>
-          Best for audits, builds, architecture direction, ongoing technical
-          leadership, and AI or media-heavy product work.
-        </p>
-
-        <div className={styles.contactSignalGrid}>
-          <div>
-            <p className={styles.contactLabel}>engagement fit</p>
-            <p className={styles.contactText}>
-              strategy, execution, review, ongoing direction
-            </p>
-          </div>
-          <div>
-            <p className={styles.contactLabel}>first note</p>
-            <p className={styles.contactText}>
-              What is blocked, risky, underbuilt, or worth reviewing?
-            </p>
-          </div>
+        <button
+          className={styles.copyButton}
+          type="button"
+          onClick={() => void copyEmail()}
+        >
+          Copy email <span aria-hidden="true">⧉</span>
+        </button>
+        <span className={styles.copyStatus} role="status">
+          {copyStatus}
+        </span>
+        <div className={styles.context}>
+          <p>A few lines are enough to start.</p>
+          <p>
+            Share the goal, the current obstacle, and any timing constraints.
+            I’ll reply by email.
+          </p>
         </div>
-      </div>
-
-      <div className={[styles.contactCard, styles.contactFormCard].join(" ")}>
-        <p className={styles.contactLabel}>protected form</p>
-
-        {contactStatus ? (
-          <div
-            className={[
-              styles.statusBanner,
-              contactStatus === "sent"
-                ? styles.statusSuccess
-                : styles.statusError,
-            ].join(" ")}
-          >
-            <strong>{CONTACT_FEEDBACK[contactStatus].title}</strong>
-            <p>{CONTACT_FEEDBACK[contactStatus].text}</p>
-          </div>
-        ) : null}
-
-        {secureStatus ? (
-          <div className={[styles.statusBanner, styles.statusInfo].join(" ")}>
-            <strong>{secureStatus.title}</strong>
-            <p>
-              {secureStatus.text}{" "}
-              <a className={styles.inlineLink} href={`mailto:${CONTACT_EMAIL}`}>
-                {CONTACT_EMAIL}
-              </a>
-            </p>
-          </div>
-        ) : null}
-
+      </aside>
+      <div className={styles.formPanel}>
+        <p className="eyebrow">02 / Send a brief</p>
+        <p className={styles.requiredHint}>
+          All fields are required unless marked optional.
+        </p>
+        <div aria-live="polite" aria-atomic="true">
+          {contactStatus && (
+            <div
+              className={[
+                styles.statusBanner,
+                contactStatus === "sent" ? styles.success : styles.error,
+              ].join(" ")}
+            >
+              <strong>{CONTACT_FEEDBACK[contactStatus].title}</strong>
+              <p>{CONTACT_FEEDBACK[contactStatus].text}</p>
+            </div>
+          )}
+        </div>
+        <noscript>
+          <p className={styles.statusBanner}>
+            The form needs JavaScript. You can always reach me using the direct
+            email above.
+          </p>
+        </noscript>
         <form
-          className={styles.terminalForm}
           action="/api/contact/"
           method="post"
           onSubmit={handleSubmit}
+          aria-label="Send a brief"
+          aria-busy={isSubmitting}
         >
-          {isBootstrapReady ? (
+          {ready && (
             <>
               <input
                 type="hidden"
@@ -303,138 +274,144 @@ export const ContactPanel = ({ className }: ContactPanelProps) => {
                 value={bootstrapState.data.challenge_second}
               />
             </>
-          ) : null}
-
+          )}
           <div className={styles.formGrid}>
-            <label className={styles.fieldGroup}>
-              <span className={styles.fieldLabel}>name</span>
+            <label className={styles.field}>
+              Name
               <input
-                className={styles.terminalInput}
                 type="text"
                 name="name"
                 autoComplete="name"
                 required
                 maxLength={120}
-                disabled={isFormDisabled}
+                disabled={isSubmitting}
               />
             </label>
-
-            <label className={styles.fieldGroup}>
-              <span className={styles.fieldLabel}>email</span>
+            <label className={styles.field}>
+              Email
               <input
-                className={styles.terminalInput}
                 type="email"
                 name="email"
                 autoComplete="email"
                 required
                 maxLength={160}
-                disabled={isFormDisabled}
+                disabled={isSubmitting}
               />
             </label>
-
-            <label className={[styles.fieldGroup, styles.fieldSpan].join(" ")}>
-              <span className={styles.fieldLabel}>scope</span>
-              <input
-                className={styles.terminalInput}
-                type="text"
+            <label className={[styles.field, styles.full].join(" ")}>
+              Service <span className={styles.optional}>(optional)</span>
+              <select
                 name="scope"
-                autoComplete="organization-title"
-                maxLength={160}
-                placeholder="audit / build / architecture / leadership / ai"
-                disabled={isFormDisabled}
-              />
+                defaultValue={initialService ?? ""}
+                disabled={isSubmitting}
+              >
+                <option value="">Not sure yet — let’s work it out</option>
+                {services.map((service) => (
+                  <option key={service.id} value={service.id}>
+                    {service.label}
+                  </option>
+                ))}
+              </select>
             </label>
-
-            <label className={[styles.fieldGroup, styles.fieldSpan].join(" ")}>
-              <span className={styles.fieldLabel}>message</span>
+            <label className={[styles.field, styles.full].join(" ")}>
+              What would you like help with?
               <textarea
-                className={[styles.terminalInput, styles.terminalTextarea].join(
-                  " ",
-                )}
                 name="message"
                 required
                 minLength={20}
                 maxLength={5000}
-                placeholder="What is noisy, blocked, underbuilt, or worth reviewing?"
-                disabled={isFormDisabled}
+                rows={5}
+                disabled={isSubmitting}
+                aria-label="What would you like help with?"
+                aria-describedby="message-hint"
+                placeholder="The goal, what’s getting in the way, and your timing…"
               />
+              <span className={styles.hint} id="message-hint">
+                20–5,000 characters. Please leave out passwords and sensitive
+                data.
+              </span>
             </label>
-
-            <label className={[styles.fieldGroup, styles.fieldSpan].join(" ")}>
-              <span className={styles.fieldLabel}>human check</span>
-              {isBootstrapReady ? (
-                <p className={styles.challengePrompt}>
-                  {bootstrapState.data.challenge_prompt}
-                </p>
+            <div className={[styles.challenge, styles.full].join(" ")}>
+              {ready ? (
+                <label className={styles.field}>
+                  Human check{" "}
+                  <span className={styles.hint} id="challenge-prompt">
+                    {bootstrapState.data.challenge_prompt}
+                  </span>
+                  <input
+                    type="text"
+                    name="challenge_answer"
+                    autoComplete="off"
+                    inputMode="numeric"
+                    maxLength={12}
+                    required
+                    disabled={isSubmitting}
+                    aria-label="Human check"
+                    aria-describedby="challenge-prompt"
+                  />
+                </label>
               ) : (
-                <p className={styles.challengePrompt}>
-                  The form is loading. Direct email works right now.
-                </p>
+                <div role="status" className={styles.hint}>
+                  {bootstrapState.status === "loading" ? (
+                    "Preparing the secure form…"
+                  ) : (
+                    <>
+                      <p>
+                        The form couldn’t connect. Your details are still here.
+                      </p>
+                      <button
+                        className={styles.retryButton}
+                        type="button"
+                        onClick={() => setRetry((value) => value + 1)}
+                      >
+                        Try connecting again <span aria-hidden="true">↻</span>
+                      </button>
+                    </>
+                  )}
+                </div>
               )}
-              <input
-                className={styles.terminalInput}
-                type="text"
-                name="challenge_answer"
-                autoComplete="off"
-                inputMode="numeric"
-                maxLength={12}
-                required={isBootstrapReady}
-                disabled={isFormDisabled}
-                placeholder="Enter the answer"
-              />
-            </label>
-
+            </div>
             <div className={styles.formTrap} aria-hidden="true">
-              <label className={styles.fieldGroup}>
-                <span className={styles.fieldLabel}>website</span>
+              <label>
+                Website
                 <input
-                  className={styles.terminalInput}
                   type="text"
                   name="website"
                   tabIndex={-1}
                   autoComplete="off"
-                  disabled={isSubmitting}
                 />
               </label>
-              <label className={styles.fieldGroup}>
-                <span className={styles.fieldLabel}>company</span>
+              <label>
+                Company
                 <input
-                  className={styles.terminalInput}
                   type="text"
                   name="company"
                   tabIndex={-1}
                   autoComplete="organization"
-                  disabled={isSubmitting}
                 />
               </label>
-              <label className={styles.fieldGroup}>
-                <span className={styles.fieldLabel}>full name confirm</span>
+              <label>
+                Full name confirm
                 <input
-                  className={styles.terminalInput}
                   type="text"
                   name="full_name_confirm"
                   tabIndex={-1}
                   autoComplete="name"
-                  disabled={isSubmitting}
                 />
               </label>
             </div>
           </div>
-
           <div className={styles.formFooter}>
-            <p className={styles.formHint}>
-              Form route is optional. Direct email is fastest.
+            <p className={styles.hint}>
+              Your details are used to reply to this inquiry.
             </p>
             <button
-              className={styles.submitButton}
+              className="button"
               type="submit"
-              disabled={isFormDisabled}
+              disabled={!ready || isSubmitting}
             >
-              {isSubmitting
-                ? "Sending..."
-                : bootstrapState.status === "loading"
-                  ? "Preparing form"
-                  : "Send inquiry"}
+              {isSubmitting ? "Sending…" : "Send brief"}{" "}
+              <span aria-hidden="true">↗</span>
             </button>
           </div>
         </form>

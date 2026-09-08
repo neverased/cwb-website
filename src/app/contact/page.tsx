@@ -1,7 +1,6 @@
 import { ContactPanel } from "@/components/contact_panel";
 import { CredibilityPanel } from "@/components/credibility_panel";
-import { ScrambleText } from "@/components/scramble_text";
-import { SiteHeader } from "@/components/site_header";
+import { SiteShell } from "@/components/site_shell";
 import { StructuredData } from "@/components/structured_data";
 import {
   absoluteUrl,
@@ -13,6 +12,7 @@ import {
   personGraphNode,
   websiteGraphNode,
 } from "@/lib/seo";
+import { findService } from "@/lib/services";
 
 import styles from "../subpage.module.css";
 
@@ -58,48 +58,36 @@ const contactPageJsonLd = buildJsonLdGraph([
   }),
 ]);
 
-export default function ContactPage() {
+export default async function ContactPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ service?: string | string[] }>;
+}) {
+  const query = await searchParams;
+  const service = findService(
+    typeof query.service === "string" ? query.service : undefined,
+  );
   return (
-    <main className={styles.page}>
+    <SiteShell currentPath="/contact">
       <StructuredData data={contactPageJsonLd} />
-
-      <div className={styles.pageShell}>
-        <SiteHeader currentPath="/contact" />
-
-        <section className={styles.lead}>
-          <div className={styles.leadCopy}>
-            <p className={styles.kicker}>Contact</p>
-            <ScrambleText
-              as="h1"
-              className={styles.title}
-              text="Direct route, no middle layer."
-              speed={0.8}
-              step={3}
-            />
-            <p className={styles.description}>
-              If the system is noisy, unclear, or underbuilt, send the useful
-              context directly. Start with what is blocked, risky, or worth
-              reviewing.
-            </p>
-          </div>
-
-          <aside className={styles.panel}>
-            <p className={styles.panelLabel}>best fit</p>
-            <h2 className={styles.panelTitle}>
-              Problems where clarity and execution both matter.
-            </h2>
-            <p className={styles.panelText}>
-              Useful for architecture reviews, technical audits, media-heavy
-              delivery, internal tools, and situations where a direct outside
-              read would reduce risk.
-            </p>
-          </aside>
-        </section>
-
+      <section className={styles.contactLead}>
+        <p className="eyebrow">Contact / Start a conversation</p>
+        <h1 className={styles.title}>
+          What are you
+          <br className={styles.mobileBreak} /> <span>working on?</span>
+        </h1>
+        <p className={styles.description}>
+          Tell me what is blocked, what needs to change, or what you want to
+          build.
+        </p>
+      </section>
+      <ContactPanel
+        key={service?.id ?? "general"}
+        initialService={service?.id}
+      />
+      <div className={styles.contactCredibility}>
         <CredibilityPanel />
-
-        <ContactPanel />
       </div>
-    </main>
+    </SiteShell>
   );
 }

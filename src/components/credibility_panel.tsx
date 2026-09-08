@@ -1,53 +1,30 @@
-import { ScrambleText } from "@/components/scramble_text";
 import { credibilitySignal } from "@/static/siteContent";
 
 import styles from "./credibility_panel.module.css";
 
-interface CredibilityPanelProps {
+export const CredibilityPanel = ({
+  className = "",
+}: {
   className?: string;
-}
-
-export const CredibilityPanel = ({ className }: CredibilityPanelProps) => {
-  return (
-    <section
-      className={[styles.panel, className ?? ""].filter(Boolean).join(" ")}
-      aria-label={credibilitySignal.kicker}
+}) => (
+  <aside
+    className={`${styles.panel} ${className}`}
+    aria-label="Company credibility"
+  >
+    <div>
+      <p className={styles.title}>Rzetelna Firma member</p>
+      <p className={styles.description}>
+        Company information and credibility certificate.
+      </p>
+    </div>
+    <a
+      className="text-link"
+      href={credibilitySignal.href}
+      target="_blank"
+      rel="noreferrer"
     >
-      <div className={styles.copy}>
-        <p className={styles.kicker}>{credibilitySignal.kicker}</p>
-        <h2 className={styles.title} aria-label={credibilitySignal.title}>
-          <span className={styles.titleAccent}>
-            {credibilitySignal.titleAccent}
-          </span>
-          <ScrambleText
-            as="span"
-            className={styles.titleRest}
-            text={credibilitySignal.titleSuffix}
-            speed={0.75}
-            step={2}
-          />
-        </h2>
-        <p className={styles.description}>{credibilitySignal.description}</p>
-      </div>
-
-      <div className={styles.actions}>
-        <a
-          className={styles.button}
-          href={credibilitySignal.href}
-          target="_blank"
-          rel="noreferrer"
-        >
-          {credibilitySignal.actionLabel}
-        </a>
-        <a
-          className={styles.link}
-          href={credibilitySignal.href}
-          target="_blank"
-          rel="noreferrer"
-        >
-          {credibilitySignal.displayUrl}
-        </a>
-      </div>
-    </section>
-  );
-};
+      View certificate <span aria-hidden="true">↗</span>
+      <span className="sr-only"> (opens in a new tab)</span>
+    </a>
+  </aside>
+);

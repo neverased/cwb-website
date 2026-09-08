@@ -3,14 +3,14 @@ import { createOgImage, OG_IMAGE_CONTENT_TYPE, OG_IMAGE_SIZE } from "@/lib/og";
 export const dynamic = "force-static";
 export const size = OG_IMAGE_SIZE;
 export const contentType = OG_IMAGE_CONTENT_TYPE;
-export const alt = "Wojciech Bajer notes page";
+export const alt = "Wojciech Bajer consulting topics";
 
 export default function OpenGraphImage() {
   return createOgImage({
-    eyebrow: "Notes",
-    title: "Essays, breakdowns, and field observations.",
+    eyebrow: "Topics",
+    title: "A good question is a useful start.",
     summary:
-      "Static-first writing hub for architecture reviews, multimedia lessons, and audit patterns from real delivery work.",
+      "Conversation starters on architecture, multimedia delivery, and independent technical reviews.",
     terminalPath: "cwb://profile/notes",
   });
 }

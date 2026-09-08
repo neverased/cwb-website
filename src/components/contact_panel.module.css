@@ -1,324 +1,214 @@
 .contactGrid {
   display: grid;
-  grid-template-columns: minmax(18rem, 0.82fr) minmax(0, 1.18fr);
-  gap: 1rem;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(2rem, 6vw, 7rem);
+  align-items: start;
 }
-
-.contactCard {
-  position: relative;
-  overflow: visible;
-  isolation: isolate;
-  min-height: 100%;
-  padding: 1.35rem;
-  border: 1px solid rgba(126, 255, 203, 0.18);
-  border-radius: var(--radius-hard);
-  clip-path: polygon(
-    0 0,
-    calc(100% - var(--corner-cut)) 0,
-    100% var(--corner-cut),
-    100% 100%,
-    var(--corner-cut) 100%,
-    0 calc(100% - var(--corner-cut))
-  );
-  background:
-    linear-gradient(180deg, rgba(6, 17, 15, 0.98), rgba(1, 6, 5, 0.98));
-  box-shadow: inset 0 -1px 0 rgba(126, 255, 203, 0.08);
+.direct {
+  padding-top: 0.2rem;
+  min-width: 0;
 }
-
-.contactCard::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(rgba(126, 255, 203, 0.16), rgba(126, 255, 203, 0.16)) left
-      top / 2.4rem 1px no-repeat,
-    linear-gradient(rgba(126, 255, 203, 0.16), rgba(126, 255, 203, 0.16)) right
-      bottom / 2.4rem 1px no-repeat;
-  opacity: 0.78;
-  pointer-events: none;
-}
-
-.contactCard > * {
-  position: relative;
-  z-index: 1;
-}
-
-.contactFormCard {
-  display: grid;
-  gap: 1rem;
-}
-
-.contactDirectCard {
-  display: grid;
-  align-content: start;
-  gap: 1rem;
-  background:
-    linear-gradient(180deg, rgba(8, 28, 22, 0.96), rgba(2, 9, 8, 0.98));
-}
-
-.contactFormCard::before {
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.04),
-    inset 0 0 0 1px rgba(126, 255, 203, 0.02);
-}
-
-.contactLabel {
-  position: relative;
-  z-index: 1;
-  margin-bottom: 0.85rem;
-  color: #8ddfba;
-  font-size: 0.74rem;
-  letter-spacing: 0;
-  text-transform: uppercase;
-}
-
-.contactValue {
-  position: relative;
-  z-index: 1;
-  display: inline-flex;
+.email {
+  display: block;
   width: fit-content;
-  min-height: 3rem;
+  max-width: 100%;
+  margin-top: 1rem;
+  font-size: clamp(1rem, 1.65vw, 1.4rem);
+  text-decoration: underline;
+  text-decoration-color: var(--rule-strong);
+  text-underline-offset: 0.35rem;
+  overflow-wrap: anywhere;
+}
+.email:hover {
+  color: var(--accent-mint);
+}
+.copyButton,
+.retryButton {
+  display: inline-flex;
   align-items: center;
-  padding: 0.7rem 0.9rem;
-  border: 1px solid rgba(126, 255, 203, 0.22);
-  border-radius: 0.12rem;
-  clip-path: polygon(0 0, calc(100% - 0.6rem) 0, 100% 0.6rem, 100% 100%, 0 100%);
-  background: rgba(126, 255, 203, 0.055);
-  color: #f6fff8;
-  font-size: 1rem;
-  line-height: 1.4;
-  transition:
-    transform 180ms ease,
-    border-color 180ms ease,
-    background-color 180ms ease,
-    color 180ms ease;
+  gap: 0.7rem;
+  min-height: 44px;
+  border: 0;
+  background: none;
+  color: var(--accent-mint);
+  cursor: pointer;
+  font-size: 0.8rem;
 }
-
-.contactValue:hover {
-  border-color: rgba(126, 255, 203, 0.34);
-  background: rgba(126, 255, 203, 0.1);
-  transform: translateY(-2px);
+.copyButton {
+  margin-top: 0.35rem;
 }
-
-.contactValue:focus-visible,
-.inlineLink:focus-visible,
-.submitButton:focus-visible {
-  outline: 2px solid rgba(126, 255, 203, 0.72);
-  outline-offset: 0.25rem;
+.copyButton:hover,
+.retryButton:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.25rem;
 }
-
-.contactSignalGrid {
-  display: grid;
-  gap: 1rem;
-  margin-top: 0.25rem;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(126, 255, 203, 0.12);
+.copyStatus {
+  display: block;
+  color: var(--accent-mint);
+  font-size: 0.75rem;
 }
-
-.contactText,
-.statusBanner p,
-.formHint {
-  color: rgba(226, 247, 237, 0.86);
+.context {
+  margin-top: 2.5rem;
+  max-width: 28ch;
+  color: var(--text-muted);
+  font-size: 0.95rem;
   line-height: 1.65;
 }
-
-.statusBanner,
-.terminalForm,
-.fieldGroup,
-.formFooter {
-  position: relative;
-  z-index: 1;
+.context p + p {
+  margin-top: 0.6rem;
 }
-
-.statusBanner {
-  display: grid;
-  gap: 0.35rem;
-  padding: 0.95rem 1rem;
-  border: 1px solid rgba(126, 255, 203, 0.14);
-  border-radius: 0.12rem;
-  background: rgba(255, 255, 255, 0.03);
+.context p:first-child {
+  color: var(--page-foreground);
 }
-
-.statusBanner strong {
-  color: #f4fff8;
-  font-size: 0.9rem;
-  letter-spacing: 0;
-  text-transform: uppercase;
+.formPanel {
+  min-width: 0;
 }
-
-.statusSuccess {
-  border-color: rgba(116, 255, 191, 0.28);
-  background: rgba(116, 255, 191, 0.08);
+.requiredHint {
+  color: var(--text-subtle);
+  font-size: 0.75rem;
+  margin: 0.75rem 0 1.6rem;
 }
-
-.statusError {
-  border-color: rgba(255, 170, 120, 0.28);
-  background: rgba(255, 170, 120, 0.08);
-}
-
-.statusInfo {
-  border-color: rgba(255, 170, 120, 0.22);
-  background: rgba(255, 170, 120, 0.06);
-}
-
-.inlineLink {
-  color: #dffff1;
-  text-decoration-color: rgba(126, 255, 203, 0.36);
-  text-underline-offset: 0.2em;
-}
-
-.terminalForm {
-  display: grid;
-  gap: 1rem;
-}
-
 .formGrid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.9rem;
+  gap: 1.3rem 1rem;
 }
-
-.fieldGroup {
-  display: grid;
-  gap: 0.45rem;
-}
-
-.fieldSpan {
-  grid-column: 1 / -1;
-}
-
-.fieldLabel {
-  color: #8ddfba;
-  font-size: 0.7rem;
-  letter-spacing: 0;
-  text-transform: uppercase;
-}
-
-.terminalInput {
-  width: 100%;
-  min-height: 3.2rem;
-  padding: 0.85rem 0.95rem;
-  border: 1px solid rgba(126, 255, 203, 0.12);
-  border-radius: 0.12rem;
-  background:
-    linear-gradient(180deg, rgba(11, 22, 20, 0.92), rgba(4, 11, 10, 0.98)),
-    rgba(255, 255, 255, 0.02);
-  color: #f4fff8;
-  font: inherit;
-  caret-color: #7effc6;
-}
-
-.terminalInput::placeholder {
-  color: rgba(198, 225, 211, 0.72);
-}
-
-.terminalInput:focus {
-  outline: none;
-  border-color: rgba(126, 255, 203, 0.36);
-  box-shadow: 0 0 0 1px rgba(126, 255, 203, 0.16);
-}
-
-.terminalTextarea {
-  min-height: 11rem;
-  resize: vertical;
-}
-
-.challengePrompt {
-  color: rgba(226, 247, 237, 0.86);
-  font-size: 0.86rem;
+.field {
+  display: block;
+  min-width: 0;
+  color: var(--page-foreground);
+  font-size: 0.85rem;
   line-height: 1.5;
 }
-
-.formTrap {
-  position: absolute;
-  left: -9999px;
-  inline-size: 1px;
-  block-size: 1px;
-  overflow: hidden;
+.field input,
+.field select,
+.field textarea {
+  display: block;
+  width: 100%;
+  min-height: 48px;
+  margin-top: 0.5rem;
+  border: 1px solid var(--rule-strong);
+  border-radius: 0.25rem;
+  padding: 0.7rem 0.85rem;
+  background: var(--surface-panel);
+  color: var(--page-foreground);
+  font: inherit;
+  font-size: 1rem;
 }
-
+.field textarea {
+  resize: vertical;
+  line-height: 1.5;
+}
+.field input:hover,
+.field select:hover,
+.field textarea:hover {
+  border-color: var(--text-subtle);
+}
+.field input:user-invalid,
+.field textarea:user-invalid {
+  border-color: var(--accent-warning);
+}
+.field input::placeholder,
+.field textarea::placeholder {
+  color: var(--text-subtle);
+  opacity: 1;
+}
+.full {
+  grid-column: 1 / -1;
+}
+.optional,
+.hint {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  line-height: 1.6;
+}
+.hint {
+  display: block;
+  margin-top: 0.5rem;
+}
+.challenge {
+  padding-top: 0.3rem;
+}
+.challenge input {
+  max-width: 10rem;
+}
 .formFooter {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  align-items: flex-end;
   gap: 1rem;
+  margin-top: 1.6rem;
 }
-
-.formFooter::before {
-  content: "";
-  position: absolute;
-  top: -0.7rem;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(126, 255, 203, 0.42),
-    transparent
-  );
-  opacity: 0.42;
+.formFooter p {
+  max-width: 28ch;
+  margin: 0;
 }
-
-.formHint {
-  max-width: 34ch;
-  font-size: 0.86rem;
+.formFooter button {
+  white-space: nowrap;
 }
-
-.submitButton {
-  min-height: 3.2rem;
-  padding: 0.85rem 1.15rem;
-  border: 1px solid rgba(126, 255, 203, 0.36);
-  border-radius: 0.12rem;
-  clip-path: polygon(0 0, calc(100% - 0.6rem) 0, 100% 0.6rem, 100% 100%, 0 100%);
-  background: rgba(126, 255, 203, 0.14);
-  color: #f6fff8;
-  font: inherit;
-  letter-spacing: 0;
-  cursor: pointer;
-  transition:
-    transform 180ms ease,
-    border-color 180ms ease,
-    background-color 180ms ease,
-    color 180ms ease;
-}
-
-.submitButton:hover {
-  transform: translateY(-2px);
-}
-
-.submitButton:disabled,
-.terminalInput:disabled {
+.formFooter button:disabled {
+  opacity: 0.5;
   cursor: not-allowed;
-  opacity: 0.58;
 }
-
-.submitButton:disabled:hover {
-  transform: none;
+.statusBanner {
+  padding: 1rem;
+  border: 1px solid var(--rule-strong);
+  border-radius: 0.25rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.85rem;
+  line-height: 1.55;
 }
-
-@media (max-width: 760px) {
-  .contactGrid,
+.statusBanner p {
+  margin-top: 0.35rem;
+}
+.success {
+  background: #152a20;
+  color: var(--accent-mint);
+}
+.error {
+  background: #291d17;
+  border-color: #a77960;
+  color: var(--accent-warning);
+}
+.formTrap {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+@media (max-width: 720px) {
+  .contactGrid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2rem;
+  }
+  .direct {
+    border-bottom: 1px solid var(--rule-soft);
+    padding-bottom: 1rem;
+  }
+  .email {
+    font-size: 1.08rem;
+    margin-top: 0.7rem;
+  }
+  .context {
+    display: none;
+  }
+  .requiredHint {
+    margin-bottom: 1.25rem;
+  }
   .formGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
   }
-
   .formFooter {
-    align-items: stretch;
-    flex-direction: column;
+    align-items: flex-start;
+    flex-direction: column-reverse;
   }
-
-  .inlineLink {
-    display: inline-flex;
-    align-items: center;
-    min-height: 2.75rem;
-    padding: 0.35rem 0;
+  .formFooter button {
+    width: 100%;
   }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .contactValue,
-  .submitButton {
-    transition: none;
+  .formFooter p {
+    max-width: none;
   }
 }

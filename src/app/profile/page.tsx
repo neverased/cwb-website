@@ -1,9 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
 
 import { CredibilityPanel } from "@/components/credibility_panel";
-import { ScrambleText } from "@/components/scramble_text";
-import { SiteHeader } from "@/components/site_header";
+import { SelectedWork } from "@/components/selected_work";
+import { ContactCallout, SiteShell } from "@/components/site_shell";
 import { StructuredData } from "@/components/structured_data";
 import {
   absoluteUrl,
@@ -11,18 +10,12 @@ import {
   buildJsonLdGraph,
   buildMetadata,
   buildWebPageNode,
-  CONTACT_EMAIL,
   PERSON_ID,
   personGraphNode,
   PROFILE_PATH,
   websiteGraphNode,
 } from "@/lib/seo";
-import {
-  coreSignals,
-  operatingSignals,
-  selectedCollaborations,
-  terminalFacts,
-} from "@/static/siteContent";
+import { services } from "@/static/siteContent";
 
 import styles from "../subpage.module.css";
 
@@ -70,174 +63,84 @@ const profilePageJsonLd = buildJsonLdGraph([
 
 export default function ProfilePage() {
   return (
-    <main className={styles.page}>
+    <SiteShell currentPath="/profile">
       <StructuredData data={profilePageJsonLd} />
-
-      <div className={styles.pageShell}>
-        <SiteHeader currentPath="/profile" />
-
-        <section className={styles.lead}>
-          <div className={styles.leadCopy}>
-            <p className={styles.kicker}>Profile</p>
-            <ScrambleText
-              as="h1"
-              className={styles.title}
-              text="One technical operator across media, product, and system design."
-              speed={0.8}
-              step={3}
-            />
-            <p className={styles.description}>
-              Use this route to check fit: the work, the operating style, the
-              collaboration signals, and where I usually help teams make better
-              technical decisions.
-            </p>
-          </div>
-
-          <aside className={[styles.panel, styles.matrixBoard].join(" ")}>
-            <p className={styles.panelLabel}>profile digest</p>
-            <div className={styles.matrixStack}>
-              {terminalFacts.map(({ label, value }) => (
-                <div key={label} className={styles.matrixRow}>
-                  <p className={styles.matrixValue}>
-                    <strong>{label}</strong>
-                    {" // "}
-                    {value}
-                  </p>
-                </div>
-              ))}
+      <section className={styles.profileLead}>
+        <div>
+          <p className="eyebrow">About / Wojciech Bajer</p>
+          <h1 className={styles.title}>
+            A thinking partner.
+            <br />
+            <span>A hands-on specialist.</span>
+          </h1>
+          <p className={styles.description}>
+            I work where multimedia, software and technical decisions meet. I
+            help teams understand what is happening, decide what matters, and
+            follow through.
+          </p>
+        </div>
+        <aside className={styles.profileFacts} aria-label="Profile at a glance">
+          <p className="eyebrow">~/profile</p>
+          <dl>
+            <div>
+              <dt>Based in</dt>
+              <dd>Poland</dd>
             </div>
-          </aside>
-        </section>
-
-        <section className={styles.boardSection}>
-          <div className={styles.sectionIntro}>
-            <p className={styles.kicker}>Core surfaces</p>
-            <ScrambleText
-              as="h2"
-              className={styles.sectionTitle}
-              text="Four connected workstreams, one way of operating."
-              speed={0.78}
-              step={3}
-            />
-            <p className={styles.description}>
-              The disciplines differ, but the operating logic stays the same:
-              expose weak links, improve signal quality, and leave systems in a
-              more durable state than they started.
-            </p>
-          </div>
-
-          <div className={styles.signalGrid}>
-            {coreSignals.map(({ id, title, description, detail }) => (
-              <article
-                key={id}
-                className={[styles.signalCard, styles.profileSignalCard].join(
-                  " ",
-                )}
-              >
-                <p className={styles.panelLabel}>{title}</p>
-                <h2 className={styles.signalValue}>{description}</h2>
-                <p className={styles.cardText}>{detail}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className={styles.boardSection}>
-          <div className={styles.sectionIntro}>
-            <p className={styles.kicker}>Selected collaborations</p>
-            <ScrambleText
-              as="h2"
-              className={styles.sectionTitle}
-              text="Recognized brands, shipped work, and real delivery pressure."
-              speed={0.78}
-              step={3}
-            />
-          </div>
-
-          <div className={styles.logoGrid}>
-            {selectedCollaborations.map(
-              ({ name, tag, src, width, height, surface }) => (
-                <article
-                  key={name}
-                  className={[styles.card, styles.logoCard].join(" ")}
-                >
-                  <p className={styles.logoTag}>{tag}</p>
-                  <div
-                    className={[
-                      styles.logoSurface,
-                      surface === "light" ? styles.logoSurfaceLight : "",
-                      surface === "dark" ? styles.logoSurfaceDark : "",
-                      surface === "yellow" ? styles.logoSurfaceYellow : "",
-                    ]
-                      .filter(Boolean)
-                      .join(" ")}
-                  >
-                    <Image
-                      className={styles.logoImage}
-                      src={src}
-                      alt={`${name} logo`}
-                      width={width}
-                      height={height}
-                      sizes="(max-width: 760px) calc(100vw - 4rem), (max-width: 1080px) calc(50vw - 3rem), 21rem"
-                    />
-                  </div>
-                </article>
-              ),
-            )}
-          </div>
-        </section>
-
-        <section className={styles.boardSection}>
-          <div className={styles.sectionIntro}>
-            <p className={styles.kicker}>Working model</p>
-            <ScrambleText
-              as="h2"
-              className={styles.sectionTitle}
-              text="The themes behind the work, not just the labels on the services."
-              speed={0.78}
-              step={3}
-            />
-          </div>
-
-          <div className={styles.signalGrid}>
-            {operatingSignals.map(({ label, value, detail }) => (
-              <article key={label} className={styles.signalCard}>
-                <p className={styles.panelLabel}>{label}</p>
-                <h2 className={styles.signalValue}>{value}</h2>
-                <p className={styles.cardText}>{detail}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className={styles.splitGrid}>
-          <CredibilityPanel />
-
-          <aside className={styles.panel}>
-            <p className={styles.panelLabel}>Direct routes</p>
-            <h2 className={styles.panelTitle}>
-              Consulting, delivery, and independent review.
-            </h2>
-            <p className={styles.panelText}>
-              Best fit for teams that need architecture clarity, technical
-              direction, sharper delivery, or a direct outside read on product
-              and process.
-            </p>
-
-            <div className={styles.inlineLinks}>
-              <a className={styles.routeLink} href={`mailto:${CONTACT_EMAIL}`}>
-                {CONTACT_EMAIL}
-              </a>
-              <Link className={styles.routeLink} href="/services">
-                Services
-              </Link>
-              <Link className={styles.routeLink} href="/contact">
-                Contact
-              </Link>
+            <div>
+              <dt>Working with</dt>
+              <dd>Teams worldwide</dd>
             </div>
-          </aside>
-        </section>
-      </div>
-    </main>
+            <div>
+              <dt>Engagements</dt>
+              <dd>Consulting, audits, delivery</dd>
+            </div>
+            <div>
+              <dt>Approach</dt>
+              <dd>Independent advice + hands-on work</dd>
+            </div>
+          </dl>
+        </aside>
+      </section>
+      <SelectedWork />
+      <section className={styles.aboutSection}>
+        <div>
+          <p className="eyebrow">How I work</p>
+          <h2 className="section-title">
+            Close to the problem.
+            <br />
+            Accountable for the work.
+          </h2>
+        </div>
+        <div className={styles.prose}>
+          <p>
+            Some engagements start with a technical review. Others need
+            implementation, production supervision, or someone to own the next
+            architectural decision.
+          </p>
+          <p>
+            I stay close to the details: the system, the people doing the work,
+            and the constraints they have to live with. The result should be a
+            practical improvement and a handoff the team can keep using.
+          </p>
+          <Link className="text-link" href="/process/">
+            Explore the process <span aria-hidden="true">→</span>
+          </Link>
+        </div>
+      </section>
+      <section className={styles.expertise}>
+        <p className="eyebrow">Connected disciplines</p>
+        <h2 className="section-title">{services.length} ways to contribute.</h2>
+        <div className={styles.expertiseLinks}>
+          {services.map(({ id, label }) => (
+            <Link href={`/services/#${id}`} key={id}>
+              {label}
+              <span aria-hidden="true">↗</span>
+            </Link>
+          ))}
+        </div>
+      </section>
+      <CredibilityPanel />
+      <ContactCallout />
+    </SiteShell>
   );
 }

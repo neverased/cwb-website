@@ -1,5 +1,6 @@
-import { ScrambleText } from "@/components/scramble_text";
-import { SiteHeader } from "@/components/site_header";
+import Link from "next/link";
+
+import { ContactCallout, SiteShell } from "@/components/site_shell";
 import { StructuredData } from "@/components/structured_data";
 import {
   absoluteUrl,
@@ -11,11 +12,8 @@ import {
   personGraphNode,
   websiteGraphNode,
 } from "@/lib/seo";
-import {
-  serviceBoards,
-  serviceRouting,
-  serviceSignals,
-} from "@/static/siteContent";
+import { contactHref } from "@/lib/services";
+import { services } from "@/static/siteContent";
 
 import styles from "../subpage.module.css";
 
@@ -47,7 +45,7 @@ const breadcrumbJsonLd = buildBreadcrumbJsonLd([
 const servicesListJsonLd = {
   "@type": "ItemList",
   "@id": absoluteUrl("/services/#list"),
-  itemListElement: serviceBoards.map(({ label, headline }, index) => ({
+  itemListElement: services.map(({ label, headline }, index) => ({
     "@type": "ListItem",
     position: index + 1,
     item: {
@@ -85,172 +83,80 @@ const servicesPageJsonLd = buildJsonLdGraph([
 
 export default function ServicesPage() {
   return (
-    <main className={styles.page}>
+    <SiteShell currentPath="/services">
       <StructuredData data={servicesPageJsonLd} />
-
-      <div className={styles.pageShell}>
-        <SiteHeader currentPath="/services" />
-
-        <section className={styles.lead}>
-          <div className={styles.leadCopy}>
-            <p className={styles.kicker}>Services</p>
-            <ScrambleText
-              as="h1"
-              className={styles.title}
-              text="Choose the workstream that matches the problem."
-              speed={0.8}
-              step={3}
-            />
-            <p className={styles.description}>
-              The entry point can be media delivery, a software build,
-              architecture direction, an independent audit, ongoing technical
-              leadership, or an AI feature that has to become dependable. The
-              result should be the same: a clearer situation, visible
-              constraints, and work your team can keep using.
-            </p>
-          </div>
-
-          <aside className={[styles.panel, styles.routeBoard].join(" ")}>
-            <div className={styles.routeGrid}>
-              <div className={styles.routeLane}>
-                <p className={styles.panelLabel}>incoming</p>
-                <div className={styles.routeStack}>
-                  {serviceRouting.incoming.map((item) => (
-                    <span key={item} className={styles.routeNode}>
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              <div className={styles.routeCore}>
-                <p className={styles.routeCoreLabel}>service surfaces</p>
-                <div className={styles.routeSurfaceList}>
-                  {serviceRouting.surfaces.map((item) => (
-                    <span key={item} className={styles.routeSurface}>
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              <div className={styles.routeLane}>
-                <p className={styles.panelLabel}>outgoing</p>
-                <div className={styles.routeStack}>
-                  {serviceRouting.outgoing.map((item) => (
-                    <span key={item} className={styles.routeNode}>
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </div>
+      <section className={styles.lead}>
+        <p className="eyebrow">Services / Find your starting point</p>
+        <h1 className={styles.title}>
+          Complex work.
+          <br />
+          <span>Clear ways to help.</span>
+        </h1>
+        <p className={styles.description}>
+          From an independent review to hands-on delivery. Choose the kind of
+          support your team needs, and see what you will take away.
+        </p>
+        <nav className={styles.jumpLinks} aria-label="Service sections">
+          {services.map(({ id, label }) => (
+            <a key={id} href={`#${id}`}>
+              {label}
+              <span aria-hidden="true">↓</span>
+            </a>
+          ))}
+        </nav>
+      </section>
+      <div className={styles.serviceList}>
+        {services.map((service, index) => (
+          <section
+            id={service.id}
+            key={service.id}
+            className={styles.service}
+            aria-labelledby={`${service.id}-title`}
+          >
+            <div className={styles.serviceIdentity}>
+              <p className="eyebrow">
+                0{index + 1} / {service.status}
+              </p>
+              <h2 id={`${service.id}-title`}>{service.label}</h2>
+              <Link className="text-link" href={contactHref(service.id)}>
+                Discuss {service.label.toLowerCase()}{" "}
+                <span aria-hidden="true">↗</span>
+              </Link>
             </div>
-          </aside>
-        </section>
-
-        <section className={styles.boardSection}>
-          <div className={styles.sectionIntro}>
-            <p className={styles.kicker}>Service map</p>
-            <ScrambleText
-              as="h2"
-              className={styles.sectionTitle}
-              text="What comes in, what changes, and what leaves."
-              speed={0.78}
-              step={3}
-            />
-            <p className={styles.description}>
-              Each service is framed as a workstream so the business value is
-              visible before the technical details: the trigger, the operation,
-              and the usable output.
-            </p>
-          </div>
-
-          <div className={styles.surfaceGrid}>
-            {serviceBoards.map(
-              ({
-                id,
-                label,
-                status,
-                headline,
-                intro,
-                stages,
-                deliverables,
-                fit,
-                command,
-              }) => (
-                <article
-                  key={id}
-                  className={[styles.card, styles.surfaceCard].join(" ")}
-                >
-                  <div className={styles.cardHead}>
-                    <p className={styles.cardLabel}>{label}</p>
-                    <span className={styles.cardMeta}>{status}</span>
-                  </div>
-
-                  <h2 className={styles.surfaceTitle}>{headline}</h2>
-                  <p className={styles.cardText}>{intro}</p>
-
-                  <div className={styles.surfaceDiagram}>
-                    {stages.map(({ label: stageLabel, value }) => (
-                      <div key={stageLabel} className={styles.surfaceStage}>
-                        <span className={styles.surfaceStageLabel}>
-                          {stageLabel}
-                        </span>
-                        <p className={styles.surfaceStageValue}>{value}</p>
-                      </div>
-                    ))}
-                  </div>
-
-                  <pre className={styles.commandPreview}>
-                    <code>{command}</code>
-                  </pre>
-
-                  <div className={styles.chipRow}>
-                    {deliverables.map((item) => (
-                      <span key={item} className={styles.chip}>
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-
-                  <p className={styles.surfaceFit}>{fit}</p>
-                </article>
-              ),
-            )}
-          </div>
-        </section>
-
-        <section className={styles.matrixSection}>
-          <div className={styles.sectionIntro}>
-            <p className={styles.kicker}>Signal exchange</p>
-            <ScrambleText
-              as="h2"
-              className={styles.sectionTitle}
-              text="Where the engagement usually starts, and what should remain after it."
-              speed={0.78}
-              step={3}
-            />
-          </div>
-
-          <div className={styles.matrixGrid}>
-            {serviceSignals.map(({ label, items }) => (
-              <article
-                key={label}
-                className={[styles.panel, styles.matrixBoard].join(" ")}
-              >
-                <p className={styles.panelLabel}>{label}</p>
-                <div className={styles.matrixStack}>
-                  {items.map((item) => (
-                    <div key={item} className={styles.matrixRow}>
-                      <p className={styles.matrixValue}>{item}</p>
+            <div className={styles.serviceDetails}>
+              <h3>{service.headline}</h3>
+              <p>{service.intro}</p>
+              <p className={styles.outputLabel}>What you take away</p>
+              <ul className={styles.deliverables}>
+                {service.deliverables.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+              <details className={styles.disclosure}>
+                <summary>
+                  How the work happens <span aria-hidden="true">+</span>
+                </summary>
+                <dl>
+                  {service.stages.map(({ label, value }) => (
+                    <div key={label}>
+                      <dt>
+                        {label === "signal in"
+                          ? "Starting point"
+                          : label === "signal out"
+                            ? "Result"
+                            : "The work"}
+                      </dt>
+                      <dd>{value}</dd>
                     </div>
                   ))}
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
+                </dl>
+                <p>{service.fit}</p>
+              </details>
+            </div>
+          </section>
+        ))}
       </div>
-    </main>
+      <ContactCallout />
+    </SiteShell>
   );
 }

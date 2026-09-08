@@ -1,260 +1,4 @@
-export const coreSignals = [
-  {
-    id: "01",
-    title: "Multimedia systems",
-    description:
-      "Media-heavy launches and experiences that need reliable planning, production logic, and quality control.",
-    detail:
-      "Audio, video, interactive surfaces, delivery pipelines, and production supervision under real deadlines.",
-  },
-  {
-    id: "02",
-    title: "Software engineering",
-    description:
-      "Product interfaces, internal tools, and integration work delivered with maintainable technical discipline.",
-    detail:
-      "Frontend systems, workflow cleanup, integrations, and implementation support that can survive handoff.",
-  },
-  {
-    id: "03",
-    title: "Application architecture",
-    description:
-      "Architecture reviews and system maps that expose weak points before they become expensive.",
-    detail:
-      "Boundaries, dependencies, tradeoff mapping, platform shape, and resilience.",
-  },
-  {
-    id: "04",
-    title: "Company and product audits",
-    description:
-      "Independent assessment when product, process, or technology decisions need a cleaner outside read.",
-    detail:
-      "Technical audits, process diagnostics, product signal, operational clarity.",
-  },
-  {
-    id: "05",
-    title: "Fractional technical leadership",
-    description:
-      "Ongoing senior direction and accountability without the cost or risk of a full-time hire.",
-    detail:
-      "Technical strategy, delivery oversight, hiring support, and a named decision owner your team can reach.",
-  },
-  {
-    id: "06",
-    title: "AI and LLM engineering",
-    description:
-      "AI features and LLM integrations taken from idea or prototype to dependable production behavior.",
-    detail:
-      "Product integrations, agent systems, evaluation setups, and model or vendor decisions grounded in evidence.",
-  },
-] as const;
-
-export const focusModules = [
-  {
-    id: "multimedia",
-    label: "Multimedia",
-    status: "media delivery",
-    summary:
-      "For launches, showrooms, branded experiences, and content operations where media quality, timing, and responsibility need one controlled delivery path.",
-    command: "$ plan media output=launch-ready owner=clear",
-    stack: [
-      "workflow map",
-      "production supervision",
-      "quality control checkpoints",
-      "launch-ready media surface",
-    ],
-  },
-  {
-    id: "software",
-    label: "Software",
-    status: "product build",
-    summary:
-      "For teams that need product interfaces, integrations, or internal tools shipped with enough structure to survive handoff.",
-    command: "$ build product output=working-system handoff=durable",
-    stack: [
-      "frontend implementation",
-      "integration path",
-      "workflow cleanup",
-      "handoff notes",
-    ],
-  },
-  {
-    id: "architecture",
-    label: "Architecture",
-    status: "technical direction",
-    summary:
-      "For teams that need a clear read on structure, coupling, ownership, and platform shape before uncertainty becomes cost.",
-    command: "$ map architecture output=decision-route risk=visible",
-    stack: [
-      "system map",
-      "dependency review",
-      "risk zones",
-      "decision route",
-    ],
-  },
-  {
-    id: "audits",
-    label: "Audits",
-    status: "outside review",
-    summary:
-      "For companies that need an independent read on what works, what is fragile, and which correction should happen first.",
-    command: "$ audit company output=priority-map evidence=real",
-    stack: [
-      "findings report",
-      "priority map",
-      "ownership review",
-      "next-step recommendations",
-    ],
-  },
-  {
-    id: "fractional",
-    label: "Fractional lead",
-    status: "ongoing direction",
-    summary:
-      "For companies that need senior technical judgment on call: continuing direction, delivery oversight, and one accountable owner without a full-time hire.",
-    command: "$ retain lead cadence=ongoing owner=named",
-    stack: [
-      "technical strategy",
-      "delivery oversight",
-      "hiring support",
-      "decision log",
-    ],
-  },
-  {
-    id: "ai",
-    label: "AI / LLM",
-    status: "applied ai",
-    summary:
-      "For products that need AI features, LLM integrations, or agent systems moved from a promising prototype to dependable production behavior.",
-    command: "$ ship ai from=prototype to=production behavior=dependable",
-    stack: [
-      "llm integrations",
-      "agent systems",
-      "evaluation setup",
-      "feasibility read",
-    ],
-  },
-] as const;
-
-export const operatingModel = [
-  {
-    step: "01",
-    title: "Inspect the signal",
-    text: "I start with what is actually happening: stack, process, team friction, product goals, and delivery risk.",
-  },
-  {
-    step: "02",
-    title: "Map the system",
-    text: "Then I turn it into an operating model: architecture, priorities, dependencies, and decision points.",
-  },
-  {
-    step: "03",
-    title: "Build or correct",
-    text: "Execution can mean implementation, technical direction, sharper workflows, or reducing waste in the pipeline.",
-  },
-  {
-    step: "04",
-    title: "Leave a durable setup",
-    text: "The output should stay useful after handoff: documented logic, cleaner systems, and fewer hidden liabilities.",
-  },
-] as const;
-
-export const operatingSignals = [
-  {
-    label: "delivery mode",
-    value: "advisory + hands-on",
-    detail: "Strategy is useful only if execution can follow it.",
-  },
-  {
-    label: "working surface",
-    value: "media + product + systems",
-    detail: "Creative and technical work share the same operating logic here.",
-  },
-  {
-    label: "handoff mode",
-    value: "decisions documented",
-    detail: "Useful work leaves a map, not just a meeting.",
-  },
-  {
-    label: "engagement filter",
-    value: "selected collaborations",
-    detail:
-      "Best fit when clarity, quality, and architectural rigor actually matter.",
-  },
-] as const;
-
-export const clientOutcomes = [
-  {
-    label: "Clarity",
-    value: "Know what is broken, risky, or worth building next.",
-    detail:
-      "Useful when a project feels noisy and nobody fully trusts the current technical picture.",
-  },
-  {
-    label: "Execution",
-    value: "Move from analysis into implementation without losing context.",
-    detail:
-      "Useful when the same person needs to understand the problem and help correct it.",
-  },
-  {
-    label: "Reduced risk",
-    value:
-      "Expose weak architecture, delivery gaps, and hidden product cost early.",
-    detail:
-      "Useful before technical uncertainty hardens into expensive operating habits.",
-  },
-  {
-    label: "Durable handoff",
-    value: "Leave maps, decisions, and artifacts teams can keep using.",
-    detail: "Useful when the result has to survive after the engagement ends.",
-  },
-] as const;
-
-export const executionConsole = [
-  "understand what is actually happening",
-  "name the real blockers and risks",
-  "fix what slows delivery down",
-  "hand off a cleaner, documented system",
-] as const;
-
-export const workingTerminalLines = [
-  "$ intake brief=client-problem",
-  "reading stack, process, pressure, ownership",
-  "finding hidden constraints",
-  "$ route work=media software architecture audits leadership ai",
-  "mapping risks, dependencies, and next actions",
-  "$ output format=decisions artifacts implementation",
-  "ready for direct handoff",
-] as const;
-
-export const serviceRouting = {
-  incoming: [
-    "delivery friction",
-    "unclear technical direction",
-    "media-heavy complexity",
-    "independent review needed",
-    "no senior technical owner",
-    "ai plans without a production path",
-  ],
-  surfaces: [
-    "multimedia",
-    "software",
-    "architecture",
-    "audits",
-    "fractional lead",
-    "ai / llm",
-  ],
-  outgoing: [
-    "cleaner execution path",
-    "visible tradeoffs",
-    "working system map",
-    "durable next actions",
-    "a named decision owner",
-    "ai behavior you can rely on",
-  ],
-} as const;
-
-export const serviceBoards = [
+export const services = [
   {
     id: "multimedia",
     label: "Multimedia",
@@ -441,31 +185,6 @@ export const serviceBoards = [
   },
 ] as const;
 
-export const serviceSignals = [
-  {
-    label: "Typical entry points",
-    items: [
-      "product feels noisy",
-      "delivery surface is fragile",
-      "media stack is too ad hoc",
-      "team needs an outside technical read",
-      "nobody senior owns the technical calls",
-      "the ai demo works, production does not",
-    ],
-  },
-  {
-    label: "What usually leaves",
-    items: [
-      "sharper system map",
-      "clearer execution route",
-      "visible risks and tradeoffs",
-      "deliverables teams can actually use",
-      "a named owner for ongoing decisions",
-      "ai features that hold up in production",
-    ],
-  },
-] as const;
-
 export const processFlow = [
   {
     step: "01",
@@ -531,34 +250,23 @@ export const processArtifacts = [
   },
 ] as const;
 
-export const terminalFacts = [
-  { label: "operator", value: "Wojciech Bajer" },
-  { label: "location", value: "Poland // worldwide" },
-  { label: "focus", value: "media, software, architecture" },
-  { label: "mode", value: "consulting / audits / delivery" },
-] as const;
-
-export const signalStack = [
-  "audio + video pipelines",
-  "frontend and product systems",
-  "architecture diagnostics",
-  "technical and product audits",
-] as const;
-
 export const noteQueue = [
   {
+    service: "architecture",
     status: "Topic",
     title: "Architecture reviews before scale gets expensive",
     summary:
       "How I assess product structure, coupling, delivery risk, and where teams usually hide technical debt.",
   },
   {
+    service: "multimedia",
     status: "Topic",
     title: "What multimedia work teaches about software delivery",
     summary:
       "Signal flow, timing, and production discipline translate surprisingly well to digital product execution.",
   },
   {
+    service: "audits",
     status: "Topic",
     title: "Audit patterns that reveal product confusion early",
     summary:
@@ -634,20 +342,5 @@ export const selectedCollaborations = [
     width: 57,
     height: 52,
     surface: "dark",
-  },
-] as const;
-
-export const collaborationProofPoints = [
-  {
-    label: "scope",
-    text: "Work spans multimedia delivery, software systems, architecture, independent review, ongoing technical leadership, and applied AI.",
-  },
-  {
-    label: "role",
-    text: "One accountable specialist stays close to the technical and delivery details, from first read to handoff.",
-  },
-  {
-    label: "output",
-    text: "Cleaner execution paths, visible tradeoffs, and artifacts teams can keep using after handoff.",
   },
 ] as const;

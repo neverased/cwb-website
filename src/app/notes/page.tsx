@@ -1,5 +1,6 @@
-import { ScrambleText } from "@/components/scramble_text";
-import { SiteHeader } from "@/components/site_header";
+import Link from "next/link";
+
+import { ContactCallout, SiteShell } from "@/components/site_shell";
 import { StructuredData } from "@/components/structured_data";
 import {
   absoluteUrl,
@@ -11,13 +12,14 @@ import {
   personGraphNode,
   websiteGraphNode,
 } from "@/lib/seo";
+import { contactHref } from "@/lib/services";
 import { noteQueue } from "@/static/siteContent";
 
 import styles from "../subpage.module.css";
 
-const NOTES_TITLE = "Notes | Wojciech Bajer";
+const NOTES_TITLE = "Topics | Wojciech Bajer";
 const NOTES_DESCRIPTION =
-  "Diagnostic topics and field observations on architecture, multimedia systems, delivery, and audit work.";
+  "Conversation starters on architecture, multimedia systems, delivery, and independent technical reviews.";
 
 export const metadata = buildMetadata({
   title: NOTES_TITLE,
@@ -25,15 +27,15 @@ export const metadata = buildMetadata({
   path: "/notes/",
   keywords: [
     "technical notes",
-    "architecture essays",
+    "architecture consulting",
     "audit observations",
-    "software and multimedia writing",
+    "software and multimedia consulting",
   ],
 });
 
 const breadcrumbJsonLd = buildBreadcrumbJsonLd([
   { name: "Home", path: "/" },
-  { name: "Notes", path: "/notes/" },
+  { name: "Topics", path: "/notes/" },
 ]);
 
 const notesListJsonLd = {
@@ -43,12 +45,9 @@ const notesListJsonLd = {
     "@type": "ListItem",
     position: index + 1,
     item: {
-      "@type": "CreativeWork",
+      "@type": "Thing",
       name: title,
       description: summary,
-      author: {
-        "@id": PERSON_ID,
-      },
     },
   })),
 };
@@ -77,55 +76,35 @@ const notesPageJsonLd = buildJsonLdGraph([
 
 export default function NotesPage() {
   return (
-    <main className={styles.page}>
+    <SiteShell currentPath="/notes">
       <StructuredData data={notesPageJsonLd} />
-
-      <div className={styles.pageShell}>
-        <SiteHeader currentPath="/notes" />
-
-        <section className={styles.lead}>
-          <div className={styles.leadCopy}>
-            <p className={styles.kicker}>Notes</p>
-            <ScrambleText
-              as="h1"
-              className={styles.title}
-              text="Diagnostic topics and field observations."
-              speed={0.8}
-              step={3}
-            />
-            <p className={styles.description}>
-              These are the themes I use to explain recurring architecture,
-              delivery, multimedia, and audit problems. They double as useful
-              entry points when a brief is still forming.
-            </p>
-          </div>
-
-          <aside className={styles.panel}>
-            <p className={styles.panelLabel}>topic map</p>
-            <h2 className={styles.panelTitle}>Start with the problem area.</h2>
-            <p className={styles.panelText}>
-              If one of these areas matches what you are seeing, it is usually
-              enough context to begin a focused review.
-            </p>
-          </aside>
-        </section>
-
-        <section className={styles.notesGrid}>
-          {noteQueue.map(({ status, title, summary }) => (
-            <article
-              key={title}
-              className={[styles.card, styles.notesCard].join(" ")}
-            >
-              <div className={styles.noteMeta}>
-                <span>{status}</span>
-                <span>review area</span>
-              </div>
-              <h2 className={styles.noteTitle}>{title}</h2>
-              <p className={styles.noteText}>{summary}</p>
-            </article>
-          ))}
-        </section>
+      <section className={styles.lead}>
+        <p className="eyebrow">Topics / Questions worth exploring</p>
+        <h1 className={styles.title}>
+          A good question
+          <br />
+          <span>is a useful start.</span>
+        </h1>
+        <p className={styles.description}>
+          These are recurring themes in my work. If one sounds familiar, use it
+          as a starting point for a conversation.
+        </p>
+      </section>
+      <div className={styles.topicList}>
+        {noteQueue.map(({ title, summary, service }, index) => (
+          <article key={title}>
+            <span className={styles.stepNumber}>0{index + 1}</span>
+            <div>
+              <h2>{title}</h2>
+              <p>{summary}</p>
+              <Link className="text-link" href={contactHref(service)}>
+                Discuss this topic <span aria-hidden="true">↗</span>
+              </Link>
+            </div>
+          </article>
+        ))}
       </div>
-    </main>
+      <ContactCallout />
+    </SiteShell>
   );
 }

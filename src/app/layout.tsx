@@ -15,6 +15,7 @@ import {
 
 const fira_code = Fira_Code({
   subsets: ["latin"],
+  variable: "--font-mono",
   display: "swap",
 });
 
@@ -27,7 +28,7 @@ const space_grotesk = Space_Grotesk({
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#041111",
+  themeColor: "#0b0f10",
   colorScheme: "dark",
 };
 
@@ -71,7 +72,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${fira_code.className} ${space_grotesk.variable}`}>
+      <body className={`${fira_code.variable} ${space_grotesk.variable}`}>
         {children}
       </body>
     </html>

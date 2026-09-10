@@ -22,7 +22,7 @@
     "@payloadcms/next": "3.88.0",
     "@payloadcms/richtext-lexical": "3.88.0",
     "@payloadcms/ui": "3.88.0",
-    "@types/node": "26.5.0",
+    "@types/node": "26.5.1",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
     "@uit/glitch-image": "^0.0.11",

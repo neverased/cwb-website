@@ -1,0 +1,15 @@
+http:
+  routers:
+    cwb-website-forward:
+      rule: Host(`wojciechbajer.com`)
+      entryPoints:
+        - websecure
+      tls:
+        certResolver: myresolver
+      service: cwb-website-forward
+  services:
+    cwb-website-forward:
+      loadBalancer:
+        passHostHeader: true
+        servers:
+          - url: "http://192.168.1.100:3010" # QNAP LAN IP

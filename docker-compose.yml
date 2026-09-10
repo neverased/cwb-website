@@ -26,7 +26,7 @@ services:
       SMTP_SECURE: ${SMTP_SECURE:-false}
       SMTP_USER: ${SMTP_USER:-}
     ports:
-      - "${WEB_BIND_ADDRESS:-127.0.0.1}:${WEB_PORT:-3000}:3000"
+      - "${WEB_BIND_ADDRESS:-127.0.0.1}:${WEB_PORT:-3010}:3000"
     restart: unless-stopped
     volumes:
       - contact-data:/app/storage/contact

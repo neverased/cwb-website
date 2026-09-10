@@ -18,10 +18,10 @@
     "lint:fix": "pnpm lint --fix"
   },
   "dependencies": {
-    "@payloadcms/db-postgres": "3.88.0",
-    "@payloadcms/next": "3.88.0",
-    "@payloadcms/richtext-lexical": "3.88.0",
-    "@payloadcms/ui": "3.88.0",
+    "@payloadcms/db-postgres": "3.89.0",
+    "@payloadcms/next": "3.89.0",
+    "@payloadcms/richtext-lexical": "3.89.0",
+    "@payloadcms/ui": "3.89.0",
     "@types/node": "26.5.0",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
@@ -31,7 +31,7 @@
     "jquery": "^4.0.0",
     "next": "^16.3.4",
     "nodemailer": "^10.0.3",
-    "payload": "3.88.0",
+    "payload": "3.89.0",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
     "sass": "^1.104.0",

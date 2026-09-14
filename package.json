@@ -43,7 +43,7 @@
     "coffeescript": "^2.7.0",
     "eslint-plugin-simple-import-sort": "^14.0.0",
     "jest": "^30.5.1",
-    "oxlint": "1.82.0",
+    "oxlint": "1.83.0",
     "prettier": "^3.9.6",
     "tsx": "^4.23.13"
   },

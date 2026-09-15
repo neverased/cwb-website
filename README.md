@@ -95,6 +95,14 @@ CMS database, so the container becomes healthy only after initialization succeed
 The standalone image builds without a database connection. Automatic schema push
 is disabled in every environment; schema changes must have committed migrations.
 
+The image build also runs `scripts/verify-sharp.mjs` in the final runtime stage.
+It loads Sharp and processes a small image using only the standalone dependencies.
+After `next build`, `scripts/prepare-standalone-dependencies.mjs` copies Sharp's
+complete `semver` dependency into standalone, preserving its resolved package path.
+This prevents an incomplete standalone copy from breaking CMS initialization and
+`/api/health/` with `Cannot find module './functions/compare-build'`, even when the
+missing file was listed in the trace manifest.
+
 After changing a collection or editor configuration:
 
 ```bash

@@ -22,7 +22,7 @@ FROM base AS builder
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-RUN pnpm exec next build
+RUN pnpm build
 RUN test -f .next/standalone/server.js
 
 FROM node:26-bookworm-slim AS runner
@@ -42,6 +42,9 @@ COPY --from=builder --chown=node:node /app/.next/standalone ./
 COPY --from=builder --chown=node:node /app/.next/static ./.next/static
 
 USER node
+
+RUN --mount=type=bind,source=scripts/verify-sharp.mjs,target=/app/verify-sharp.mjs \
+    node /app/verify-sharp.mjs
 
 EXPOSE 3000
 

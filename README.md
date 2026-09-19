@@ -155,10 +155,17 @@ The contact form still uses:
 
 ```bash
 pnpm lint
+pnpm test:seo
 pnpm test:contact
 pnpm build
 docker compose config --quiet
 ```
+
+SEO checks cover pagination URLs, social images, public media crawling and the
+scope of Payload's theme headers. CMS regression checks also verify generated
+metadata and structured data with a real paginated list of published posts.
+The [SEO audit from 2026-09-19](docs/seo/2026-09-19-audit.md) records findings,
+prepared changes, production follow-ups and verification limitations.
 
 Run the CMS regression checks against a disposable local stack. The test writes
 and removes its own records; bootstrap mode is only for an empty test database:

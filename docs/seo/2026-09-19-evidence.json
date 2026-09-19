@@ -1,0 +1,835 @@
+{
+  "date": "2026-09-19",
+  "productionOrigin": "https://wojciechbajer.com",
+  "productionChecks": [
+    {
+      "path": "/",
+      "status": "HTTP/2 200",
+      "title": "Wojciech Bajer | Multimedia, Software, Architecture, Audits, AI",
+      "canonical": [
+        "https://wojciechbajer.com/"
+      ],
+      "h1Count": 1,
+      "robots": [
+        "index, follow"
+      ],
+      "missingAlt": 0
+    },
+    {
+      "path": "/services/",
+      "status": "HTTP/2 200",
+      "title": "Services | Wojciech Bajer",
+      "canonical": [
+        "https://wojciechbajer.com/services/"
+      ],
+      "h1Count": 1,
+      "robots": [
+        "index, follow"
+      ],
+      "missingAlt": 0
+    },
+    {
+      "path": "/profile/",
+      "status": "HTTP/2 200",
+      "title": "Profile | Wojciech Bajer",
+      "canonical": [
+        "https://wojciechbajer.com/profile/"
+      ],
+      "h1Count": 1,
+      "robots": [
+        "index, follow"
+      ],
+      "missingAlt": 0
+    },
+    {
+      "path": "/process/",
+      "status": "HTTP/2 200",
+      "title": "Process | Wojciech Bajer",
+      "canonical": [
+        "https://wojciechbajer.com/process/"
+      ],
+      "h1Count": 1,
+      "robots": [
+        "index, follow"
+      ],
+      "missingAlt": 0
+    },
+    {
+      "path": "/notes/",
+      "status": "HTTP/2 200",
+      "title": "Notes | Wojciech Bajer",
+      "canonical": [
+        "https://wojciechbajer.com/notes/"
+      ],
+      "h1Count": 1,
+      "robots": [
+        "index, follow"
+      ],
+      "missingAlt": 0
+    },
+    {
+      "path": "/contact/",
+      "status": "HTTP/2 200",
+      "title": "Contact | Wojciech Bajer",
+      "canonical": [
+        "https://wojciechbajer.com/contact/"
+      ],
+      "h1Count": 1,
+      "robots": [
+        "index, follow"
+      ],
+      "missingAlt": 0
+    },
+    {
+      "path": "/notes/jellyfin-qnap-hardware-acceleration-rockchip-rkmpp/",
+      "status": "HTTP/2 200",
+      "title": "Jellyfin on QNAP: How I Enabled Hardware Acceleration on the Rockchip RK3588 | Wojciech Bajer",
+      "canonical": [
+        "https://wojciechbajer.com/notes/jellyfin-qnap-hardware-acceleration-rockchip-rkmpp/"
+      ],
+      "h1Count": 1,
+      "robots": [
+        "index, follow"
+      ],
+      "missingAlt": 0
+    }
+  ],
+  "links": [
+    [
+      "https://docs.docker.com/engine/containers/run/",
+      "200 https://docs.docker.com/engine/containers/run/",
+      ""
+    ],
+    [
+      "https://jellyfin.org/docs/general/post-install/transcoding/",
+      "200 https://jellyfin.org/docs/general/post-install/transcoding/",
+      ""
+    ],
+    [
+      "https://jellyfin.org/docs/general/post-install/transcoding/hardware-acceleration/rockchip/",
+      "200 https://jellyfin.org/docs/general/post-install/transcoding/hardware-acceleration/rockchip/",
+      ""
+    ],
+    [
+      "https://wojciechbajer.com/",
+      "200 https://wojciechbajer.com/",
+      ""
+    ],
+    [
+      "https://wojciechbajer.com/contact/",
+      "200 https://wojciechbajer.com/contact/",
+      ""
+    ],
+    [
+      "https://wojciechbajer.com/contact/?service=ai",
+      "200 https://wojciechbajer.com/contact/?service=ai",
+      ""
+    ],
+    [
+      "https://wojciechbajer.com/contact/?service=architecture",
+      "200 https://wojciechbajer.com/contact/?service=architecture",
+      ""
+    ],
+    [
+      "https://wojciechbajer.com/contact/?service=audits",
+      "200 https://wojciechbajer.com/contact/?service=audits",
+      ""
+    ],
+    [
+      "https://wojciechbajer.com/contact/?service=fractional",
+      "200 https://wojciechbajer.com/contact/?service=fractional",
+      ""
+    ],
+    [
+      "https://wojciechbajer.com/contact/?service=multimedia",
+      "200 https://wojciechbajer.com/contact/?service=multimedia",
+      ""
+    ],
+    [
+      "https://wojciechbajer.com/contact/?service=software",
+      "200 https://wojciechbajer.com/contact/?service=software",
+      ""
+    ],
+    [
+      "https://wojciechbajer.com/notes/",
+      "200 https://wojciechbajer.com/notes/",
+      ""
+    ],
+    [
+      "https://wojciechbajer.com/notes/jellyfin-qnap-hardware-acceleration-rockchip-rkmpp/",
+      "200 https://wojciechbajer.com/notes/jellyfin-qnap-hardware-acceleration-rockchip-rkmpp/",
+      ""
+    ],
+    [
+      "https://wojciechbajer.com/process/",
+      "200 https://wojciechbajer.com/process/",
+      ""
+    ],
+    [
+      "https://wojciechbajer.com/profile/",
+      "200 https://wojciechbajer.com/profile/",
+      ""
+    ],
+    [
+      "https://wojciechbajer.com/services/",
+      "200 https://wojciechbajer.com/services/",
+      ""
+    ],
+    [
+      "https://www.kernel.org/doc/html/v4.9/gpu/drm-uapi.html",
+      "200 https://www.kernel.org/doc/html/v4.9/gpu/drm-uapi.html",
+      ""
+    ],
+    [
+      "https://www.rzetelnafirma.pl/D72SOALK4C2PIGNR",
+      "200 https://wizytowka.rzetelnafirma.pl/r/D72SOALK4C2PIGNR",
+      ""
+    ]
+  ],
+  "assets": [
+    [
+      "https://wojciechbajer.com/_next/image/?url=%2Fpartners%2Flogo_Lexense.png&w=3840&q=75",
+      "200 image/png 3897 0.225916",
+      ""
+    ],
+    [
+      "https://wojciechbajer.com/_next/image/?url=%2Fpartners%2Flogo_PTTK.png&w=3840&q=75",
+      "200 image/png 20862 0.274722",
+      ""
+    ],
+    [
+      "https://wojciechbajer.com/_next/image/?url=%2Fpartners%2Flogo_budimex.png&w=3840&q=75",
+      "200 image/png 43958 0.955851",
+      ""
+    ],
+    [
+      "https://wojciechbajer.com/_next/image/?url=%2Fwbc_logo_alpha_kolor_neg.png&w=3840&q=75",
+      "200 image/png 21487 0.455086",
+      ""
+    ],
+    [
+      "https://wojciechbajer.com/contact/opengraph-image/",
+      "200 image/png 76710 0.113450",
+      ""
+    ],
+    [
+      "https://wojciechbajer.com/notes/opengraph-image/",
+      "200 image/png 82891 0.077183",
+      ""
+    ],
+    [
+      "https://wojciechbajer.com/opengraph-image/",
+      "200 image/png 101193 0.097005",
+      ""
+    ],
+    [
+      "https://wojciechbajer.com/partners/Polestar_Logo.svg",
+      "200 image/svg+xml 9155 0.057803",
+      ""
+    ],
+    [
+      "https://wojciechbajer.com/partners/logo_DHL.svg",
+      "200 image/svg+xml 2005 0.049998",
+      ""
+    ],
+    [
+      "https://wojciechbajer.com/partners/logo_Dolby.svg",
+      "200 image/svg+xml 1474 0.119823",
+      ""
+    ],
+    [
+      "https://wojciechbajer.com/partners/logo_TDJ.svg",
+      "200 image/svg+xml 4996 0.112844",
+      ""
+    ],
+    [
+      "https://wojciechbajer.com/partners/logo_leroy_merlin.svg",
+      "200 image/svg+xml 2988 0.072261",
+      ""
+    ],
+    [
+      "https://wojciechbajer.com/partners/volvo-seeklogo.svg",
+      "200 image/svg+xml 1366 0.107924",
+      ""
+    ],
+    [
+      "https://wojciechbajer.com/process/opengraph-image/",
+      "200 image/png 90017 0.109067",
+      ""
+    ],
+    [
+      "https://wojciechbajer.com/profile/opengraph-image/",
+      "200 image/png 97784 0.150909",
+      ""
+    ],
+    [
+      "https://wojciechbajer.com/services/opengraph-image/",
+      "200 image/png 101434 0.092596",
+      ""
+    ]
+  ],
+  "browserChecks": [
+    {
+      "path": "/",
+      "width": 320,
+      "js": true,
+      "status": 200,
+      "title": "Wojciech Bajer | Software, Architecture & AI Consulting",
+      "h1": [
+        "Clear decisions.Cleaner delivery."
+      ],
+      "canonical": [
+        "https://wojciechbajer.com/"
+      ],
+      "overflow": false,
+      "text": 1956
+    },
+    {
+      "path": "/services/",
+      "width": 320,
+      "js": true,
+      "status": 200,
+      "title": "Software, AI & Technical Audit Services | Wojciech Bajer",
+      "h1": [
+        "Complex work.Clear ways to help."
+      ],
+      "canonical": [
+        "https://wojciechbajer.com/services/"
+      ],
+      "overflow": false,
+      "text": 2604
+    },
+    {
+      "path": "/profile/",
+      "width": 320,
+      "js": true,
+      "status": 200,
+      "title": "About Wojciech Bajer | Independent Technical Consultant",
+      "h1": [
+        "A thinking partner.A hands-on specialist."
+      ],
+      "canonical": [
+        "https://wojciechbajer.com/profile/"
+      ],
+      "overflow": false,
+      "text": 1221
+    },
+    {
+      "path": "/process/",
+      "width": 320,
+      "js": true,
+      "status": 200,
+      "title": "Technical Consulting Process | Wojciech Bajer",
+      "h1": [
+        "A clear path.Useful at every step."
+      ],
+      "canonical": [
+        "https://wojciechbajer.com/process/"
+      ],
+      "overflow": false,
+      "text": 1618
+    },
+    {
+      "path": "/notes/",
+      "width": 320,
+      "js": true,
+      "status": 200,
+      "title": "Software & Architecture Notes | Wojciech Bajer",
+      "h1": [
+        "Ideas, observationsand useful questions."
+      ],
+      "canonical": [
+        "https://wojciechbajer.com/notes/"
+      ],
+      "overflow": false,
+      "text": 909
+    },
+    {
+      "path": "/contact/",
+      "width": 320,
+      "js": true,
+      "status": 200,
+      "title": "Contact Wojciech Bajer | Discuss Your Technical Project",
+      "h1": [
+        "What are you working on?"
+      ],
+      "canonical": [
+        "https://wojciechbajer.com/contact/"
+      ],
+      "overflow": false,
+      "text": 719
+    },
+    {
+      "path": "/",
+      "width": 390,
+      "js": true,
+      "status": 200,
+      "title": "Wojciech Bajer | Software, Architecture & AI Consulting",
+      "h1": [
+        "Clear decisions.Cleaner delivery."
+      ],
+      "canonical": [
+        "https://wojciechbajer.com/"
+      ],
+      "overflow": false,
+      "text": 1956
+    },
+    {
+      "path": "/services/",
+      "width": 390,
+      "js": true,
+      "status": 200,
+      "title": "Software, AI & Technical Audit Services | Wojciech Bajer",
+      "h1": [
+        "Complex work.Clear ways to help."
+      ],
+      "canonical": [
+        "https://wojciechbajer.com/services/"
+      ],
+      "overflow": false,
+      "text": 2604
+    },
+    {
+      "path": "/profile/",
+      "width": 390,
+      "js": true,
+      "status": 200,
+      "title": "About Wojciech Bajer | Independent Technical Consultant",
+      "h1": [
+        "A thinking partner.A hands-on specialist."
+      ],
+      "canonical": [
+        "https://wojciechbajer.com/profile/"
+      ],
+      "overflow": false,
+      "text": 1221
+    },
+    {
+      "path": "/process/",
+      "width": 390,
+      "js": true,
+      "status": 200,
+      "title": "Technical Consulting Process | Wojciech Bajer",
+      "h1": [
+        "A clear path.Useful at every step."
+      ],
+      "canonical": [
+        "https://wojciechbajer.com/process/"
+      ],
+      "overflow": false,
+      "text": 1618
+    },
+    {
+      "path": "/notes/",
+      "width": 390,
+      "js": true,
+      "status": 200,
+      "title": "Software & Architecture Notes | Wojciech Bajer",
+      "h1": [
+        "Ideas, observationsand useful questions."
+      ],
+      "canonical": [
+        "https://wojciechbajer.com/notes/"
+      ],
+      "overflow": false,
+      "text": 909
+    },
+    {
+      "path": "/contact/",
+      "width": 390,
+      "js": true,
+      "status": 200,
+      "title": "Contact Wojciech Bajer | Discuss Your Technical Project",
+      "h1": [
+        "What are you working on?"
+      ],
+      "canonical": [
+        "https://wojciechbajer.com/contact/"
+      ],
+      "overflow": false,
+      "text": 719
+    },
+    {
+      "path": "/",
+      "width": 1440,
+      "js": true,
+      "status": 200,
+      "title": "Wojciech Bajer | Software, Architecture & AI Consulting",
+      "h1": [
+        "Clear decisions.Cleaner delivery."
+      ],
+      "canonical": [
+        "https://wojciechbajer.com/"
+      ],
+      "overflow": false,
+      "text": 1962
+    },
+    {
+      "path": "/services/",
+      "width": 1440,
+      "js": true,
+      "status": 200,
+      "title": "Software, AI & Technical Audit Services | Wojciech Bajer",
+      "h1": [
+        "Complex work.Clear ways to help."
+      ],
+      "canonical": [
+        "https://wojciechbajer.com/services/"
+      ],
+      "overflow": false,
+      "text": 2604
+    },
+    {
+      "path": "/profile/",
+      "width": 1440,
+      "js": true,
+      "status": 200,
+      "title": "About Wojciech Bajer | Independent Technical Consultant",
+      "h1": [
+        "A thinking partner.A hands-on specialist."
+      ],
+      "canonical": [
+        "https://wojciechbajer.com/profile/"
+      ],
+      "overflow": false,
+      "text": 1221
+    },
+    {
+      "path": "/process/",
+      "width": 1440,
+      "js": true,
+      "status": 200,
+      "title": "Technical Consulting Process | Wojciech Bajer",
+      "h1": [
+        "A clear path.Useful at every step."
+      ],
+      "canonical": [
+        "https://wojciechbajer.com/process/"
+      ],
+      "overflow": false,
+      "text": 1618
+    },
+    {
+      "path": "/notes/",
+      "width": 1440,
+      "js": true,
+      "status": 200,
+      "title": "Software & Architecture Notes | Wojciech Bajer",
+      "h1": [
+        "Ideas, observationsand useful questions."
+      ],
+      "canonical": [
+        "https://wojciechbajer.com/notes/"
+      ],
+      "overflow": false,
+      "text": 909
+    },
+    {
+      "path": "/contact/",
+      "width": 1440,
+      "js": true,
+      "status": 200,
+      "title": "Contact Wojciech Bajer | Discuss Your Technical Project",
+      "h1": [
+        "What are you working on?"
+      ],
+      "canonical": [
+        "https://wojciechbajer.com/contact/"
+      ],
+      "overflow": false,
+      "text": 841
+    },
+    {
+      "path": "/",
+      "width": 390,
+      "js": false,
+      "status": 200,
+      "title": "Wojciech Bajer | Software, Architecture & AI Consulting",
+      "h1": [
+        "Clear decisions.Cleaner delivery."
+      ],
+      "canonical": [
+        "https://wojciechbajer.com/"
+      ],
+      "overflow": false,
+      "text": 1956
+    },
+    {
+      "path": "/services/",
+      "width": 390,
+      "js": false,
+      "status": 200,
+      "title": "Software, AI & Technical Audit Services | Wojciech Bajer",
+      "h1": [
+        "Complex work.Clear ways to help."
+      ],
+      "canonical": [
+        "https://wojciechbajer.com/services/"
+      ],
+      "overflow": false,
+      "text": 2604
+    },
+    {
+      "path": "/profile/",
+      "width": 390,
+      "js": false,
+      "status": 200,
+      "title": "About Wojciech Bajer | Independent Technical Consultant",
+      "h1": [
+        "A thinking partner.A hands-on specialist."
+      ],
+      "canonical": [
+        "https://wojciechbajer.com/profile/"
+      ],
+      "overflow": false,
+      "text": 1221
+    },
+    {
+      "path": "/process/",
+      "width": 390,
+      "js": false,
+      "status": 200,
+      "title": "Technical Consulting Process | Wojciech Bajer",
+      "h1": [
+        "A clear path.Useful at every step."
+      ],
+      "canonical": [
+        "https://wojciechbajer.com/process/"
+      ],
+      "overflow": false,
+      "text": 1618
+    },
+    {
+      "path": "/notes/",
+      "width": 390,
+      "js": false,
+      "status": 200,
+      "title": "Software & Architecture Notes | Wojciech Bajer",
+      "h1": [
+        "Ideas, observationsand useful questions."
+      ],
+      "canonical": [
+        "https://wojciechbajer.com/notes/"
+      ],
+      "overflow": false,
+      "text": 909
+    },
+    {
+      "path": "/contact/",
+      "width": 390,
+      "js": false,
+      "status": 200,
+      "title": "Contact Wojciech Bajer | Discuss Your Technical Project",
+      "h1": [
+        "What are you working on?"
+      ],
+      "canonical": [
+        "https://wojciechbajer.com/contact/"
+      ],
+      "overflow": false,
+      "text": 801
+    }
+  ],
+  "limitations": [
+    "No authenticated Google Search Console, backlink or keyword-volume data.",
+    "PageSpeed API returned 429; Lighthouse CLI used instead.",
+    "CMS regression requires a temporary test-only users.reset_password_requested_at column because the baseline migration is incomplete.",
+    "No production deployment performed."
+  ],
+  "lighthouse": [
+    {
+      "label": "production-before",
+      "version": "13.4.1",
+      "fetchTime": "2026-09-19T10:47:27.343Z",
+      "url": "https://wojciechbajer.com/",
+      "scores": {
+        "performance": 91,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": {
+          "value": 1411.143,
+          "display": "1.4 s"
+        },
+        "largest-contentful-paint": {
+          "value": 3386.5239999999994,
+          "display": "3.4 s"
+        },
+        "total-blocking-time": {
+          "value": 15,
+          "display": "20 ms"
+        },
+        "cumulative-layout-shift": {
+          "value": 0,
+          "display": "0"
+        },
+        "speed-index": {
+          "value": 2775.515391992909,
+          "display": "2.8 s"
+        }
+      },
+      "redirects": {
+        "type": "opportunity",
+        "headings": [
+          {
+            "key": "url",
+            "valueType": "url",
+            "label": "URL"
+          },
+          {
+            "key": "wastedMs",
+            "valueType": "timespanMs",
+            "label": "Time Spent"
+          }
+        ],
+        "items": [
+          {
+            "url": "https://wojciechbajer.com/",
+            "wastedMs": 770.381
+          },
+          {
+            "url": "https://wojciechbajer.com/",
+            "wastedMs": 0
+          }
+        ],
+        "overallSavingsMs": 770.381
+      },
+      "warnings": []
+    },
+    {
+      "label": "local-before-header-fix",
+      "version": "13.4.1",
+      "fetchTime": "2026-09-19T10:52:34.893Z",
+      "url": "http://127.0.0.1:3100/",
+      "scores": {
+        "performance": 93,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": {
+          "value": 1066.4805000000001,
+          "display": "1.1 s"
+        },
+        "largest-contentful-paint": {
+          "value": 3171.974,
+          "display": "3.2 s"
+        },
+        "total-blocking-time": {
+          "value": 12.5,
+          "display": "10 ms"
+        },
+        "cumulative-layout-shift": {
+          "value": 0,
+          "display": "0"
+        },
+        "speed-index": {
+          "value": 2156.8824680150274,
+          "display": "2.2 s"
+        }
+      },
+      "redirects": {
+        "type": "opportunity",
+        "headings": [
+          {
+            "key": "url",
+            "valueType": "url",
+            "label": "URL"
+          },
+          {
+            "key": "wastedMs",
+            "valueType": "timespanMs",
+            "label": "Time Spent"
+          }
+        ],
+        "items": [
+          {
+            "url": "http://127.0.0.1:3100/",
+            "wastedMs": 605.4935
+          },
+          {
+            "url": "http://127.0.0.1:3100/",
+            "wastedMs": 0
+          }
+        ],
+        "overallSavingsMs": 605.4935
+      },
+      "warnings": [],
+      "conditions": "Concurrent browser viewport checks; not a controlled performance comparison."
+    },
+    {
+      "label": "local-final",
+      "version": "13.4.1",
+      "fetchTime": "2026-09-19T10:55:24.285Z",
+      "url": "http://127.0.0.1:3100/",
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": {
+          "value": 907.6287,
+          "display": "0.9 s"
+        },
+        "largest-contentful-paint": {
+          "value": 2036.44305,
+          "display": "2.0 s"
+        },
+        "total-blocking-time": {
+          "value": 16.5,
+          "display": "20 ms"
+        },
+        "cumulative-layout-shift": {
+          "value": 0,
+          "display": "0"
+        },
+        "speed-index": {
+          "value": 907.6287,
+          "display": "0.9 s"
+        }
+      },
+      "redirects": {
+        "type": "opportunity",
+        "headings": [],
+        "items": [],
+        "overallSavingsMs": 0
+      },
+      "warnings": []
+    }
+  ],
+  "verification": {
+    "lint": "passed",
+    "build": "passed",
+    "seoRegression": "4 passed",
+    "contactRegression": "passed",
+    "cmsRegression": "passed after test-only schema repair; pristine baseline fails first-register",
+    "productionDeployed": false,
+    "browserViewportChecks": 24,
+    "typecheck": "passed"
+  },
+  "productionArticleViewportChecks": [
+    {
+      "width": 320,
+      "scrollWidth": 320,
+      "overflow": false,
+      "path": "/notes/jellyfin-qnap-hardware-acceleration-rockchip-rkmpp/"
+    },
+    {
+      "width": 390,
+      "scrollWidth": 390,
+      "overflow": false,
+      "path": "/notes/jellyfin-qnap-hardware-acceleration-rockchip-rkmpp/"
+    },
+    {
+      "width": 1440,
+      "scrollWidth": 1440,
+      "overflow": false,
+      "path": "/notes/jellyfin-qnap-hardware-acceleration-rockchip-rkmpp/"
+    }
+  ]
+}

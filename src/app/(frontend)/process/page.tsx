@@ -14,9 +14,9 @@ import { processArtifacts, processFlow } from "@/static/siteContent";
 
 import styles from "../subpage.module.css";
 
-const PROCESS_TITLE = "Process | Wojciech Bajer";
+const PROCESS_TITLE = "Technical Consulting Process | Wojciech Bajer";
 const PROCESS_DESCRIPTION =
-  "Operating model for audits, architecture, software delivery, and multimedia systems work by Wojciech Bajer.";
+  "How technical consulting works: understand the context, review risks, agree on priorities and deliver a practical handoff. Explore Wojciech Bajer's process.";
 
 export const metadata = buildMetadata({
   title: PROCESS_TITLE,

@@ -2,7 +2,7 @@ import config from "@payload-config";
 import { getPayload } from "payload";
 import { cache } from "react";
 
-export async function getPublishedPosts(page = 1) {
+export const getPublishedPosts = cache(async (page = 1) => {
   const payload = await getPayload({ config });
   return payload.find({
     collection: "posts",
@@ -15,7 +15,7 @@ export async function getPublishedPosts(page = 1) {
     depth: 1,
     select: { title: true, slug: true, excerpt: true, publishedAt: true },
   });
-}
+});
 
 export const getPublishedPost = cache(async (slug: string) => {
   const payload = await getPayload({ config });

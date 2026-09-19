@@ -38,6 +38,9 @@ jobs:
       - name: Run contact regression checks
         run: pnpm test:contact
 
+      - name: Run SEO regression checks
+        run: pnpm test:seo
+
       - name: Build standalone app
         run: pnpm build
 

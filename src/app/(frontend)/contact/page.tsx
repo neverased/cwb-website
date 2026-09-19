@@ -16,7 +16,7 @@ import { findService } from "@/lib/services";
 
 import styles from "../subpage.module.css";
 
-const CONTACT_TITLE = "Contact | Wojciech Bajer";
+const CONTACT_TITLE = "Contact Wojciech Bajer | Discuss Your Technical Project";
 const CONTACT_DESCRIPTION =
   "Direct contact page for consulting, multimedia systems work, software delivery, architecture reviews, and independent audits.";
 

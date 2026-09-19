@@ -21,74 +21,70 @@ import styles from "../subpage.module.css";
 
 export const dynamic = "force-dynamic";
 
-const NOTES_TITLE = "Notes | Wojciech Bajer";
+const NOTES_TITLE = "Software & Architecture Notes | Wojciech Bajer";
 const NOTES_DESCRIPTION =
   "Notes on architecture, multimedia systems, software delivery, and independent technical reviews.";
 
-export const metadata = buildMetadata({
-  title: NOTES_TITLE,
-  description: NOTES_DESCRIPTION,
-  path: "/notes/",
-  keywords: [
-    "technical notes",
-    "architecture consulting",
-    "audit observations",
-    "software and multimedia consulting",
-  ],
-});
-
-const breadcrumbJsonLd = buildBreadcrumbJsonLd([
-  { name: "Home", path: "/" },
-  { name: "Notes", path: "/notes/" },
-]);
-
-const notesListJsonLd = {
-  "@type": "ItemList",
-  "@id": absoluteUrl("/notes/#queue"),
-  itemListElement: noteQueue.map(({ title, summary }, index) => ({
-    "@type": "ListItem",
-    position: index + 1,
-    item: {
-      "@type": "Thing",
-      name: title,
-      description: summary,
-    },
-  })),
+type Args = {
+  searchParams: Promise<{ page?: string | string[] }>;
 };
 
-const notesPageJsonLd = buildJsonLdGraph([
-  websiteGraphNode,
-  personGraphNode,
-  breadcrumbJsonLd,
-  notesListJsonLd,
-  buildWebPageNode({
-    type: "CollectionPage",
-    name: NOTES_TITLE,
-    description: NOTES_DESCRIPTION,
-    path: "/notes/",
-    breadcrumbId: absoluteUrl("/notes/#breadcrumb"),
-    about: [
-      {
-        "@id": PERSON_ID,
-      },
-    ],
-    mainEntity: {
-      "@id": absoluteUrl("/notes/#queue"),
-    },
-  }),
-]);
-
-export default async function NotesPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ page?: string | string[] }>;
-}) {
+async function getListing(searchParams: Args["searchParams"]) {
   const { page: rawPage } = await searchParams;
   const page = rawPage === undefined ? 1 : Number(rawPage);
   if (Array.isArray(rawPage) || !Number.isSafeInteger(page) || page < 1)
     notFound();
   const posts = await getPublishedPosts(page);
   if (page > 1 && page > posts.totalPages) notFound();
+  const path = page === 1 ? "/notes/" : `/notes/?page=${page}`;
+  const title =
+    page === 1
+      ? NOTES_TITLE
+      : `Technical Notes — Page ${page} | Wojciech Bajer`;
+  return { page, posts, path, title };
+}
+
+export async function generateMetadata({ searchParams }: Args) {
+  const { path, title } = await getListing(searchParams);
+  return buildMetadata({ title, description: NOTES_DESCRIPTION, path });
+}
+
+export default async function NotesPage({ searchParams }: Args) {
+  const { page, posts, path, title } = await getListing(searchParams);
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: "Notes", path: "/notes/" },
+    ...(page > 1 ? [{ name: `Page ${page}`, path }] : []),
+  ]);
+  const listId = absoluteUrl(`${path}#posts`);
+  const notesPageJsonLd = buildJsonLdGraph([
+    websiteGraphNode,
+    personGraphNode,
+    breadcrumbJsonLd,
+    ...(posts.docs.length
+      ? [
+          {
+            "@type": "ItemList",
+            "@id": listId,
+            itemListElement: posts.docs.map((post, index) => ({
+              "@type": "ListItem",
+              position: (page - 1) * posts.limit + index + 1,
+              url: absoluteUrl(`/notes/${post.slug}/`),
+              name: post.title,
+            })),
+          },
+        ]
+      : []),
+    buildWebPageNode({
+      type: "CollectionPage",
+      name: title,
+      description: NOTES_DESCRIPTION,
+      path,
+      breadcrumbId: breadcrumbJsonLd["@id"],
+      about: [{ "@id": PERSON_ID }],
+      mainEntity: posts.docs.length ? { "@id": listId } : undefined,
+    }),
+  ]);
 
   return (
     <SiteShell currentPath="/notes">
@@ -123,7 +119,8 @@ export default async function NotesPage({
                 </h2>
                 <p>{post.excerpt}</p>
                 <Link className="text-link" href={`/notes/${post.slug}/`}>
-                  Read note <span aria-hidden="true">↗</span>
+                  Read note<span className="sr-only">: {post.title}</span>{" "}
+                  <span aria-hidden="true">↗</span>
                 </Link>
               </div>
             </article>

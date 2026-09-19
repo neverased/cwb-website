@@ -17,9 +17,10 @@ import { services } from "@/static/siteContent";
 
 import styles from "../subpage.module.css";
 
-const SERVICES_TITLE = "Services | Wojciech Bajer";
+const SERVICES_TITLE =
+  "Software, AI & Technical Audit Services | Wojciech Bajer";
 const SERVICES_DESCRIPTION =
-  "Service map for multimedia systems, software engineering, application architecture, independent audits, fractional technical leadership, and AI or LLM engineering by Wojciech Bajer.";
+  "Explore software engineering, architecture reviews, technical audits, multimedia, fractional CTO support and AI integrations with Wojciech Bajer.";
 
 export const metadata = buildMetadata({
   title: SERVICES_TITLE,
@@ -45,11 +46,13 @@ const breadcrumbJsonLd = buildBreadcrumbJsonLd([
 const servicesListJsonLd = {
   "@type": "ItemList",
   "@id": absoluteUrl("/services/#list"),
-  itemListElement: services.map(({ label, headline }, index) => ({
+  itemListElement: services.map(({ id, label, headline }, index) => ({
     "@type": "ListItem",
     position: index + 1,
     item: {
       "@type": "Service",
+      "@id": absoluteUrl(`/services/#${id}`),
+      url: absoluteUrl(`/services/#${id}`),
       name: label,
       description: headline,
       provider: {
@@ -93,8 +96,9 @@ export default function ServicesPage() {
           <span>Clear ways to help.</span>
         </h1>
         <p className={styles.description}>
-          From an independent review to hands-on delivery. Choose the kind of
-          support your team needs, and see what you will take away.
+          Software engineering, architecture reviews, technical audits,
+          multimedia and AI integrations. Choose the support your team needs,
+          from a focused review to fractional technical leadership.
         </p>
         <nav className={styles.jumpLinks} aria-label="Service sections">
           {services.map(({ id, label }) => (

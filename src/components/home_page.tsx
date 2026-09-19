@@ -21,8 +21,9 @@ export const HomePage = () => (
           <span>Cleaner delivery.</span>
         </h1>
         <p className={styles.description}>
-          I help founders, product teams and agencies make sense of complex
-          technical work — and get it done.
+          I’m Wojciech Bajer, an independent technical consultant. I help
+          founders, product teams and agencies build software, review
+          architecture and deliver multimedia and AI projects.
         </p>
         <p className={styles.disciplines}>
           Software. Architecture. Multimedia. Applied AI.

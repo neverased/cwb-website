@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 export const SITE_URL = "https://wojciechbajer.com";
 export const SITE_NAME = "Wojciech Bajer";
 export const DEFAULT_TITLE =
-  "Wojciech Bajer | Multimedia, Software, Architecture, Audits, AI";
+  "Wojciech Bajer | Software, Architecture & AI Consulting";
 export const DEFAULT_DESCRIPTION =
-  "Wojciech Bajer works across multimedia, software engineering, application architecture, independent audits, fractional technical leadership, and AI or LLM engineering.";
+  "Independent software, architecture, multimedia and AI consulting by Wojciech Bajer. Technical audits, hands-on delivery and fractional technical leadership.";
 export const PERSON_NAME = "Wojciech Bajer";
 export const CONTACT_EMAIL = "mail@wojciechbajer.com";
 export const PROFILE_PATH = "/profile/";
@@ -78,7 +78,7 @@ export const PERSON_ID = absoluteUrl(`${PROFILE_PATH}#person`);
 export const WEBSITE_ID = absoluteUrl("/#website");
 
 export const openGraphImagePath = (path = "/") => {
-  const normalizedPath = normalizePath(path);
+  const normalizedPath = normalizePath(new URL(path, SITE_URL).pathname);
 
   return normalizedPath === "/"
     ? "/opengraph-image"

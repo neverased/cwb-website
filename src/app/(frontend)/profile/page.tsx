@@ -19,9 +19,9 @@ import { services } from "@/static/siteContent";
 
 import styles from "../subpage.module.css";
 
-const PROFILE_TITLE = "Profile | Wojciech Bajer";
+const PROFILE_TITLE = "About Wojciech Bajer | Independent Technical Consultant";
 const PROFILE_DESCRIPTION =
-  "Profile of Wojciech Bajer, covering multimedia systems, software engineering, application architecture, audits, selected collaborations, and direct consulting routes.";
+  "Meet Wojciech Bajer, an independent technical consultant based in Poland. Software, architecture, multimedia and AI expertise for teams worldwide.";
 
 export const metadata = buildMetadata({
   title: PROFILE_TITLE,

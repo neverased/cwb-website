@@ -5,8 +5,6 @@ import { absoluteUrl } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
 
-const NOW = new Date();
-
 const ROUTES: Array<{
   path: string;
   changeFrequency: "daily" | "weekly" | "monthly" | "yearly";
@@ -25,7 +23,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [
     ...ROUTES.map(({ path, changeFrequency, priority }) => ({
       url: absoluteUrl(path),
-      lastModified: NOW,
       changeFrequency,
       priority,
     })),

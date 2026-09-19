@@ -111,6 +111,11 @@ try {
       200,
       `Existing page ${path} should stay available`,
     );
+    assert.equal(
+      page.headers.get("critical-ch"),
+      null,
+      `Public page ${path} must not restart for a CMS theme hint`,
+    );
     const html = await page.text();
     const image = html.match(/property="og:image" content="([^"]+)"/);
     assert(image, `Missing social image on ${path}`);
@@ -121,6 +126,11 @@ try {
       `Broken social image on ${path}: ${imagePath}`,
     );
   }
+  const adminPage = await request("/admin/login/");
+  assert.equal(
+    adminPage.headers.get("critical-ch"),
+    "Sec-CH-Prefers-Color-Scheme",
+  );
   assert.equal((await request("/api/contact/bootstrap/")).status, 200);
   console.log("PASS: existing pages, social images and contact bootstrap");
   if (bootstrap) {
@@ -278,6 +288,98 @@ try {
   );
   console.log(
     "PASS: upload, publication, article rendering, list and sitemap without a rebuild",
+  );
+
+  // Exercise real pagination: page two must remain independently discoverable.
+  for (let index = 0; index < 12; index++) {
+    const extra = await json<{ doc: Post }>(
+      await request(
+        "/api/cms/posts/",
+        "POST",
+        {
+          title: `Pagination note ${index} ${nonce}`,
+          slug: `pagination-${nonce}-${index}`,
+          excerpt: "Pagination regression fixture.",
+          content: textContent("Pagination regression content."),
+          publishedAt: "2020-01-01T00:00:00.000Z",
+          _status: "published",
+        },
+        true,
+      ),
+      201,
+    );
+    postIds.push(extra.doc.id);
+  }
+  const pageTwo = await request("/notes/?page=2");
+  assert.equal(pageTwo.status, 200);
+  const pageTwoHtml = await pageTwo.text();
+  assert(
+    pageTwoHtml.includes(
+      'rel="canonical" href="https://wojciechbajer.com/notes/?page=2"',
+    ),
+    "Page two must have its own canonical",
+  );
+  assert(pageTwoHtml.includes("Page 2 | Wojciech Bajer</title>"));
+  assert(
+    pageTwoHtml.includes(
+      'property="og:url" content="https://wojciechbajer.com/notes/?page=2"',
+    ),
+  );
+  assert(
+    pageTwoHtml.includes(
+      'property="og:image" content="https://wojciechbajer.com/notes/opengraph-image/"',
+    ),
+  );
+  assert(
+    pageTwoHtml.includes('href="/notes/"'),
+    "Pagination must link back to the start",
+  );
+
+  const graphNodes = (source: string): Array<Record<string, unknown>> =>
+    [
+      ...source.matchAll(
+        /<script type="application\/ld\+json">([\s\S]*?)<\/script>/g,
+      ),
+    ].flatMap((match) => {
+      const data = JSON.parse(match[1]);
+      return data["@graph"] || [data];
+    });
+  const list = graphNodes(pageTwoHtml).find(
+    (node) => node["@type"] === "ItemList",
+  );
+  assert(
+    list && JSON.stringify(list).includes(`/notes/pagination-${nonce}-`),
+    "Listing schema must describe published articles on this page",
+  );
+  assert(!JSON.stringify(list).includes("#queue"));
+  const articleNodes = graphNodes(html);
+  const articleSchema = articleNodes.find(
+    (node) => node["@type"] === "BlogPosting",
+  );
+  assert(
+    articleNodes.some((node) => node["@type"] === "BreadcrumbList"),
+    "Article needs breadcrumbs",
+  );
+  assert(articleSchema?.image && articleSchema?.publisher);
+  assert(
+    html.includes('rel="author" href="/profile/"'),
+    "Readers must see the article author",
+  );
+
+  const sitemap = await (await request("/sitemap.xml")).text();
+  const staticEntry = sitemap.match(
+    /<url>\s*<loc>https:\/\/wojciechbajer.com\/<\/loc>([\s\S]*?)<\/url>/,
+  );
+  assert(
+    staticEntry && !staticEntry[1].includes("<lastmod>"),
+    "Static pages must not advertise server startup as a content update",
+  );
+  assert(
+    sitemap.includes(`<lastmod>${published.doc.updatedAt}</lastmod>`),
+    "Posts retain their CMS modification date",
+  );
+  console.log(
+    "PASS: pagination canonicals, social images, article/list schema and accurate sitemap dates",
   );
 
   if (process.env.CMS_TEST_RESTART_PROJECT) {

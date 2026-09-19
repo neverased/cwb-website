@@ -20,7 +20,7 @@ minimumReleaseAgeExclude:
   - next@16.2.9
   - nodemailer@8.0.11 || 9.0.0 || 10.0.1 || 10.0.3 || 10.0.10
   - tsx@4.22.5
-  - '@types/node@26.5.0'
+  - '@types/node@26.5.0 || 26.6.2'
   - '@oxlint/binding-android-arm-eabi@1.82.0 || 1.83.0'
   - '@oxlint/binding-android-arm64@1.82.0 || 1.83.0'
   - '@oxlint/binding-darwin-arm64@1.82.0 || 1.83.0'
@@ -46,6 +46,42 @@ minimumReleaseAgeExclude:
   - react-dom@19.3.0
   - react@19.3.0
   - scheduler@0.28.0
+  - '@jest/console@30.5.2'
+  - '@jest/core@30.5.2'
+  - '@jest/environment@30.5.2'
+  - '@jest/expect-utils@30.5.2'
+  - '@jest/expect@30.5.2'
+  - '@jest/fake-timers@30.5.2'
+  - '@jest/globals@30.5.2'
+  - '@jest/reporters@30.5.2'
+  - '@jest/source-map@30.5.2'
+  - '@jest/test-result@30.5.2'
+  - '@jest/test-sequencer@30.5.2'
+  - '@jest/transform@30.5.2'
+  - '@payloadcms/db-postgres@3.90.1'
+  - '@payloadcms/drizzle@3.90.1'
+  - '@payloadcms/graphql@3.90.1'
+  - '@payloadcms/next@3.90.1'
+  - '@payloadcms/richtext-lexical@3.90.1'
+  - '@payloadcms/translations@3.90.1'
+  - '@payloadcms/ui@3.90.1'
+  - babel-jest@30.5.2
+  - expect@30.5.2
+  - jest-circus@30.5.2
+  - jest-cli@30.5.2
+  - jest-config@30.5.2
+  - jest-diff@30.5.2
+  - jest-each@30.5.2
+  - jest-environment-node@30.5.2
+  - jest-matcher-utils@30.5.2
+  - jest-mock@30.5.2
+  - jest-resolve-dependencies@30.5.2
+  - jest-runner@30.5.2
+  - jest-runtime@30.5.2
+  - jest-snapshot@30.5.2
+  - jest-watcher@30.5.2
+  - jest@30.5.2
+  - payload@3.90.1
 onlyBuiltDependencies:
   - esbuild
   - unrs-resolver

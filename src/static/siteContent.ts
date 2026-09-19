@@ -343,4 +343,20 @@ export const selectedCollaborations = [
     height: 52,
     surface: "dark",
   },
+  {
+    name: "Lexense",
+    tag: "selected work",
+    src: "/partners/logo_Lexense.png",
+    width: 218,
+    height: 218,
+    surface: "dark",
+  },
+  {
+    name: "PTTK",
+    tag: "selected work",
+    src: "/partners/logo_PTTK.png",
+    width: 723,
+    height: 723,
+    surface: "light",
+  },
 ] as const;

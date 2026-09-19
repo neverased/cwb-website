@@ -18,7 +18,7 @@
 }
 .logos {
   display: grid;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 1.5rem;
   align-items: center;
   list-style: none;
@@ -42,6 +42,11 @@
 .logos .lightLogo {
   background: #e8ede8;
 }
+@media (max-width: 1024px) {
+  .logos {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
 @media (max-width: 720px) {
   .heading {
     align-items: flex-start;
@@ -49,7 +54,6 @@
     gap: 0.5rem;
   }
   .logos {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 0.65rem;
     margin-top: 1.3rem;
   }

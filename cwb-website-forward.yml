@@ -1,5 +1,14 @@
 http:
   routers:
+    cwb-website-www:
+      rule: Host(`www.wojciechbajer.com`)
+      entryPoints:
+        - websecure
+      tls:
+        certResolver: myresolver
+      middlewares:
+        - cwb-website-canonical-host
+      service: cwb-website-forward
     cwb-website-forward:
       rule: Host(`wojciechbajer.com`)
       entryPoints:
@@ -7,6 +16,12 @@ http:
       tls:
         certResolver: myresolver
       service: cwb-website-forward
+  middlewares:
+    cwb-website-canonical-host:
+      redirectRegex:
+        regex: '^https://www\.wojciechbajer\.com/(.*)'
+        replacement: 'https://wojciechbajer.com/${1}'
+        permanent: true
   services:
     cwb-website-forward:
       loadBalancer:

@@ -13,7 +13,7 @@ Node.js 26 container. PostgreSQL 17 runs alongside it in the same Docker Compose
 project. The frontend retains the existing design under the `(frontend)` route
 group; `(payload)` has its own root layout and styles.
 
-Use Node.js 26 and the pnpm version from `package.json` (currently 12.3.4):
+Use Node.js 26 and the pnpm version from `package.json`:
 
 ```bash
 pnpm install --frozen-lockfile
@@ -73,11 +73,56 @@ require `PAYLOAD_PUBLIC_SERVER_URL` for a usable reset link. Without SMTP,
 email delivery fails explicitly; reset tokens are not logged to the console.
 No email is needed for the initial account setup or normal editing.
 
+## Client quotes
+
+Open **Wyceny → Create New** in Payload to prepare a private, branded offer:
+
+1. Enter the offer number, title, client and issuer details, language (Polish or
+   English), currency, issue date and validity deadline. Deadlines on the client
+   page and PDF include the time in Warsaw.
+2. Add the introduction, scope, timeline, assumptions, exclusions and payment
+   terms. Create up to five alternative packages and optional additions. Each
+   item has a quantity, unit, net unit price and VAT rate. A percentage discount
+   applies to all selected items. Totals round each line to the currency's minor
+   unit, then apply the discount and VAT; both the page and PDF use this rule.
+3. In the access settings, set a password of 12–256 characters and enable
+   sharing. Optionally set a separate access expiry and enable online acceptance.
+   A validity deadline stops acceptance; access expiry also hides the document.
+4. Save a draft and use **Podgląd roboczy** in **Udostępnianie oferty** to review it.
+   This preview requires your CMS login and does not accept client approvals.
+   **Publish** makes the saved content available through the client link.
+5. Use **Kopiuj link** and share the password separately. The client opens the
+   offer at `/quotes/<random-id>/`, selects a package and additions, and downloads
+   a PDF of that selection. PDF generation runs locally with embedded fonts;
+   it does not send the offer to an external service.
+
+Saving a new draft leaves the published version visible. Publishing revised
+conditions invalidates an older acceptance form. Changing the password and
+publishing it invalidates existing access sessions. Disabling sharing and
+publishing the change revokes page and PDF access. Sessions last eight hours;
+password attempts are limited persistently in PostgreSQL.
+
+Online acceptance records the client's entered name/email, the time, selected
+items, totals and the exact offer revision. It does not verify ownership of the
+entered email address. Accepted content is locked against edits. Use Payload's
+**Duplicate** action for a new proposal: the copy is a draft with a new link,
+no password and no acceptance; give it a new offer number and password before
+publishing. Access can still be revoked for an accepted offer.
+
+Quotes and their version history require CMS authentication through the REST
+API. Client access is checked on the server for both the page and PDF; private
+responses are not cached or indexed. Keep `PAYLOAD_SECRET` stable and configure
+`PAYLOAD_PUBLIC_SERVER_URL` to the exact HTTPS origin clients use. The quote
+feature uses migration `20260925_193029_client_quotes`, including its rate-limit
+table and acceptance-protection trigger. Back up PostgreSQL before deploying it.
+No confidential attachments are stored in the existing public media library.
+
 ## Persistence and schema changes
 
 Compose keeps three named volumes:
 
-- `postgres-data`: posts, users, sessions, versions and media metadata.
+- `postgres-data`: posts, quotes, acceptances, rate limits, users, sessions,
+  versions and media metadata.
 - `media-data`: uploaded image files and generated thumbnails.
 - `contact-data`: existing contact-form rate limits and quarantined submissions.
 
@@ -157,6 +202,7 @@ The contact form still uses:
 pnpm lint
 pnpm test:seo
 pnpm test:contact
+pnpm test:quotes
 pnpm build
 docker compose config --quiet
 ```
@@ -185,6 +231,22 @@ through `CMS_TEST_EMAIL` / `CMS_TEST_PASSWORD`. It checks authentication, draft
 privacy, publishing, uploads, rendering, sitemap updates, revisions, validation,
 JSON-LD escaping, unpublishing, and optionally database/media persistence across
 a restart. CI runs these checks against the production Compose image.
+
+Quote calculation, credential, collection-hook and PDF regressions run with
+`pnpm test:quotes`. Run the HTTP/database quote regression against the same
+disposable local stack and existing test administrator:
+
+```bash
+CMS_TEST_ALLOW_WRITES=1 CMS_TEST_URL=http://127.0.0.1:3100 \
+  CMS_TEST_EMAIL=local-test@example.test CMS_TEST_PASSWORD='<test-password>' \
+  pnpm test:quotes:integration
+```
+
+It checks draft/API/page/PDF privacy, password changes and expiry, selected
+totals, duplicate reset, concurrent acceptance, immutable accepted content and
+durable login limits. The script refuses remote hosts and cleans up its own
+quotes. Use the production server for the cache-header checks; for development
+only, `CMS_TEST_DEV=1` allows Next.js's development `no-cache` header.
 
 Linting uses Oxlint and `eslint-plugin-simple-import-sort`; `pnpm lint:fix`
 applies automatic fixes. The generated Payload import map is excluded from

@@ -41,6 +41,9 @@ jobs:
       - name: Run SEO regression checks
         run: pnpm test:seo
 
+      - name: Run quote and PDF regression checks
+        run: pnpm test:quotes
+
       - name: Build standalone app
         run: pnpm build
 
@@ -53,7 +56,7 @@ jobs:
       - name: Start CMS test stack
         run: |
           pnpm cms:setup
-          WEB_PORT=3100 docker compose -p cwb-cms-test up -d --wait --wait-timeout 120
+          PAYLOAD_PUBLIC_SERVER_URL=http://127.0.0.1:3100 WEB_PORT=3100 docker compose -p cwb-cms-test up -d --wait --wait-timeout 120
 
       - name: Verify CMS publishing and persistence
         env:
@@ -61,6 +64,14 @@ jobs:
           CMS_TEST_BOOTSTRAP: "1"
           CMS_TEST_RESTART_PROJECT: cwb-cms-test
         run: pnpm test:cms
+
+      - name: Verify private quotes and acceptance
+        env:
+          CMS_TEST_ALLOW_WRITES: "1"
+          CMS_TEST_URL: http://127.0.0.1:3100
+          CMS_TEST_EMAIL: quotes-ci@example.test
+          CMS_TEST_PASSWORD: disposable-local-quotes-ci-only
+        run: pnpm test:quotes:integration
 
       - name: Stop CMS test stack
         if: always()

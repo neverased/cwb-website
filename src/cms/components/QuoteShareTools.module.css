@@ -1,0 +1,72 @@
+.panel {
+  margin-block: 0 1.5rem;
+  padding: 1.25rem;
+  border: 1px solid var(--theme-elevation-200);
+  border-radius: var(--style-radius-m);
+  background: var(--theme-elevation-50);
+  color: var(--theme-text);
+}
+
+.heading {
+  margin: 0 0 1rem;
+}
+
+.label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+}
+
+.input {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 0.75rem;
+  border: 1px solid var(--theme-elevation-300);
+  border-radius: var(--style-radius-s);
+  background: var(--theme-input-bg);
+  color: var(--theme-text);
+  font: inherit;
+  cursor: text;
+}
+
+.input:focus-visible {
+  outline: 2px solid var(--theme-text);
+  outline-offset: 2px;
+}
+
+.help,
+.reminder,
+.status {
+  font-size: inherit;
+  line-height: 1.6;
+}
+
+.help {
+  margin: 0.5rem 0 1rem;
+  color: var(--theme-elevation-700);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  align-items: center;
+}
+
+.status {
+  min-height: 1.5em;
+  margin: 0.65rem 0 0;
+}
+
+.error {
+  color: var(--theme-error-700);
+}
+
+.reminder {
+  margin: 1rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--theme-elevation-200);
+  color: var(--theme-elevation-700);
+}

@@ -10,7 +10,7 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       // CMS uploads are public article images, even though their URLs use /api/.
       allow: ["/", "/api/cms/media/file/"],
-      disallow: ["/admin/", "/api/"],
+      disallow: ["/admin/", "/api/", "/quotes/"],
     },
     sitemap: `${SITE_URL}/sitemap.xml`,
     host: SITE_URL,

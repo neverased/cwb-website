@@ -70,6 +70,7 @@ export interface Config {
     users: User;
     media: Media;
     posts: Post;
+    quotes: Quote;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -80,6 +81,7 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     posts: PostsSelect<false> | PostsSelect<true>;
+    quotes: QuotesSelect<false> | QuotesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -132,6 +134,7 @@ export interface User {
   resetPasswordExpiration?: string | null;
   salt?: string | null;
   hash?: string | null;
+  resetPasswordRequestedAt?: string | null;
   loginAttempts?: number | null;
   lockUntil?: string | null;
   sessions?:
@@ -210,6 +213,115 @@ export interface Post {
   _status?: ('draft' | 'published') | null;
 }
 /**
+ * Przygotuj pakiety i warunki. Po publikacji udostępnij klientowi link oraz osobno hasło. Zaakceptowaną wycenę można skopiować, aby przygotować nowe warunki.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "quotes".
+ */
+export interface Quote {
+  id: number;
+  number: string;
+  title: string;
+  language: 'pl' | 'en';
+  currency: 'PLN' | 'EUR' | 'USD' | 'GBP';
+  issuedAt: string;
+  /**
+   * Po tej chwili klient może czytać ofertę, ale nie może jej zaakceptować.
+   */
+  validUntil: string;
+  clientName: string;
+  clientCompany?: string | null;
+  clientEmail?: string | null;
+  clientDetails?: string | null;
+  issuerName: string;
+  issuerEmail: string;
+  issuerDetails?: string | null;
+  summary: string;
+  scope?:
+    | {
+        title: string;
+        body: string;
+        id?: string | null;
+      }[]
+    | null;
+  timeline?:
+    | {
+        title: string;
+        description: string;
+        duration: string;
+        id?: string | null;
+      }[]
+    | null;
+  assumptions?: string | null;
+  exclusions?: string | null;
+  paymentTerms: string;
+  notes?: string | null;
+  /**
+   * Rabat dotyczy każdej pozycji netto, również dodatków. Kwoty, rabat i VAT zaokrąglamy osobno dla każdej pozycji.
+   */
+  discountPercent?: number | null;
+  packages: {
+    name: string;
+    description?: string | null;
+    recommended?: boolean | null;
+    items: {
+      name: string;
+      description?: string | null;
+      quantity: number;
+      unit: string;
+      unitPrice: number;
+      vatRate: number;
+      id?: string | null;
+    }[];
+    id?: string | null;
+  }[];
+  addons?:
+    | {
+        name: string;
+        description?: string | null;
+        quantity: number;
+        unit: string;
+        unitPrice: number;
+        vatRate: number;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Link klienta: /quotes/{identyfikator}/. Przycisk podglądu otwiera wersję dla właściciela.
+   */
+  publicId?: string | null;
+  /**
+   * 12–256 znaków. Pozostaw puste, aby zachować obecne hasło. Zmiana unieważnia dotychczasowe sesje klienta po publikacji.
+   */
+  password?: string | null;
+  passwordHash?: string | null;
+  accessEnabled?: boolean | null;
+  /**
+   * Osobny termin wygaśnięcia linku, niezależny od terminu ważności ceny. Zapisz przez publikację, aby zmiana dotyczyła klienta.
+   */
+  accessExpiresAt?: string | null;
+  /**
+   * Zapisuje wybrany pakiet, dodatki, ceny i dokładną wersję warunków. Po akceptacji zmiana treści wymaga utworzenia kopii.
+   */
+  allowAcceptance?: boolean | null;
+  revision?: string | null;
+  /**
+   * Zapis decyzji klienta wraz z niezmienną kopią zaakceptowanych warunków.
+   */
+  acceptance?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
@@ -244,6 +356,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'posts';
         value: number | Post;
+      } | null)
+    | ({
+        relationTo: 'quotes';
+        value: number | Quote;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -299,6 +415,7 @@ export interface UsersSelect<T extends boolean = true> {
   resetPasswordExpiration?: T;
   salt?: T;
   hash?: T;
+  resetPasswordRequestedAt?: T;
   loginAttempts?: T;
   lockUntil?: T;
   sessions?:
@@ -352,6 +469,87 @@ export interface PostsSelect<T extends boolean = true> {
   coverImage?: T;
   content?: T;
   publishedAt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "quotes_select".
+ */
+export interface QuotesSelect<T extends boolean = true> {
+  number?: T;
+  title?: T;
+  language?: T;
+  currency?: T;
+  issuedAt?: T;
+  validUntil?: T;
+  clientName?: T;
+  clientCompany?: T;
+  clientEmail?: T;
+  clientDetails?: T;
+  issuerName?: T;
+  issuerEmail?: T;
+  issuerDetails?: T;
+  summary?: T;
+  scope?:
+    | T
+    | {
+        title?: T;
+        body?: T;
+        id?: T;
+      };
+  timeline?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        duration?: T;
+        id?: T;
+      };
+  assumptions?: T;
+  exclusions?: T;
+  paymentTerms?: T;
+  notes?: T;
+  discountPercent?: T;
+  packages?:
+    | T
+    | {
+        name?: T;
+        description?: T;
+        recommended?: T;
+        items?:
+          | T
+          | {
+              name?: T;
+              description?: T;
+              quantity?: T;
+              unit?: T;
+              unitPrice?: T;
+              vatRate?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  addons?:
+    | T
+    | {
+        name?: T;
+        description?: T;
+        quantity?: T;
+        unit?: T;
+        unitPrice?: T;
+        vatRate?: T;
+        id?: T;
+      };
+  publicId?: T;
+  password?: T;
+  passwordHash?: T;
+  accessEnabled?: T;
+  accessExpiresAt?: T;
+  allowAcceptance?: T;
+  revision?: T;
+  acceptance?: T;
   updatedAt?: T;
   createdAt?: T;
   _status?: T;

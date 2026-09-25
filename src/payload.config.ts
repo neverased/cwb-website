@@ -13,6 +13,7 @@ import sharp from "sharp";
 
 import { Media } from "./cms/collections/Media";
 import { Posts } from "./cms/collections/Posts";
+import { Quotes } from "./cms/collections/Quotes";
 import { Users } from "./cms/collections/Users";
 import { cmsEmail } from "./cms/email";
 import { migrations } from "./migrations";
@@ -27,7 +28,7 @@ export default buildConfig({
   },
   routes: { admin: "/admin", api: "/api/cms" },
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL || "",
-  collections: [Users, Media, Posts],
+  collections: [Users, Media, Posts, Quotes],
   email: cmsEmail,
   editor: lexicalEditor({
     features: ({ defaultFeatures }) => [

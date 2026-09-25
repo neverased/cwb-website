@@ -4,6 +4,7 @@ import { withPayload } from "@payloadcms/next/withPayload";
 const nextConfig = {
   output: "standalone",
   trailingSlash: true,
+  serverExternalPackages: ["pdfkit"],
 };
 
 const payloadConfig = withPayload(nextConfig);
@@ -13,7 +14,7 @@ export default {
   ...payloadConfig,
   async headers() {
     const rules = await payloadHeaders();
-    return rules.flatMap((rule) => {
+    const scopedRules = rules.flatMap((rule) => {
       if (rule.source !== "/:path*") return [rule];
       // Payload's automatic admin theme uses Critical-CH, which can make a
       // browser retry its first request. The public site has a fixed dark theme.
@@ -30,5 +31,16 @@ export default {
         { source: "/admin/:path*", headers: themeHeaders },
       ].filter(({ headers }) => headers.length);
     });
+    const privateHeaders = [
+      { key: "Cache-Control", value: "private, no-store, max-age=0" },
+      { key: "X-Robots-Tag", value: "noindex, nofollow, noarchive" },
+      { key: "Referrer-Policy", value: "no-referrer" },
+      { key: "X-Frame-Options", value: "DENY" },
+    ];
+    return [
+      ...scopedRules,
+      { source: "/quotes/:path*", headers: privateHeaders },
+      { source: "/api/quotes/:path*", headers: privateHeaders },
+    ];
   },
 };

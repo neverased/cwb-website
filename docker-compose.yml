@@ -13,7 +13,7 @@ services:
       PAYLOAD_UPLOAD_DIR: /app/storage/media
       PAYLOAD_PUBLIC_SERVER_URL: ${PAYLOAD_PUBLIC_SERVER_URL:-}
       CONTACT_FORM_SECRET: ${CONTACT_FORM_SECRET:-}
-      CONTACT_FROM: ${CONTACT_FROM:-mail@wojciechbajer.com}
+      CONTACT_FROM: ${CONTACT_FROM:-noreply@wojciechbajer.com}
       CONTACT_RECIPIENT: ${CONTACT_RECIPIENT:-mail@wojciechbajer.com}
       CONTACT_STORAGE_DIR: /app/storage/contact
       HOSTNAME: 0.0.0.0

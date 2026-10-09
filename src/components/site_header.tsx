@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { MobileNav } from "./mobile_nav";
 import styles from "./site_header.module.css";
+import { MotionToggle } from "./site_motion";
 
 const NAV_ITEMS = [
   { href: "/services/", label: "Services" },
@@ -46,6 +47,7 @@ export const SiteHeader = ({ currentPath }: { currentPath: string }) => {
       <nav className={styles.desktopNav} aria-label="Primary">
         {links}
       </nav>
+      <MotionToggle />
       <Link
         href="/contact/"
         className={styles.contactLink}

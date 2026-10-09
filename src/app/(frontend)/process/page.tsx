@@ -1,3 +1,4 @@
+import { ProcessTimeline } from "@/components/process_timeline";
 import { ContactCallout, SiteShell } from "@/components/site_shell";
 import { StructuredData } from "@/components/structured_data";
 import {
@@ -86,27 +87,7 @@ export default function ProcessPage() {
           team with work it can use. Here is how we get there.
         </p>
       </section>
-      <ol className={styles.pipeline}>
-        {processFlow.map(({ step, title, summary, input, output }) => (
-          <li key={step}>
-            <span className={styles.stepNumber}>{step}</span>
-            <div>
-              <h2>{title}</h2>
-              <p>{summary}</p>
-              <dl>
-                <div>
-                  <dt>We start with</dt>
-                  <dd>{input}</dd>
-                </div>
-                <div>
-                  <dt>You leave with</dt>
-                  <dd>{output}</dd>
-                </div>
-              </dl>
-            </div>
-          </li>
-        ))}
-      </ol>
+      <ProcessTimeline detailed />
       <section className={styles.artifacts}>
         <p className="eyebrow">The handoff</p>
         <h2 className="section-title">The work stays useful.</h2>

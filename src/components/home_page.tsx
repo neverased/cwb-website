@@ -1,100 +1,84 @@
-import Image from "next/image";
 import Link from "next/link";
 
 import styles from "@/app/(frontend)/page.module.css";
+import { ProcessTimeline } from "@/components/process_timeline";
 import { ProfileLanyard } from "@/components/profile_lanyard";
 import { SelectedWork } from "@/components/selected_work";
 import { ServiceExplorer } from "@/components/service_explorer";
+import { MotionReveal } from "@/components/site_motion";
 import { ContactCallout, SiteShell } from "@/components/site_shell";
-import { contactHref } from "@/lib/services";
-import { processFlow, services } from "@/static/siteContent";
 
 export const HomePage = () => (
   <SiteShell currentPath="/">
     <section className={styles.hero} aria-labelledby="hero-title">
       <div className={styles.heroCopy}>
-        <p className="eyebrow">
-          Technical clarity. From first question to delivery.
-        </p>
+        <MotionReveal>
+          <p className="eyebrow">Independent technical consultant</p>
+        </MotionReveal>
         <h1 id="hero-title">
-          Clear decisions.
-          <br />
-          <span>Cleaner delivery.</span>
+          <span className={styles.titleLine}>
+            <MotionReveal as="span" delay={70}>
+              Clear decisions.
+            </MotionReveal>
+          </span>
+          <span className={`${styles.titleLine} ${styles.accent}`}>
+            <MotionReveal as="span" delay={140}>
+              Cleaner delivery.
+            </MotionReveal>
+          </span>
         </h1>
-        <p className={styles.description}>
-          I’m Wojciech Bajer, an independent technical consultant. I help
-          founders, product teams and agencies build software, review
-          architecture and deliver multimedia and AI projects.
-        </p>
-        <p className={styles.disciplines}>
-          Software. Architecture. Multimedia. Applied AI.
-        </p>
-        <div className={styles.actions}>
+        <MotionReveal delay={180}>
+          <p className={styles.description}>
+            I’m Wojciech Bajer. I help founders, product teams and agencies
+            connect architecture, software and multimedia with hands-on
+            technical delivery.
+          </p>
+          <p className={styles.disciplines}>
+            Software. Architecture. Multimedia. Applied AI.
+          </p>
+        </MotionReveal>
+        <MotionReveal delay={240} className={styles.actions}>
           <Link href="/contact/" className="button">
-            Send a brief <span aria-hidden="true">↗</span>
+            Talk about your project <span aria-hidden="true">↗</span>
           </Link>
-          <Link href="/services/" className="text-link">
-            Explore services <span aria-hidden="true">→</span>
-          </Link>
-        </div>
-        <div className={styles.signature}>
-          <Image
-            src="/wbc_logo_alpha_kolor_neg.png"
-            alt="Consulting Wojciech Bajer"
-            width={3667}
-            height={700}
-            sizes="200px"
-            priority
-          />
-          <span>
+          <a href="#service-explorer" className="text-link">
+            Explore expertise <span aria-hidden="true">→</span>
+          </a>
+        </MotionReveal>
+        <MotionReveal delay={300} className={styles.signature}>
+          <span aria-hidden="true">+</span>
+          <p>
             Independent advice.
             <br />
             One accountable specialist.
-          </span>
-        </div>
+          </p>
+        </MotionReveal>
       </div>
       <ProfileLanyard />
     </section>
     <SelectedWork />
     <section className={styles.services} aria-labelledby="services-title">
-      <div className={styles.servicesIntro}>
+      <MotionReveal className={styles.sectionHeading}>
         <div>
-          <p className="eyebrow">01 / How I can help</p>
+          <p className="eyebrow">A better starting point</p>
           <h2 id="services-title" className="section-title">
-            Find the right
+            What needs to
             <br />
-            way forward.
+            <span>move forward?</span>
           </h2>
-          <p className="section-copy">
-            A focused review, a hands-on build, or ongoing technical direction.
-            Start where your team needs clarity.
-          </p>
         </div>
-        <ServiceExplorer />
-      </div>
-      <div className={styles.serviceList}>
-        {services.map((service, index) => (
-          <article key={service.id} className={styles.serviceRow}>
-            <span className={styles.number}>0{index + 1}</span>
-            <h3>
-              <Link href={`/services/#${service.id}`}>{service.label}</Link>
-            </h3>
-            <p>{service.headline}</p>
-            <Link
-              className={styles.serviceLink}
-              href={contactHref(service.id)}
-              aria-label={`Discuss ${service.label.toLowerCase()}`}
-            >
-              <span aria-hidden="true">↗</span>
-            </Link>
-          </article>
-        ))}
-      </div>
+        <p className="section-copy">
+          Start with the challenge.
+          <br />
+          We’ll connect the right expertise.
+        </p>
+      </MotionReveal>
+      <ServiceExplorer />
     </section>
     <section className={styles.process} aria-labelledby="process-title">
-      <div className={styles.sectionHeading}>
+      <MotionReveal className={styles.sectionHeading}>
         <div>
-          <p className="eyebrow">02 / Working together</p>
+          <p className="eyebrow">From context to a working system</p>
           <h2 id="process-title" className="section-title">
             Understand it.
             <br />
@@ -104,16 +88,8 @@ export const HomePage = () => (
         <Link href="/process/" className="text-link">
           How the work happens <span aria-hidden="true">→</span>
         </Link>
-      </div>
-      <ol className={styles.steps}>
-        {processFlow.map(({ step, title, output }) => (
-          <li key={step}>
-            <span className={styles.number}>{step}</span>
-            <h3>{title}</h3>
-            <p>{output}.</p>
-          </li>
-        ))}
-      </ol>
+      </MotionReveal>
+      <ProcessTimeline />
     </section>
     <ContactCallout />
   </SiteShell>

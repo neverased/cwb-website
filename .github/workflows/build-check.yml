@@ -41,6 +41,9 @@ jobs:
       - name: Run SEO regression checks
         run: pnpm test:seo
 
+      - name: Run service navigation regression checks
+        run: pnpm test:services
+
       - name: Run quote and PDF regression checks
         run: pnpm test:quotes
 

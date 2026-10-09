@@ -8,9 +8,8 @@
   align-items: center;
   color: var(--text-subtle);
   font:
-    0.65rem/1.5 var(--font-mono),
+    0.6875rem/1.5 var(--font-mono),
     monospace;
-  border-bottom: 1px solid var(--rule-soft);
   padding-bottom: 0.75rem;
 }
 .marker {
@@ -19,9 +18,58 @@
 }
 .stage {
   position: relative;
-  height: clamp(29rem, 42vw, 34rem);
+  height: clamp(29rem, 40vw, 35rem);
   isolation: isolate;
-  background: radial-gradient(ellipse at 50% 48%, #a3e8be08, transparent 65%);
+}
+.stage::before {
+  content: "";
+  position: absolute;
+  inset: 1rem 0;
+  z-index: -2;
+  background-image: radial-gradient(var(--border-mint) 1px, transparent 1px);
+  background-size: 24px 24px;
+  opacity: 0.45;
+  mask-image: linear-gradient(transparent, #000 20%, #000 80%, transparent);
+}
+.signal {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+.signal path {
+  vector-effect: non-scaling-stroke;
+  stroke-width: 1;
+}
+.signalBase {
+  stroke: var(--border-mint);
+}
+.signalTrace {
+  stroke: var(--accent-mint);
+  stroke-dasharray: 1;
+  opacity: 0.55;
+}
+.signal circle {
+  fill: var(--accent-mint);
+  opacity: 0.65;
+}
+:global([data-site-motion="enabled"]) .signalTrace {
+  animation: signal-in 1000ms var(--ease-out) both;
+}
+:global([data-site-motion="enabled"]) .signalTrace:nth-of-type(3) {
+  animation-delay: 200ms;
+}
+@keyframes signal-in {
+  from {
+    stroke-dashoffset: 1;
+    opacity: 0;
+  }
+  to {
+    stroke-dashoffset: 0;
+    opacity: 0.55;
+  }
 }
 .scene,
 .fallback {
@@ -30,7 +78,7 @@
 }
 .scene {
   opacity: 0;
-  transition: opacity 250ms ease;
+  transition: opacity 250ms var(--ease-out);
 }
 .scene[data-ready="true"] {
   opacity: 1;
@@ -46,7 +94,7 @@
 .strap {
   width: 2.25rem;
   height: 15%;
-  background: #a3e8be url("/lanyard/strap.svg") center / auto 2.25rem;
+  background: var(--accent-mint) url("/lanyard/strap.svg") center / auto 2.25rem;
   border-inline: 2px solid var(--rule-strong);
 }
 .clip {
@@ -69,16 +117,16 @@
   object-fit: contain;
 }
 .caption {
-  border-top: 1px solid var(--rule-soft);
-  padding-top: 1rem;
+  padding-top: 0.75rem;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
 }
 .hint {
   font:
-    0.63rem/1.6 var(--font-mono),
+    0.6875rem/1.6 var(--font-mono),
     monospace;
   color: var(--text-subtle);
 }
@@ -87,41 +135,48 @@
   align-items: center;
   gap: 1rem;
   min-height: 44px;
-  font-size: 0.85rem;
+  font-size: 0.875rem;
 }
 .profileLink span {
   color: var(--accent-mint);
+  transition: transform 240ms var(--ease-out);
 }
 .profileLink:hover {
   color: var(--accent-mint);
 }
+.profileLink:hover span {
+  transform: translate(3px, -3px);
+}
 .motionButton {
   background: transparent;
   border: 1px solid var(--rule-soft);
-  border-radius: 0.25rem;
+  border-radius: 0.2rem;
   min-width: 4.5rem;
   min-height: 44px;
   padding: 0.5rem 0.75rem;
   color: var(--text-muted);
   font:
-    0.65rem/1.5 var(--font-mono),
+    0.6875rem/1.5 var(--font-mono),
     monospace;
 }
-.motionButton:hover {
+.motionButton:hover:not(:disabled) {
   border-color: var(--rule-strong);
   color: var(--accent-mint);
 }
+.motionButton:disabled {
+  cursor: default;
+}
 @media (max-width: 900px) {
   .figure {
-    width: min(100%, 33rem);
+    width: min(100%, 32rem);
     margin-inline: auto;
   }
   .stage {
-    height: 31rem;
+    height: 28rem;
   }
 }
 @media (max-width: 480px) {
   .stage {
-    height: 27rem;
+    height: 21.25rem;
   }
 }

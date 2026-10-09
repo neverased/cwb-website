@@ -7,7 +7,7 @@
     "dev": "next dev",
     "build": "next build && node scripts/prepare-standalone-dependencies.mjs",
     "start": "node scripts/prepare-standalone-assets.mjs && node .next/standalone/server.js",
-    "test": "pnpm test:contact && pnpm test:seo",
+    "test": "pnpm test:contact && pnpm test:seo && pnpm test:services",
     "test:seo": "tsx scripts/seo-regression.ts",
     "test:contact": "tsx scripts/contact-antispam-regression.ts",
     "test:cms": "tsx scripts/cms-regression.ts",
@@ -18,7 +18,8 @@
     "generate:importmap": "payload generate:importmap",
     "cms:setup": "node scripts/setup-cms-env.mjs",
     "lint": "oxlint src --deny-warnings",
-    "lint:fix": "pnpm lint --fix"
+    "lint:fix": "pnpm lint --fix",
+    "test:services": "tsx scripts/service-intents-regression.ts"
   },
   "dependencies": {
     "@payloadcms/db-postgres": "3.90.2",

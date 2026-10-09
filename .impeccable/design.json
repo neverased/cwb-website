@@ -1,332 +1,482 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-03T12:55:00+02:00",
+  "generatedAt": "2026-10-09T15:16:17.952Z",
   "title": "Design System: Wojciech Bajer Consulting",
   "extensions": {
     "colorMeta": {
       "page-background": {
-        "role": "primary",
-        "displayName": "Control-Room Black",
-        "canonical": "#020807",
+        "role": "neutral",
+        "displayName": "Graphite",
         "tonalRamp": [
-          "oklch(15% 0.02 170)",
-          "oklch(22% 0.025 170)",
-          "oklch(30% 0.03 170)",
-          "oklch(40% 0.035 170)",
-          "oklch(52% 0.04 170)",
-          "oklch(66% 0.035 170)",
-          "oklch(80% 0.025 170)",
-          "oklch(94% 0.012 170)"
+          "oklch(15% 0.0067 214.5)",
+          "oklch(26% 0.0067 214.5)",
+          "oklch(38% 0.0067 214.5)",
+          "oklch(49% 0.0067 214.5)",
+          "oklch(61% 0.0067 214.5)",
+          "oklch(72% 0.0067 214.5)",
+          "oklch(84% 0.0067 214.5)",
+          "oklch(95% 0.0067 214.5)"
+        ]
+      },
+      "page-background-soft": {
+        "role": "neutral",
+        "displayName": "Soft Graphite",
+        "tonalRamp": [
+          "oklch(15% 0.0094 208.8)",
+          "oklch(26% 0.0094 208.8)",
+          "oklch(38% 0.0094 208.8)",
+          "oklch(49% 0.0094 208.8)",
+          "oklch(61% 0.0094 208.8)",
+          "oklch(72% 0.0094 208.8)",
+          "oklch(84% 0.0094 208.8)",
+          "oklch(95% 0.0094 208.8)"
+        ]
+      },
+      "page-foreground": {
+        "role": "neutral",
+        "displayName": "Foreground",
+        "tonalRamp": [
+          "oklch(15% 0.0066 160.1)",
+          "oklch(26% 0.0066 160.1)",
+          "oklch(38% 0.0066 160.1)",
+          "oklch(49% 0.0066 160.1)",
+          "oklch(61% 0.0066 160.1)",
+          "oklch(72% 0.0066 160.1)",
+          "oklch(84% 0.0066 160.1)",
+          "oklch(95% 0.0066 160.1)"
         ]
       },
       "surface-panel": {
-        "role": "primary",
-        "displayName": "Runtime Teal Panel",
-        "canonical": "#06100f",
+        "role": "neutral",
+        "displayName": "Panel Graphite",
         "tonalRamp": [
-          "oklch(16% 0.022 180)",
-          "oklch(24% 0.028 180)",
-          "oklch(32% 0.035 180)",
-          "oklch(42% 0.04 180)",
-          "oklch(54% 0.04 180)",
-          "oklch(68% 0.035 180)",
-          "oklch(82% 0.026 180)",
-          "oklch(95% 0.012 180)"
+          "oklch(15% 0.0107 207.0)",
+          "oklch(26% 0.0107 207.0)",
+          "oklch(38% 0.0107 207.0)",
+          "oklch(49% 0.0107 207.0)",
+          "oklch(61% 0.0107 207.0)",
+          "oklch(72% 0.0107 207.0)",
+          "oklch(84% 0.0107 207.0)",
+          "oklch(95% 0.0107 207.0)"
         ]
       },
-      "foreground": {
+      "surface-panel-strong": {
         "role": "neutral",
-        "displayName": "Terminal Ink",
-        "canonical": "#f4fff8",
+        "displayName": "Strong Panel Graphite",
         "tonalRamp": [
-          "oklch(18% 0.015 160)",
-          "oklch(28% 0.015 160)",
-          "oklch(40% 0.014 160)",
-          "oklch(54% 0.013 160)",
-          "oklch(68% 0.012 160)",
-          "oklch(80% 0.01 160)",
-          "oklch(90% 0.008 160)",
-          "oklch(98% 0.006 160)"
+          "oklch(15% 0.0130 204.7)",
+          "oklch(26% 0.0130 204.7)",
+          "oklch(38% 0.0130 204.7)",
+          "oklch(49% 0.0130 204.7)",
+          "oklch(61% 0.0130 204.7)",
+          "oklch(72% 0.0130 204.7)",
+          "oklch(84% 0.0130 204.7)",
+          "oklch(95% 0.0130 204.7)"
+        ]
+      },
+      "surface-ink": {
+        "role": "neutral",
+        "displayName": "Ink Graphite",
+        "tonalRamp": [
+          "oklch(15% 0.0071 214.0)",
+          "oklch(26% 0.0071 214.0)",
+          "oklch(38% 0.0071 214.0)",
+          "oklch(49% 0.0071 214.0)",
+          "oklch(61% 0.0071 214.0)",
+          "oklch(72% 0.0071 214.0)",
+          "oklch(84% 0.0071 214.0)",
+          "oklch(95% 0.0071 214.0)"
         ]
       },
       "accent-mint": {
         "role": "primary",
         "displayName": "Mint Signal",
-        "canonical": "#7effc6",
         "tonalRamp": [
-          "oklch(20% 0.05 160)",
-          "oklch(30% 0.07 160)",
-          "oklch(42% 0.09 160)",
-          "oklch(54% 0.11 160)",
-          "oklch(66% 0.12 160)",
-          "oklch(76% 0.115 160)",
-          "oklch(86% 0.08 160)",
-          "oklch(95% 0.035 160)"
+          "oklch(15% 0.0906 157.2)",
+          "oklch(26% 0.0906 157.2)",
+          "oklch(38% 0.0906 157.2)",
+          "oklch(49% 0.0906 157.2)",
+          "oklch(61% 0.0906 157.2)",
+          "oklch(72% 0.0906 157.2)",
+          "oklch(84% 0.0906 157.2)",
+          "oklch(95% 0.0906 157.2)"
+        ]
+      },
+      "accent-hover": {
+        "role": "primary",
+        "displayName": "Mint Hover",
+        "tonalRamp": [
+          "oklch(15% 0.0679 157.2)",
+          "oklch(26% 0.0679 157.2)",
+          "oklch(38% 0.0679 157.2)",
+          "oklch(49% 0.0679 157.2)",
+          "oklch(61% 0.0679 157.2)",
+          "oklch(72% 0.0679 157.2)",
+          "oklch(84% 0.0679 157.2)",
+          "oklch(95% 0.0679 157.2)"
         ]
       },
       "accent-command": {
         "role": "secondary",
-        "displayName": "Lime Command",
-        "canonical": "#d9ff8c",
+        "displayName": "Command Accent",
         "tonalRamp": [
-          "oklch(22% 0.055 125)",
-          "oklch(34% 0.08 125)",
-          "oklch(46% 0.105 125)",
-          "oklch(58% 0.13 125)",
-          "oklch(70% 0.14 125)",
-          "oklch(82% 0.115 125)",
-          "oklch(90% 0.075 125)",
-          "oklch(96% 0.035 125)"
+          "oklch(15% 0.0804 124.9)",
+          "oklch(26% 0.0804 124.9)",
+          "oklch(38% 0.0804 124.9)",
+          "oklch(49% 0.0804 124.9)",
+          "oklch(61% 0.0804 124.9)",
+          "oklch(72% 0.0804 124.9)",
+          "oklch(84% 0.0804 124.9)",
+          "oklch(95% 0.0804 124.9)"
         ]
       },
       "accent-warning": {
         "role": "secondary",
         "displayName": "Warm Warning",
-        "canonical": "#ffaa78",
         "tonalRamp": [
-          "oklch(24% 0.06 55)",
-          "oklch(36% 0.09 55)",
-          "oklch(48% 0.12 55)",
-          "oklch(60% 0.14 55)",
-          "oklch(72% 0.13 55)",
-          "oklch(82% 0.1 55)",
-          "oklch(90% 0.06 55)",
-          "oklch(96% 0.03 55)"
+          "oklch(15% 0.0872 46.5)",
+          "oklch(26% 0.0872 46.5)",
+          "oklch(38% 0.0872 46.5)",
+          "oklch(49% 0.0872 46.5)",
+          "oklch(61% 0.0872 46.5)",
+          "oklch(72% 0.0872 46.5)",
+          "oklch(84% 0.0872 46.5)",
+          "oklch(95% 0.0872 46.5)"
         ]
       },
-      "credibility-accent": {
-        "role": "secondary",
-        "displayName": "Credibility Lime Accent",
-        "canonical": "#d9ff8c",
+      "text-muted": {
+        "role": "neutral",
+        "displayName": "Muted Text",
         "tonalRamp": [
-          "oklch(22% 0.055 125)",
-          "oklch(34% 0.08 125)",
-          "oklch(46% 0.105 125)",
-          "oklch(58% 0.13 125)",
-          "oklch(70% 0.14 125)",
-          "oklch(82% 0.115 125)",
-          "oklch(90% 0.075 125)",
-          "oklch(96% 0.035 125)"
+          "oklch(15% 0.0161 170.9)",
+          "oklch(26% 0.0161 170.9)",
+          "oklch(38% 0.0161 170.9)",
+          "oklch(49% 0.0161 170.9)",
+          "oklch(61% 0.0161 170.9)",
+          "oklch(72% 0.0161 170.9)",
+          "oklch(84% 0.0161 170.9)",
+          "oklch(95% 0.0161 170.9)"
+        ]
+      },
+      "text-subtle": {
+        "role": "neutral",
+        "displayName": "Subtle Text",
+        "tonalRamp": [
+          "oklch(15% 0.0218 169.0)",
+          "oklch(26% 0.0218 169.0)",
+          "oklch(38% 0.0218 169.0)",
+          "oklch(49% 0.0218 169.0)",
+          "oklch(61% 0.0218 169.0)",
+          "oklch(72% 0.0218 169.0)",
+          "oklch(84% 0.0218 169.0)",
+          "oklch(95% 0.0218 169.0)"
+        ]
+      },
+      "border-mint": {
+        "role": "neutral",
+        "displayName": "Mint Boundary",
+        "tonalRamp": [
+          "oklch(15% 0.0181 179.4)",
+          "oklch(26% 0.0181 179.4)",
+          "oklch(38% 0.0181 179.4)",
+          "oklch(49% 0.0181 179.4)",
+          "oklch(61% 0.0181 179.4)",
+          "oklch(72% 0.0181 179.4)",
+          "oklch(84% 0.0181 179.4)",
+          "oklch(95% 0.0181 179.4)"
+        ]
+      },
+      "rule-soft": {
+        "role": "neutral",
+        "displayName": "Quiet Rule",
+        "tonalRamp": [
+          "oklch(15% 0.0171 178.2)",
+          "oklch(26% 0.0171 178.2)",
+          "oklch(38% 0.0171 178.2)",
+          "oklch(49% 0.0171 178.2)",
+          "oklch(61% 0.0171 178.2)",
+          "oklch(72% 0.0171 178.2)",
+          "oklch(84% 0.0171 178.2)",
+          "oklch(95% 0.0171 178.2)"
+        ]
+      },
+      "rule-strong": {
+        "role": "neutral",
+        "displayName": "Strong Rule",
+        "tonalRamp": [
+          "oklch(15% 0.0350 161.2)",
+          "oklch(26% 0.0350 161.2)",
+          "oklch(38% 0.0350 161.2)",
+          "oklch(49% 0.0350 161.2)",
+          "oklch(61% 0.0350 161.2)",
+          "oklch(72% 0.0350 161.2)",
+          "oklch(84% 0.0350 161.2)",
+          "oklch(95% 0.0350 161.2)"
+        ]
+      },
+      "logo-light": {
+        "role": "neutral",
+        "displayName": "Logo Light",
+        "tonalRamp": [
+          "oklch(15% 0.0085 145.5)",
+          "oklch(26% 0.0085 145.5)",
+          "oklch(38% 0.0085 145.5)",
+          "oklch(49% 0.0085 145.5)",
+          "oklch(61% 0.0085 145.5)",
+          "oklch(72% 0.0085 145.5)",
+          "oklch(84% 0.0085 145.5)",
+          "oklch(95% 0.0085 145.5)"
+        ]
+      },
+      "action-ink": {
+        "role": "neutral",
+        "displayName": "Action Ink",
+        "tonalRamp": [
+          "oklch(15% 0.027 157)",
+          "oklch(26% 0.027 157)",
+          "oklch(38% 0.027 157)",
+          "oklch(49% 0.027 157)",
+          "oklch(61% 0.027 157)",
+          "oklch(72% 0.027 157)",
+          "oklch(84% 0.027 157)",
+          "oklch(95% 0.027 157)"
         ]
       }
     },
     "typographyMeta": {
       "display": {
-        "displayName": "Display",
-        "purpose": "Homepage hero H1 (clamp to 4.95rem) and subpage H1s (3.35rem). Space Grotesk, scrambled on reveal, capped under 5rem."
+        "displayName": "display",
+        "purpose": "Personal desktop hero statement."
       },
       "headline": {
-        "displayName": "Headline",
-        "purpose": "Major section claims. Space Grotesk at 2.65rem on the homepage, 2.35rem on subpages."
+        "displayName": "headline",
+        "purpose": "Major section headings."
       },
       "title": {
-        "displayName": "Panel Title",
-        "purpose": "Route cards, capability/process cards, service surface headlines, and panel headings. Fira Code, 1.1-1.55rem."
+        "displayName": "title",
+        "purpose": "Service choice labels."
+      },
+      "display-mobile": {
+        "displayName": "display mobile",
+        "purpose": "Complete words in the phone hero."
+      },
+      "title-output": {
+        "displayName": "title output",
+        "purpose": "The selected service outcome."
+      },
+      "title-output-mobile": {
+        "displayName": "title output mobile",
+        "purpose": "The service outcome on a narrow phone."
+      },
+      "title-process": {
+        "displayName": "title process",
+        "purpose": "Ordered process stage heading."
+      },
+      "title-compact": {
+        "displayName": "title compact",
+        "purpose": "Compact process and service headings."
       },
       "body": {
-        "displayName": "Operator Body",
-        "purpose": "Primary reading text and service descriptions. Fira Code, held to 60-70ch."
+        "displayName": "body",
+        "purpose": "Primary descriptive prose."
+      },
+      "lead": {
+        "displayName": "lead",
+        "purpose": "Hero description."
+      },
+      "lead-mobile": {
+        "displayName": "lead mobile",
+        "purpose": "Hero description on a phone."
+      },
+      "supporting": {
+        "displayName": "supporting",
+        "purpose": "Service detail and fit text."
+      },
+      "small": {
+        "displayName": "small",
+        "purpose": "Navigation, buttons, supporting text."
+      },
+      "compact": {
+        "displayName": "compact",
+        "purpose": "Phone service descriptions and specialty links."
+      },
+      "step-label": {
+        "displayName": "step label",
+        "purpose": "Ordered process metadata."
       },
       "label": {
-        "displayName": "Terminal Label",
-        "purpose": "Route prompts, metadata, chips, controls, and form labels. Uppercase Fira Code at 0 tracking."
+        "displayName": "label",
+        "purpose": "Short technical labels."
+      },
+      "metadata": {
+        "displayName": "metadata",
+        "purpose": "Secondary location and portrait metadata."
       }
     },
     "shadows": [
       {
-        "name": "inset-hairline",
-        "value": "inset 0 -1px 0 rgba(126, 255, 203, 0.08)",
-        "purpose": "The only resting depth: a mint underglint at a panel's bottom edge. Flat by default."
+        "name": "lanyard-card",
+        "value": "0 22px 35px -18px #0009",
+        "purpose": "Only the physical portrait card fallback."
       },
       {
-        "name": "focus-ring",
-        "value": "0 0 0 1px rgba(126, 255, 203, 0.16)",
-        "purpose": "Focused inputs and interactive elements, paired with a 2px mint outline at 0.25rem offset. State feedback, not elevation."
+        "name": "process-marker",
+        "value": "0 0 0 1px var(--accent-mint)",
+        "purpose": "A structural process-node ring, not elevation."
       }
     ],
     "motion": [
       {
-        "name": "state-transition",
-        "value": "180ms ease",
-        "purpose": "Button, link, nav, and input state changes. Hover lift is translateY(-2px), 1px for nav links, not a shadow bloom."
+        "name": "ease-out",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Shared finite reveal and interaction easing."
       },
       {
-        "name": "scroll-reveal",
-        "value": "animation-timeline: view(); reveal rise + fade",
-        "purpose": "CSS scroll-driven section reveals that enhance an already-visible default; gated behind @supports and reduced-motion."
+        "name": "motion-fast",
+        "value": "180ms",
+        "purpose": "Selection and navigation feedback."
       },
       {
-        "name": "ambient-drift",
-        "value": "40s ease-in-out infinite",
-        "purpose": "Very low-opacity drifting dot field behind subpage shells. Removed under reduced motion."
+        "name": "motion-reveal",
+        "value": "600ms",
+        "purpose": "Major heading entrances and signal travel."
       },
       {
-        "name": "shell-sweep",
-        "value": "24s linear infinite",
-        "purpose": "Slow horizontal diagnostic sweep across subpage backgrounds and lead sections at 0.12-0.2 opacity."
-      },
-      {
-        "name": "panel-pulse",
-        "value": "9s ease-in-out infinite",
-        "purpose": "Faint inner corner brackets on subpage panels pulsing between 0.14 and 0.28 opacity."
-      },
-      {
-        "name": "boot-caret",
-        "value": "blink 1s steps(1, end) infinite",
-        "purpose": "Boot loader caret and status pulse; disabled under reduced motion, where the boot sequence is skipped entirely."
+        "name": "process-segment",
+        "value": "650ms",
+        "purpose": "A process segment draws once after entering the viewport."
       }
     ],
     "breakpoints": [
       {
-        "name": "lg",
-        "value": "1080px"
+        "name": "navigation",
+        "value": "1100px"
       },
       {
-        "name": "md",
-        "value": "760px"
+        "name": "hero-and-explorer",
+        "value": "900px"
+      },
+      {
+        "name": "process",
+        "value": "800px"
+      },
+      {
+        "name": "compact-layout",
+        "value": "720px"
+      },
+      {
+        "name": "phone",
+        "value": "480px"
+      },
+      {
+        "name": "compact-logos",
+        "value": "380px"
       }
     ]
   },
   "components": [
     {
-      "name": "Primary Command Button",
+      "name": "Primary action",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "Main action for direct routes and proof panels. Flat mint-translucent fill with a single-cut chamfered notch.",
-      "html": "<button class=\"ds-button-primary\">Send project brief</button>",
-      "css": ".ds-button-primary { display: inline-flex; align-items: center; justify-content: center; min-height: 3.25rem; padding: 0.9rem 1.15rem; border: 1px solid rgba(126, 255, 203, 0.38); border-radius: 0.12rem; clip-path: polygon(0 0, calc(100% - 0.6rem) 0, 100% 0.6rem, 100% 100%, 0 100%); background: rgba(126, 255, 203, 0.14); color: #f6fff8; font-family: 'Fira Code', ui-monospace, Menlo, Monaco, monospace; font-size: 0.92rem; letter-spacing: 0; transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease, color 180ms ease; } .ds-button-primary:hover { transform: translateY(-2px); background: rgba(126, 255, 203, 0.2); } .ds-button-primary:focus-visible { outline: 2px solid rgba(126, 255, 203, 0.72); outline-offset: 0.25rem; }"
+      "description": "A stable contact action with contained arrow motion.",
+      "html": "<button class=\"ds-primary\">Get in touch <span aria-hidden=\"true\">↗</span></button>",
+      "css": ".ds-primary{font-family:var(--font-display,\"Space Grotesk\"),sans-serif;display:inline-flex;align-items:center;justify-content:center;gap:1.4rem;min-height:3rem;padding:.8rem 1.2rem;border:1px solid var(--accent-mint,#a3e8be);border-radius:.2rem;background:var(--accent-mint,#a3e8be);color:#102017;font-size:.875rem;font-weight:600;cursor:pointer;transition:background 180ms ease,transform 180ms ease}.ds-primary:hover{background:#c0f3d3;border-color:#c0f3d3}.ds-primary:focus-visible{outline:2px solid var(--accent-mint,#a3e8be);outline-offset:5px;}.ds-primary:active{transform:translateY(1px)}.ds-primary span{transition:transform 260ms cubic-bezier(.22,1,.36,1)}.ds-primary:hover span{transform:translate(2px,-2px)}@media(prefers-reduced-motion:reduce){.ds-primary,.ds-primary span{transition:none}}"
     },
     {
-      "name": "Secondary Route Button",
+      "name": "Secondary action",
       "kind": "button",
       "refersTo": "button-secondary",
-      "description": "Quiet secondary route for navigation-adjacent actions.",
-      "html": "<button class=\"ds-button-secondary\">Review services</button>",
-      "css": ".ds-button-secondary { display: inline-flex; align-items: center; justify-content: center; min-height: 3.25rem; padding: 0.9rem 1.15rem; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 0.12rem; clip-path: polygon(0 0, calc(100% - 0.6rem) 0, 100% 0.6rem, 100% 100%, 0 100%); background: rgba(255, 255, 255, 0.03); color: rgba(226, 247, 237, 0.86); font-family: 'Fira Code', ui-monospace, Menlo, Monaco, monospace; font-size: 0.92rem; letter-spacing: 0; transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease, color 180ms ease; } .ds-button-secondary:hover { transform: translateY(-2px); color: #f6fff8; border-color: rgba(126, 255, 203, 0.22); } .ds-button-secondary:focus-visible { outline: 2px solid rgba(126, 255, 203, 0.72); outline-offset: 0.25rem; }"
+      "description": "An outlined secondary action on the graphite surface.",
+      "html": "<button class=\"ds-secondary\">Explore expertise <span aria-hidden=\"true\">↓</span></button>",
+      "css": ".ds-secondary{font-family:var(--font-display,\"Space Grotesk\"),sans-serif;display:inline-flex;align-items:center;justify-content:center;gap:1.4rem;min-height:3rem;padding:.8rem 1.2rem;border:1px solid var(--rule-strong,#566e61);border-radius:.2rem;background:transparent;color:var(--page-foreground,#edf2ef);font-size:.875rem;font-weight:600;cursor:pointer;transition:background 180ms ease,transform 180ms ease}.ds-secondary:hover{background:var(--surface-panel-strong,#192223);border-color:var(--text-muted,#a8b5b0)}.ds-secondary:focus-visible{outline:2px solid var(--accent-mint,#a3e8be);outline-offset:5px;}.ds-secondary:active{transform:translateY(1px)}@media(prefers-reduced-motion:reduce){.ds-secondary{transition:none}}"
     },
     {
-      "name": "Terminal Panel",
-      "kind": "card",
-      "refersTo": "terminal-panel",
-      "description": "Structural panel with the signature double-cut notch: topbar, command deck, contact cards, credibility panel, subpage panels.",
-      "html": "<article class=\"ds-terminal-panel\"><p class=\"ds-card-label\">active module</p><h3 class=\"ds-card-title\">Architecture</h3><p class=\"ds-card-text\">Expose weak points before scale turns them into cost.</p></article>",
-      "css": ".ds-terminal-panel { position: relative; isolation: isolate; display: grid; gap: 0.8rem; padding: 1.35rem; border: 1px solid rgba(126, 255, 203, 0.18); border-radius: 0.35rem; clip-path: polygon(0 0, calc(100% - 0.9rem) 0, 100% 0.9rem, 100% 100%, 0.9rem 100%, 0 calc(100% - 0.9rem)); background: linear-gradient(180deg, rgba(7, 18, 16, 0.98), rgba(1, 6, 5, 0.98)); box-shadow: inset 0 -1px 0 rgba(126, 255, 203, 0.08); color: #f4fff8; } .ds-terminal-panel::before { content: ''; position: absolute; inset: 0; background: linear-gradient(rgba(126, 255, 203, 0.18), rgba(126, 255, 203, 0.18)) left top / 2.5rem 1px no-repeat, linear-gradient(rgba(126, 255, 203, 0.18), rgba(126, 255, 203, 0.18)) right bottom / 2.5rem 1px no-repeat; opacity: 0.8; pointer-events: none; } .ds-terminal-panel > * { position: relative; z-index: 1; } .ds-card-label { color: #8ddfba; font: 400 0.72rem/1.2 'Fira Code', ui-monospace, Menlo, Monaco, monospace; letter-spacing: 0; text-transform: uppercase; } .ds-card-title { color: #f4fff8; font: 400 1.2rem/1.4 'Fira Code', ui-monospace, Menlo, Monaco, monospace; letter-spacing: 0; } .ds-card-text { color: rgba(226, 247, 237, 0.86); font: 400 1rem/1.75 'Fira Code', ui-monospace, Menlo, Monaco, monospace; }"
-    },
-    {
-      "name": "Ledger Row Card",
-      "kind": "card",
-      "refersTo": "terminal-panel",
-      "description": "Quiet repeated-content treatment for capability, proof, and collaboration cards: top and bottom mint hairlines, no notch, reads as a row in a log.",
-      "html": "<article class=\"ds-ledger-row\"><p class=\"ds-ledger-label\">workstream 02</p><h3 class=\"ds-ledger-title\">Software engineering</h3><p class=\"ds-ledger-text\">A dependable build your team can keep using after handoff.</p></article>",
-      "css": ".ds-ledger-row { position: relative; display: grid; gap: 0.65rem; padding: 1.35rem; border-top: 1px solid rgba(126, 255, 203, 0.2); border-bottom: 1px solid rgba(126, 255, 203, 0.08); border-radius: 0.35rem; background: rgba(4, 14, 12, 0.36); color: #f4fff8; } .ds-ledger-label { color: #8ddfba; font: 400 0.74rem/1.2 'Fira Code', ui-monospace, Menlo, Monaco, monospace; letter-spacing: 0; text-transform: uppercase; } .ds-ledger-title { color: #f4fff8; font: 400 1.2rem/1.4 'Fira Code', ui-monospace, Menlo, Monaco, monospace; letter-spacing: 0; } .ds-ledger-text { color: rgba(226, 247, 237, 0.86); font: 400 1rem/1.75 'Fira Code', ui-monospace, Menlo, Monaco, monospace; }"
-    },
-    {
-      "name": "Terminal Input",
+      "name": "Contact field",
       "kind": "input",
-      "refersTo": "terminal-input",
-      "description": "Protected contact form field with label above and mint focus ring.",
-      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">message</span><textarea class=\"ds-terminal-input\" placeholder=\"Describe the system pressure\"></textarea></label>",
-      "css": ".ds-field { display: grid; gap: 0.45rem; color: #f4fff8; font-family: 'Fira Code', ui-monospace, Menlo, Monaco, monospace; } .ds-field-label { color: #8ddfba; font-size: 0.7rem; letter-spacing: 0; text-transform: uppercase; } .ds-terminal-input { width: 100%; min-height: 7rem; padding: 0.85rem 0.95rem; border: 1px solid rgba(126, 255, 203, 0.12); border-radius: 0.12rem; background: linear-gradient(180deg, rgba(11, 22, 20, 0.92), rgba(4, 11, 10, 0.98)), rgba(255, 255, 255, 0.02); color: #f4fff8; font: inherit; caret-color: #7effc6; resize: vertical; } .ds-terminal-input::placeholder { color: rgba(198, 225, 211, 0.72); } .ds-terminal-input:focus { outline: none; border-color: rgba(126, 255, 203, 0.36); box-shadow: 0 0 0 1px rgba(126, 255, 203, 0.16); }"
+      "refersTo": "input",
+      "description": "A visible label with a readable native email field.",
+      "html": "<label class=\"ds-field\">Email<input type=\"email\" placeholder=\"you@company.com\" autocomplete=\"email\"></label>",
+      "css": ".ds-field{font-family:var(--font-display,\"Space Grotesk\"),sans-serif;display:block;color:var(--page-foreground,#edf2ef);font-size:.85rem;line-height:1.5}.ds-field input{display:block;width:100%;box-sizing:border-box;min-height:48px;margin-top:.5rem;border:1px solid var(--rule-strong,#566e61);border-radius:.25rem;padding:.7rem .85rem;background:var(--surface-panel,#111819);color:var(--page-foreground,#edf2ef);font:inherit;font-size:1rem}.ds-field input:hover{border-color:var(--text-subtle,#8c9d96)}.ds-field input:focus-visible{outline:2px solid var(--accent-mint,#a3e8be);outline-offset:5px;outline-offset:3px}.ds-field input::placeholder{color:var(--text-subtle,#8c9d96);opacity:1}.ds-field input:user-invalid{border-color:var(--accent-warning,#f4b394)}"
     },
     {
-      "name": "Navigation Chip",
+      "name": "Navigation",
       "kind": "nav",
-      "refersTo": "nav-link-active",
-      "description": "Primary nav item with notched chip geometry and a mint-translucent active state.",
-      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-link\" href=\"#\">Services</a><a class=\"ds-nav-link ds-nav-link-active\" href=\"#\">Contact</a></nav>",
-      "css": ".ds-nav { display: flex; flex-wrap: wrap; gap: 0.75rem; font-family: 'Fira Code', ui-monospace, Menlo, Monaco, monospace; } .ds-nav-link { padding: 0.46rem 0.72rem; border: 1px solid transparent; border-radius: 0.16rem; clip-path: polygon(0 0, calc(100% - 0.45rem) 0, 100% 0.45rem, 100% 100%, 0 100%); color: rgba(232, 248, 239, 0.88); font-size: 0.8rem; letter-spacing: 0; text-transform: uppercase; text-decoration: none; transition: color 180ms ease, background-color 180ms ease, transform 180ms ease; } .ds-nav-link:hover { color: #f5fff8; transform: translateY(-1px); } .ds-nav-link:focus-visible { outline: 2px solid rgba(126, 255, 203, 0.72); outline-offset: 0.25rem; } .ds-nav-link-active { border-color: rgba(126, 255, 203, 0.24); background: rgba(126, 255, 203, 0.1); color: #f5fff8; }"
+      "refersTo": "navigation",
+      "description": "Quiet navigation with an explicit current-page underline.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Sample navigation\"><a href=\"/services/\" aria-current=\"page\">Services</a><a href=\"/process/\">Process</a><a href=\"/profile/\">Profile</a></nav>",
+      "css": ".ds-nav{font-family:var(--font-display,\"Space Grotesk\"),sans-serif;display:flex;flex-wrap:wrap;gap:1.5rem}.ds-nav a{display:flex;align-items:center;min-height:44px;color:var(--text-muted,#a8b5b0);font-size:.875rem;text-decoration:none;transition:color 180ms ease}.ds-nav a:hover,.ds-nav a[aria-current]{color:var(--page-foreground,#edf2ef)}.ds-nav a[aria-current]{text-decoration:underline;text-decoration-color:var(--accent-mint,#a3e8be);text-underline-offset:.6rem}.ds-nav a:focus-visible{outline:2px solid var(--accent-mint,#a3e8be);outline-offset:5px;}@media(prefers-reduced-motion:reduce){.ds-nav a{transition:none}}"
     },
     {
-      "name": "Signal Chip",
-      "kind": "chip",
-      "refersTo": "chip",
-      "description": "Small metadata chip for deliverables, status, tags, and route hints.",
-      "html": "<span class=\"ds-signal-chip\">runtime execution</span>",
-      "css": ".ds-signal-chip { display: inline-flex; align-items: center; min-height: 2.1rem; padding: 0.45rem 0.8rem; border: 1px solid rgba(126, 255, 203, 0.12); border-radius: 0.12rem; clip-path: polygon(0 0, calc(100% - 0.45rem) 0, 100% 0.45rem, 100% 100%, 0 100%); background: rgba(126, 255, 203, 0.06); color: rgba(228, 246, 236, 0.82); font: 400 0.72rem/1.2 'Fira Code', ui-monospace, Menlo, Monaco, monospace; letter-spacing: 0; text-transform: uppercase; }"
+      "name": "Service choice",
+      "kind": "custom",
+      "refersTo": "service-choice",
+      "description": "One need-based route with an explicit selected state.",
+      "html": "<a class=\"ds-choice\" href=\"/services/?service=audits\" aria-current=\"true\"><span><strong>Review a system</strong><span>Find the risks and decide what to fix first.</span></span><span aria-hidden=\"true\">↗</span></a>",
+      "css": ".ds-choice{font-family:var(--font-display,\"Space Grotesk\"),sans-serif;display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:7.5rem;padding:1.25rem 1.2rem 1.25rem 0;border-block:1px solid var(--rule-soft,#26322f);color:var(--accent-mint,#a3e8be);text-decoration:none}.ds-choice>span:first-child{display:grid;gap:.6rem}.ds-choice strong{font-size:clamp(1.2rem,2vw,1.65rem);font-weight:500;line-height:1.2;letter-spacing:-.035em}.ds-choice>span>span{color:var(--text-muted,#a8b5b0);font-size:.875rem;line-height:1.55;max-width:29ch}.ds-choice>span:last-child{transition:transform 240ms ease}.ds-choice:hover>span:last-child{transform:translate(3px,-3px)}.ds-choice:focus-visible{outline:2px solid var(--accent-mint,#a3e8be);outline-offset:5px;}@media(prefers-reduced-motion:reduce){.ds-choice>span:last-child{transition:none}}"
+    },
+    {
+      "name": "Service result",
+      "kind": "card",
+      "refersTo": "service-panel",
+      "description": "The selected service with a readable outcome and a direct contact link.",
+      "html": "<section class=\"ds-result\"><p>Audits</p><h3>Get an independent read on product, process, and technical reality.</h3><a href=\"/contact/?service=audits\">Discuss an audit <span aria-hidden=\"true\">↗</span></a></section>",
+      "css": ".ds-result{font-family:var(--font-display,\"Space Grotesk\"),sans-serif;border:1px solid var(--rule-strong,#566e61);background:var(--surface-panel,#111819);color:var(--page-foreground,#edf2ef);padding:clamp(1.25rem,2.7vw,2.25rem)}.ds-result>p{font-family:var(--font-mono,\"Fira Code\"),monospace;font-size:.75rem;color:var(--text-muted,#a8b5b0);margin:0 0 1.75rem}.ds-result h3{font-size:clamp(1.7rem,2.65vw,2.35rem);font-weight:400;line-height:1.15;letter-spacing:-.045em;max-width:28ch}.ds-result a{display:inline-flex;align-items:center;gap:1rem;min-height:44px;color:var(--accent-mint,#a3e8be);text-decoration:none}.ds-result:focus-within{border-color:var(--accent-mint,#a3e8be)}.ds-result a:hover{text-decoration:underline;text-underline-offset:.3em}.ds-result a:focus-visible{outline:2px solid var(--accent-mint,#a3e8be);outline-offset:5px;}"
+    },
+    {
+      "name": "Process artifact",
+      "kind": "custom",
+      "refersTo": "process-stage",
+      "description": "A real ordered step ending in a concrete working artifact.",
+      "html": "<article class=\"ds-stage\"><span class=\"ds-node\" aria-hidden=\"true\"></span><p class=\"ds-step\">01</p><h3>Inspect the signal</h3><p>Start with reality, not assumptions: stack, process, team friction, goals, and delivery risk.</p><div><span>Working artifact</span><p>Risk register</p></div></article>",
+      "css": ".ds-stage{font-family:var(--font-display,\"Space Grotesk\"),sans-serif;position:relative;padding:0 1.5rem 0 0;color:var(--page-foreground,#edf2ef);max-width:23rem}.ds-stage:before{content:\"\";position:absolute;top:.4rem;left:0;right:0;height:1px;background:var(--accent-mint,#a3e8be)}.ds-node{position:relative;display:block;width:.8rem;height:.8rem;box-sizing:border-box;background:var(--accent-mint,#a3e8be);border:3px solid var(--page-background,#0b0f10);border-radius:50%;box-shadow:0 0 0 1px var(--accent-mint,#a3e8be)}.ds-step{font-family:var(--font-mono,\"Fira Code\"),monospace;font-size:.72rem;color:var(--text-subtle,#8c9d96)}.ds-stage h3{font-size:clamp(1.2rem,1.8vw,1.55rem);font-weight:500;line-height:1.2;letter-spacing:-.035em}.ds-stage>p:not(.ds-step){font-size:1rem;line-height:1.6;color:var(--text-muted,#a8b5b0)}.ds-stage>div{border-top:1px solid var(--rule-soft,#26322f);padding-top:1rem}.ds-stage>div>span{font-family:var(--font-mono,\"Fira Code\"),monospace;font-size:.72rem;color:var(--text-subtle,#8c9d96);text-transform:uppercase}.ds-stage>div>p{font-size:1rem;color:var(--accent-mint,#a3e8be);margin:.4rem 0 0}"
     }
   ],
   "narrative": {
-    "northStar": "Signal Control Room",
-    "overview": "This is a working diagnostic surface for a one-person technical operator, not an agency brochure. It runs on near-black teal depth, mint structural linework, and acid-lime command output, with Space Grotesk carrying decisive hierarchy over a Fira Code operator voice. The interface is allowed to read as technical because the service is technical, but the terminal identity exists to organize the client's decision, not to prove technical depth. The control room has a chair for the client: warm precision, business outcome first, technical evidence second.\n\nThe signature structural move is the chamfered notch, at two tiers: large panels are cut with a clip-path polygon at the top-right and bottom-left on a near-sharp 0.35rem base radius; small controls cut only the top-right corner. Repeated content rows use a quieter ledger treatment of top and bottom mint hairlines with no notch. Depth is carried by dark vertical gradients, 1px low-alpha mint borders, inset hairlines, faint corner grid ticks, and scanlines, never by large drop shadows.\n\nThis system explicitly rejects generic agency polish, bloated SaaS landing-page patterns, vague innovation language, decorative case-study theater, the anonymous-consultancy posture, and AI-consultancy hype. It also rejects the warm-paper editorial AI default and the navy-and-gold fintech default: the brand lives only in black-green runtime space.",
+    "northStar": "Signal",
+    "overview": "Approved on 9 October 2026 from the local interactive Signal study. This replaces the historical boot/HUD styling description; older specs remain historical context. PRODUCT.md continues to define the business, audiences and truthful content requirements.\n\nWojciech is the visible, accountable specialist. Preserve graphite, muted mint, Space Grotesk hierarchy, Fira Code metadata, the `wb_` mark and the real portrait. The interface communicates technical precision through thin connections, clear outcomes and deliberate timing. Body copy speaks to founders and product teams in plain language.\n\nUse the `wb_` lockup in the site header and the CWB artwork on the physical ID card. Do not repeat the old blue logo in the same hero. Existing source assets and quote/document branding remain available and unchanged.\n\nPublic content uses a maximum 1536px outer shell with fluid horizontal padding. Homepage section gaps are 4–7rem on desktop and 3.5rem on phone. The composition alternates the large personal introduction, quiet proof, one decision interface and an ordered process.",
     "keyCharacteristics": [
-      "Black-green operating surface (#020807) with mint diagnostic linework.",
-      "Two-tier chamfered-notch geometry: double-cut panels, single-cut controls, hairline ledger rows (never rounded, never pill).",
-      "Mono-forward voice (Fira Code) with Space Grotesk for client-facing hierarchy.",
-      "Flat by default: depth from gradient, hairline border, and notch, not shadow.",
-      "Motion that reads as booting, scanning, routing, verifying, or output, with reduced-motion fallbacks.",
-      "Direct accountability: operator name, direct email, no abstract company language.",
-      "Business-first copy: outcome stated in plain language before the technical texture."
+      "A visible, accountable specialist with a real portrait and direct contact.",
+      "Graphite surfaces, muted mint connections and thin structural rules.",
+      "Space Grotesk hierarchy with Fira Code reserved for short metadata.",
+      "One service decision interface and a process that ends in useful artifacts.",
+      "Finite motion, static fallbacks and native navigation."
     ],
     "rules": [
       {
-        "name": "The Black Surface Rule",
-        "body": "The brand lives in black-green runtime space. Do not drift into navy SaaS, purple gradients, warm-paper editorial restraint, or generic dark-tech grey. If the background reads as anything but near-black teal, it is off-brand.",
+        "name": "The Authentic Mark Rule",
+        "body": "Original artwork, partner logos and credibility marks retain their colors and proportions; never invent monochrome variants to match the interface.",
         "section": "colors"
       },
       {
-        "name": "The Mint Wire Rule",
-        "body": "Mint is structural and thin. 1px strokes, corner brackets, focus rings, scanlines, faint inset hairlines. Never a thick colored side-stripe, never a glow-heavy neon.",
-        "section": "colors"
-      },
-      {
-        "name": "The Command Accent Rule",
-        "body": "Lime (#d9ff8c) marks active output, command intent, and the single RZETELNA word in the credibility panel. Flat color only; no glow.",
-        "section": "colors"
-      },
-      {
-        "name": "The Credibility Containment Rule",
-        "body": "The lime RZETELNA accent and its panel corner brackets stay inside the credibility panel. Do not reuse that treatment on client logos, CTAs, or status elsewhere.",
-        "section": "colors"
-      },
-      {
-        "name": "The Operator Voice Rule",
-        "body": "Mono is allowed because the brand is a technical operator. Use Space Grotesk for hierarchy so the page reads as a business surface, not a terminal costume.",
+        "name": "The Readable Outcome Rule",
+        "body": "Essential copy is visible immediately; animation never controls access to the words. Preserve complete words on narrow phones and keep body lines bounded.",
         "section": "typography"
       },
       {
-        "name": "The Plain-Tracking Label Rule",
-        "body": "Labels are uppercase mono at letter-spacing 0, not wide-tracked eyebrows. Do not reintroduce 0.18em tracked kickers above every section; that is the AI-scaffold tell this system avoids.",
-        "section": "typography"
-      },
-      {
-        "name": "The Clear Client Rule",
-        "body": "Technical labels can stay, but the copy around them must state business value in plain language first: risk reduced, delivery unblocked, decision de-risked, handoff durable. A non-technical founder should feel smarter after reading a section, not tested by it. No AI hype verbs: revolutionize, unlock, supercharge, 10x.",
-        "section": "typography"
-      },
-      {
-        "name": "The Flat-Runtime Rule",
-        "body": "Surfaces are flat at rest. If you reach for a soft wide drop shadow (blur >= 16px) on a card or button, you are off-system. Use the gradient, the border, and the notch instead.",
-        "section": "elevation"
-      },
-      {
-        "name": "The Lift-Is-Motion Rule",
-        "body": "Interactive lift is a 2px upward translateY on hover (1px for nav links), not a shadow bloom. The element moves; it does not float.",
+        "name": "The Object Boundary Rule",
+        "body": "Physical material effects belong to the Lanyard. Do not spread its rounded card shape or cast shadow to ordinary service panels.",
         "section": "elevation"
       }
     ],
     "dos": [
-      "Do keep the black-green (#020807), mint (#7effc6), lime (#d9ff8c), mono-forward terminal identity.",
-      "Do pick the right notch tier: double-cut panels for structure, single-cut chips for controls, hairline ledger rows for repeated content.",
-      "Do build depth from gradient + 1px mint border + inset hairline + notch. Flat by default.",
-      "Do keep direct email and the operator name visible; the one-person model is a trust signal.",
-      "Do state the business outcome in plain language before the technical texture: risk reduced, delivery unblocked, decision de-risked, handoff durable.",
-      "Do keep all four entry routes (audit, delivery, fractional leadership, AI/LLM engineering) legible to a non-technical buyer.",
-      "Do use selected collaborations and RZETELNA as evidence-bearing proof.",
-      "Do ship reduced-motion fallbacks for boot, scan, sweep, pulse, scramble, and scroll reveals.",
-      "Do keep body copy above 4.5:1 on the teal panels; bump toward #f4fff8 if a muted value is borderline."
+      "Do preserve graphite, muted mint, the wb_ mark, the real portrait and the accountable operator.",
+      "Do state outcomes in plain language before technical detail.",
+      "Do keep direct email visible and preserve the protected form's routes and recovery.",
+      "Do retain original partner marks and add case studies only with verified scope, materials and results.",
+      "Do treat process numbers as a real ordered sequence, not decorative section markers.",
+      "Do make motion finite, honor live reduced motion and resolve paused reveals to readable content.",
+      "Do verify keyboard access, no-JavaScript content, mobile layouts and real rendering before delivery."
     ],
     "donts": [
-      "Don't use generic agency polish, bloated SaaS landing patterns, vague innovation language, or decorative case-study theater.",
+      "Don't use generic agency polish, bloated SaaS landing-page patterns, vague innovation language or decorative case-study theater.",
+      "Don't make portfolio design feel more interested in presentation than problem solving.",
       "Don't make the site feel like a large anonymous consultancy or bury the operator behind abstract company language.",
-      "Don't let the terminal identity get so loud that clients cannot tell what is delivered; the business message always outranks the texture.",
-      "Don't use AI-consultancy hype language around the AI offer: no revolutionize, unlock, supercharge, or 10x.",
-      "Don't introduce rounded >=0.5rem cards or 999px pill buttons; the system is sharp + notched, not soft.",
-      "Don't use gradient text, glassmorphism as decoration, thick colored side-stripe borders, repeated identical icon cards, or the big-number hero-metric template.",
-      "Don't pair a 1px border with a soft wide drop shadow (blur >= 16px) on the same element (the ghost-card tell).",
-      "Don't add wide-tracked uppercase eyebrows above every section, or numbered 01 / 02 / 03 section markers as default scaffolding.",
-      "Don't spread the lime credibility accent or boot window-bar colors into unrelated UI.",
-      "Don't use em dashes anywhere in copy; use commas, colons, semicolons, periods, or parentheses.",
-      "Don't change URL structure, nav labels, form field names, logo treatment, or legal and credibility copy without explicit approval."
+      "Don't use costume hacking copy that obscures the service offer, or jargon-first copy that a non-technical buyer has to decode.",
+      "Don't use AI-consultancy hype language such as revolutionize, unlock, supercharge or 10x.",
+      "Don't add decorative glass pills, thick neon outlines, unrelated purple gradients or invented performance claims.",
+      "Don't add endless background sweeps, text scrambling, pointer replacement, a boot screen or a second dominant shader.",
+      "Don't change legal claims, credibility links or private-client behavior as a visual side effect."
     ]
   }
 }

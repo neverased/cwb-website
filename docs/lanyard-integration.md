@@ -4,6 +4,12 @@ The home page hero presents Wojciech's portrait on a draggable, reversible ID
 card. The service explorer now sits alongside the introduction to the services
 section; its query-string selection and contact links are unchanged.
 
+The subsequent [Signal redesign](design/2026-10-09-signal.md) adds the shared
+Motion control and a taller desktop composition, with a 340px stage on narrow
+phones. Global pause honors the device preference and preserves the card's
+independent local pause. The historical verification below covers the original
+Lanyard integration; the linked report covers its redesigned surroundings.
+
 ## Source and assets
 
 - Adapted from [React Bits Lanyard](https://reactbits.dev/components/lanyard),

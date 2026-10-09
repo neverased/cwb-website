@@ -1,268 +1,295 @@
 ---
 name: "Wojciech Bajer Consulting"
-description: "A terminal-grade brand system for a one-person technical consulting and delivery practice."
+description: "Signal: a personal technical consulting practice, with graphite surfaces, mint signals and purposeful motion."
 colors:
-  page-background: "#020807"
-  page-background-soft: "#041111"
-  surface-panel: "#06100f"
-  surface-panel-strong: "#0a1513"
-  surface-ink: "#010504"
-  foreground: "#f4fff8"
-  foreground-strong: "#f6fff8"
-  text-muted: "#e2f7eddb"
-  text-subtle: "#d6ece1b8"
-  accent-mint: "#7effc6"
-  accent-mint-soft: "#8ddfba"
-  accent-command: "#d9ff8c"
-  accent-warning: "#ffaa78"
-  credibility-accent: "#d9ff8c"
-  mint-border: "#7effcb"
-  white-sheen: "#ffffff08"
-  boot-bar-red: "#ff5f57"
-  boot-bar-amber: "#febc2e"
-  boot-bar-green: "#28c840"
+  page-background: "#0b0f10"
+  page-background-soft: "#101617"
+  page-foreground: "#edf2ef"
+  surface-panel: "#111819"
+  surface-panel-strong: "#192223"
+  surface-ink: "#080c0d"
+  accent-mint: "#a3e8be"
+  accent-hover: "#c0f3d3"
+  action-ink: "#102017"
+  accent-command: "#c9dfa5"
+  accent-warning: "#f4b394"
+  text-muted: "#a8b5b0"
+  text-subtle: "#8c9d96"
+  border-mint: "#293633"
+  rule-soft: "#26322f"
+  rule-strong: "#566e61"
+  logo-light: "#e8ede8"
 typography:
   display:
-    fontFamily: "Space Grotesk, Fira Code, monospace"
-    fontSize: "clamp(3rem, 5.4vw, 4.95rem)"
-    fontWeight: 400
-    lineHeight: 0.96
-    letterSpacing: "0"
-  headline:
-    fontFamily: "Space Grotesk, Fira Code, monospace"
-    fontSize: "2.65rem"
+    fontFamily: "Space Grotesk, sans-serif"
+    fontSize: "clamp(3.5rem, 6.4vw, 6.5rem)"
     fontWeight: 400
     lineHeight: 1.06
-    letterSpacing: "0"
+    letterSpacing: "-0.065em"
+  headline:
+    fontFamily: "Space Grotesk, sans-serif"
+    fontSize: "clamp(2.25rem, 4.2vw, 4rem)"
+    fontWeight: 500
+    lineHeight: 1.08
+    letterSpacing: "-0.04em"
   title:
-    fontFamily: "Fira Code, ui-monospace, Menlo, Monaco, monospace"
-    fontSize: "1.2rem"
+    fontFamily: "Space Grotesk, sans-serif"
+    fontSize: "clamp(1.2rem, 2vw, 1.65rem)"
+    fontWeight: 500
+    lineHeight: 1.3
+  display-mobile:
+    fontFamily: "Space Grotesk, sans-serif"
+    fontSize: "clamp(2.3rem, 10.7vw, 4.5rem)"
     fontWeight: 400
-    lineHeight: 1.4
-    letterSpacing: "0"
+    lineHeight: 1.06
+  title-output:
+    fontFamily: "Space Grotesk, sans-serif"
+    fontSize: "clamp(1.7rem, 2.65vw, 2.35rem)"
+    fontWeight: 400
+    lineHeight: 1.15
+    letterSpacing: "-0.045em"
+  title-output-mobile:
+    fontFamily: "Space Grotesk, sans-serif"
+    fontSize: "1.875rem"
+    fontWeight: 400
+    lineHeight: 1.15
+  title-process:
+    fontFamily: "Space Grotesk, sans-serif"
+    fontSize: "clamp(1.2rem, 1.8vw, 1.55rem)"
+    fontWeight: 500
+    lineHeight: 1.2
+    letterSpacing: "-0.035em"
+  title-compact:
+    fontFamily: "Space Grotesk, sans-serif"
+    fontSize: "1.4rem"
+    fontWeight: 500
+    lineHeight: 1.2
   body:
-    fontFamily: "Fira Code, ui-monospace, Menlo, Monaco, monospace"
+    fontFamily: "Space Grotesk, sans-serif"
     fontSize: "1rem"
     fontWeight: 400
+    lineHeight: 1.7
+  lead:
+    fontFamily: "Space Grotesk, sans-serif"
+    fontSize: "1.125rem"
     lineHeight: 1.75
-    letterSpacing: "normal"
-  label:
-    fontFamily: "Fira Code, ui-monospace, Menlo, Monaco, monospace"
+  lead-mobile:
+    fontFamily: "Space Grotesk, sans-serif"
+    fontSize: "1.0625rem"
+    lineHeight: 1.75
+  supporting:
+    fontFamily: "Space Grotesk, sans-serif"
+    fontSize: "0.9375rem"
+    lineHeight: 1.75
+  small:
+    fontFamily: "Space Grotesk, sans-serif"
+    fontSize: "0.875rem"
+    lineHeight: 1.6
+  compact:
+    fontFamily: "Space Grotesk, sans-serif"
+    fontSize: "0.8125rem"
+    lineHeight: 1.55
+  step-label:
+    fontFamily: "Fira Code, ui-monospace, monospace"
     fontSize: "0.72rem"
-    fontWeight: 400
-    lineHeight: 1.2
+    lineHeight: 1.5
     letterSpacing: "0"
+  label:
+    fontFamily: "Fira Code, ui-monospace, monospace"
+    fontSize: "0.75rem"
+    lineHeight: 1.6
+    letterSpacing: "0.08em"
+  metadata:
+    fontFamily: "Fira Code, ui-monospace, monospace"
+    fontSize: "0.6875rem"
+    lineHeight: 1.6
 rounded:
-  chip: "0.12rem"
-  nav: "0.16rem"
-  panel: "0.35rem"
+  control: "0.2rem"
+  field: "0.25rem"
+  portrait: "0.4rem"
+  panel: "0.5rem"
+  lanyard-clip-edge: "0.15rem"
+  lanyard-clip: "0.65rem"
+  lanyard-card: "0.9rem"
 spacing:
-  xs: "0.45rem"
-  sm: "0.6rem"
-  md: "0.85rem"
-  lg: "1rem"
-  xl: "1.35rem"
-  notch: "0.9rem"
-  notch-small: "0.6rem"
-  section-gap: "clamp(4.5rem, 8vw, 8rem)"
-  page-x: "clamp(1rem, 3vw, 1.75rem)"
-  page-bottom: "5.5rem"
+  section-gap: "clamp(4rem, 7vw, 7rem)"
+  page-x: "clamp(1.25rem, 6.6vw, 6rem)"
+  mobile-x: "1.25rem"
 components:
   button-primary:
-    backgroundColor: "#7effc624"
-    textColor: "{colors.foreground-strong}"
-    rounded: "{rounded.chip}"
-    padding: "0.9rem 1.15rem"
-    height: "3.25rem"
+    backgroundColor: "{colors.accent-mint}"
+    textColor: "{colors.action-ink}"
+    typography: "{typography.small}"
+    rounded: "{rounded.control}"
+    padding: "0.8rem 1.2rem"
+    height: "3rem"
   button-secondary:
-    backgroundColor: "{colors.white-sheen}"
-    textColor: "{colors.text-muted}"
-    rounded: "{rounded.chip}"
-    padding: "0.9rem 1.15rem"
-    height: "3.25rem"
-  nav-link-active:
-    backgroundColor: "#7effc61a"
-    textColor: "{colors.foreground-strong}"
-    rounded: "{rounded.nav}"
-    padding: "0.46rem 0.72rem"
-  terminal-input:
-    backgroundColor: "{colors.surface-ink}"
-    textColor: "{colors.foreground}"
-    rounded: "{rounded.chip}"
-    padding: "0.85rem 0.95rem"
-    height: "3.2rem"
-  terminal-panel:
+    textColor: "{colors.page-foreground}"
+    typography: "{typography.small}"
+    rounded: "{rounded.control}"
+    padding: "0.8rem 1.2rem"
+    height: "3rem"
+  input:
     backgroundColor: "{colors.surface-panel}"
-    textColor: "{colors.foreground}"
-    rounded: "{rounded.panel}"
-    padding: "1.35rem"
-  focus-tab:
-    backgroundColor: "{colors.white-sheen}"
+    textColor: "{colors.page-foreground}"
+    typography: "{typography.body}"
+    rounded: "{rounded.field}"
+    padding: "0.7rem 0.85rem"
+    height: "48px"
+  navigation:
     textColor: "{colors.text-muted}"
-    rounded: "{rounded.chip}"
-    padding: "0.55rem 0.7rem"
-  chip:
-    backgroundColor: "#7effc60f"
-    textColor: "{colors.text-muted}"
-    rounded: "{rounded.chip}"
-    padding: "0.45rem 0.8rem"
-    height: "2.1rem"
+    typography: "{typography.small}"
+    height: "44px"
+  service-panel:
+    backgroundColor: "{colors.surface-panel}"
+    textColor: "{colors.page-foreground}"
+    padding: "clamp(1.25rem, 2.7vw, 2.25rem) clamp(1.25rem, 3vw, 2.5rem) 0"
+  service-choice:
+    textColor: "{colors.page-foreground}"
+    typography: "{typography.title}"
+    padding: "1.25rem 1.2rem 1.25rem 0"
+    height: "7.5rem"
+  process-stage:
+    textColor: "{colors.page-foreground}"
+    typography: "{typography.title-process}"
 ---
 
 # Design System: Wojciech Bajer Consulting
 
-## 1. Overview
+## Overview
 
-**Creative North Star: "Signal Control Room"**
+**Creative North Star: "Signal"**
 
-This is a working diagnostic surface for a one-person technical operator, not an agency brochure. It runs on near-black teal depth, mint structural linework, and acid-lime command output, with Space Grotesk carrying decisive hierarchy over a Fira Code operator voice. The interface is allowed to read as technical because the service is technical, but the terminal identity exists to organize the client's decision, not to prove technical depth. The control room has a chair for the client: warm precision, business outcome first, technical evidence second. Founders, non-technical product leaders, and subcontracting agencies should all be able to route their problem in one pass.
+Approved on 9 October 2026 from the local interactive Signal study. This replaces the historical boot/HUD styling description; older specs remain historical context. PRODUCT.md continues to define the business, audiences and truthful content requirements.
 
-The signature structural move is the **chamfered notch**, and it works at two tiers. Large panels (topbar, contact cards, credibility panel, command deck, subpage panels) are cut with a `clip-path` polygon at the top-right and bottom-left (`--corner-cut: 0.9rem`) on a near-sharp `0.35rem` base radius. Small controls (buttons, chips, nav links, route nodes, inline viewports) cut only the top-right corner at 0.45 to 0.75rem. Alongside the notch, the homepage uses a quieter **ledger row** treatment for capability, process, proof, and collaboration cards: top and bottom mint hairlines with no notch, reading as rows in a log rather than floating cards. Depth everywhere is carried by dark vertical gradients, 1px low-alpha mint borders, inset hairlines, faint corner grid ticks, and scanlines, never by large drop shadows.
+Wojciech is the visible, accountable specialist. Preserve graphite, muted mint, Space Grotesk hierarchy, Fira Code metadata, the `wb_` mark and the real portrait. The interface communicates technical precision through thin connections, clear outcomes and deliberate timing. Body copy speaks to founders and product teams in plain language.
 
-This system explicitly rejects generic agency polish, bloated SaaS landing-page patterns, vague innovation language, decorative case-study theater, the anonymous-consultancy posture, and AI-consultancy hype. It also rejects the warm-paper editorial AI default and the navy-and-gold fintech default: the brand lives only in black-green runtime space. Mono is justified here because the operator is literally technical; it is identity, not costume.
+Use the `wb_` lockup in the site header and the CWB artwork on the physical ID card. Do not repeat the old blue logo in the same hero. Existing source assets and quote/document branding remain available and unchanged.
+
+Public content uses a maximum 1536px outer shell with fluid horizontal padding. Homepage section gaps are 4–7rem on desktop and 3.5rem on phone. The composition alternates the large personal introduction, quiet proof, one decision interface and an ordered process.
 
 **Key Characteristics:**
-- Black-green operating surface (`#020807`) with mint diagnostic linework.
-- Two-tier chamfered-notch geometry: double-cut panels, single-cut controls, hairline ledger rows (never rounded, never pill).
-- Mono-forward voice (Fira Code) with Space Grotesk for client-facing hierarchy.
-- Flat by default: depth from gradient, hairline border, and notch, not shadow.
-- Motion that reads as booting, scanning, routing, verifying, or output, with reduced-motion fallbacks.
-- Direct accountability: operator name, direct email, no abstract company language.
-- Business-first copy: outcome stated in plain language before the technical texture.
+- A visible, accountable specialist with a real portrait and direct contact.
+- Graphite surfaces, muted mint connections and thin structural rules.
+- Space Grotesk hierarchy with Fira Code reserved for short metadata.
+- One service decision interface and a process that ends in useful artifacts.
+- Finite motion, static fallbacks and native navigation.
 
-## 2. Colors
+## Colors
 
-A control-room palette: black-green depth carries the page, mint defines structure and system state, lime marks active command output and the RZETELNA proof word, and warm orange flags failure or degraded states only.
+The palette carries technical precision through quiet graphite surfaces and restrained mint signals. Normative color values are in the frontmatter; preserve authentic asset colors.
 
 ### Primary
-- **Control-Room Black** (`#020807`): the page base and full-viewport boot atmosphere. The whole site sits on this near-black teal. The homepage runs it through a vertical gradient that lifts to `#061412` mid-page; subpages add faint radial mint and lime glows at the top corners.
-- **Runtime Teal** (`#041111`, `#06100f`, `#0a1513`, `#010504`): page-soft background, panel surfaces, strong panel surfaces, and the deepest input/ink wells. Used as vertical gradients inside panels and cards.
-- **Mint Signal** (`#7effc6`, soft `#8ddfba`): active labels, structural borders, focus rings, carets, route markers, progress bar, and the boot cursor. The defining accent.
+- **Mint Signal** (#a3e8be): selected choices, primary actions, focus and signal arrival.
+- **Mint Hover** (#c0f3d3): a lighter interaction state for the primary action.
 
 ### Secondary
-- **Lime Command** (`#d9ff8c`): terminal prompts (`$`), command output, route-prompt accents, list markers (`>`), fit lines on service cards, and the flat `RZETELNA` wordmark in the credibility panel. High-signal; keep it rare.
-- **Warm Warning** (`#ffaa78`): failed, invalid, unavailable, or degraded form states only (the contact form's error and info banners both tint from it).
-
-### Tertiary
-- **Boot Window Bars** (`#ff5f57`, `#febc2e`, `#28c840`): flat horizontal bars (not circular dots) in the boot Terminal Loader's window chrome only. Not reused elsewhere as decoration.
+- **Command Accent** (#c9dfa5): existing supporting accents, used sparingly.
+- **Warm Warning** (#f4b394): validation and failure feedback, never decorative urgency.
 
 ### Neutral
-- **Terminal Ink** (`#f4fff8`, strong `#f6fff8`): headings, primary copy, button labels, active nav.
-- **Muted Phosphor** (`#e2f7eddb` ≈ rgba(226,247,237,0.86); subtle `#d6ece1b8` ≈ rgba(214,236,225,0.72)): descriptive body copy on dark panels. Verified above 4.5:1 on the teal surfaces.
-- **Mint Wire** (`#7effcb` at 0.08-0.34 alpha): structural borders, dividers, chips, scanlines, corner brackets, hairline rules, ledger-row edges.
-- **White Sheen** (`#ffffff08` to `#ffffff14`): subtle panel texture and secondary control fills.
+- **Graphite** (#0b0f10): the page background and darker ink surface.
+- **Panel Graphite** (#111819, #192223): tonal separation for panels and their stronger state.
+- **Foreground** (#edf2ef): headings and essential copy.
+- **Muted and Subtle Text** (#a8b5b0, #8c9d96): descriptive text and short metadata.
+- **Structural Rules** (#26322f, #566e61): quiet borders and stronger boundaries between meaningful controls.
+- **Logo Light** (#e8ede8): a shared surface for original dark partner marks.
 
-### Named Rules
-**The Black Surface Rule.** The brand lives in black-green runtime space. Do not drift into navy SaaS, purple gradients, warm-paper editorial restraint, or generic dark-tech grey. If the background reads as anything but near-black teal, it is off-brand.
+The base is graphite #0b0f10. Panels step up to #111819 or #192223. Mint #a3e8be marks selection, action and a signal arriving at its outcome. Use quiet 1px rules and occasional small corner markers. Controls are almost square with a 0.2rem radius. Large decorative glass pills, thick neon outlines and unrelated purple gradients are outside this direction.
 
-**The Mint Wire Rule.** Mint is structural and thin. 1px strokes, corner brackets, focus rings, scanlines, faint inset hairlines. Never a thick colored side-stripe, never a glow-heavy neon.
+Logo surfaces must preserve each original mark's contrast and proportions. Group compatible logos on shared dark or light surfaces rather than alternating nine separate high-contrast tiles. Optical sizing may vary by mark. Do not invent monochrome variants or scope-of-work claims.
 
-**The Command Accent Rule.** Lime (`#d9ff8c`) marks active output, command intent, and the single `RZETELNA` word in the credibility panel. Flat color only; no glow. It guides the eye to the live thing; it does not decorate every component.
+**The Authentic Mark Rule.** Original artwork, partner logos and credibility marks retain their colors and proportions; never invent monochrome variants to match the interface.
 
-**The Credibility Containment Rule.** The lime `RZETELNA` accent and its panel corner brackets stay inside the credibility panel. Do not reuse that treatment on client logos, CTAs, or status elsewhere.
+## Typography
 
-## 3. Typography
+**Display Font:** Space Grotesk (with sans-serif fallback)
+**Body Font:** Space Grotesk (with sans-serif fallback)
+**Label/Mono Font:** Fira Code (with ui-monospace, monospace fallback)
 
-**Display Font:** Space Grotesk (with Fira Code, monospace fallback)
-**Body / Label Font:** Fira Code (with ui-monospace, Menlo, Monaco fallback)
-
-**Character:** A deliberately technical pairing. Space Grotesk gives the largest statements width and business legibility so the page reads as a client-facing surface; Fira Code keeps the working body, labels, and terminal output in an operator voice. One display family, one mono family, no third typeface.
+**Character:** Large, readable personal statements lead the composition. Mono supplies short technical context without making the visitor decode a terminal.
 
 ### Hierarchy
-- **Display** (400, `clamp(3rem, 5.4vw, 4.95rem)` on the homepage hero, `3.35rem` on subpage H1s, line-height 0.96-0.98, tracking 0): scrambled in on reveal. Capped under 5rem so it states, not shouts.
-- **Headline** (400, `2.65rem` on the homepage, `2.35rem` on subpage sections, line-height 1.02-1.06, tracking 0): major section claims. Drops to ~2.25rem at mobile.
-- **Title** (400, `1.1rem`-`1.55rem`, line-height 1.25-1.4): route cards, capability/process cards, service surface headlines, panel headings.
-- **Body** (400, `1rem`-`1.08rem`, line-height 1.75): descriptive prose. Hold copy to roughly 60-70ch (`max-width: 64ch` on hero, `66ch` on section descriptions).
-- **Label** (400, `0.7rem`-`0.78rem`, uppercase, tracking 0): route prompts, metadata, form labels, command status, card kickers, chips.
 
-### Named Rules
-**The Operator Voice Rule.** Mono is allowed because the brand is a technical operator. Use Space Grotesk for hierarchy so the page reads as a business surface, not a terminal costume.
+- **Display** (400, `clamp(3.5rem, 6.4vw, 6.5rem)`, line-height 1.06): the personal hero statement.
+- **Headline** (500, `clamp(2.25rem, 4.2vw, 4rem)`, line-height 1.08): major section claims.
+- **Title** (500, `clamp(1.2rem, 2vw, 1.65rem)`, line-height 1.3): service choice and supporting hierarchy; dedicated output/process variants live in the frontmatter.
+- **Body** (400, `1rem`, line-height 1.6–1.75): readable descriptive copy, normally bounded to 40–60ch.
+- **Label** (400, `0.75rem`, line-height 1.6): short mono labels; smaller metadata never carries the essential message.
 
-**The Plain-Tracking Label Rule.** Labels are uppercase mono at `letter-spacing: 0`, not wide-tracked eyebrows. Do not reintroduce `0.18em` tracked kickers above every section; that is the AI-scaffold tell this system avoids.
+The hero uses two clear lines, with the second in mint. Desktop display scales up to 6.5rem; mobile uses a fluid 2.3–4.5rem range, preserving readable complete words. Section titles use 2.25–4rem. Panel titles may use 1.7–2.35rem; process and supporting headings use 1.2–1.65rem. These component-specific fluid sizes are intentional, not arbitrary replacements for the display hierarchy.
 
-**The Clear Client Rule.** Technical labels can stay, but the copy around them must state business value in plain language first: risk reduced, delivery unblocked, decision de-risked, handoff durable. A non-technical founder should feel smarter after reading a section, not tested by it. Around the AI offer, no hype verbs (revolutionize, unlock, supercharge, 10x); state what gets built and what becomes dependable.
+Body text is normally 1rem with 1.6–1.75 line height. Hero description uses 1.125rem (1.0625rem on phone). Supporting copy may use 0.875–0.9375rem. Mono is reserved for short labels (0.72–0.75rem), coordinates of the interface such as service IDs, and short secondary metadata (0.6875rem). Do not reproduce the tiny captions from the study as essential product copy. Existing long-form Notes remain a reading surface.
 
-## 4. Elevation
+The frontmatter records recurring component roles rather than every historical size. The service output has its own desktop fluid title and 1.875rem phone title; process stages use the title-process role and a 1.4rem compact title. Phone service descriptions and specialty choices use 0.8125rem, while normal supporting copy uses 0.875rem or 0.9375rem. Existing subpage and long-form typography remains valid in its own reading context; a future typographic migration should be deliberate, not a mechanical response to a detector.
 
-This system is flat by default. There are no large drop shadows. Depth is built from four flat materials layered together: a dark vertical gradient inside each panel (`linear-gradient(180deg, rgba(7,18,16,0.98), rgba(1,6,5,0.98))`, with a faint horizontal mint sheen `linear-gradient(90deg, rgba(126,255,203,0.07), transparent 48%)` layered on subpage cards), a 1px low-alpha mint border, an inset bottom hairline (`inset 0 -1px 0 rgba(126,255,203,0.08)`), and the `clip-path` notch that physically cuts the corner. Faint corner grid ticks and scanlines add texture without lift. Subpages add a quiet ambient layer behind the shell: a drifting dot field and a slow horizontal sweep (24-40s cycles) at very low opacity, both removed under reduced motion.
+**The Readable Outcome Rule.** Essential copy is visible immediately; animation never controls access to the words. Preserve complete words on narrow phones and keep body lines bounded.
+
+## Elevation
+
+The public interface is flat at rest. Depth comes from tonal surfaces, thin rules and a restrained pointer spotlight on the active service panel. The spotlight exists only for a precise pointer with motion enabled; keyboard focus uses a clear mint border.
+
+The physical Lanyard is an intentional exception: a rounded identity card, metal clip, material highlights and a bounded physical shadow. Its 0.9rem card and 0.65rem clip radii match the established object, not general UI panels. Original artwork, partner logos and credibility marks keep their authentic colors.
 
 ### Shadow Vocabulary
-- **Inset hairline** (`box-shadow: inset 0 -1px 0 rgba(126,255,203,0.08)`): the only resting "shadow"; a mint underglint at the panel's bottom edge.
-- **Focus ring** (`box-shadow: 0 0 0 1px rgba(126,255,203,0.16)` plus `outline: 2px solid rgba(126,255,203,0.72)` at `0.25rem` offset): state feedback on inputs and interactive elements, not elevation.
+- **Physical card shadow** (`0 22px 35px -18px #0009`): limited to the portrait card fallback, matching the physical Lanyard object.
+- **Process marker ring** (`0 0 0 1px var(--accent-mint)`): a thin structural edge around an actual process node, not elevation.
 
-### Named Rules
-**The Flat-Runtime Rule.** Surfaces are flat at rest. If you reach for a soft wide drop shadow (blur ≥ 16px) on a card or button, you are off-system. Use the gradient, the border, and the notch instead.
+**The Object Boundary Rule.** Physical material effects belong to the Lanyard. Do not spread its rounded card shape or cast shadow to ordinary service panels.
 
-**The Lift-Is-Motion Rule.** Interactive lift is a 2px upward `translateY` on hover (1px for nav links), not a shadow bloom. The element moves; it does not float.
+## Components
 
-## 5. Components
+- **Hero:** large two-line statement, plain-language introduction, direct contact action, expertise anchor, real Lanyard. Main content is in the initial HTML.
+- **Service explorer:** one module with three needs: review, build, and ongoing direction. All six specialties remain selectable. The selected `?service=` determines the group, result, and exact contact URL. Browser history, modified clicks and no-JavaScript links remain meaningful.
+- **Signal path:** connects a chosen need to its result. It is decorative and does not carry exclusive information. The active choice also has text, border and `aria-current` feedback.
+- **Process:** four ordered steps, with a horizontal trace on desktop and a vertical one on mobile. Step numbers identify an actual sequence. Service choice numbers identify their corresponding output; neither is a default decorative section marker.
+- **Collaboration evidence:** retain the accurate label “Selected collaborations”. Add case studies only with verified scope, materials and results. No invented metrics or project screenshots.
+- **Contact:** clear direct email plus the existing protected form. Preserve selected service, input names, validation, recovery and anti-spam behavior.
+- **Navigation:** simple horizontal header with a named operator and direct contact action. Responsive native details menu supports keyboard, Escape, outside click and no JS. Do not rename collaborations to “Work” until actual case studies exist.
+- **Credibility and private quotes:** keep factual claims, legal content, certificate links and private-client behavior unchanged.
 
-### Buttons
-- **Shape:** single-cut chamfered notch, near-sharp (`border-radius: 0.12rem` plus `clip-path` cutting the top-right corner ~0.6rem). Never pill, never `≥0.5rem` rounded.
-- **Primary:** flat mint-translucent fill (`rgba(126,255,203,0.14)`), 1px mint border (`rgba(126,255,203,0.38)`), ink-strong label (`#f6fff8`), inset hairline, padding `0.9rem 1.15rem`, min-height `3.25rem`. Not a gradient.
-- **Secondary:** white-sheen fill (`rgba(255,255,255,0.03)`), quiet 1px border, muted-ink label.
-- **Hover / Focus:** `translateY(-2px)` on hover; mint focus ring plus 2px mint outline on `:focus-visible`. Reduced-motion disables the transition.
-- **Labels:** verb + object describing the action (`Send project brief`, `Review services`, `Send inquiry`, `View certificate`).
+### Buttons and fields
 
-### Inputs / Fields
-- **Style:** full-width, min-height `3.2rem`, dark layered fill (`linear-gradient(180deg, rgba(11,22,20,0.92), rgba(4,11,10,0.98))`), 1px mint border at 0.12 alpha, `0.12rem` radius, mint caret (`#7effc6`). Label sits above the input (uppercase mono, `#8ddfba`).
-- **Placeholder:** `rgba(198,225,211,0.72)`, kept above 4.5:1; never used as a label.
-- **Focus:** border lifts to mint 0.36 plus a 1px mint ring; no glow.
-- **Disabled:** `opacity: 0.58`, `not-allowed` cursor (used while the contact bootstrap loads).
-- **Status banners:** notch-free bordered blocks; success tints mint (`rgba(116,255,191,0.08)`), error and info both tint warm warning orange.
+Primary actions use a solid mint fill, dark text, a quiet 0.2rem corner and stable 48px minimum height. Secondary buttons keep a transparent graphite surface and a stronger rule. Arrows may move 2–3px inside the fixed target. Keyboard focus is a 2px mint outline with offset.
 
-### Navigation
-- **Style:** sticky pill-row header on desktop inside a double-cut notched topbar; brand lockup carries a `cwb://...` route prompt above the uppercase operator name. Nav links are single-cut notched chips (`0.16rem` radius), uppercase mono `0.8rem`.
-- **States:** default muted-ink; hover lifts `translateY(-1px)` to ink-strong; active uses a mint-translucent fill (`rgba(126,255,203,0.1)`) plus mint border.
-- **Mobile (≤760px):** the header becomes a static stacked panel; nav collapses to a 3-column chip grid with `2.75rem` touch targets. Labels never change.
+Existing contact inputs remain 48px high, with a 0.25rem field radius, 1px stronger rule, panel background and 1rem input text. Keep native validation, visible placeholders, warning borders and disabled states. Existing profile portrait geometry may use the 0.4rem portrait radius; it is not the general control radius.
 
-### Cards / Panels
-- **Two treatments, chosen by role.** Structural panels get the notch; repeated content rows get the ledger treatment.
-- **Notched panel:** the signature double-cut `clip-path` polygon (`--corner-cut: 0.9rem`) on a `0.35rem` base radius, dark vertical teal gradient, 1px mint border at 0.08-0.18 alpha, inset bottom hairline, faint corner grid ticks (2.4-2.6rem mint dashes at the corners). Used for the topbar, command deck, contact cards, credibility panel, and all subpage panels/cards. Subpage panels add inner corner brackets that pulse slowly (9s cycle).
-- **Ledger row:** no clip-path; a 1px mint hairline on top (`0.16-0.2` alpha) and a fainter one on the bottom (`0.08` alpha), quiet translucent fill (`rgba(4,14,12,0.36-0.42)`). Used for homepage capability cards, proof points, and collaboration cards. Process cards run as columns separated by 1px vertical mint rules under a shared gradient top rule.
-- **Depth:** inset bottom hairline only (see Elevation). No nested decorative cards; inner modules must carry a real role (route stage, IO cell, terminal line, contact field, logo surface).
-- **Internal padding:** `1.35rem` standard; `clamp(1.4rem, 3vw, 2.2rem)` for feature panels.
+### Motion contract
 
-### Boot Terminal Loader (signature)
-A full-viewport brand entrance, not a loading spinner. Centered notched console (`min(58rem, 100%)` wide, height driven by `--boot-panel-height`) on the black surface, with flat window-control bars (red/amber/green), a stage label plus percent, a scaling mint progress bar, scramble-typed command lines with tone colors (muted `rgba(118,153,139,0.68)`, prompt `#86ffd0`, success `#f0ffab`, warning `#ffd59b`), a blinking caret, scanline overlay, and auto-scroll. It completes reliably, exposes a `skip intro` control, persists completion for the session (`sessionStorage`), and is skipped entirely under reduced motion. Content is never gated behind it.
+One coherent motion language: context, connection, outcome. Existing React Bits Lanyard supplies the physical signature. Small reveals and transitions use native CSS/Web Animations; no second 3D engine or animation runtime is required.
 
-### Command Deck (signature)
-The homepage right-column terminal object after boot. A notched panel with a `cwb://focus` prompt header, problem-type tabs that behave as real controls (visible active fill, border, and text contrast), an active route summary card, and a working terminal viewport whose output reflects the selected focus. It must not overpower the H1; it reads as a useful diagnostic control.
+- Hero line entrances: finite 600ms transform/opacity with short offsets, using cubic-bezier(0.22, 1, 0.36, 1).
+- Selection feedback: about 180–260ms; signal travel may finish around 600ms without delaying usable content.
+- Reveals: use only at major headings and the final invitation, observe once and disconnect. All copy is visible by default and remains present when JavaScript fails.
+- Process: each signal segment advances once when its step appears. No scrolling capture, fake progress or timed content gates.
+- Buttons: 2–3px internal arrow movement, stable click targets, visible focus. Keyboard and touch users get equivalent functionality.
+- The public motion toggle persists an explicit pause for the tab session and honors live `prefers-reduced-motion`. Storage failures cannot prevent pausing. Pausing resolves reveals to visible content and unmounts the optional Lanyard renderer.
+- Card pause remains an independent preference. Global resume must not undo a deliberate local card pause. Static portrait, keyboard flip, GPU cleanup and offscreen/hidden-document suspension remain in place.
+- Do not add endless background sweeps, text scrambling, pointer replacement, a boot screen, or a second dominant shader.
 
-### Route Board (signature)
-The subpage lead panel on `/services`: an incoming/surfaces/outgoing routing diagram built from notched route nodes, a lime-labeled core, and 1px mint connector strokes. Service cards below it stage the work as `input → operation → output` diagrams with chip rows for deliverables and a lime fit line. This is how the four entry routes (audit, delivery, fractional leadership, AI/LLM engineering) stay legible to a non-technical buyer.
+### Responsive and verification requirements
 
-### Scramble Text (signature)
-Terminal-grade reveal on the hero and section headings via `use-scramble`. The rendered element always keeps `aria-label` set to the final string, so meaning never depends on animation completing.
+Use a single-column hero below 900px and a 340px Lanyard stage on narrow phones. Preserve the real portrait proportions; do not distort the texture. At narrow widths the service choices precede the result, and the process is a normal vertical list. All important controls meet a 44px target and have visible keyboard focus.
 
-### Credibility Panel (signature)
-RZETELNA Firma proof, not decoration. The `RZETELNA` word uses flat lime command accent (`#d9ff8c`) with no glow, inside an uppercase Space Grotesk title at `2.55rem`. Certificate link, display URL, and mint corner brackets stay contained to this panel.
+Before delivery verify 320/390/768/1024/1440px, initial and live reduced motion, global/local pause interaction, no-JavaScript content and routes, query/deep links, Back/Forward, service-to-contact selection and Lanyard fallback. Check semantic headings, contrast and real rendering, then lint, typecheck, relevant regressions and the standalone build. Physical-device performance remains a separate claim requiring measurement.
 
-### Collaboration Logo Surfaces
-Partner marks (Dolby, Polestar, Volvo, DHL, Leroy Merlin, Budimex, TDJ) sit in controlled single-cut notched surfaces inside ledger-row cards. Dark, light, and yellow backplates are allowed per mark to protect legibility. The grid reads as proof of real delivery contexts; logos only, no category labels beneath them.
-
-## 6. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do:
-- **Do** keep the black-green (`#020807`), mint (`#7effc6`), lime (`#d9ff8c`), mono-forward terminal identity.
-- **Do** pick the right notch tier: double-cut panels for structure, single-cut chips for controls, hairline ledger rows for repeated content. All three are the brand's fingerprint; rounded and pill shapes are not.
-- **Do** build depth from gradient + 1px mint border + inset hairline + notch. Flat by default.
-- **Do** keep direct email and the operator name visible; the one-person model is a trust signal.
-- **Do** state the business outcome in plain language before the technical texture: risk reduced, delivery unblocked, decision de-risked, handoff durable.
-- **Do** keep all four entry routes (audit, delivery, fractional leadership, AI/LLM engineering) legible to a non-technical buyer.
-- **Do** use selected collaborations and RZETELNA as evidence-bearing proof.
-- **Do** ship reduced-motion fallbacks for boot, scan, sweep, pulse, scramble, and scroll reveals.
-- **Do** keep body copy above 4.5:1 on the teal panels; bump toward `#f4fff8` if a muted value is borderline.
+- **Do** preserve graphite, muted mint, the wb_ mark, the real portrait and the accountable operator.
+- **Do** state outcomes in plain language before technical detail.
+- **Do** keep direct email visible and preserve the protected form's routes and recovery.
+- **Do** retain original partner marks and add case studies only with verified scope, materials and results.
+- **Do** treat process numbers as a real ordered sequence, not decorative section markers.
+- **Do** make motion finite, honor live reduced motion and resolve paused reveals to readable content.
+- **Do** verify keyboard access, no-JavaScript content, mobile layouts and real rendering before delivery.
 
 ### Don't:
-- **Don't** use generic agency polish, bloated SaaS landing patterns, vague innovation language, or decorative case-study theater.
+- **Don't** use generic agency polish, bloated SaaS landing-page patterns, vague innovation language or decorative case-study theater.
+- **Don't** make portfolio design feel more interested in presentation than problem solving.
 - **Don't** make the site feel like a large anonymous consultancy or bury the operator behind abstract company language.
-- **Don't** let the terminal identity get so loud that clients cannot tell what is delivered; the business message always outranks the texture.
-- **Don't** use AI-consultancy hype language around the AI offer: no revolutionize, unlock, supercharge, or 10x.
-- **Don't** introduce rounded `≥0.5rem` cards or `999px` pill buttons; the system is sharp + notched, not soft.
-- **Don't** use gradient text, glassmorphism as decoration, thick colored side-stripe borders, repeated identical icon cards, or the big-number hero-metric template.
-- **Don't** pair a 1px border with a soft wide drop shadow (blur ≥ 16px) on the same element (the ghost-card tell).
-- **Don't** add wide-tracked uppercase eyebrows above every section, or numbered `01 / 02 / 03` section markers as default scaffolding.
-- **Don't** spread the lime credibility accent or boot window-bar colors into unrelated UI.
-- **Don't** use em dashes anywhere in copy; use commas, colons, semicolons, periods, or parentheses.
-- **Don't** change URL structure, nav labels, form field names, logo treatment, or legal and credibility copy without explicit approval.
+- **Don't** use costume hacking copy that obscures the service offer, or jargon-first copy that a non-technical buyer has to decode.
+- **Don't** use AI-consultancy hype language such as revolutionize, unlock, supercharge or 10x.
+- **Don't** add decorative glass pills, thick neon outlines, unrelated purple gradients or invented performance claims.
+- **Don't** add endless background sweeps, text scrambling, pointer replacement, a boot screen or a second dominant shader.
+- **Don't** change legal claims, credibility links or private-client behavior as a visual side effect.

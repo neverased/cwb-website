@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import styles from "@/app/(frontend)/page.module.css";
+import { ProfileLanyard } from "@/components/profile_lanyard";
 import { SelectedWork } from "@/components/selected_work";
 import { ServiceExplorer } from "@/components/service_explorer";
 import { ContactCallout, SiteShell } from "@/components/site_shell";
@@ -52,11 +53,11 @@ export const HomePage = () => (
           </span>
         </div>
       </div>
-      <ServiceExplorer />
+      <ProfileLanyard />
     </section>
     <SelectedWork />
     <section className={styles.services} aria-labelledby="services-title">
-      <div className={styles.sectionHeading}>
+      <div className={styles.servicesIntro}>
         <div>
           <p className="eyebrow">01 / How I can help</p>
           <h2 id="services-title" className="section-title">
@@ -64,11 +65,12 @@ export const HomePage = () => (
             <br />
             way forward.
           </h2>
+          <p className="section-copy">
+            A focused review, a hands-on build, or ongoing technical direction.
+            Start where your team needs clarity.
+          </p>
         </div>
-        <p className="section-copy">
-          A focused review, a hands-on build, or ongoing technical direction.
-          Start where your team needs clarity.
-        </p>
+        <ServiceExplorer />
       </div>
       <div className={styles.serviceList}>
         {services.map((service, index) => (

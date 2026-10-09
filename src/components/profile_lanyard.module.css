@@ -1,0 +1,127 @@
+.figure {
+  min-width: 0;
+  position: relative;
+}
+.heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--text-subtle);
+  font:
+    0.65rem/1.5 var(--font-mono),
+    monospace;
+  border-bottom: 1px solid var(--rule-soft);
+  padding-bottom: 0.75rem;
+}
+.marker {
+  color: var(--accent-mint);
+  letter-spacing: -0.08em;
+}
+.stage {
+  position: relative;
+  height: clamp(29rem, 42vw, 34rem);
+  isolation: isolate;
+  background: radial-gradient(ellipse at 50% 48%, #a3e8be08, transparent 65%);
+}
+.scene,
+.fallback {
+  position: absolute;
+  inset: 0;
+}
+.scene {
+  opacity: 0;
+  transition: opacity 250ms ease;
+}
+.scene[data-ready="true"] {
+  opacity: 1;
+}
+.fallback {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.fallback[hidden] {
+  display: none;
+}
+.strap {
+  width: 2.25rem;
+  height: 15%;
+  background: #a3e8be url("/lanyard/strap.svg") center / auto 2.25rem;
+  border-inline: 2px solid var(--rule-strong);
+}
+.clip {
+  width: 1.55rem;
+  height: 1.3rem;
+  flex-shrink: 0;
+  border: 4px solid var(--text-muted);
+  border-top-width: 8px;
+  border-radius: 0.15rem 0.15rem 0.65rem 0.65rem;
+  margin-bottom: -0.25rem;
+  z-index: 1;
+}
+.card {
+  width: auto;
+  height: 70%;
+  max-width: 80%;
+  border-radius: 0.9rem;
+  border: 1px solid var(--rule-strong);
+  box-shadow: 0 22px 35px -18px #0009;
+  object-fit: contain;
+}
+.caption {
+  border-top: 1px solid var(--rule-soft);
+  padding-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.hint {
+  font:
+    0.63rem/1.6 var(--font-mono),
+    monospace;
+  color: var(--text-subtle);
+}
+.profileLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  min-height: 44px;
+  font-size: 0.85rem;
+}
+.profileLink span {
+  color: var(--accent-mint);
+}
+.profileLink:hover {
+  color: var(--accent-mint);
+}
+.motionButton {
+  background: transparent;
+  border: 1px solid var(--rule-soft);
+  border-radius: 0.25rem;
+  min-width: 4.5rem;
+  min-height: 44px;
+  padding: 0.5rem 0.75rem;
+  color: var(--text-muted);
+  font:
+    0.65rem/1.5 var(--font-mono),
+    monospace;
+}
+.motionButton:hover {
+  border-color: var(--rule-strong);
+  color: var(--accent-mint);
+}
+@media (max-width: 900px) {
+  .figure {
+    width: min(100%, 33rem);
+    margin-inline: auto;
+  }
+  .stage {
+    height: 31rem;
+  }
+}
+@media (max-width: 480px) {
+  .stage {
+    height: 27rem;
+  }
+}

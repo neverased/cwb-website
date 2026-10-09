@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="1012" viewBox="0 0 720 1012">
+  <title>Consulting Wojciech Bajer</title>
+  <rect width="720" height="1012" fill="#111819"/>
+  <text x="40" y="155" fill="#8c9d96" font-family="monospace" font-size="20" letter-spacing="3">INDEPENDENT BY DESIGN.</text>
+  <text x="32" y="490" fill="#a3e8be" font-family="Arial,sans-serif" font-weight="700" font-size="210" letter-spacing="-20">CWB</text>
+  <path d="M40 555H680" stroke="#566e61" stroke-width="2"/>
+  <g fill="#edf2ef" font-family="Arial,sans-serif" font-size="43" letter-spacing="-1">
+    <text x="40" y="643">Clear decisions.</text>
+    <text x="40" y="699">Cleaner delivery.</text>
+  </g>
+  <text x="40" y="886" fill="#a3e8be" font-family="Arial,sans-serif" font-size="27">Wojciech Bajer</text>
+  <text x="40" y="939" fill="#a8b5b0" font-family="monospace" font-size="21">wojciechbajer.com</text>
+</svg>

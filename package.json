@@ -40,11 +40,13 @@
     "react-dom": "^19.3.0",
     "sass": "^1.105.1",
     "sharp": "0.35.5",
+    "three": "0.186.1",
     "typescript": "7.0.2"
   },
   "devDependencies": {
     "@types/nodemailer": "^8.0.2",
     "@types/pdfkit": "^0.17.6",
+    "@types/three": "0.186.0",
     "coffeescript": "^2.7.0",
     "eslint-plugin-simple-import-sort": "^14.0.0",
     "jest": "^30.5.2",

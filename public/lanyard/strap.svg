@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="96" viewBox="0 0 640 96">
+  <rect width="640" height="96" fill="#a3e8be"/>
+  <path d="M0 7H640M0 89H640" stroke="#566e61" stroke-width="2" stroke-dasharray="4 7"/>
+  <text x="32" y="60" fill="#111819" font-family="Arial,sans-serif" font-size="30" font-weight="700" letter-spacing="5">CWB / WOJCIECH BAJER</text>
+</svg>

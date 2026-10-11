@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 
 import { getPostSitemapEntries } from "@/lib/posts";
 import { absoluteUrl } from "@/lib/seo";
+import { servicePages, servicePath } from "@/lib/service_pages";
 
 export const dynamic = "force-dynamic";
 
@@ -25,6 +26,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: absoluteUrl(path),
       changeFrequency,
       priority,
+    })),
+    ...servicePages.map(({ id }) => ({
+      url: absoluteUrl(servicePath(id)),
+      changeFrequency: "monthly" as const,
+      priority: 0.85,
     })),
     ...posts.map((post) => ({
       url: absoluteUrl(`/notes/${post.slug}/`),

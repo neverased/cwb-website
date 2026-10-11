@@ -1,0 +1,895 @@
+{
+  "date": "2026-10-09",
+  "timezone": "Europe/Warsaw",
+  "state": "Local changes only; no push or deployment",
+  "public": {
+    "checked_at_utc": "2026-10-09T15:44:03.066404+00:00",
+    "summary": {
+      "sitemap_pages": 7,
+      "sitemap_page_failures": 0,
+      "additional_internal_link_checks": 6,
+      "additional_internal_link_failures": 0,
+      "asset_checks": 29,
+      "asset_failures": 0,
+      "opengraph_asset_checks": 6,
+      "opengraph_asset_failures": 0,
+      "broken_fragment_links": 0,
+      "missing_img_alt": 0,
+      "public_pages_with_noindex": [],
+      "issues": [
+        "Generic, non-descriptive H1 headings on landing pages",
+        "All six services use same landing page with fragments; no independent service landing pages in public sitemap",
+        "Only one published article discovered",
+        "Published Jellyfin note title is 93 characters including appended site name; potential truncation, not an indexing defect",
+        "Published BlogPosting JSON-LD lacks image; note uses generic notes/opengraph-image in social metadata"
+      ]
+    },
+    "pages": [
+      {
+        "url": "https://wojciechbajer.com/",
+        "final_url": "https://wojciechbajer.com/",
+        "status": 200,
+        "title": "Wojciech Bajer | Software, Architecture & AI Consulting",
+        "h1": [
+          "Clear decisions.Cleaner delivery."
+        ],
+        "metas": {
+          "": "",
+          "viewport": "width=device-width, initial-scale=1",
+          "next-size-adjust": "",
+          "theme-color": "#0b0f10",
+          "color-scheme": "dark",
+          "description": "Independent software, architecture, multimedia and AI consulting by Wojciech Bajer. Technical audits, hands-on delivery and fractional technical leadership.",
+          "application-name": "Wojciech Bajer",
+          "author": "Wojciech Bajer",
+          "keywords": "Wojciech Bajer,multimedia,software engineering,application architecture,technical audits,product audits,audio,video,frontend systems,consulting,fractional technical leadership,fractional CTO,AI engineering,LLM integrations,media-heavy products,application audits,technology consulting,multimedia systems,fractional technical leadership,AI engineering",
+          "referrer": "origin-when-cross-origin",
+          "creator": "Wojciech Bajer",
+          "publisher": "Wojciech Bajer",
+          "robots": "index, follow",
+          "googlebot": "index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1",
+          "format-detection": "telephone=no, address=no, email=no",
+          "og:title": "Wojciech Bajer | Software, Architecture & AI Consulting",
+          "og:description": "Independent software, architecture, multimedia and AI consulting by Wojciech Bajer. Technical audits, hands-on delivery and fractional technical leadership.",
+          "og:url": "https://wojciechbajer.com/",
+          "og:site_name": "Wojciech Bajer",
+          "og:locale": "en_US",
+          "og:image": "https://wojciechbajer.com/opengraph-image/",
+          "og:image:width": "1200",
+          "og:image:height": "630",
+          "og:image:alt": "Wojciech Bajer | Software, Architecture & AI Consulting",
+          "og:type": "website",
+          "twitter:card": "summary_large_image",
+          "twitter:title": "Wojciech Bajer | Software, Architecture & AI Consulting",
+          "twitter:description": "Independent software, architecture, multimedia and AI consulting by Wojciech Bajer. Technical audits, hands-on delivery and fractional technical leadership.",
+          "twitter:image": "https://wojciechbajer.com/opengraph-image/"
+        },
+        "canonical": [
+          "https://wojciechbajer.com/"
+        ],
+        "lang": "en"
+      },
+      {
+        "url": "https://wojciechbajer.com/profile/",
+        "final_url": "https://wojciechbajer.com/profile/",
+        "status": 200,
+        "title": "About Wojciech Bajer | Independent Technical Consultant",
+        "h1": [
+          "A thinking partner.A hands-on specialist."
+        ],
+        "metas": {
+          "": "",
+          "viewport": "width=device-width, initial-scale=1",
+          "next-size-adjust": "",
+          "theme-color": "#0b0f10",
+          "color-scheme": "dark",
+          "description": "Meet Wojciech Bajer, an independent technical consultant based in Poland. Software, architecture, multimedia and AI expertise for teams worldwide.",
+          "application-name": "Wojciech Bajer",
+          "author": "Wojciech Bajer",
+          "keywords": "Wojciech Bajer,multimedia,software engineering,application architecture,technical audits,product audits,audio,video,frontend systems,consulting,fractional technical leadership,fractional CTO,AI engineering,LLM integrations,Wojciech Bajer profile,about Wojciech Bajer,technical consultant,software and multimedia consultant",
+          "referrer": "origin-when-cross-origin",
+          "creator": "Wojciech Bajer",
+          "publisher": "Wojciech Bajer",
+          "robots": "index, follow",
+          "googlebot": "index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1",
+          "format-detection": "telephone=no, address=no, email=no",
+          "og:title": "About Wojciech Bajer | Independent Technical Consultant",
+          "og:description": "Meet Wojciech Bajer, an independent technical consultant based in Poland. Software, architecture, multimedia and AI expertise for teams worldwide.",
+          "og:url": "https://wojciechbajer.com/profile/",
+          "og:site_name": "Wojciech Bajer",
+          "og:locale": "en_US",
+          "og:image": "https://wojciechbajer.com/profile/opengraph-image/",
+          "og:image:width": "1200",
+          "og:image:height": "630",
+          "og:image:alt": "About Wojciech Bajer | Independent Technical Consultant",
+          "og:type": "website",
+          "twitter:card": "summary_large_image",
+          "twitter:title": "About Wojciech Bajer | Independent Technical Consultant",
+          "twitter:description": "Meet Wojciech Bajer, an independent technical consultant based in Poland. Software, architecture, multimedia and AI expertise for teams worldwide.",
+          "twitter:image": "https://wojciechbajer.com/profile/opengraph-image/"
+        },
+        "canonical": [
+          "https://wojciechbajer.com/profile/"
+        ],
+        "lang": "en"
+      },
+      {
+        "url": "https://wojciechbajer.com/services/",
+        "final_url": "https://wojciechbajer.com/services/",
+        "status": 200,
+        "title": "Software, AI & Technical Audit Services | Wojciech Bajer",
+        "h1": [
+          "Complex work.Clear ways to help."
+        ],
+        "metas": {
+          "": "",
+          "viewport": "width=device-width, initial-scale=1",
+          "next-size-adjust": "",
+          "theme-color": "#0b0f10",
+          "color-scheme": "dark",
+          "description": "Explore software engineering, architecture reviews, technical audits, multimedia, fractional CTO support and AI integrations with Wojciech Bajer.",
+          "application-name": "Wojciech Bajer",
+          "author": "Wojciech Bajer",
+          "keywords": "Wojciech Bajer,multimedia,software engineering,application architecture,technical audits,product audits,audio,video,frontend systems,consulting,fractional technical leadership,fractional CTO,AI engineering,LLM integrations,multimedia services,software engineering consulting,application architecture consulting,technical audit services,fractional technical leadership,fractional CTO services,AI engineering services,LLM integration consulting",
+          "referrer": "origin-when-cross-origin",
+          "creator": "Wojciech Bajer",
+          "publisher": "Wojciech Bajer",
+          "robots": "index, follow",
+          "googlebot": "index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1",
+          "format-detection": "telephone=no, address=no, email=no",
+          "og:title": "Software, AI & Technical Audit Services | Wojciech Bajer",
+          "og:description": "Explore software engineering, architecture reviews, technical audits, multimedia, fractional CTO support and AI integrations with Wojciech Bajer.",
+          "og:url": "https://wojciechbajer.com/services/",
+          "og:site_name": "Wojciech Bajer",
+          "og:locale": "en_US",
+          "og:image": "https://wojciechbajer.com/services/opengraph-image/",
+          "og:image:width": "1200",
+          "og:image:height": "630",
+          "og:image:alt": "Software, AI & Technical Audit Services | Wojciech Bajer",
+          "og:type": "website",
+          "twitter:card": "summary_large_image",
+          "twitter:title": "Software, AI & Technical Audit Services | Wojciech Bajer",
+          "twitter:description": "Explore software engineering, architecture reviews, technical audits, multimedia, fractional CTO support and AI integrations with Wojciech Bajer.",
+          "twitter:image": "https://wojciechbajer.com/services/opengraph-image/"
+        },
+        "canonical": [
+          "https://wojciechbajer.com/services/"
+        ],
+        "lang": "en"
+      },
+      {
+        "url": "https://wojciechbajer.com/process/",
+        "final_url": "https://wojciechbajer.com/process/",
+        "status": 200,
+        "title": "Technical Consulting Process | Wojciech Bajer",
+        "h1": [
+          "A clear path.Useful at every step."
+        ],
+        "metas": {
+          "": "",
+          "viewport": "width=device-width, initial-scale=1",
+          "next-size-adjust": "",
+          "theme-color": "#0b0f10",
+          "color-scheme": "dark",
+          "description": "How technical consulting works: understand the context, review risks, agree on priorities and deliver a practical handoff. Explore Wojciech Bajer's process.",
+          "application-name": "Wojciech Bajer",
+          "author": "Wojciech Bajer",
+          "keywords": "Wojciech Bajer,multimedia,software engineering,application architecture,technical audits,product audits,audio,video,frontend systems,consulting,fractional technical leadership,fractional CTO,AI engineering,LLM integrations,technical process,operating model,architecture review process,audit workflow",
+          "referrer": "origin-when-cross-origin",
+          "creator": "Wojciech Bajer",
+          "publisher": "Wojciech Bajer",
+          "robots": "index, follow",
+          "googlebot": "index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1",
+          "format-detection": "telephone=no, address=no, email=no",
+          "og:title": "Technical Consulting Process | Wojciech Bajer",
+          "og:description": "How technical consulting works: understand the context, review risks, agree on priorities and deliver a practical handoff. Explore Wojciech Bajer's process.",
+          "og:url": "https://wojciechbajer.com/process/",
+          "og:site_name": "Wojciech Bajer",
+          "og:locale": "en_US",
+          "og:image": "https://wojciechbajer.com/process/opengraph-image/",
+          "og:image:width": "1200",
+          "og:image:height": "630",
+          "og:image:alt": "Technical Consulting Process | Wojciech Bajer",
+          "og:type": "website",
+          "twitter:card": "summary_large_image",
+          "twitter:title": "Technical Consulting Process | Wojciech Bajer",
+          "twitter:description": "How technical consulting works: understand the context, review risks, agree on priorities and deliver a practical handoff. Explore Wojciech Bajer's process.",
+          "twitter:image": "https://wojciechbajer.com/process/opengraph-image/"
+        },
+        "canonical": [
+          "https://wojciechbajer.com/process/"
+        ],
+        "lang": "en"
+      },
+      {
+        "url": "https://wojciechbajer.com/notes/",
+        "final_url": "https://wojciechbajer.com/notes/",
+        "status": 200,
+        "title": "Software & Architecture Notes | Wojciech Bajer",
+        "h1": [
+          "Ideas, observationsand useful questions."
+        ],
+        "metas": {
+          "": "",
+          "viewport": "width=device-width, initial-scale=1",
+          "theme-color": "#0b0f10",
+          "color-scheme": "dark",
+          "next-size-adjust": "",
+          "description": "Notes on architecture, multimedia systems, software delivery, and independent technical reviews.",
+          "application-name": "Wojciech Bajer",
+          "author": "Wojciech Bajer",
+          "keywords": "Wojciech Bajer,multimedia,software engineering,application architecture,technical audits,product audits,audio,video,frontend systems,consulting,fractional technical leadership,fractional CTO,AI engineering,LLM integrations",
+          "referrer": "origin-when-cross-origin",
+          "creator": "Wojciech Bajer",
+          "publisher": "Wojciech Bajer",
+          "robots": "index, follow",
+          "googlebot": "index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1",
+          "format-detection": "telephone=no, address=no, email=no",
+          "og:title": "Software & Architecture Notes | Wojciech Bajer",
+          "og:description": "Notes on architecture, multimedia systems, software delivery, and independent technical reviews.",
+          "og:url": "https://wojciechbajer.com/notes/",
+          "og:site_name": "Wojciech Bajer",
+          "og:locale": "en_US",
+          "og:image": "https://wojciechbajer.com/notes/opengraph-image/",
+          "og:image:width": "1200",
+          "og:image:height": "630",
+          "og:image:alt": "Software & Architecture Notes | Wojciech Bajer",
+          "og:type": "website",
+          "twitter:card": "summary_large_image",
+          "twitter:title": "Software & Architecture Notes | Wojciech Bajer",
+          "twitter:description": "Notes on architecture, multimedia systems, software delivery, and independent technical reviews.",
+          "twitter:image": "https://wojciechbajer.com/notes/opengraph-image/"
+        },
+        "canonical": [
+          "https://wojciechbajer.com/notes/"
+        ],
+        "lang": "en"
+      },
+      {
+        "url": "https://wojciechbajer.com/contact/",
+        "final_url": "https://wojciechbajer.com/contact/",
+        "status": 200,
+        "title": "Contact Wojciech Bajer | Discuss Your Technical Project",
+        "h1": [
+          "What are you working on?"
+        ],
+        "metas": {
+          "": "",
+          "viewport": "width=device-width, initial-scale=1",
+          "theme-color": "#0b0f10",
+          "color-scheme": "dark",
+          "description": "Direct contact page for consulting, multimedia systems work, software delivery, architecture reviews, and independent audits.",
+          "application-name": "Wojciech Bajer",
+          "author": "Wojciech Bajer",
+          "keywords": "Wojciech Bajer,multimedia,software engineering,application architecture,technical audits,product audits,audio,video,frontend systems,consulting,fractional technical leadership,fractional CTO,AI engineering,LLM integrations,contact Wojciech Bajer,consulting inquiry,architecture review contact,technical audit contact",
+          "referrer": "origin-when-cross-origin",
+          "creator": "Wojciech Bajer",
+          "publisher": "Wojciech Bajer",
+          "robots": "index, follow",
+          "googlebot": "index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1",
+          "format-detection": "telephone=no, address=no, email=no",
+          "og:title": "Contact Wojciech Bajer | Discuss Your Technical Project",
+          "og:description": "Direct contact page for consulting, multimedia systems work, software delivery, architecture reviews, and independent audits.",
+          "og:url": "https://wojciechbajer.com/contact/",
+          "og:site_name": "Wojciech Bajer",
+          "og:locale": "en_US",
+          "og:image": "https://wojciechbajer.com/contact/opengraph-image/",
+          "og:image:width": "1200",
+          "og:image:height": "630",
+          "og:image:alt": "Contact Wojciech Bajer | Discuss Your Technical Project",
+          "og:type": "website",
+          "twitter:card": "summary_large_image",
+          "twitter:title": "Contact Wojciech Bajer | Discuss Your Technical Project",
+          "twitter:description": "Direct contact page for consulting, multimedia systems work, software delivery, architecture reviews, and independent audits.",
+          "twitter:image": "https://wojciechbajer.com/contact/opengraph-image/",
+          "next-size-adjust": ""
+        },
+        "canonical": [
+          "https://wojciechbajer.com/contact/"
+        ],
+        "lang": "en"
+      },
+      {
+        "url": "https://wojciechbajer.com/notes/jellyfin-qnap-hardware-acceleration-rockchip-rkmpp/",
+        "final_url": "https://wojciechbajer.com/notes/jellyfin-qnap-hardware-acceleration-rockchip-rkmpp/",
+        "status": 200,
+        "title": "Jellyfin on QNAP: How I Enabled Hardware Acceleration on the Rockchip RK3588 | Wojciech Bajer",
+        "h1": [
+          "Jellyfin on QNAP: How I Enabled Hardware Acceleration on the Rockchip RK3588"
+        ],
+        "metas": {
+          "": "",
+          "viewport": "width=device-width, initial-scale=1",
+          "theme-color": "#0b0f10",
+          "color-scheme": "dark",
+          "next-size-adjust": "",
+          "description": "From identifying devices in /dev to testing FFmpeg. My Jellyfin setup on a QNAP TS-AI642, including RKMPP, RGA, and the renderD129 trap.",
+          "application-name": "Wojciech Bajer",
+          "author": "Wojciech Bajer",
+          "keywords": "Wojciech Bajer,multimedia,software engineering,application architecture,technical audits,product audits,audio,video,frontend systems,consulting,fractional technical leadership,fractional CTO,AI engineering,LLM integrations",
+          "referrer": "origin-when-cross-origin",
+          "creator": "Wojciech Bajer",
+          "publisher": "Wojciech Bajer",
+          "robots": "index, follow",
+          "googlebot": "index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1",
+          "format-detection": "telephone=no, address=no, email=no",
+          "og:title": "Jellyfin on QNAP: How I Enabled Hardware Acceleration on the Rockchip RK3588",
+          "og:description": "From identifying devices in /dev to testing FFmpeg. My Jellyfin setup on a QNAP TS-AI642, including RKMPP, RGA, and the renderD129 trap.",
+          "og:url": "https://wojciechbajer.com/notes/jellyfin-qnap-hardware-acceleration-rockchip-rkmpp/",
+          "og:site_name": "Wojciech Bajer",
+          "og:locale": "en_US",
+          "og:image": "https://wojciechbajer.com/notes/opengraph-image/",
+          "og:image:width": "1200",
+          "og:image:height": "630",
+          "og:image:alt": "Jellyfin on QNAP: How I Enabled Hardware Acceleration on the Rockchip RK3588",
+          "og:type": "article",
+          "article:published_time": "2026-09-17T15:01:32.857Z",
+          "article:modified_time": "2026-09-17T15:01:32.867Z",
+          "article:author": "https://wojciechbajer.com/profile/",
+          "twitter:card": "summary_large_image",
+          "twitter:title": "Jellyfin on QNAP: How I Enabled Hardware Acceleration on the Rockchip RK3588",
+          "twitter:description": "From identifying devices in /dev to testing FFmpeg. My Jellyfin setup on a QNAP TS-AI642, including RKMPP, RGA, and the renderD129 trap.",
+          "twitter:image": "https://wojciechbajer.com/notes/opengraph-image/",
+          "twitter:image:alt": "Jellyfin on QNAP: How I Enabled Hardware Acceleration on the Rockchip RK3588",
+          "twitter:image:width": "1200",
+          "twitter:image:height": "630"
+        },
+        "canonical": [
+          "https://wojciechbajer.com/notes/jellyfin-qnap-hardware-acceleration-rockchip-rkmpp/"
+        ],
+        "lang": "en"
+      }
+    ],
+    "robots": "User-Agent: *\nAllow: /\nAllow: /api/cms/media/file/\nDisallow: /admin/\nDisallow: /api/\nDisallow: /quotes/\n\nHost: https://wojciechbajer.com\nSitemap: https://wojciechbajer.com/sitemap.xml\n",
+    "redirect_chains": [
+      {
+        "url": "http://wojciechbajer.com/",
+        "hops": [
+          {
+            "url": "http://wojciechbajer.com/",
+            "status": 308,
+            "location": "https://wojciechbajer.com/"
+          }
+        ],
+        "final_url": "https://wojciechbajer.com/",
+        "status": 200
+      },
+      {
+        "url": "http://www.wojciechbajer.com/",
+        "hops": [
+          {
+            "url": "http://www.wojciechbajer.com/",
+            "status": 308,
+            "location": "https://www.wojciechbajer.com/"
+          },
+          {
+            "url": "https://www.wojciechbajer.com/",
+            "status": 308,
+            "location": "https://wojciechbajer.com/"
+          }
+        ],
+        "final_url": "https://wojciechbajer.com/",
+        "status": 200
+      },
+      {
+        "url": "https://www.wojciechbajer.com/",
+        "hops": [
+          {
+            "url": "https://www.wojciechbajer.com/",
+            "status": 308,
+            "location": "https://wojciechbajer.com/"
+          }
+        ],
+        "final_url": "https://wojciechbajer.com/",
+        "status": 200
+      },
+      {
+        "url": "https://www.wojciechbajer.com/contact/?service=ai",
+        "hops": [
+          {
+            "url": "https://www.wojciechbajer.com/contact/?service=ai",
+            "status": 308,
+            "location": "https://wojciechbajer.com/contact/?service=ai"
+          }
+        ],
+        "final_url": "https://wojciechbajer.com/contact/?service=ai",
+        "status": 200
+      },
+      {
+        "url": "https://wojciechbajer.com/services",
+        "hops": [
+          {
+            "url": "https://wojciechbajer.com/services",
+            "status": 308,
+            "location": "https://wojciechbajer.com/services/"
+          }
+        ],
+        "final_url": "https://wojciechbajer.com/services/",
+        "status": 200
+      },
+      {
+        "url": "https://wojciechbajer.com/notes",
+        "hops": [
+          {
+            "url": "https://wojciechbajer.com/notes",
+            "status": 308,
+            "location": "https://wojciechbajer.com/notes/"
+          }
+        ],
+        "final_url": "https://wojciechbajer.com/notes/",
+        "status": 200
+      }
+    ],
+    "tls": {
+      "version": "TLSv1.3",
+      "expires": "Dec  9 12:14:37 2026 GMT",
+      "subjectAltName": [
+        [
+          "DNS",
+          "wojciechbajer.com"
+        ]
+      ],
+      "issuer": [
+        [
+          [
+            "countryName",
+            "US"
+          ]
+        ],
+        [
+          [
+            "organizationName",
+            "Let's Encrypt"
+          ]
+        ],
+        [
+          [
+            "commonName",
+            "YR1"
+          ]
+        ]
+      ]
+    },
+    "broken_anchors": [],
+    "method": [
+      "curl -sSIL --max-time 20 https://wojciechbajer.com",
+      "curl -sSIL --max-time 20 http://wojciechbajer.com",
+      "curl -sSIL --max-time 20 https://www.wojciechbajer.com",
+      "python3 urllib.request GET robots.txt and sitemap.xml; GET each loc in sitemap; parse HTMLParser for title, h1, canonical, metadata, JSON-LD, images and links",
+      "python3 urllib.request HEAD every discovered internal page URL and image/script/stylesheet/icon/manifest asset; inspect fragments against target HTML id attributes",
+      "python3 ssl.create_default_context with server_hostname wojciechbajer.com; getpeercert() and version()",
+      "python3 urllib.request.HTTPRedirectHandler records each redirect for protocol, www, trailing-slash and query-preservation checks"
+    ]
+  },
+  "public_lighthouse": {
+    "version": "13.5.0",
+    "fetchTime": "2026-10-09T15:51:40.150Z",
+    "url": "https://wojciechbajer.com/",
+    "categories": {
+      "performance": 95.0,
+      "accessibility": 100,
+      "best-practices": 96.0,
+      "seo": 100
+    },
+    "metrics": {
+      "first-contentful-paint": {
+        "value": 915.394,
+        "unit": "millisecond"
+      },
+      "largest-contentful-paint": {
+        "value": 2865.3940000000002,
+        "unit": "millisecond"
+      },
+      "speed-index": {
+        "value": 915.394,
+        "unit": "millisecond"
+      },
+      "total-blocking-time": {
+        "value": 30.5,
+        "unit": "millisecond"
+      },
+      "cumulative-layout-shift": {
+        "value": 0,
+        "unit": "unitless"
+      }
+    },
+    "conditions": "Single mobile lab run; Chrome headless with --disable-gpu. WebGL console errors are environment-dependent; not field Core Web Vitals."
+  },
+  "local": {
+    "build": "Next.js 16.4.0 Turbopack production standalone, isolated /tmp copy, fresh disposable PostgreSQL 17 database",
+    "http": {
+      "sitemapPages": 12,
+      "internalLinks": 18,
+      "images": 16,
+      "servicePages": 6,
+      "result": "passed"
+    },
+    "browser": {
+      "passed": 36,
+      "results": [
+        {
+          "path": "/",
+          "width": 320,
+          "javaScriptEnabled": true,
+          "status": 200,
+          "h1": 1,
+          "overflow": false,
+          "bodyLength": 2307,
+          "missingImages": []
+        },
+        {
+          "path": "/services/",
+          "width": 320,
+          "javaScriptEnabled": true,
+          "status": 200,
+          "h1": 1,
+          "overflow": false,
+          "bodyLength": 3071,
+          "missingImages": []
+        },
+        {
+          "path": "/profile/",
+          "width": 320,
+          "javaScriptEnabled": true,
+          "status": 200,
+          "h1": 1,
+          "overflow": false,
+          "bodyLength": 1555,
+          "missingImages": []
+        },
+        {
+          "path": "/services/multimedia-consulting/",
+          "width": 320,
+          "javaScriptEnabled": true,
+          "status": 200,
+          "h1": 1,
+          "overflow": false,
+          "bodyLength": 2419,
+          "missingImages": []
+        },
+        {
+          "path": "/services/software-engineering/",
+          "width": 320,
+          "javaScriptEnabled": true,
+          "status": 200,
+          "h1": 1,
+          "overflow": false,
+          "bodyLength": 2447,
+          "missingImages": []
+        },
+        {
+          "path": "/services/software-architecture/",
+          "width": 320,
+          "javaScriptEnabled": true,
+          "status": 200,
+          "h1": 1,
+          "overflow": false,
+          "bodyLength": 2457,
+          "missingImages": []
+        },
+        {
+          "path": "/services/technical-audits/",
+          "width": 320,
+          "javaScriptEnabled": true,
+          "status": 200,
+          "h1": 1,
+          "overflow": false,
+          "bodyLength": 2494,
+          "missingImages": []
+        },
+        {
+          "path": "/services/fractional-cto/",
+          "width": 320,
+          "javaScriptEnabled": true,
+          "status": 200,
+          "h1": 1,
+          "overflow": false,
+          "bodyLength": 2518,
+          "missingImages": []
+        },
+        {
+          "path": "/services/ai-llm-engineering/",
+          "width": 320,
+          "javaScriptEnabled": true,
+          "status": 200,
+          "h1": 1,
+          "overflow": false,
+          "bodyLength": 2463,
+          "missingImages": []
+        },
+        {
+          "path": "/",
+          "width": 390,
+          "javaScriptEnabled": true,
+          "status": 200,
+          "h1": 1,
+          "overflow": false,
+          "bodyLength": 2307,
+          "missingImages": []
+        },
+        {
+          "path": "/services/",
+          "width": 390,
+          "javaScriptEnabled": true,
+          "status": 200,
+          "h1": 1,
+          "overflow": false,
+          "bodyLength": 3071,
+          "missingImages": []
+        },
+        {
+          "path": "/profile/",
+          "width": 390,
+          "javaScriptEnabled": true,
+          "status": 200,
+          "h1": 1,
+          "overflow": false,
+          "bodyLength": 1555,
+          "missingImages": []
+        },
+        {
+          "path": "/services/multimedia-consulting/",
+          "width": 390,
+          "javaScriptEnabled": true,
+          "status": 200,
+          "h1": 1,
+          "overflow": false,
+          "bodyLength": 2419,
+          "missingImages": []
+        },
+        {
+          "path": "/services/software-engineering/",
+          "width": 390,
+          "javaScriptEnabled": true,
+          "status": 200,
+          "h1": 1,
+          "overflow": false,
+          "bodyLength": 2447,
+          "missingImages": []
+        },
+        {
+          "path": "/services/software-architecture/",
+          "width": 390,
+          "javaScriptEnabled": true,
+          "status": 200,
+          "h1": 1,
+          "overflow": false,
+          "bodyLength": 2457,
+          "missingImages": []
+        },
+        {
+          "path": "/services/technical-audits/",
+          "width": 390,
+          "javaScriptEnabled": true,
+          "status": 200,
+          "h1": 1,
+          "overflow": false,
+          "bodyLength": 2494,
+          "missingImages": []
+        },
+        {
+          "path": "/services/fractional-cto/",
+          "width": 390,
+          "javaScriptEnabled": true,
+          "status": 200,
+          "h1": 1,
+          "overflow": false,
+          "bodyLength": 2518,
+          "missingImages": []
+        },
+        {
+          "path": "/services/ai-llm-engineering/",
+          "width": 390,
+          "javaScriptEnabled": true,
+          "status": 200,
+          "h1": 1,
+          "overflow": false,
+          "bodyLength": 2463,
+          "missingImages": []
+        },
+        {
+          "path": "/",
+          "width": 1440,
+          "javaScriptEnabled": true,
+          "status": 200,
+          "h1": 1,
+          "overflow": false,
+          "bodyLength": 2389,
+          "missingImages": []
+        },
+        {
+          "path": "/services/",
+          "width": 1440,
+          "javaScriptEnabled": true,
+          "status": 200,
+          "h1": 1,
+          "overflow": false,
+          "bodyLength": 3153,
+          "missingImages": []
+        },
+        {
+          "path": "/profile/",
+          "width": 1440,
+          "javaScriptEnabled": true,
+          "status": 200,
+          "h1": 1,
+          "overflow": false,
+          "bodyLength": 1637,
+          "missingImages": []
+        },
+        {
+          "path": "/services/multimedia-consulting/",
+          "width": 1440,
+          "javaScriptEnabled": true,
+          "status": 200,
+          "h1": 1,
+          "overflow": false,
+          "bodyLength": 2501,
+          "missingImages": []
+        },
+        {
+          "path": "/services/software-engineering/",
+          "width": 1440,
+          "javaScriptEnabled": true,
+          "status": 200,
+          "h1": 1,
+          "overflow": false,
+          "bodyLength": 2529,
+          "missingImages": []
+        },
+        {
+          "path": "/services/software-architecture/",
+          "width": 1440,
+          "javaScriptEnabled": true,
+          "status": 200,
+          "h1": 1,
+          "overflow": false,
+          "bodyLength": 2539,
+          "missingImages": []
+        },
+        {
+          "path": "/services/technical-audits/",
+          "width": 1440,
+          "javaScriptEnabled": true,
+          "status": 200,
+          "h1": 1,
+          "overflow": false,
+          "bodyLength": 2576,
+          "missingImages": []
+        },
+        {
+          "path": "/services/fractional-cto/",
+          "width": 1440,
+          "javaScriptEnabled": true,
+          "status": 200,
+          "h1": 1,
+          "overflow": false,
+          "bodyLength": 2600,
+          "missingImages": []
+        },
+        {
+          "path": "/services/ai-llm-engineering/",
+          "width": 1440,
+          "javaScriptEnabled": true,
+          "status": 200,
+          "h1": 1,
+          "overflow": false,
+          "bodyLength": 2545,
+          "missingImages": []
+        },
+        {
+          "path": "/",
+          "width": 390,
+          "javaScriptEnabled": false,
+          "status": 200,
+          "h1": 1,
+          "overflow": false,
+          "bodyLength": 2345,
+          "missingImages": []
+        },
+        {
+          "path": "/services/",
+          "width": 390,
+          "javaScriptEnabled": false,
+          "status": 200,
+          "h1": 1,
+          "overflow": false,
+          "bodyLength": 3071,
+          "missingImages": []
+        },
+        {
+          "path": "/profile/",
+          "width": 390,
+          "javaScriptEnabled": false,
+          "status": 200,
+          "h1": 1,
+          "overflow": false,
+          "bodyLength": 1555,
+          "missingImages": []
+        },
+        {
+          "path": "/services/multimedia-consulting/",
+          "width": 390,
+          "javaScriptEnabled": false,
+          "status": 200,
+          "h1": 1,
+          "overflow": false,
+          "bodyLength": 2419,
+          "missingImages": []
+        },
+        {
+          "path": "/services/software-engineering/",
+          "width": 390,
+          "javaScriptEnabled": false,
+          "status": 200,
+          "h1": 1,
+          "overflow": false,
+          "bodyLength": 2447,
+          "missingImages": []
+        },
+        {
+          "path": "/services/software-architecture/",
+          "width": 390,
+          "javaScriptEnabled": false,
+          "status": 200,
+          "h1": 1,
+          "overflow": false,
+          "bodyLength": 2457,
+          "missingImages": []
+        },
+        {
+          "path": "/services/technical-audits/",
+          "width": 390,
+          "javaScriptEnabled": false,
+          "status": 200,
+          "h1": 1,
+          "overflow": false,
+          "bodyLength": 2494,
+          "missingImages": []
+        },
+        {
+          "path": "/services/fractional-cto/",
+          "width": 390,
+          "javaScriptEnabled": false,
+          "status": 200,
+          "h1": 1,
+          "overflow": false,
+          "bodyLength": 2518,
+          "missingImages": []
+        },
+        {
+          "path": "/services/ai-llm-engineering/",
+          "width": 390,
+          "javaScriptEnabled": false,
+          "status": 200,
+          "h1": 1,
+          "overflow": false,
+          "bodyLength": 2463,
+          "missingImages": []
+        }
+      ]
+    },
+    "article_images": "1200x630 PNG inspected for representative and 160-character maximum title; covers retain priority; CMS checks pass for draft/missing/unpublished image 404 and private-revision image equality",
+    "contact": "Browser clicked AI service CTA; /contact/?service=ai retained AI / LLM selection",
+    "commands": {
+      "pnpm lint": "passed",
+      "pnpm test:seo": "passed (5 SEO helper checks, service page suite, 3 article image helper checks)",
+      "pnpm test:services": "passed",
+      "pnpm test:contact": "passed",
+      "pnpm exec tsc --noEmit": "passed",
+      "pnpm build": "passed",
+      "pnpm test:cms": "passed on fresh isolated database, no schema workaround",
+      "SEO_TEST_URL=http://127.0.0.1:3106 pnpm test:seo:http": "passed",
+      "git diff --check": "passed"
+    },
+    "warnings": [
+      "Pre-existing metadataBase warning for metadata outside the frontend layout; tested indexable pages have correct absolute URLs.",
+      "macOS Sharp/libvips duplicate Objective-C class warning; build and image generation completed."
+    ]
+  },
+  "limitations": [
+    "No Search Console, keyword volumes, ranking or conversion evidence.",
+    "No production deployment or Google Rich Results Test certification.",
+    "Existing unrelated local preview instances had stale asset/CMS failures; validation used a fresh isolated build."
+  ]
+}

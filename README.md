@@ -208,9 +208,14 @@ pnpm build
 docker compose config --quiet
 ```
 
-SEO checks cover pagination URLs, social images, public media crawling and the
-scope of Payload's theme headers. CMS regression checks also verify generated
-metadata and structured data with a real paginated list of published posts.
+SEO checks cover pagination URLs, article social images, the six service pages,
+public media crawling and the scope of Payload's theme headers. CMS regression
+checks also verify generated metadata, structured data, image privacy and a real
+paginated list of published posts. Against a running production build with its
+CMS database, run `SEO_TEST_URL=http://127.0.0.1:3100 pnpm test:seo:http` for
+read-only checks of sitemap URLs, metadata, service discovery, links and images.
+The [SEO audit from 2026-10-09](docs/seo/2026-10-09-audit.md) records the current
+public baseline, service expansion, article images and local verification.
 The [SEO audit from 2026-09-19](docs/seo/2026-09-19-audit.md) records findings,
 prepared changes, production follow-ups and verification limitations.
 

@@ -15,7 +15,7 @@ import {
   PROFILE_PATH,
   websiteGraphNode,
 } from "@/lib/seo";
-import { services } from "@/static/siteContent";
+import { servicePages, servicePath } from "@/lib/service_pages";
 
 import styles from "../subpage.module.css";
 
@@ -129,11 +129,13 @@ export default function ProfilePage() {
       </section>
       <section className={styles.expertise}>
         <p className="eyebrow">Connected disciplines</p>
-        <h2 className="section-title">{services.length} ways to contribute.</h2>
+        <h2 className="section-title">
+          {servicePages.length} ways to contribute.
+        </h2>
         <div className={styles.expertiseLinks}>
-          {services.map(({ id, label }) => (
-            <Link href={`/services/#${id}`} key={id}>
-              {label}
+          {servicePages.map(({ id, heading }) => (
+            <Link href={servicePath(id)} key={id}>
+              {heading}
               <span aria-hidden="true">↗</span>
             </Link>
           ))}

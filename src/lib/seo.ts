@@ -90,6 +90,7 @@ interface MetadataOptions {
   description: string;
   path: string;
   keywords?: string[];
+  imagePath?: string;
 }
 
 export const buildMetadata = ({
@@ -97,9 +98,10 @@ export const buildMetadata = ({
   description,
   path,
   keywords = [],
+  imagePath,
 }: MetadataOptions): Metadata => {
   const canonical = absoluteUrl(path);
-  const ogImage = absoluteUrl(openGraphImagePath(path));
+  const ogImage = absoluteUrl(imagePath ?? openGraphImagePath(path));
 
   return {
     title,
@@ -164,6 +166,7 @@ interface WebPageNodeOptions {
   breadcrumbId?: string;
   about?: JsonLdNode[];
   mainEntity?: JsonLdNode;
+  imagePath?: string;
 }
 
 export const buildWebPageNode = ({
@@ -174,6 +177,7 @@ export const buildWebPageNode = ({
   breadcrumbId,
   about,
   mainEntity,
+  imagePath,
 }: WebPageNodeOptions) => ({
   "@type": type,
   "@id": absoluteUrl(`${path}#webpage`),
@@ -193,7 +197,7 @@ export const buildWebPageNode = ({
   mainEntity,
   primaryImageOfPage: {
     "@type": "ImageObject",
-    url: absoluteUrl(openGraphImagePath(path)),
+    url: absoluteUrl(imagePath ?? openGraphImagePath(path)),
   },
 });
 

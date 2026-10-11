@@ -29,9 +29,10 @@ export const HomePage = () => (
         </h1>
         <MotionReveal delay={180}>
           <p className={styles.description}>
-            I’m Wojciech Bajer. I help founders, product teams and agencies
-            connect architecture, software and multimedia with hands-on
-            technical delivery.
+            I’m Wojciech Bajer, an independent consultant for software,
+            architecture, multimedia and AI. I help founders, product teams and
+            agencies with technical audits, hands-on delivery and fractional
+            technical leadership.
           </p>
           <p className={styles.disciplines}>
             Software. Architecture. Multimedia. Applied AI.

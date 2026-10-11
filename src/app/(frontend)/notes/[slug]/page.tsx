@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { PostContent } from "@/components/post_content";
 import { ContactCallout, SiteShell } from "@/components/site_shell";
 import { StructuredData } from "@/components/structured_data";
+import { getPostImageSchema, getPostSocialImage } from "@/lib/post_seo";
 import { formatPostDate, getPublishedPost } from "@/lib/posts";
 import {
   absoluteUrl,
@@ -28,15 +29,7 @@ export async function generateMetadata({ params }: Args): Promise<Metadata> {
   const { slug } = await params;
   const post = await getPublishedPost(slug);
   if (!post) notFound();
-  const cover = typeof post.coverImage === "object" ? post.coverImage : null;
-  const images = [
-    {
-      url: absoluteUrl(cover?.url || "/notes/opengraph-image"),
-      alt: cover?.alt || post.title,
-      width: cover?.width || 1200,
-      height: cover?.height || 630,
-    },
-  ];
+  const images = [getPostSocialImage(post)];
   return {
     title: `${post.title} | ${PERSON_NAME}`,
     description: post.excerpt,
@@ -68,6 +61,7 @@ export default async function PostPage({ params }: Args) {
   const post = await getPublishedPost(slug);
   if (!post) notFound();
   const cover = typeof post.coverImage === "object" ? post.coverImage : null;
+  const image = getPostImageSchema(post);
   const path = `/notes/${post.slug}/`;
   const breadcrumb = buildBreadcrumbJsonLd([
     { name: "Home", path: "/" },
@@ -91,6 +85,7 @@ export default async function PostPage({ params }: Args) {
             isPartOf: { "@id": WEBSITE_ID },
             breadcrumb: { "@id": breadcrumb["@id"] },
             mainEntity: { "@id": absoluteUrl(`${path}#article`) },
+            primaryImageOfPage: image,
           },
           {
             "@type": "BlogPosting",
@@ -106,7 +101,7 @@ export default async function PostPage({ params }: Args) {
             },
             publisher: { "@id": PERSON_ID },
             mainEntityOfPage: { "@id": absoluteUrl(`${path}#webpage`) },
-            ...(cover?.url ? { image: absoluteUrl(cover.url) } : {}),
+            image,
           },
         ])}
       />

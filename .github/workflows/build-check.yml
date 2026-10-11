@@ -68,6 +68,9 @@ jobs:
           CMS_TEST_RESTART_PROJECT: cwb-cms-test
         run: pnpm test:cms
 
+      - name: Verify rendered SEO and service discovery
+        run: pnpm test:seo:http
+
       - name: Verify private quotes and acceptance
         env:
           CMS_TEST_ALLOW_WRITES: "1"

@@ -3,7 +3,12 @@ import { test } from "node:test";
 
 import nextConfig from "../next.config.mjs";
 import robots from "../src/app/robots";
-import { absoluteUrl, buildMetadata, openGraphImagePath } from "../src/lib/seo";
+import {
+  absoluteUrl,
+  buildMetadata,
+  buildWebPageNode,
+  openGraphImagePath,
+} from "../src/lib/seo";
 
 test("theme client hints cannot restart public-page requests", async () => {
   assert(nextConfig.headers);
@@ -57,6 +62,26 @@ test("canonical URL normalization preserves queries, fragments and media files",
   assert.equal(
     absoluteUrl("/api/cms/media/file/cover.webp"),
     "https://wojciechbajer.com/api/cms/media/file/cover.webp",
+  );
+});
+
+test("service detail metadata can use an existing shared image without changing its canonical", () => {
+  const path = "/services/software-engineering/";
+  const imagePath = "/services/opengraph-image";
+  const options = {
+    title: "Software Engineering Consulting | Wojciech Bajer",
+    name: "Software Engineering Consulting",
+    description: "Hands-on software engineering for product teams.",
+    path,
+    imagePath,
+  };
+  const metadata = buildMetadata(options);
+  assert.equal(metadata.alternates?.canonical, absoluteUrl(path));
+  assert.equal(metadata.openGraph?.url, absoluteUrl(path));
+  assert.deepEqual(metadata.twitter?.images, [absoluteUrl(imagePath)]);
+  assert.equal(
+    buildWebPageNode(options).primaryImageOfPage.url,
+    absoluteUrl(imagePath),
   );
 });
 

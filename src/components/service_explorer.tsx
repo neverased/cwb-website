@@ -10,6 +10,7 @@ import {
   serviceIntents,
   serviceSelectionUrl,
 } from "@/lib/service_intents";
+import { servicePath } from "@/lib/service_pages";
 import { contactHref, findService, type ServiceId } from "@/lib/services";
 import { services } from "@/static/siteContent";
 
@@ -126,6 +127,10 @@ const ExplorerView = ({
                 ))}
               </ul>
             </div>
+            <Link className="text-link" href={servicePath(service.id)}>
+              Explore {service.label.toLowerCase()} services{" "}
+              <span aria-hidden="true">→</span>
+            </Link>
           </div>
         </div>
 

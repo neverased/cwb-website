@@ -194,6 +194,13 @@ try {
     404,
     "Draft page must return 404",
   );
+  for (const imageSlug of [slug, `missing-note-${nonce}`]) {
+    assert.equal(
+      (await request(`/notes/${imageSlug}/opengraph-image/`)).status,
+      404,
+      "Draft and missing article images must return 404",
+    );
+  }
   assert(
     !(await (await request("/sitemap.xml")).text()).includes(slug),
     "Draft leaked through sitemap",
@@ -361,6 +368,51 @@ try {
     "Article needs breadcrumbs",
   );
   assert(articleSchema?.image && articleSchema?.publisher);
+  const coverUrl = new URL(media.doc.url, "https://wojciechbajer.com").href;
+  for (const field of ['property="og:image"', 'name="twitter:image"']) {
+    assert(
+      html.includes(`${field} content="${coverUrl}"`),
+      "Uploaded cover must take priority in article social metadata",
+    );
+  }
+  assert.deepEqual(articleSchema.image, {
+    "@type": "ImageObject",
+    url: coverUrl,
+    caption: media.doc.alt,
+    width: media.doc.width,
+    height: media.doc.height,
+  });
+  const coverlessSlug = `pagination-${nonce}-0`;
+  const coverlessHtml = await (
+    await request(`/notes/${coverlessSlug}/`)
+  ).text();
+  const generatedImagePath = `/notes/${coverlessSlug}/opengraph-image/`;
+  const generatedImageUrl = `https://wojciechbajer.com${generatedImagePath}`;
+  for (const field of ['property="og:image"', 'name="twitter:image"']) {
+    assert(
+      coverlessHtml.includes(`${field} content="${generatedImageUrl}"`),
+      "Coverless articles need their own social image",
+    );
+  }
+  const coverlessSchema = graphNodes(coverlessHtml).find(
+    (node) => node["@type"] === "BlogPosting",
+  );
+  assert.deepEqual(coverlessSchema?.image, {
+    "@type": "ImageObject",
+    url: generatedImageUrl,
+    caption: `Pagination note 0 ${nonce}`,
+    width: 1200,
+    height: 630,
+  });
+  const generatedImage = await request(generatedImagePath);
+  assert.equal(generatedImage.status, 200);
+  assert.match(generatedImage.headers.get("content-type") || "", /^image\/png/);
+  const generatedBytes = Buffer.from(await generatedImage.arrayBuffer());
+  assert.equal(generatedBytes.readUInt32BE(16), 1200);
+  assert.equal(generatedBytes.readUInt32BE(20), 630);
+  const publishedImage = Buffer.from(
+    await (await request(`/notes/${slug}/opengraph-image/`)).arrayBuffer(),
+  );
   assert(
     html.includes('rel="author" href="/profile/"'),
     "Readers must see the article author",
@@ -447,6 +499,13 @@ try {
       !revisionHtml.includes(unpublishedTitle),
     "Saving a revision must keep the published version visible",
   );
+  const revisionImage = await request(`/notes/${slug}/opengraph-image/`);
+  assert.equal(revisionImage.status, 200);
+  assert.deepEqual(
+    Buffer.from(await revisionImage.arrayBuffer()),
+    publishedImage,
+    "Private revisions must not change the published social image",
+  );
   const anonymousRevision = await json<{ docs: Post[] }>(
     await request(`/api/cms/posts/?draft=true&where[id][equals]=${id}`),
   );
@@ -498,6 +557,11 @@ try {
     (await request(`/notes/${slug}/`)).status,
     404,
     "Unpublished post must disappear immediately",
+  );
+  assert.equal(
+    (await request(`/notes/${slug}/opengraph-image/`)).status,
+    404,
+    "Unpublished social image must disappear immediately",
   );
   assert(
     !(await (await request("/sitemap.xml")).text()).includes(slug),

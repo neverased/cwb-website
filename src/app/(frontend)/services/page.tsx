@@ -12,6 +12,7 @@ import {
   personGraphNode,
   websiteGraphNode,
 } from "@/lib/seo";
+import { servicePages, servicePath } from "@/lib/service_pages";
 import { contactHref } from "@/lib/services";
 import { services } from "@/static/siteContent";
 
@@ -46,15 +47,15 @@ const breadcrumbJsonLd = buildBreadcrumbJsonLd([
 const servicesListJsonLd = {
   "@type": "ItemList",
   "@id": absoluteUrl("/services/#list"),
-  itemListElement: services.map(({ id, label, headline }, index) => ({
+  itemListElement: servicePages.map(({ id, heading, description }, index) => ({
     "@type": "ListItem",
     position: index + 1,
     item: {
       "@type": "Service",
-      "@id": absoluteUrl(`/services/#${id}`),
-      url: absoluteUrl(`/services/#${id}`),
-      name: label,
-      description: headline,
+      "@id": absoluteUrl(`${servicePath(id)}#service`),
+      url: absoluteUrl(servicePath(id)),
+      name: heading,
+      description,
       provider: {
         "@id": PERSON_ID,
       },
@@ -91,7 +92,7 @@ export default function ServicesPage() {
       <section className={styles.lead}>
         <p className="eyebrow">Services / Find your starting point</p>
         <h1 className={styles.title}>
-          Complex work.
+          Technical consulting.
           <br />
           <span>Clear ways to help.</span>
         </h1>
@@ -136,6 +137,13 @@ export default function ServicesPage() {
                   <li key={item}>{item}</li>
                 ))}
               </ul>
+              <Link className="text-link" href={servicePath(service.id)}>
+                Explore{" "}
+                {servicePages
+                  .find(({ id }) => id === service.id)!
+                  .heading.toLowerCase()}{" "}
+                <span aria-hidden="true">→</span>
+              </Link>
               <details className={styles.disclosure}>
                 <summary>
                   How the work happens <span aria-hidden="true">+</span>

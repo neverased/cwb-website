@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-09T15:16:17.952Z",
+  "generatedAt": "2026-10-12T11:45:59.697774+00:00",
   "title": "Design System: Wojciech Bajer Consulting",
   "extensions": {
     "colorMeta": {
@@ -88,46 +88,46 @@
           "oklch(95% 0.0071 214.0)"
         ]
       },
-      "accent-mint": {
+      "accent": {
         "role": "primary",
-        "displayName": "Mint Signal",
+        "displayName": "Brand Turquoise",
         "tonalRamp": [
-          "oklch(15% 0.0906 157.2)",
-          "oklch(26% 0.0906 157.2)",
-          "oklch(38% 0.0906 157.2)",
-          "oklch(49% 0.0906 157.2)",
-          "oklch(61% 0.0906 157.2)",
-          "oklch(72% 0.0906 157.2)",
-          "oklch(84% 0.0906 157.2)",
-          "oklch(95% 0.0906 157.2)"
+          "oklch(15% 0.1425 194.8)",
+          "oklch(26% 0.1425 194.8)",
+          "oklch(38% 0.1425 194.8)",
+          "oklch(49% 0.1425 194.8)",
+          "oklch(61% 0.1425 194.8)",
+          "oklch(72% 0.1425 194.8)",
+          "oklch(84% 0.1425 194.8)",
+          "oklch(95% 0.1425 194.8)"
         ]
       },
       "accent-hover": {
         "role": "primary",
-        "displayName": "Mint Hover",
+        "displayName": "Turquoise Hover",
         "tonalRamp": [
-          "oklch(15% 0.0679 157.2)",
-          "oklch(26% 0.0679 157.2)",
-          "oklch(38% 0.0679 157.2)",
-          "oklch(49% 0.0679 157.2)",
-          "oklch(61% 0.0679 157.2)",
-          "oklch(72% 0.0679 157.2)",
-          "oklch(84% 0.0679 157.2)",
-          "oklch(95% 0.0679 157.2)"
+          "oklch(15% 0.1050 195.4)",
+          "oklch(26% 0.1050 195.4)",
+          "oklch(38% 0.1050 195.4)",
+          "oklch(49% 0.1050 195.4)",
+          "oklch(61% 0.1050 195.4)",
+          "oklch(72% 0.1050 195.4)",
+          "oklch(84% 0.1050 195.4)",
+          "oklch(95% 0.1050 195.4)"
         ]
       },
-      "accent-command": {
-        "role": "secondary",
-        "displayName": "Command Accent",
+      "accent-soft": {
+        "role": "primary",
+        "displayName": "Soft Turquoise",
         "tonalRamp": [
-          "oklch(15% 0.0804 124.9)",
-          "oklch(26% 0.0804 124.9)",
-          "oklch(38% 0.0804 124.9)",
-          "oklch(49% 0.0804 124.9)",
-          "oklch(61% 0.0804 124.9)",
-          "oklch(72% 0.0804 124.9)",
-          "oklch(84% 0.0804 124.9)",
-          "oklch(95% 0.0804 124.9)"
+          "oklch(15% 0.0964 195.5)",
+          "oklch(26% 0.0964 195.5)",
+          "oklch(38% 0.0964 195.5)",
+          "oklch(49% 0.0964 195.5)",
+          "oklch(61% 0.0964 195.5)",
+          "oklch(72% 0.0964 195.5)",
+          "oklch(84% 0.0964 195.5)",
+          "oklch(95% 0.0964 195.5)"
         ]
       },
       "accent-warning": {
@@ -148,70 +148,70 @@
         "role": "neutral",
         "displayName": "Muted Text",
         "tonalRamp": [
-          "oklch(15% 0.0161 170.9)",
-          "oklch(26% 0.0161 170.9)",
-          "oklch(38% 0.0161 170.9)",
-          "oklch(49% 0.0161 170.9)",
-          "oklch(61% 0.0161 170.9)",
-          "oklch(72% 0.0161 170.9)",
-          "oklch(84% 0.0161 170.9)",
-          "oklch(95% 0.0161 170.9)"
+          "oklch(15% 0.0140 214.4)",
+          "oklch(26% 0.0140 214.4)",
+          "oklch(38% 0.0140 214.4)",
+          "oklch(49% 0.0140 214.4)",
+          "oklch(61% 0.0140 214.4)",
+          "oklch(72% 0.0140 214.4)",
+          "oklch(84% 0.0140 214.4)",
+          "oklch(95% 0.0140 214.4)"
         ]
       },
       "text-subtle": {
         "role": "neutral",
         "displayName": "Subtle Text",
         "tonalRamp": [
-          "oklch(15% 0.0218 169.0)",
-          "oklch(26% 0.0218 169.0)",
-          "oklch(38% 0.0218 169.0)",
-          "oklch(49% 0.0218 169.0)",
-          "oklch(61% 0.0218 169.0)",
-          "oklch(72% 0.0218 169.0)",
-          "oklch(84% 0.0218 169.0)",
-          "oklch(95% 0.0218 169.0)"
+          "oklch(15% 0.0191 214.4)",
+          "oklch(26% 0.0191 214.4)",
+          "oklch(38% 0.0191 214.4)",
+          "oklch(49% 0.0191 214.4)",
+          "oklch(61% 0.0191 214.4)",
+          "oklch(72% 0.0191 214.4)",
+          "oklch(84% 0.0191 214.4)",
+          "oklch(95% 0.0191 214.4)"
         ]
       },
-      "border-mint": {
+      "border-brand": {
         "role": "neutral",
-        "displayName": "Mint Boundary",
+        "displayName": "Turquoise Boundary",
         "tonalRamp": [
-          "oklch(15% 0.0181 179.4)",
-          "oklch(26% 0.0181 179.4)",
-          "oklch(38% 0.0181 179.4)",
-          "oklch(49% 0.0181 179.4)",
-          "oklch(61% 0.0181 179.4)",
-          "oklch(72% 0.0181 179.4)",
-          "oklch(84% 0.0181 179.4)",
-          "oklch(95% 0.0181 179.4)"
+          "oklch(15% 0.0226 209.6)",
+          "oklch(26% 0.0226 209.6)",
+          "oklch(38% 0.0226 209.6)",
+          "oklch(49% 0.0226 209.6)",
+          "oklch(61% 0.0226 209.6)",
+          "oklch(72% 0.0226 209.6)",
+          "oklch(84% 0.0226 209.6)",
+          "oklch(95% 0.0226 209.6)"
         ]
       },
       "rule-soft": {
         "role": "neutral",
         "displayName": "Quiet Rule",
         "tonalRamp": [
-          "oklch(15% 0.0171 178.2)",
-          "oklch(26% 0.0171 178.2)",
-          "oklch(38% 0.0171 178.2)",
-          "oklch(49% 0.0171 178.2)",
-          "oklch(61% 0.0171 178.2)",
-          "oklch(72% 0.0171 178.2)",
-          "oklch(84% 0.0171 178.2)",
-          "oklch(95% 0.0171 178.2)"
+          "oklch(15% 0.0176 220.1)",
+          "oklch(26% 0.0176 220.1)",
+          "oklch(38% 0.0176 220.1)",
+          "oklch(49% 0.0176 220.1)",
+          "oklch(61% 0.0176 220.1)",
+          "oklch(72% 0.0176 220.1)",
+          "oklch(84% 0.0176 220.1)",
+          "oklch(95% 0.0176 220.1)"
         ]
       },
       "rule-strong": {
         "role": "neutral",
         "displayName": "Strong Rule",
         "tonalRamp": [
-          "oklch(15% 0.0350 161.2)",
-          "oklch(26% 0.0350 161.2)",
-          "oklch(38% 0.0350 161.2)",
-          "oklch(49% 0.0350 161.2)",
-          "oklch(61% 0.0350 161.2)",
-          "oklch(72% 0.0350 161.2)",
-          "oklch(84% 0.0350 161.2)",
-          "oklch(95% 0.0350 161.2)"
+          "oklch(15% 0.0312 207.9)",
+          "oklch(26% 0.0312 207.9)",
+          "oklch(38% 0.0312 207.9)",
+          "oklch(49% 0.0312 207.9)",
+          "oklch(61% 0.0312 207.9)",
+          "oklch(72% 0.0312 207.9)",
+          "oklch(84% 0.0312 207.9)",
+          "oklch(95% 0.0312 207.9)"
         ]
       },
       "logo-light": {
@@ -232,14 +232,98 @@
         "role": "neutral",
         "displayName": "Action Ink",
         "tonalRamp": [
-          "oklch(15% 0.027 157)",
-          "oklch(26% 0.027 157)",
-          "oklch(38% 0.027 157)",
-          "oklch(49% 0.027 157)",
-          "oklch(61% 0.027 157)",
-          "oklch(72% 0.027 157)",
-          "oklch(84% 0.027 157)",
-          "oklch(95% 0.027 157)"
+          "oklch(15% 0.0071 214.0)",
+          "oklch(26% 0.0071 214.0)",
+          "oklch(38% 0.0071 214.0)",
+          "oklch(49% 0.0071 214.0)",
+          "oklch(61% 0.0071 214.0)",
+          "oklch(72% 0.0071 214.0)",
+          "oklch(84% 0.0071 214.0)",
+          "oklch(95% 0.0071 214.0)"
+        ]
+      },
+      "brand-navy": {
+        "role": "secondary",
+        "displayName": "Brand Navy",
+        "tonalRamp": [
+          "oklch(15% 0.1328 268.9)",
+          "oklch(26% 0.1328 268.9)",
+          "oklch(38% 0.1328 268.9)",
+          "oklch(49% 0.1328 268.9)",
+          "oklch(61% 0.1328 268.9)",
+          "oklch(72% 0.1328 268.9)",
+          "oklch(84% 0.1328 268.9)",
+          "oklch(95% 0.1328 268.9)"
+        ]
+      },
+      "brand-magenta": {
+        "role": "secondary",
+        "displayName": "Brand Magenta",
+        "tonalRamp": [
+          "oklch(15% 0.1863 339.4)",
+          "oklch(26% 0.1863 339.4)",
+          "oklch(38% 0.1863 339.4)",
+          "oklch(49% 0.1863 339.4)",
+          "oklch(61% 0.1863 339.4)",
+          "oklch(72% 0.1863 339.4)",
+          "oklch(84% 0.1863 339.4)",
+          "oklch(95% 0.1863 339.4)"
+        ]
+      },
+      "print-accent": {
+        "role": "secondary",
+        "displayName": "Print Accent",
+        "tonalRamp": [
+          "oklch(15% 0.0816 200.5)",
+          "oklch(26% 0.0816 200.5)",
+          "oklch(38% 0.0816 200.5)",
+          "oklch(49% 0.0816 200.5)",
+          "oklch(61% 0.0816 200.5)",
+          "oklch(72% 0.0816 200.5)",
+          "oklch(84% 0.0816 200.5)",
+          "oklch(95% 0.0816 200.5)"
+        ]
+      },
+      "print-tint": {
+        "role": "secondary",
+        "displayName": "Print Tint",
+        "tonalRamp": [
+          "oklch(15% 0.0169 201.4)",
+          "oklch(26% 0.0169 201.4)",
+          "oklch(38% 0.0169 201.4)",
+          "oklch(49% 0.0169 201.4)",
+          "oklch(61% 0.0169 201.4)",
+          "oklch(72% 0.0169 201.4)",
+          "oklch(84% 0.0169 201.4)",
+          "oklch(95% 0.0169 201.4)"
+        ]
+      },
+      "print-muted": {
+        "role": "neutral",
+        "displayName": "Print Muted",
+        "tonalRamp": [
+          "oklch(15% 0.0178 222.9)",
+          "oklch(26% 0.0178 222.9)",
+          "oklch(38% 0.0178 222.9)",
+          "oklch(49% 0.0178 222.9)",
+          "oklch(61% 0.0178 222.9)",
+          "oklch(72% 0.0178 222.9)",
+          "oklch(84% 0.0178 222.9)",
+          "oklch(95% 0.0178 222.9)"
+        ]
+      },
+      "print-rule": {
+        "role": "neutral",
+        "displayName": "Print Rule",
+        "tonalRamp": [
+          "oklch(15% 0.0132 208.8)",
+          "oklch(26% 0.0132 208.8)",
+          "oklch(38% 0.0132 208.8)",
+          "oklch(49% 0.0132 208.8)",
+          "oklch(61% 0.0132 208.8)",
+          "oklch(72% 0.0132 208.8)",
+          "oklch(84% 0.0132 208.8)",
+          "oklch(95% 0.0132 208.8)"
         ]
       }
     },
@@ -311,6 +395,22 @@
       "metadata": {
         "displayName": "metadata",
         "purpose": "Secondary location and portrait metadata."
+      },
+      "quote-display": {
+        "displayName": "quote display",
+        "purpose": "Established quote and access page headings."
+      },
+      "quote-heading": {
+        "displayName": "quote heading",
+        "purpose": "Established quote section headings."
+      },
+      "quote-display-mobile": {
+        "displayName": "quote display mobile",
+        "purpose": "Established mobile quote title scale."
+      },
+      "contact-email": {
+        "displayName": "contact email",
+        "purpose": "Fluid public contact email."
       }
     },
     "shadows": [
@@ -321,7 +421,7 @@
       },
       {
         "name": "process-marker",
-        "value": "0 0 0 1px var(--accent-mint)",
+        "value": "0 0 0 1px var(--accent)",
         "purpose": "A structural process-node ring, not elevation."
       }
     ],
@@ -350,7 +450,7 @@
     "breakpoints": [
       {
         "name": "navigation",
-        "value": "1100px"
+        "value": "1200px"
       },
       {
         "name": "hero-and-explorer",
@@ -381,7 +481,7 @@
       "refersTo": "button-primary",
       "description": "A stable contact action with contained arrow motion.",
       "html": "<button class=\"ds-primary\">Get in touch <span aria-hidden=\"true\">↗</span></button>",
-      "css": ".ds-primary{font-family:var(--font-display,\"Space Grotesk\"),sans-serif;display:inline-flex;align-items:center;justify-content:center;gap:1.4rem;min-height:3rem;padding:.8rem 1.2rem;border:1px solid var(--accent-mint,#a3e8be);border-radius:.2rem;background:var(--accent-mint,#a3e8be);color:#102017;font-size:.875rem;font-weight:600;cursor:pointer;transition:background 180ms ease,transform 180ms ease}.ds-primary:hover{background:#c0f3d3;border-color:#c0f3d3}.ds-primary:focus-visible{outline:2px solid var(--accent-mint,#a3e8be);outline-offset:5px;}.ds-primary:active{transform:translateY(1px)}.ds-primary span{transition:transform 260ms cubic-bezier(.22,1,.36,1)}.ds-primary:hover span{transform:translate(2px,-2px)}@media(prefers-reduced-motion:reduce){.ds-primary,.ds-primary span{transition:none}}"
+      "css": ".ds-primary{font-family:var(--font-display,\"Space Grotesk\"),sans-serif;display:inline-flex;align-items:center;justify-content:center;gap:1.4rem;min-height:3rem;padding:.8rem 1.2rem;border:1px solid var(--accent,#00e5e5);border-radius:.2rem;background:var(--accent,#00e5e5);color:#080c0d;font-size:.875rem;font-weight:600;cursor:pointer;transition:background 180ms ease,transform 180ms ease}.ds-primary:hover{background:#7ff2f2;border-color:#7ff2f2}.ds-primary:focus-visible{outline:2px solid var(--accent,#00e5e5);outline-offset:5px;}.ds-primary:active{transform:translateY(1px)}.ds-primary span{transition:transform 260ms cubic-bezier(.22,1,.36,1)}.ds-primary:hover span{transform:translate(2px,-2px)}@media(prefers-reduced-motion:reduce){.ds-primary,.ds-primary span{transition:none}}"
     },
     {
       "name": "Secondary action",
@@ -389,7 +489,7 @@
       "refersTo": "button-secondary",
       "description": "An outlined secondary action on the graphite surface.",
       "html": "<button class=\"ds-secondary\">Explore expertise <span aria-hidden=\"true\">↓</span></button>",
-      "css": ".ds-secondary{font-family:var(--font-display,\"Space Grotesk\"),sans-serif;display:inline-flex;align-items:center;justify-content:center;gap:1.4rem;min-height:3rem;padding:.8rem 1.2rem;border:1px solid var(--rule-strong,#566e61);border-radius:.2rem;background:transparent;color:var(--page-foreground,#edf2ef);font-size:.875rem;font-weight:600;cursor:pointer;transition:background 180ms ease,transform 180ms ease}.ds-secondary:hover{background:var(--surface-panel-strong,#192223);border-color:var(--text-muted,#a8b5b0)}.ds-secondary:focus-visible{outline:2px solid var(--accent-mint,#a3e8be);outline-offset:5px;}.ds-secondary:active{transform:translateY(1px)}@media(prefers-reduced-motion:reduce){.ds-secondary{transition:none}}"
+      "css": ".ds-secondary{font-family:var(--font-display,\"Space Grotesk\"),sans-serif;display:inline-flex;align-items:center;justify-content:center;gap:1.4rem;min-height:3rem;padding:.8rem 1.2rem;border:1px solid var(--rule-strong,#526c70);border-radius:.2rem;background:transparent;color:var(--page-foreground,#edf2ef);font-size:.875rem;font-weight:600;cursor:pointer;transition:background 180ms ease,transform 180ms ease}.ds-secondary:hover{background:var(--surface-panel-strong,#192223);border-color:var(--text-muted,#adb9bc)}.ds-secondary:focus-visible{outline:2px solid var(--accent,#00e5e5);outline-offset:5px;}.ds-secondary:active{transform:translateY(1px)}@media(prefers-reduced-motion:reduce){.ds-secondary{transition:none}}"
     },
     {
       "name": "Contact field",
@@ -397,7 +497,7 @@
       "refersTo": "input",
       "description": "A visible label with a readable native email field.",
       "html": "<label class=\"ds-field\">Email<input type=\"email\" placeholder=\"you@company.com\" autocomplete=\"email\"></label>",
-      "css": ".ds-field{font-family:var(--font-display,\"Space Grotesk\"),sans-serif;display:block;color:var(--page-foreground,#edf2ef);font-size:.85rem;line-height:1.5}.ds-field input{display:block;width:100%;box-sizing:border-box;min-height:48px;margin-top:.5rem;border:1px solid var(--rule-strong,#566e61);border-radius:.25rem;padding:.7rem .85rem;background:var(--surface-panel,#111819);color:var(--page-foreground,#edf2ef);font:inherit;font-size:1rem}.ds-field input:hover{border-color:var(--text-subtle,#8c9d96)}.ds-field input:focus-visible{outline:2px solid var(--accent-mint,#a3e8be);outline-offset:5px;outline-offset:3px}.ds-field input::placeholder{color:var(--text-subtle,#8c9d96);opacity:1}.ds-field input:user-invalid{border-color:var(--accent-warning,#f4b394)}"
+      "css": ".ds-field{font-family:var(--font-display,\"Space Grotesk\"),sans-serif;display:block;color:var(--page-foreground,#edf2ef);font-size:.85rem;line-height:1.5}.ds-field input{display:block;width:100%;box-sizing:border-box;min-height:48px;margin-top:.5rem;border:1px solid var(--rule-strong,#526c70);border-radius:.25rem;padding:.7rem .85rem;background:var(--surface-panel,#111819);color:var(--page-foreground,#edf2ef);font:inherit;font-size:1rem}.ds-field input:hover{border-color:var(--text-subtle,#8f9fa3)}.ds-field input:focus-visible{outline:2px solid var(--accent,#00e5e5);outline-offset:5px;outline-offset:3px}.ds-field input::placeholder{color:var(--text-subtle,#8f9fa3);opacity:1}.ds-field input:user-invalid{border-color:var(--accent-warning,#f4b394)}"
     },
     {
       "name": "Navigation",
@@ -405,7 +505,7 @@
       "refersTo": "navigation",
       "description": "Quiet navigation with an explicit current-page underline.",
       "html": "<nav class=\"ds-nav\" aria-label=\"Sample navigation\"><a href=\"/services/\" aria-current=\"page\">Services</a><a href=\"/process/\">Process</a><a href=\"/profile/\">Profile</a></nav>",
-      "css": ".ds-nav{font-family:var(--font-display,\"Space Grotesk\"),sans-serif;display:flex;flex-wrap:wrap;gap:1.5rem}.ds-nav a{display:flex;align-items:center;min-height:44px;color:var(--text-muted,#a8b5b0);font-size:.875rem;text-decoration:none;transition:color 180ms ease}.ds-nav a:hover,.ds-nav a[aria-current]{color:var(--page-foreground,#edf2ef)}.ds-nav a[aria-current]{text-decoration:underline;text-decoration-color:var(--accent-mint,#a3e8be);text-underline-offset:.6rem}.ds-nav a:focus-visible{outline:2px solid var(--accent-mint,#a3e8be);outline-offset:5px;}@media(prefers-reduced-motion:reduce){.ds-nav a{transition:none}}"
+      "css": ".ds-nav{font-family:var(--font-display,\"Space Grotesk\"),sans-serif;display:flex;flex-wrap:wrap;gap:1.5rem}.ds-nav a{display:flex;align-items:center;min-height:44px;color:var(--text-muted,#adb9bc);font-size:.875rem;text-decoration:none;transition:color 180ms ease}.ds-nav a:hover,.ds-nav a[aria-current]{color:var(--page-foreground,#edf2ef)}.ds-nav a[aria-current]{text-decoration:underline;text-decoration-color:var(--accent,#00e5e5);text-underline-offset:.6rem}.ds-nav a:focus-visible{outline:2px solid var(--accent,#00e5e5);outline-offset:5px;}@media(prefers-reduced-motion:reduce){.ds-nav a{transition:none}}"
     },
     {
       "name": "Service choice",
@@ -413,7 +513,7 @@
       "refersTo": "service-choice",
       "description": "One need-based route with an explicit selected state.",
       "html": "<a class=\"ds-choice\" href=\"/services/?service=audits\" aria-current=\"true\"><span><strong>Review a system</strong><span>Find the risks and decide what to fix first.</span></span><span aria-hidden=\"true\">↗</span></a>",
-      "css": ".ds-choice{font-family:var(--font-display,\"Space Grotesk\"),sans-serif;display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:7.5rem;padding:1.25rem 1.2rem 1.25rem 0;border-block:1px solid var(--rule-soft,#26322f);color:var(--accent-mint,#a3e8be);text-decoration:none}.ds-choice>span:first-child{display:grid;gap:.6rem}.ds-choice strong{font-size:clamp(1.2rem,2vw,1.65rem);font-weight:500;line-height:1.2;letter-spacing:-.035em}.ds-choice>span>span{color:var(--text-muted,#a8b5b0);font-size:.875rem;line-height:1.55;max-width:29ch}.ds-choice>span:last-child{transition:transform 240ms ease}.ds-choice:hover>span:last-child{transform:translate(3px,-3px)}.ds-choice:focus-visible{outline:2px solid var(--accent-mint,#a3e8be);outline-offset:5px;}@media(prefers-reduced-motion:reduce){.ds-choice>span:last-child{transition:none}}"
+      "css": ".ds-choice{font-family:var(--font-display,\"Space Grotesk\"),sans-serif;display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:7.5rem;padding:1.25rem 1.2rem 1.25rem 0;border-block:1px solid var(--rule-soft,#283438);color:var(--accent,#00e5e5);text-decoration:none}.ds-choice>span:first-child{display:grid;gap:.6rem}.ds-choice strong{font-size:clamp(1.2rem,2vw,1.65rem);font-weight:500;line-height:1.2;letter-spacing:-.035em}.ds-choice>span>span{color:var(--text-muted,#adb9bc);font-size:.875rem;line-height:1.55;max-width:29ch}.ds-choice>span:last-child{transition:transform 240ms ease}.ds-choice:hover>span:last-child{transform:translate(3px,-3px)}.ds-choice:focus-visible{outline:2px solid var(--accent,#00e5e5);outline-offset:5px;}@media(prefers-reduced-motion:reduce){.ds-choice>span:last-child{transition:none}}"
     },
     {
       "name": "Service result",
@@ -421,7 +521,7 @@
       "refersTo": "service-panel",
       "description": "The selected service with a readable outcome and a direct contact link.",
       "html": "<section class=\"ds-result\"><p>Audits</p><h3>Get an independent read on product, process, and technical reality.</h3><a href=\"/contact/?service=audits\">Discuss an audit <span aria-hidden=\"true\">↗</span></a></section>",
-      "css": ".ds-result{font-family:var(--font-display,\"Space Grotesk\"),sans-serif;border:1px solid var(--rule-strong,#566e61);background:var(--surface-panel,#111819);color:var(--page-foreground,#edf2ef);padding:clamp(1.25rem,2.7vw,2.25rem)}.ds-result>p{font-family:var(--font-mono,\"Fira Code\"),monospace;font-size:.75rem;color:var(--text-muted,#a8b5b0);margin:0 0 1.75rem}.ds-result h3{font-size:clamp(1.7rem,2.65vw,2.35rem);font-weight:400;line-height:1.15;letter-spacing:-.045em;max-width:28ch}.ds-result a{display:inline-flex;align-items:center;gap:1rem;min-height:44px;color:var(--accent-mint,#a3e8be);text-decoration:none}.ds-result:focus-within{border-color:var(--accent-mint,#a3e8be)}.ds-result a:hover{text-decoration:underline;text-underline-offset:.3em}.ds-result a:focus-visible{outline:2px solid var(--accent-mint,#a3e8be);outline-offset:5px;}"
+      "css": ".ds-result{font-family:var(--font-display,\"Space Grotesk\"),sans-serif;border:1px solid var(--rule-strong,#526c70);background:var(--surface-panel,#111819);color:var(--page-foreground,#edf2ef);padding:clamp(1.25rem,2.7vw,2.25rem)}.ds-result>p{font-family:var(--font-mono,\"Fira Code\"),monospace;font-size:.75rem;color:var(--text-muted,#adb9bc);margin:0 0 1.75rem}.ds-result h3{font-size:clamp(1.7rem,2.65vw,2.35rem);font-weight:400;line-height:1.15;letter-spacing:-.045em;max-width:28ch}.ds-result a{display:inline-flex;align-items:center;gap:1rem;min-height:44px;color:var(--accent,#00e5e5);text-decoration:none}.ds-result:focus-within{border-color:var(--accent,#00e5e5)}.ds-result a:hover{text-decoration:underline;text-underline-offset:.3em}.ds-result a:focus-visible{outline:2px solid var(--accent,#00e5e5);outline-offset:5px;}"
     },
     {
       "name": "Process artifact",
@@ -429,15 +529,15 @@
       "refersTo": "process-stage",
       "description": "A real ordered step ending in a concrete working artifact.",
       "html": "<article class=\"ds-stage\"><span class=\"ds-node\" aria-hidden=\"true\"></span><p class=\"ds-step\">01</p><h3>Inspect the signal</h3><p>Start with reality, not assumptions: stack, process, team friction, goals, and delivery risk.</p><div><span>Working artifact</span><p>Risk register</p></div></article>",
-      "css": ".ds-stage{font-family:var(--font-display,\"Space Grotesk\"),sans-serif;position:relative;padding:0 1.5rem 0 0;color:var(--page-foreground,#edf2ef);max-width:23rem}.ds-stage:before{content:\"\";position:absolute;top:.4rem;left:0;right:0;height:1px;background:var(--accent-mint,#a3e8be)}.ds-node{position:relative;display:block;width:.8rem;height:.8rem;box-sizing:border-box;background:var(--accent-mint,#a3e8be);border:3px solid var(--page-background,#0b0f10);border-radius:50%;box-shadow:0 0 0 1px var(--accent-mint,#a3e8be)}.ds-step{font-family:var(--font-mono,\"Fira Code\"),monospace;font-size:.72rem;color:var(--text-subtle,#8c9d96)}.ds-stage h3{font-size:clamp(1.2rem,1.8vw,1.55rem);font-weight:500;line-height:1.2;letter-spacing:-.035em}.ds-stage>p:not(.ds-step){font-size:1rem;line-height:1.6;color:var(--text-muted,#a8b5b0)}.ds-stage>div{border-top:1px solid var(--rule-soft,#26322f);padding-top:1rem}.ds-stage>div>span{font-family:var(--font-mono,\"Fira Code\"),monospace;font-size:.72rem;color:var(--text-subtle,#8c9d96);text-transform:uppercase}.ds-stage>div>p{font-size:1rem;color:var(--accent-mint,#a3e8be);margin:.4rem 0 0}"
+      "css": ".ds-stage{font-family:var(--font-display,\"Space Grotesk\"),sans-serif;position:relative;padding:0 1.5rem 0 0;color:var(--page-foreground,#edf2ef);max-width:23rem}.ds-stage:before{content:\"\";position:absolute;top:.4rem;left:0;right:0;height:1px;background:var(--accent,#00e5e5)}.ds-node{position:relative;display:block;width:.8rem;height:.8rem;box-sizing:border-box;background:var(--accent,#00e5e5);border:3px solid var(--page-background,#0b0f10);border-radius:50%;box-shadow:0 0 0 1px var(--accent,#00e5e5)}.ds-step{font-family:var(--font-mono,\"Fira Code\"),monospace;font-size:.72rem;color:var(--text-subtle,#8f9fa3)}.ds-stage h3{font-size:clamp(1.2rem,1.8vw,1.55rem);font-weight:500;line-height:1.2;letter-spacing:-.035em}.ds-stage>p:not(.ds-step){font-size:1rem;line-height:1.6;color:var(--text-muted,#adb9bc)}.ds-stage>div{border-top:1px solid var(--rule-soft,#283438);padding-top:1rem}.ds-stage>div>span{font-family:var(--font-mono,\"Fira Code\"),monospace;font-size:.72rem;color:var(--text-subtle,#8f9fa3);text-transform:uppercase}.ds-stage>div>p{font-size:1rem;color:var(--accent,#00e5e5);margin:.4rem 0 0}"
     }
   ],
   "narrative": {
     "northStar": "Signal",
-    "overview": "Approved on 9 October 2026 from the local interactive Signal study. This replaces the historical boot/HUD styling description; older specs remain historical context. PRODUCT.md continues to define the business, audiences and truthful content requirements.\n\nWojciech is the visible, accountable specialist. Preserve graphite, muted mint, Space Grotesk hierarchy, Fira Code metadata, the `wb_` mark and the real portrait. The interface communicates technical precision through thin connections, clear outcomes and deliberate timing. Body copy speaks to founders and product teams in plain language.\n\nUse the `wb_` lockup in the site header and the CWB artwork on the physical ID card. Do not repeat the old blue logo in the same hero. Existing source assets and quote/document branding remain available and unchanged.\n\nPublic content uses a maximum 1536px outer shell with fluid horizontal padding. Homepage section gaps are 4–7rem on desktop and 3.5rem on phone. The composition alternates the large personal introduction, quiet proof, one decision interface and an ordered process.",
+    "overview": "**Creative North Star: \"Signal\"**\n\nSignal layout approved on 9 October 2026. Original-logo restoration and turquoise accents approved on 12 October 2026. This replaces the historical boot/HUD styling description; older specs remain historical context. PRODUCT.md continues to define the business, audiences and truthful content requirements.\n\nWojciech is the visible, accountable specialist. Preserve graphite, muted turquoise, Space Grotesk hierarchy, Fira Code metadata, the original Consulting Wojciech Bajer logo and the real portrait. The interface communicates technical precision through thin connections, clear outcomes and deliberate timing. Body copy speaks to founders and product teams in plain language.\n\nUse the supplied logo in the shared header and footer, quotes, PDF and sharing images. The compact original symbol belongs in the mobile header, favicon and physical ID card. Never substitute typed initials for the artwork. The supplied PNGs in public/ remain the source of truth; public/brand/ contains lossless crops with transparent exterior margins removed. Keep the original cyan, navy and magenta unchanged. On paper and in PDFs use the positive version with navy lettering.\n\nPublic content uses a maximum 1536px outer shell with fluid horizontal padding. Homepage section gaps are 4–7rem on desktop and 3.5rem on phone. The composition alternates the large personal introduction, quiet proof, one decision interface and an ordered process.",
     "keyCharacteristics": [
       "A visible, accountable specialist with a real portrait and direct contact.",
-      "Graphite surfaces, muted mint connections and thin structural rules.",
+      "Graphite surfaces, muted turquoise connections and thin structural rules.",
       "Space Grotesk hierarchy with Fira Code reserved for short metadata.",
       "One service decision interface and a process that ends in useful artifacts.",
       "Finite motion, static fallbacks and native navigation."
@@ -460,7 +560,7 @@
       }
     ],
     "dos": [
-      "Do preserve graphite, muted mint, the wb_ mark, the real portrait and the accountable operator.",
+      "Do preserve graphite, muted turquoise, the original Consulting Wojciech Bajer logo, the real portrait and the accountable operator.",
       "Do state outcomes in plain language before technical detail.",
       "Do keep direct email visible and preserve the protected form's routes and recovery.",
       "Do retain original partner marks and add case studies only with verified scope, materials and results.",

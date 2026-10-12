@@ -1,6 +1,6 @@
 ---
 name: "Wojciech Bajer Consulting"
-description: "Signal: a personal technical consulting practice, with graphite surfaces, mint signals and purposeful motion."
+description: "Signal: a personal technical consulting practice, with graphite surfaces, turquoise signals and purposeful motion."
 colors:
   page-background: "#0b0f10"
   page-background-soft: "#101617"
@@ -8,17 +8,23 @@ colors:
   surface-panel: "#111819"
   surface-panel-strong: "#192223"
   surface-ink: "#080c0d"
-  accent-mint: "#a3e8be"
-  accent-hover: "#c0f3d3"
-  action-ink: "#102017"
-  accent-command: "#c9dfa5"
+  accent: "#00e5e5"
+  accent-hover: "#7ff2f2"
+  action-ink: "#080c0d"
+  accent-soft: "#80e7e7"
   accent-warning: "#f4b394"
-  text-muted: "#a8b5b0"
-  text-subtle: "#8c9d96"
-  border-mint: "#293633"
-  rule-soft: "#26322f"
-  rule-strong: "#566e61"
+  text-muted: "#adb9bc"
+  text-subtle: "#8f9fa3"
+  border-brand: "#293a3d"
+  rule-soft: "#283438"
+  rule-strong: "#526c70"
   logo-light: "#e8ede8"
+  brand-navy: "#172572"
+  brand-magenta: "#a02483"
+  print-accent: "#006b70"
+  print-tint: "#e6f6f7"
+  print-muted: "#59666b"
+  print-rule: "#d4e0e2"
 typography:
   display:
     fontFamily: "Space Grotesk, sans-serif"
@@ -69,6 +75,22 @@ typography:
     fontSize: "1rem"
     fontWeight: 400
     lineHeight: 1.7
+  quote-display:
+    fontFamily: "Space Grotesk, sans-serif"
+    fontSize: "clamp(3rem, 5.4vw, 4.95rem)"
+    lineHeight: 1.06
+  quote-heading:
+    fontFamily: "Space Grotesk, sans-serif"
+    fontSize: "clamp(1.2rem, 2.6vw, 2.65rem)"
+    lineHeight: 1.12
+  quote-display-mobile:
+    fontFamily: "Space Grotesk, sans-serif"
+    fontSize: "clamp(2.65rem, 8.4vw, 3rem)"
+    lineHeight: 1.06
+  contact-email:
+    fontFamily: "Space Grotesk, sans-serif"
+    fontSize: "clamp(1rem, 1.4vw, 1.25rem)"
+    lineHeight: 1.6
   lead:
     fontFamily: "Space Grotesk, sans-serif"
     fontSize: "1.125rem"
@@ -108,6 +130,7 @@ rounded:
   field: "0.25rem"
   portrait: "0.4rem"
   panel: "0.5rem"
+  quote-panel: "0.35rem"
   lanyard-clip-edge: "0.15rem"
   lanyard-clip: "0.65rem"
   lanyard-card: "0.9rem"
@@ -117,7 +140,7 @@ spacing:
   mobile-x: "1.25rem"
 components:
   button-primary:
-    backgroundColor: "{colors.accent-mint}"
+    backgroundColor: "{colors.accent}"
     textColor: "{colors.action-ink}"
     typography: "{typography.small}"
     rounded: "{rounded.control}"
@@ -160,42 +183,42 @@ components:
 
 **Creative North Star: "Signal"**
 
-Approved on 9 October 2026 from the local interactive Signal study. This replaces the historical boot/HUD styling description; older specs remain historical context. PRODUCT.md continues to define the business, audiences and truthful content requirements.
+Signal layout approved on 9 October 2026. Original-logo restoration and turquoise accents approved on 12 October 2026. This replaces the historical boot/HUD styling description; older specs remain historical context. PRODUCT.md continues to define the business, audiences and truthful content requirements.
 
-Wojciech is the visible, accountable specialist. Preserve graphite, muted mint, Space Grotesk hierarchy, Fira Code metadata, the `wb_` mark and the real portrait. The interface communicates technical precision through thin connections, clear outcomes and deliberate timing. Body copy speaks to founders and product teams in plain language.
+Wojciech is the visible, accountable specialist. Preserve graphite, muted turquoise, Space Grotesk hierarchy, Fira Code metadata, the original Consulting Wojciech Bajer logo and the real portrait. The interface communicates technical precision through thin connections, clear outcomes and deliberate timing. Body copy speaks to founders and product teams in plain language.
 
-Use the `wb_` lockup in the site header and the CWB artwork on the physical ID card. Do not repeat the old blue logo in the same hero. Existing source assets and quote/document branding remain available and unchanged.
+Use the supplied logo in the shared header and footer, quotes, PDF and sharing images. The compact original symbol belongs in the mobile header, favicon and physical ID card. Never substitute typed initials for the artwork. The supplied PNGs in public/ remain the source of truth; public/brand/ contains lossless crops with transparent exterior margins removed. Keep the original cyan, navy and magenta unchanged. On paper and in PDFs use the positive version with navy lettering.
 
 Public content uses a maximum 1536px outer shell with fluid horizontal padding. Homepage section gaps are 4–7rem on desktop and 3.5rem on phone. The composition alternates the large personal introduction, quiet proof, one decision interface and an ordered process.
 
 **Key Characteristics:**
 - A visible, accountable specialist with a real portrait and direct contact.
-- Graphite surfaces, muted mint connections and thin structural rules.
+- Graphite surfaces, muted turquoise connections and thin structural rules.
 - Space Grotesk hierarchy with Fira Code reserved for short metadata.
 - One service decision interface and a process that ends in useful artifacts.
 - Finite motion, static fallbacks and native navigation.
 
 ## Colors
 
-The palette carries technical precision through quiet graphite surfaces and restrained mint signals. Normative color values are in the frontmatter; preserve authentic asset colors.
+The palette carries technical precision through quiet graphite surfaces and restrained turquoise signals. Normative color values are in the frontmatter; preserve authentic asset colors.
 
 ### Primary
-- **Mint Signal** (#a3e8be): selected choices, primary actions, focus and signal arrival.
-- **Mint Hover** (#c0f3d3): a lighter interaction state for the primary action.
+- **Brand Turquoise** (#00e5e5): selected choices, primary actions, focus and signal arrival.
+- **Turquoise Hover** (#7ff2f2): a lighter interaction state for the primary action.
 
 ### Secondary
-- **Command Accent** (#c9dfa5): existing supporting accents, used sparingly.
+- **Soft Turquoise** (#80e7e7): large highlighted headings, links and supporting text on dark surfaces.
 - **Warm Warning** (#f4b394): validation and failure feedback, never decorative urgency.
 
 ### Neutral
 - **Graphite** (#0b0f10): the page background and darker ink surface.
 - **Panel Graphite** (#111819, #192223): tonal separation for panels and their stronger state.
 - **Foreground** (#edf2ef): headings and essential copy.
-- **Muted and Subtle Text** (#a8b5b0, #8c9d96): descriptive text and short metadata.
-- **Structural Rules** (#26322f, #566e61): quiet borders and stronger boundaries between meaningful controls.
+- **Muted and Subtle Text** (#adb9bc, #8f9fa3): descriptive text and short metadata.
+- **Structural Rules** (#283438, #526c70): quiet borders and stronger boundaries between meaningful controls.
 - **Logo Light** (#e8ede8): a shared surface for original dark partner marks.
 
-The base is graphite #0b0f10. Panels step up to #111819 or #192223. Mint #a3e8be marks selection, action and a signal arriving at its outcome. Use quiet 1px rules and occasional small corner markers. Controls are almost square with a 0.2rem radius. Large decorative glass pills, thick neon outlines and unrelated purple gradients are outside this direction.
+The base is graphite #0b0f10. Panels step up to #111819 or #192223. Turquoise #00e5e5 marks selection, action and a signal arriving at its outcome. Use quiet 1px rules and occasional small corner markers. Controls are almost square with a 0.2rem radius. Large decorative glass pills, thick neon outlines and unrelated purple gradients are outside this direction.
 
 Logo surfaces must preserve each original mark's contrast and proportions. Group compatible logos on shared dark or light surfaces rather than alternating nine separate high-contrast tiles. Optical sizing may vary by mark. Do not invent monochrome variants or scope-of-work claims.
 
@@ -217,7 +240,7 @@ Logo surfaces must preserve each original mark's contrast and proportions. Group
 - **Body** (400, `1rem`, line-height 1.6–1.75): readable descriptive copy, normally bounded to 40–60ch.
 - **Label** (400, `0.75rem`, line-height 1.6): short mono labels; smaller metadata never carries the essential message.
 
-The hero uses two clear lines, with the second in mint. Desktop display scales up to 6.5rem; mobile uses a fluid 2.3–4.5rem range, preserving readable complete words. Section titles use 2.25–4rem. Panel titles may use 1.7–2.35rem; process and supporting headings use 1.2–1.65rem. These component-specific fluid sizes are intentional, not arbitrary replacements for the display hierarchy.
+The hero uses two clear lines, with the second in soft turquoise #80e7e7. Desktop display scales up to 6.5rem; mobile uses a fluid 2.3–4.5rem range, preserving readable complete words. Section titles use 2.25–4rem. Panel titles may use 1.7–2.35rem; process and supporting headings use 1.2–1.65rem. These component-specific fluid sizes are intentional, not arbitrary replacements for the display hierarchy.
 
 Body text is normally 1rem with 1.6–1.75 line height. Hero description uses 1.125rem (1.0625rem on phone). Supporting copy may use 0.875–0.9375rem. Mono is reserved for short labels (0.72–0.75rem), coordinates of the interface such as service IDs, and short secondary metadata (0.6875rem). Do not reproduce the tiny captions from the study as essential product copy. Existing long-form Notes remain a reading surface.
 
@@ -227,13 +250,13 @@ The frontmatter records recurring component roles rather than every historical s
 
 ## Elevation
 
-The public interface is flat at rest. Depth comes from tonal surfaces, thin rules and a restrained pointer spotlight on the active service panel. The spotlight exists only for a precise pointer with motion enabled; keyboard focus uses a clear mint border.
+The public interface is flat at rest. Depth comes from tonal surfaces, thin rules and a restrained pointer spotlight on the active service panel. The spotlight exists only for a precise pointer with motion enabled; keyboard focus uses a clear turquoise border.
 
 The physical Lanyard is an intentional exception: a rounded identity card, metal clip, material highlights and a bounded physical shadow. Its 0.9rem card and 0.65rem clip radii match the established object, not general UI panels. Original artwork, partner logos and credibility marks keep their authentic colors.
 
 ### Shadow Vocabulary
 - **Physical card shadow** (`0 22px 35px -18px #0009`): limited to the portrait card fallback, matching the physical Lanyard object.
-- **Process marker ring** (`0 0 0 1px var(--accent-mint)`): a thin structural edge around an actual process node, not elevation.
+- **Process marker ring** (`0 0 0 1px var(--accent)`): a thin structural edge around an actual process node, not elevation.
 
 **The Object Boundary Rule.** Physical material effects belong to the Lanyard. Do not spread its rounded card shape or cast shadow to ordinary service panels.
 
@@ -245,14 +268,17 @@ The physical Lanyard is an intentional exception: a rounded identity card, metal
 - **Process:** four ordered steps, with a horizontal trace on desktop and a vertical one on mobile. Step numbers identify an actual sequence. Service choice numbers identify their corresponding output; neither is a default decorative section marker.
 - **Collaboration evidence:** retain the accurate label “Selected collaborations”. Add case studies only with verified scope, materials and results. No invented metrics or project screenshots.
 - **Contact:** clear direct email plus the existing protected form. Preserve selected service, input names, validation, recovery and anti-spam behavior.
+- **Brand sizing:** full header logo is 285px at the default text size; below 720px use the 88px original symbol with its own proportions and a minimum 44px link target. The desktop navigation collapses at 1200px. Full logos in the footer and quotes remain bounded by their container, including at 200% text size.
 - **Navigation:** simple horizontal header with a named operator and direct contact action. Responsive native details menu supports keyboard, Escape, outside click and no JS. Do not rename collaborations to “Work” until actual case studies exist.
 - **Credibility and private quotes:** keep factual claims, legal content, certificate links and private-client behavior unchanged.
 
 ### Buttons and fields
 
-Primary actions use a solid mint fill, dark text, a quiet 0.2rem corner and stable 48px minimum height. Secondary buttons keep a transparent graphite surface and a stronger rule. Arrows may move 2–3px inside the fixed target. Keyboard focus is a 2px mint outline with offset.
+Primary actions use a solid turquoise fill, dark text, a quiet 0.2rem corner and stable 48px minimum height. Secondary buttons keep a transparent graphite surface and a stronger rule. Arrows may move 2–3px inside the fixed target. Keyboard focus is a 2px turquoise outline with offset.
 
 Existing contact inputs remain 48px high, with a 0.25rem field radius, 1px stronger rule, panel background and 1rem input text. Keep native validation, visible placeholders, warning borders and disabled states. Existing profile portrait geometry may use the 0.4rem portrait radius; it is not the general control radius.
+
+For white quote/PDF surfaces, use dark teal #006b70 for text and pale cyan #e6f6f7 for emphasis. Use the original positive logo, not a filtered negative image. Existing quote panel corners remain 0.35rem.
 
 ### Motion contract
 
@@ -276,7 +302,7 @@ Before delivery verify 320/390/768/1024/1440px, initial and live reduced motion,
 ## Do's and Don'ts
 
 ### Do:
-- **Do** preserve graphite, muted mint, the wb_ mark, the real portrait and the accountable operator.
+- **Do** preserve graphite, muted turquoise, the original Consulting Wojciech Bajer logo, the real portrait and the accountable operator.
 - **Do** state outcomes in plain language before technical detail.
 - **Do** keep direct email visible and preserve the protected form's routes and recovery.
 - **Do** retain original partner marks and add case studies only with verified scope, materials and results.

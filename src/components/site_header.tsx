@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { BrandLogo } from "./brand_logo";
 import { MobileNav } from "./mobile_nav";
 import styles from "./site_header.module.css";
 import { MotionToggle } from "./site_motion";
@@ -37,12 +38,7 @@ export const SiteHeader = ({ currentPath }: { currentPath: string }) => {
         className={styles.brandLockup}
         aria-label="Wojciech Bajer — home"
       >
-        <span className={styles.brandMark} aria-hidden="true">
-          wb<span>_</span>
-        </span>
-        <span className={styles.brandName}>
-          Wojciech Bajer<span>Independent consultant</span>
-        </span>
+        <BrandLogo compactOnMobile />
       </Link>
       <nav className={styles.desktopNav} aria-label="Primary">
         {links}

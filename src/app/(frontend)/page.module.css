@@ -13,7 +13,7 @@
   display: inline-block;
   width: 1.5rem;
   height: 1px;
-  background: var(--accent-mint);
+  background: var(--accent);
   margin: 0 0.8rem 0.25em 0;
 }
 .heroCopy h1 {
@@ -32,7 +32,7 @@
   display: inline-block;
 }
 .accent {
-  color: var(--accent-mint);
+  color: var(--accent-soft);
 }
 .description {
   max-width: 42ch;
@@ -59,7 +59,7 @@
   margin-top: 3rem;
 }
 .signature > span {
-  color: var(--accent-mint);
+  color: var(--accent-soft);
   font:
     1.5rem/1 var(--font-mono),
     monospace;

@@ -11,18 +11,16 @@
   border-bottom: 1px solid var(--rule-soft);
 }
 .brand,
-.accessBrand,
-.footerBrand {
-  color: var(--page-foreground);
-  font-weight: 600;
-  font-size: 2.65rem;
-  line-height: 1;
-  letter-spacing: -0.085em;
+.accessBrand {
+  --brand-logo-width: 280px;
+  flex-shrink: 0;
 }
-.brand span,
-.accessBrand span,
-.footerBrand span {
-  color: var(--accent-mint);
+.footerBrand {
+  --brand-logo-width: 250px;
+  flex-shrink: 0;
+}
+.footerBrand img {
+  max-width: var(--brand-logo-width);
 }
 .mastheadLabel,
 .eyebrow,
@@ -52,7 +50,7 @@
   font-size: 0.72rem;
 }
 .lockButton:hover {
-  color: var(--accent-mint);
+  color: var(--accent-soft);
 }
 .previewBadge,
 .statusBadge,
@@ -60,8 +58,8 @@
 .lineBadge {
   display: inline-block;
   padding: 4px 8px;
-  color: var(--accent-mint);
-  border: 1px solid var(--border-mint-strong);
+  color: var(--accent-soft);
+  border: 1px solid var(--border-brand-strong);
   border-radius: 0.12rem;
   font:
     0.64rem/1.5 var(--font-mono),
@@ -125,10 +123,10 @@
   font-size: 0.72rem;
 }
 .inlineLink {
-  color: var(--accent-mint);
+  color: var(--accent-soft);
   text-decoration: underline;
   text-underline-offset: 4px;
-  text-decoration-color: var(--border-mint-strong);
+  text-decoration-color: var(--border-brand-strong);
 }
 .inlineLink:hover {
   text-decoration-color: currentColor;
@@ -148,7 +146,7 @@
   scroll-margin-top: 32px;
 }
 .sectionIndex {
-  color: var(--accent-mint);
+  color: var(--accent-soft);
   margin-bottom: 13px;
 }
 .sectionHeading {
@@ -224,9 +222,9 @@
   height: 34px;
   display: grid;
   place-items: center;
-  border: 1px solid var(--border-mint-strong);
+  border: 1px solid var(--border-brand-strong);
   border-radius: 0.12rem;
-  color: var(--accent-mint);
+  color: var(--accent-soft);
   font:
     0.67rem/1 var(--font-mono),
     monospace;
@@ -243,7 +241,7 @@
   font:
     0.68rem/1.6 var(--font-mono),
     monospace;
-  color: var(--accent-mint);
+  color: var(--accent-soft);
 }
 .sectionIntro {
   color: var(--text-muted);
@@ -275,11 +273,11 @@
     background 0.15s ease;
 }
 .packageOption:hover {
-  border-color: var(--border-mint-strong);
+  border-color: var(--border-brand-strong);
 }
 .packageOption.optionSelected {
   background: var(--surface-panel-strong);
-  border-color: var(--accent-mint);
+  border-color: var(--accent);
 }
 .packageOption input,
 .addonOption input,
@@ -288,7 +286,7 @@
   height: 19px;
   min-width: 19px;
   margin-top: 4px;
-  accent-color: var(--accent-mint);
+  accent-color: var(--accent);
   cursor: pointer;
 }
 .optionBody {
@@ -373,8 +371,8 @@
   color: var(--text-muted);
   font-weight: 400;
   padding: 13px 7px;
-  border-top: 1px solid var(--border-mint-strong);
-  border-bottom: 1px solid var(--border-mint-strong);
+  border-top: 1px solid var(--border-brand-strong);
+  border-bottom: 1px solid var(--border-brand-strong);
   vertical-align: bottom;
 }
 .priceTable th {
@@ -444,8 +442,8 @@
 .summaryPanel {
   padding: 28px 25px;
   background: var(--surface-panel);
-  border: 1px solid var(--border-mint);
-  border-top: 2px solid var(--accent-mint);
+  border: 1px solid var(--border-brand);
+  border-top: 2px solid var(--accent);
   border-radius: 0.35rem;
 }
 .summaryPanel h2 {
@@ -467,7 +465,7 @@
 }
 .selectedAddons li::before {
   content: "+";
-  color: var(--accent-mint);
+  color: var(--accent-soft);
   position: absolute;
   left: 0;
 }
@@ -492,7 +490,7 @@
 }
 .totals .discountRow dt,
 .totals .discountRow dd {
-  color: var(--accent-mint);
+  color: var(--accent-soft);
 }
 .grandTotal {
   padding: 22px 0 24px;
@@ -508,7 +506,7 @@
   letter-spacing: -0.055em;
   font-weight: 500;
   margin-top: 6px;
-  color: var(--accent-mint);
+  color: var(--accent-soft);
   font-variant-numeric: tabular-nums;
 }
 .summaryActions {
@@ -528,20 +526,20 @@
   font-size: 1rem;
   line-height: 1.4;
   text-align: left;
-  border: 1px solid var(--accent-mint);
+  border: 1px solid var(--accent);
   transition: background 0.15s ease;
 }
 .primaryButton {
-  background: var(--accent-mint);
+  background: var(--accent);
   color: var(--page-background);
 }
 .primaryButton:hover:not(:disabled) {
-  background: color-mix(in srgb, var(--accent-mint), white 20%);
+  background: var(--accent-hover);
 }
 .secondaryButton {
   background: transparent;
   color: var(--page-foreground);
-  border-color: var(--border-mint-strong);
+  border-color: var(--border-brand-strong);
 }
 .secondaryButton:hover {
   background: var(--surface-panel-strong);
@@ -571,13 +569,13 @@
   align-items: start;
   gap: 20px;
   padding: 27px 28px;
-  border: 1px solid var(--border-mint-strong);
+  border: 1px solid var(--border-brand-strong);
   background: var(--surface-panel-strong);
   border-radius: 0.35rem;
   margin-top: 35px;
 }
 .notice h2 {
-  color: var(--accent-mint);
+  color: var(--accent-soft);
   font-size: 1.2rem;
   margin-bottom: 8px;
 }
@@ -586,7 +584,7 @@
   font-size: 0.72rem;
 }
 .noticeMark {
-  color: var(--accent-mint);
+  color: var(--accent-soft);
   font-size: 1.2rem;
   line-height: 1.2;
 }
@@ -615,7 +613,7 @@
 }
 .acceptanceSection {
   padding-top: 30px;
-  border-top: 1px solid var(--border-mint-strong);
+  border-top: 1px solid var(--border-brand-strong);
 }
 .acceptanceForm {
   margin-top: 28px;
@@ -636,7 +634,7 @@
   width: 100%;
   min-height: 48px;
   padding: 11px 13px;
-  border: 1px solid var(--border-mint-strong);
+  border: 1px solid var(--border-brand-strong);
   background: var(--surface-panel);
   color: var(--page-foreground);
   border-radius: 0.12rem;
@@ -651,7 +649,7 @@
   cursor: pointer;
 }
 .consent strong {
-  color: var(--accent-mint);
+  color: var(--accent-soft);
   font-weight: 500;
 }
 .acceptanceForm .primaryButton {
@@ -668,7 +666,7 @@
   margin-top: 16px;
 }
 .success {
-  color: var(--accent-mint);
+  color: var(--accent-soft);
   margin-top: 16px;
   font-size: 0.72rem;
 }
@@ -714,16 +712,16 @@
   margin-top: 13px;
 }
 .contactLink {
-  color: var(--accent-mint);
+  color: var(--accent-soft);
   display: flex;
   align-items: center;
   gap: 25px;
   padding: 10px 0;
-  border-bottom: 1px solid var(--border-mint-strong);
+  border-bottom: 1px solid var(--border-brand-strong);
   font-size: 1.2rem;
 }
 .contactLink:hover {
-  border-color: var(--accent-mint);
+  border-color: var(--accent-soft);
 }
 .footer {
   border-top: 1px solid var(--rule-soft);
@@ -738,10 +736,6 @@
 }
 .footer p:last-child {
   margin-left: auto;
-}
-.footerBrand {
-  font-family: var(--font-display), sans-serif;
-  font-size: 1.2rem;
 }
 .srOnly {
   position: absolute;
@@ -834,7 +828,7 @@
     border-bottom: 1px solid var(--rule-soft);
   }
   .priceTable tbody tr:first-child {
-    border-top: 1px solid var(--border-mint-strong);
+    border-top: 1px solid var(--border-brand-strong);
   }
   .priceTable tbody th:first-child {
     grid-column: 1 / -1;
@@ -859,7 +853,7 @@
     font-size: 0.72rem;
   }
   .priceTable tbody td:last-child {
-    color: var(--accent-mint);
+    color: var(--accent-soft);
   }
   .taxRate {
     display: inline;
@@ -916,12 +910,13 @@
   .masthead {
     min-height: 83px;
     gap: 15px;
+    row-gap: 10px;
+    padding-block: 18px;
     flex-wrap: wrap;
   }
-  .brand {
-    font-size: 2.65rem;
-  }
   .mastheadLabel {
+    order: 3;
+    flex-basis: 100%;
     font-size: 0.72rem;
     letter-spacing: 0.03em;
     gap: 7px;
@@ -1005,8 +1000,12 @@
     padding: 25px 22px;
   }
   .footer {
-    gap: 13px;
+    flex-wrap: wrap;
+    gap: 16px;
     font-size: 0.72rem;
+  }
+  .footerBrand {
+    flex-basis: 100%;
   }
   .footer p:last-child {
     max-width: 35%;
@@ -1024,9 +1023,6 @@
   .accessPanel {
     padding: 52px 0;
   }
-  .accessBrand {
-    font-size: 2.65rem;
-  }
 }
 @media print {
   :global(html),
@@ -1037,16 +1033,17 @@
   .quotePage {
     width: 100%;
     padding: 0;
-    color: #17231d;
+    color: #172a2d;
     background: white;
     font-size: 10pt;
-    --page-foreground: #17231d;
-    --text-muted: #42594c;
-    --text-subtle: #42594c;
-    --accent-mint: #1b6242;
-    --rule-soft: #d4ded8;
-    --border-mint: #bdcdc2;
-    --border-mint-strong: #8ba793;
+    --page-foreground: #172a2d;
+    --text-muted: #42585c;
+    --text-subtle: #42585c;
+    --accent: #006b70;
+    --accent-soft: #006b70;
+    --rule-soft: #d4dfe1;
+    --border-brand: #bcced1;
+    --border-brand-strong: #83a4aa;
     --surface-panel: white;
   }
   .quotePage,
@@ -1102,7 +1099,7 @@
   }
   .packageOption.optionSelected,
   .notice {
-    background: #eef5f0;
+    background: #e6f6f7;
   }
   .grandTotal strong {
     font-size: 24pt;

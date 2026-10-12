@@ -48,12 +48,12 @@
   padding-left: 1.5rem;
 }
 .content a {
-  color: var(--accent-mint);
+  color: var(--accent-soft);
   text-decoration: underline;
   text-underline-offset: 0.2em;
 }
 .content blockquote {
-  border-left: 2px solid var(--accent-mint);
+  border-left: 2px solid var(--accent);
   padding-left: 1.5rem;
   color: var(--text-muted);
 }

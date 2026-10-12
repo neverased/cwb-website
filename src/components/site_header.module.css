@@ -16,26 +16,6 @@
   min-width: 44px;
   min-height: 44px;
 }
-.brandMark {
-  font:
-    500 2rem/1 var(--font-mono),
-    monospace;
-  letter-spacing: -0.12em;
-}
-.brandMark span {
-  color: var(--accent-mint);
-}
-.brandName {
-  display: grid;
-  font-size: 0.875rem;
-  font-weight: 500;
-  line-height: 1.5;
-}
-.brandName > span {
-  color: var(--text-subtle);
-  font-size: 0.6875rem;
-  font-weight: 400;
-}
 .desktopNav {
   display: flex;
   flex-wrap: wrap;
@@ -57,7 +37,7 @@
 }
 .navLink[aria-current="page"] {
   text-decoration: underline;
-  text-decoration-color: var(--accent-mint);
+  text-decoration-color: var(--accent-soft);
   text-underline-offset: 0.6rem;
 }
 .contactLink {
@@ -77,10 +57,10 @@
 .contactLink:hover,
 .contactLink[aria-current="page"] {
   background: var(--surface-panel-strong);
-  border-color: var(--accent-mint);
+  border-color: var(--accent-soft);
 }
 .contactLink > span {
-  color: var(--accent-mint);
+  color: var(--accent-soft);
   transition: transform 240ms var(--ease-out);
 }
 .contactLink:hover > span {
@@ -91,7 +71,7 @@
   left: 0;
   top: 0.5rem;
   padding: 0.65rem 1rem;
-  background: var(--accent-mint);
+  background: var(--accent);
   color: var(--surface-ink);
   z-index: 30;
   transform: translateY(-160%);
@@ -102,7 +82,7 @@
 .mobileMenu {
   display: none;
 }
-@media (max-width: 1100px) {
+@media (max-width: 1200px) {
   .topbar {
     gap: 1rem;
     min-height: 5rem;
@@ -126,7 +106,7 @@
     display: none;
   }
   .mobileMenu summary span {
-    color: var(--accent-mint);
+    color: var(--accent-soft);
     transition: transform 220ms var(--ease-out);
   }
   .mobileMenu[open] summary span {
@@ -165,12 +145,6 @@
     min-height: 4.75rem;
     padding-block: 0.5rem;
   }
-  .brandMark {
-    font-size: 1.75rem;
-  }
-  .brandName {
-    display: none;
-  }
   .contactLink {
     padding: 0.45rem 0.65rem;
     gap: 0.65rem;
@@ -178,5 +152,19 @@
   .mobileMenu summary {
     gap: 0.5rem;
     padding-inline: 0.25rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .contactLink {
+    padding-inline: 0.45rem;
+  }
+  .contactLink > span,
+  .mobileMenu summary span {
+    display: none;
+  }
+  .mobileMenu summary {
+    min-width: 44px;
+    justify-content: center;
   }
 }

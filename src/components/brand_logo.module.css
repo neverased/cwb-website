@@ -1,0 +1,23 @@
+.logo {
+  display: block;
+  width: var(--brand-logo-width, 17.8125rem);
+  max-width: 100%;
+  flex-shrink: 0;
+}
+
+.logo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3217 / 405;
+}
+
+@media screen and (max-width: 720px) {
+  .responsive {
+    width: 5.5rem;
+  }
+
+  .responsive img {
+    aspect-ratio: 1179 / 355;
+  }
+}

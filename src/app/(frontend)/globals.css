@@ -5,16 +5,16 @@
   --surface-panel: #111819;
   --surface-panel-strong: #192223;
   --surface-ink: #080c0d;
-  --accent-mint: #a3e8be;
-  --accent-mint-soft: #a3e8be;
-  --accent-command: #c9dfa5;
+  --accent: #00e5e5;
+  --accent-soft: #80e7e7;
+  --accent-hover: #7ff2f2;
   --accent-warning: #f4b394;
-  --text-muted: #a8b5b0;
-  --text-subtle: #8c9d96;
-  --border-mint: #293633;
-  --border-mint-strong: #566e61;
-  --rule-soft: #26322f;
-  --rule-strong: #566e61;
+  --text-muted: #adb9bc;
+  --text-subtle: #8f9fa3;
+  --border-brand: #293a3d;
+  --border-brand-strong: #526c70;
+  --rule-soft: #283438;
+  --rule-strong: #526c70;
   --radius-hard: 0.5rem;
   --corner-cut: 0.5rem;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
@@ -83,10 +83,10 @@ p {
 }
 ::selection {
   color: #0b0f10;
-  background: var(--accent-mint);
+  background: var(--accent);
 }
 :focus-visible {
-  outline: 2px solid var(--accent-mint);
+  outline: 2px solid var(--accent);
   outline-offset: 5px;
 }
 input:focus-visible,
@@ -120,10 +120,10 @@ select:focus-visible {
   gap: 1.4rem;
   min-height: 3rem;
   padding: 0.8rem 1.2rem;
-  border: 1px solid var(--accent-mint);
+  border: 1px solid var(--accent);
   border-radius: 0.2rem;
-  background: var(--accent-mint);
-  color: #102017;
+  background: var(--accent);
+  color: var(--surface-ink);
   font-size: 0.875rem;
   font-weight: 600;
   transition:
@@ -132,8 +132,8 @@ select:focus-visible {
     transform var(--motion-fast) var(--ease-out);
 }
 .button:hover {
-  background: #c0f3d3;
-  border-color: #c0f3d3;
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
 }
 .button:active {
   transform: translateY(1px);
@@ -163,7 +163,7 @@ select:focus-visible {
   align-items: center;
   gap: 0.7rem;
   min-height: 2.75rem;
-  color: var(--accent-mint);
+  color: var(--accent-soft);
   font-size: 0.9rem;
   text-decoration: underline;
   text-decoration-color: transparent;
@@ -202,7 +202,7 @@ select:focus-visible {
   display: none;
 }
 .motion-toggle:hover:not(:disabled) {
-  color: var(--accent-mint);
+  color: var(--accent-soft);
 }
 .motion-toggle:disabled {
   cursor: default;
@@ -214,7 +214,7 @@ select:focus-visible {
   transition: none !important;
   scroll-behavior: auto !important;
 }
-@media (max-width: 1100px) {
+@media (max-width: 1200px) {
   .motion-toggle span {
     display: none;
   }

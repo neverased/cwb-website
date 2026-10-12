@@ -13,7 +13,7 @@ export const revalidate = 0;
 export const fetchCache = "force-no-store";
 
 export const metadata: Metadata = {
-  title: "Indywidualna oferta | wb_",
+  title: "Indywidualna oferta | Consulting Wojciech Bajer",
   description: "Prywatna oferta współpracy.",
   robots: {
     index: false,

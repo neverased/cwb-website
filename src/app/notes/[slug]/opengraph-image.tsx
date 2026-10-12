@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { ImageResponse } from "next/og";
 
+import { getBrandImage } from "@/lib/brand_image";
 import { OG_IMAGE_CONTENT_TYPE, OG_IMAGE_SIZE } from "@/lib/og";
 import { getPublishedPost } from "@/lib/posts";
 import { PERSON_NAME } from "@/lib/seo";
@@ -17,6 +18,7 @@ export default async function OpenGraphImage({
   const { slug } = await params;
   const post = await getPublishedPost(slug);
   if (!post) notFound();
+  const logo = await getBrandImage("logo-on-dark");
 
   const titleSize =
     post.title.length <= 60 ? 62 : post.title.length <= 95 ? 50 : 40;
@@ -37,22 +39,28 @@ export default async function OpenGraphImage({
         padding: "60px 76px",
         background: "#0b0f10",
         color: "#edf2ef",
-        border: "1px solid #293633",
+        border: "1px solid #293a3d",
       }}
     >
       <div
         style={{
           display: "flex",
+          alignItems: "center",
           justifyContent: "space-between",
           fontSize: 22,
           lineHeight: 1.2,
           letterSpacing: "0.1em",
           textTransform: "uppercase",
-          color: "#a3e8be",
+          color: "#80e7e7",
         }}
       >
+        <img
+          src={logo}
+          width={430}
+          height={(430 * 405) / 3217}
+          alt="Consulting Wojciech Bajer"
+        />
         <span>Notes</span>
-        <span>wojciechbajer.com</span>
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
         <div
@@ -72,7 +80,7 @@ export default async function OpenGraphImage({
             display: "flex",
             fontSize: 22,
             lineHeight: 1.3,
-            color: "#a8b5b0",
+            color: "#adb9bc",
             wordBreak: "break-word",
           }}
         >
@@ -82,12 +90,16 @@ export default async function OpenGraphImage({
       <div
         style={{
           display: "flex",
+          justifyContent: "space-between",
+          borderTop: "1px solid #293a3d",
+          paddingTop: 22,
           fontSize: 22,
           lineHeight: 1.2,
-          color: "#c9dfa5",
+          color: "#80e7e7",
         }}
       >
-        By {PERSON_NAME}
+        <span>By {PERSON_NAME}</span>
+        <span>wojciechbajer.com</span>
       </div>
     </div>,
     OG_IMAGE_SIZE,

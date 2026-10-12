@@ -80,6 +80,24 @@ for (const url of urls) {
   );
   const html = await response.text();
   htmlByPath.set(path, html);
+  for (const section of ["header", "footer"]) {
+    const fragment = html.match(
+      new RegExp(`<${section}\\b[^>]*>([\\s\\S]*?)</${section}>`),
+    )?.[1];
+    assert(fragment, `${path} needs its shared ${section}`);
+    assert(
+      tags(fragment, "img").some(
+        (image) => image.src === "/brand/logo-on-dark.png",
+      ),
+      `${path} ${section} must display the original brand logo`,
+    );
+  }
+  const mobileBrand = tags(html, "source").find(
+    (source) => source.srcSet === "/brand/mark.png",
+  );
+  assert(mobileBrand, `${path} needs the original mark for small screens`);
+  images.add("/brand/mark.png");
+  images.add("/brand/logo-on-light.png");
   assert.match(
     html,
     /<html[^>]*lang="en"/,

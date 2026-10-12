@@ -51,7 +51,7 @@ export const ProfileLanyard = () => {
       <div className={styles.heading}>
         <span>Human in the system</span>
         <span className={styles.marker} aria-hidden="true">
-          WB
+          <Image src="/brand/mark.png" width={1179} height={355} alt="" />
         </span>
       </div>
       <div
@@ -100,7 +100,7 @@ export const ProfileLanyard = () => {
               backImage="/lanyard/reverse.svg"
               strapImage="/lanyard/strap.svg"
               cardColor="#111819"
-              strapColor="#a3e8be"
+              strapColor="#0b0f10"
               finish="matte"
               metal="silver"
               size={0.7}

@@ -13,8 +13,13 @@
   padding-bottom: 0.75rem;
 }
 .marker {
-  color: var(--accent-mint);
-  letter-spacing: -0.08em;
+  display: inline-flex;
+  align-items: center;
+}
+.marker img {
+  display: block;
+  width: 3.375rem;
+  height: auto;
 }
 .stage {
   position: relative;
@@ -26,7 +31,7 @@
   position: absolute;
   inset: 1rem 0;
   z-index: -2;
-  background-image: radial-gradient(var(--border-mint) 1px, transparent 1px);
+  background-image: radial-gradient(var(--border-brand) 1px, transparent 1px);
   background-size: 24px 24px;
   opacity: 0.45;
   mask-image: linear-gradient(transparent, #000 20%, #000 80%, transparent);
@@ -44,15 +49,15 @@
   stroke-width: 1;
 }
 .signalBase {
-  stroke: var(--border-mint);
+  stroke: var(--border-brand);
 }
 .signalTrace {
-  stroke: var(--accent-mint);
+  stroke: var(--accent-soft);
   stroke-dasharray: 1;
   opacity: 0.55;
 }
 .signal circle {
-  fill: var(--accent-mint);
+  fill: var(--accent-soft);
   opacity: 0.65;
 }
 :global([data-site-motion="enabled"]) .signalTrace {
@@ -92,10 +97,23 @@
   display: none;
 }
 .strap {
+  position: relative;
+  overflow: hidden;
   width: 2.25rem;
   height: 15%;
-  background: var(--accent-mint) url("/lanyard/strap.svg") center / auto 2.25rem;
+  background: var(--surface-ink);
   border-inline: 2px solid var(--rule-strong);
+}
+.strap::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 15rem;
+  height: 2.25rem;
+  transform: rotate(90deg);
+  transform-origin: top left;
+  background: url("/lanyard/strap.svg") left center / auto 100%;
 }
 .clip {
   width: 1.55rem;
@@ -138,11 +156,11 @@
   font-size: 0.875rem;
 }
 .profileLink span {
-  color: var(--accent-mint);
+  color: var(--accent-soft);
   transition: transform 240ms var(--ease-out);
 }
 .profileLink:hover {
-  color: var(--accent-mint);
+  color: var(--accent-soft);
 }
 .profileLink:hover span {
   transform: translate(3px, -3px);
@@ -161,7 +179,7 @@
 }
 .motionButton:hover:not(:disabled) {
   border-color: var(--rule-strong);
-  color: var(--accent-mint);
+  color: var(--accent-soft);
 }
 .motionButton:disabled {
   cursor: default;

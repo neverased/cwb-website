@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { type FormEvent, useEffect, useState } from "react";
 
+import { BrandLogo } from "@/components/brand_logo";
 import { calculateQuote, defaultSelection } from "@/lib/quotes/calculations";
 import { formatQuoteMoney } from "@/lib/quotes/presentation";
 import type { PublicQuote, QuoteSelection } from "@/lib/quotes/types";
@@ -158,9 +159,7 @@ export function QuoteOffer({ quote }: { quote: PublicQuote }) {
   return (
     <div className={styles.quotePage} lang={content.language}>
       <header className={styles.masthead}>
-        <div className={styles.brand} aria-label="Wojciech Bajer">
-          wb<span>_</span>
-        </div>
+        <BrandLogo className={styles.brand} compactOnMobile />
         <p className={styles.mastheadLabel}>
           {copy.privateOffer}
           {quote.preview && (
@@ -753,9 +752,7 @@ export function QuoteOffer({ quote }: { quote: PublicQuote }) {
         </section>
       </main>
       <footer className={styles.footer}>
-        <span className={styles.footerBrand}>
-          wb<span>_</span>
-        </span>
+        <BrandLogo className={styles.footerBrand} />
         <p>{copy.confidential}</p>
         <p>{content.number}</p>
       </footer>

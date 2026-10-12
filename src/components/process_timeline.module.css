@@ -21,7 +21,7 @@
   transform-origin: left;
 }
 .stage::after {
-  background: var(--accent-mint);
+  background: var(--accent);
   transform: scaleX(1);
 }
 .stage:last-child::before,
@@ -39,10 +39,10 @@
 .dot {
   width: 0.8rem;
   height: 0.8rem;
-  background: var(--accent-mint);
+  background: var(--accent);
   border: 3px solid var(--page-background);
   border-radius: 50%;
-  box-shadow: 0 0 0 1px var(--accent-mint);
+  box-shadow: 0 0 0 1px var(--accent);
 }
 .number {
   color: var(--text-subtle);
@@ -86,7 +86,7 @@
   text-transform: uppercase;
 }
 .artifactName {
-  color: var(--accent-mint);
+  color: var(--accent-soft);
   font-size: 1rem;
   margin-top: 0.4rem;
 }
@@ -205,7 +205,7 @@
     transform: none;
   }
   .timeline[data-motion] .stage .dot {
-    background: var(--accent-mint);
-    box-shadow: 0 0 0 1px var(--accent-mint);
+    background: var(--accent);
+    box-shadow: 0 0 0 1px var(--accent);
   }
 }

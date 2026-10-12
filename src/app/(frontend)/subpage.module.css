@@ -9,7 +9,7 @@
   max-width: 23ch;
 }
 .title > span {
-  color: var(--accent-mint);
+  color: var(--accent-soft);
 }
 .description {
   color: var(--text-muted);
@@ -39,10 +39,10 @@
 }
 .jumpLinks a:hover {
   background: var(--surface-panel-strong);
-  color: var(--accent-mint);
+  color: var(--accent-soft);
 }
 .jumpLinks a span {
-  color: var(--accent-mint);
+  color: var(--accent-soft);
 }
 .service {
   display: grid;
@@ -91,7 +91,7 @@
 }
 .deliverables li::before {
   content: "↳";
-  color: var(--accent-mint);
+  color: var(--accent-soft);
 }
 .disclosure {
   border-top: 1px solid var(--rule-soft);
@@ -110,7 +110,7 @@
   display: none;
 }
 .disclosure summary > span {
-  color: var(--accent-mint);
+  color: var(--accent-soft);
 }
 .disclosure[open] summary > span {
   transform: rotate(45deg);
@@ -154,7 +154,7 @@
   font:
     0.8rem/1.5 var(--font-mono),
     monospace;
-  color: var(--accent-mint);
+  color: var(--accent-soft);
   padding-top: 0.25rem;
 }
 .pipeline h2 {
@@ -223,7 +223,7 @@
   padding: 1.7rem;
 }
 .profileFacts > p {
-  color: var(--accent-mint);
+  color: var(--accent-soft);
   text-transform: none;
 }
 .profileFacts dl {
@@ -267,10 +267,10 @@
   font-size: 1rem;
 }
 .expertiseLinks a span {
-  color: var(--accent-mint);
+  color: var(--accent-soft);
 }
 .expertiseLinks a:hover {
-  color: var(--accent-mint);
+  color: var(--accent-soft);
 }
 .topicList {
   padding-bottom: 3rem;

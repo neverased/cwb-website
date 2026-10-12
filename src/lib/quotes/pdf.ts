@@ -7,10 +7,10 @@ import { formatQuoteMoney } from "./presentation";
 import type { PublicQuote, QuoteLineTotal, QuoteSelection } from "./types";
 
 const INK = "#0b0f10";
-const GREEN = "#185b48";
-const MINT = "#e5f5ed";
-const MUTED = "#596761";
-const RULE = "#d6e0da";
+const TEAL = "#006b70";
+const CYAN_WASH = "#e6f6f7";
+const MUTED = "#59666b";
+const RULE = "#d6e0e2";
 const MARGIN = 44;
 const BODY_TOP = 88;
 const BODY_BOTTOM = 776;
@@ -124,6 +124,12 @@ export async function renderQuotePdf(
       timeZone: "Europe/Warsaw",
     }).format(new Date(value));
   const fontDirectory = path.join(process.cwd(), "public", "fonts", "quote");
+  const logoPath = path.join(
+    process.cwd(),
+    "public",
+    "brand",
+    "logo-on-light.png",
+  );
   const doc = new PDFDocument({
     size: "A4",
     autoFirstPage: false,
@@ -134,7 +140,7 @@ export async function renderQuotePdf(
       Title: `${quote.number} | ${quote.title}`,
       Author: quote.issuerName,
       Subject: t.offer,
-      Creator: "wb_",
+      Creator: "Consulting Wojciech Bajer",
     },
   });
   doc.registerFont(
@@ -207,15 +213,15 @@ export async function renderQuotePdf(
 
   function newPage() {
     doc.addPage();
-    doc.rect(0, 0, doc.page.width, 5).fill(GREEN);
-    drawLine("wb_", MARGIN, 29, BOLD, 27);
+    doc.rect(0, 0, doc.page.width, 5).fill(TEAL);
+    doc.image(logoPath, MARGIN, 28, { width: 238 });
     drawLine(
       t.offer,
       right - doc.font(BOLD).fontSize(8).widthOfString(t.offer),
       39,
       BOLD,
       8,
-      GREEN,
+      TEAL,
     );
     doc
       .moveTo(MARGIN, 68)
@@ -303,7 +309,7 @@ export async function renderQuotePdf(
             y,
             line.bold ? BOLD : REGULAR,
             line.label ? 8 : 10,
-            line.label ? GREEN : INK,
+            line.label ? TEAL : INK,
           );
       });
       y += 16;
@@ -314,12 +320,12 @@ export async function renderQuotePdf(
   const columnWidths = [190, 55, 75, 38, 72, width - 430];
   const columnLabels = [t.item, t.quantity, t.unitPrice, t.vat, t.net, t.gross];
   function tableHeader() {
-    doc.rect(MARGIN, y, width, 30).fill(MINT);
+    doc.rect(MARGIN, y, width, 30).fill(CYAN_WASH);
     let x = MARGIN;
     columnLabels.forEach((label, index) => {
       const lines = wrap(label, columnWidths[index] - 14, BOLD, 7.7);
       lines.forEach((line, row) =>
-        drawLine(line, x + 7, y + 5 + row * 10, BOLD, 7.7, GREEN),
+        drawLine(line, x + 7, y + 5 + row * 10, BOLD, 7.7, TEAL),
       );
       x += columnWidths[index];
     });
@@ -343,7 +349,7 @@ export async function renderQuotePdf(
       }));
     const cells = [
       [
-        ...(line.addon ? cell(t.addon, 0, BOLD, 7, GREEN) : []),
+        ...(line.addon ? cell(t.addon, 0, BOLD, 7, TEAL) : []),
         ...cell(line.item.name, 0, BOLD, 9.5),
         ...(line.item.description
           ? cell(line.item.description, 0, REGULAR, 8.4, MUTED)
@@ -423,8 +429,8 @@ export async function renderQuotePdf(
       drawLine(value, right - doc.widthOfString(value), y, BOLD, 10);
       y += 23;
     });
-    doc.rect(MARGIN, y + 1, width, 48).fill(MINT);
-    drawLine(t.totalGross, MARGIN + 13, y + 15, BOLD, 12, GREEN);
+    doc.rect(MARGIN, y + 1, width, 48).fill(CYAN_WASH);
+    drawLine(t.totalGross, MARGIN + 13, y + 15, BOLD, 12, TEAL);
     setFont(BOLD, 20);
     const gross = money(totals.gross);
     drawLine(
@@ -433,7 +439,7 @@ export async function renderQuotePdf(
       y + 10,
       BOLD,
       20,
-      GREEN,
+      TEAL,
     );
     y += 61;
     if (quote.discountPercent > 0)
@@ -445,7 +451,7 @@ export async function renderQuotePdf(
     paragraph(`${t.number} ${quote.number}`, {
       font: BOLD,
       size: 9,
-      color: GREEN,
+      color: TEAL,
       gap: 12,
     });
     paragraph(quote.title, { font: BOLD, size: 30, gap: 19 });
@@ -459,7 +465,7 @@ export async function renderQuotePdf(
     paragraph(selectedPackage.name, {
       font: BOLD,
       size: 14,
-      color: GREEN,
+      color: TEAL,
       gap: 8,
     });
     paragraph(selectedPackage.description);
@@ -482,7 +488,7 @@ export async function renderQuotePdf(
       for (const item of quote.timeline) {
         ensure(65);
         paragraph(item.title, { font: BOLD, size: 11, gap: 3 });
-        paragraph(item.duration, { size: 9, color: GREEN, gap: 5 });
+        paragraph(item.duration, { size: 9, color: TEAL, gap: 5 });
         paragraph(item.description, { gap: 15 });
       }
     }
@@ -514,7 +520,14 @@ export async function renderQuotePdf(
         .lineWidth(0.5)
         .strokeColor(RULE)
         .stroke();
-      drawLine(`wb_  /  ${t.private}`, MARGIN, 807, REGULAR, 8, MUTED);
+      drawLine(
+        `Consulting Wojciech Bajer  /  ${t.private}`,
+        MARGIN,
+        807,
+        REGULAR,
+        8,
+        MUTED,
+      );
       const pageLabel = `${t.page} ${page + 1} / ${pages.count}`;
       setFont(REGULAR, 8);
       drawLine(

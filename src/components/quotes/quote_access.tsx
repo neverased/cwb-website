@@ -3,6 +3,8 @@
 import { useRouter } from "next/navigation";
 import { type FormEvent, useState } from "react";
 
+import { BrandLogo } from "@/components/brand_logo";
+
 import styles from "./quote_styles.module.css";
 
 export function QuoteAccess({ publicId }: { publicId: string }) {
@@ -45,9 +47,7 @@ export function QuoteAccess({ publicId }: { publicId: string }) {
 
   return (
     <main className={styles.accessPage} lang="pl">
-      <div className={styles.accessBrand} aria-label="Wojciech Bajer">
-        wb<span>_</span>
-      </div>
+      <BrandLogo className={styles.accessBrand} compactOnMobile />
       <section className={styles.accessPanel} aria-labelledby="access-title">
         <p className={styles.eyebrow}>Indywidualna oferta</p>
         <h1 id="access-title">Dobry projekt zaczyna się od rozmowy.</h1>
@@ -98,9 +98,7 @@ export function QuoteAccess({ publicId }: { publicId: string }) {
 export function QuoteUnavailable() {
   return (
     <main className={styles.accessPage} lang="pl">
-      <div className={styles.accessBrand} aria-label="Wojciech Bajer">
-        wb<span>_</span>
-      </div>
+      <BrandLogo className={styles.accessBrand} compactOnMobile />
       <section
         className={styles.accessPanel}
         aria-labelledby="unavailable-title"
@@ -119,9 +117,7 @@ export function QuoteUnavailable() {
 export function QuoteIncomplete() {
   return (
     <main className={styles.accessPage} lang="pl">
-      <div className={styles.accessBrand} aria-label="Wojciech Bajer">
-        wb<span>_</span>
-      </div>
+      <BrandLogo className={styles.accessBrand} compactOnMobile />
       <section
         className={styles.accessPanel}
         aria-labelledby="incomplete-title"

@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 
 import { CONTACT_EMAIL } from "@/lib/seo";
 
+import { BrandLogo } from "./brand_logo";
 import { SiteHeader } from "./site_header";
 import { MotionReveal, SiteMotion } from "./site_motion";
 import styles from "./site_shell.module.css";
@@ -21,8 +22,12 @@ export const SiteShell = ({
     </main>
     <footer className={styles.footer}>
       <div>
-        <Link href="/" className={styles.signature}>
-          Wojciech Bajer<span aria-hidden="true">_</span>
+        <Link
+          href="/"
+          className={styles.signature}
+          aria-label="Wojciech Bajer — home"
+        >
+          <BrandLogo />
         </Link>
         <p>Independent thinking. Hands-on delivery.</p>
       </div>

@@ -57,12 +57,12 @@
 }
 
 .choice[aria-current] {
-  color: var(--accent-mint);
+  color: var(--accent-soft);
 }
 
 .choice[aria-current] .choiceArrow,
 .choice:hover .choiceArrow {
-  color: var(--accent-mint);
+  color: var(--accent-soft);
 }
 
 .choice:hover .choiceArrow {
@@ -96,7 +96,7 @@
 
 .signalPulse,
 .signalStatic {
-  stroke: var(--accent-mint);
+  stroke: var(--accent);
   opacity: 0.65;
 }
 
@@ -130,7 +130,7 @@
 }
 
 .panel:focus-within {
-  border-color: var(--accent-mint);
+  border-color: var(--accent-soft);
 }
 
 .panel::before,
@@ -140,7 +140,7 @@
   width: 0.45rem;
   height: 0.45rem;
   border-style: solid;
-  border-color: var(--accent-mint);
+  border-color: var(--accent-soft);
   pointer-events: none;
 }
 
@@ -185,8 +185,8 @@
 }
 
 .specialties a[aria-current] {
-  color: var(--accent-mint);
-  border-bottom-color: var(--accent-mint);
+  color: var(--accent-soft);
+  border-bottom-color: var(--accent-soft);
 }
 
 .specialties a:hover {
@@ -249,7 +249,7 @@
 }
 
 .deliverables li > span {
-  color: var(--accent-mint);
+  color: var(--accent-soft);
 }
 
 .action {
@@ -259,7 +259,7 @@
   gap: 1rem;
   min-height: 4rem;
   border-top: 1px solid var(--rule-soft);
-  color: var(--accent-mint);
+  color: var(--accent-soft);
   font-size: 0.9375rem;
   line-height: 1.5;
   padding: 0.9rem 0;
@@ -277,7 +277,7 @@
 .choice:focus-visible,
 .specialties a:focus-visible,
 .action:focus-visible {
-  outline: 2px solid var(--accent-mint);
+  outline: 2px solid var(--accent);
   outline-offset: 5px;
 }
 

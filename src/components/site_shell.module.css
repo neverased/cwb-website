@@ -15,15 +15,16 @@
   padding: 2rem 0;
   border-top: 1px solid var(--rule-soft);
 }
+.footer > div {
+  min-width: 0;
+  max-width: 100%;
+}
 .signature {
   display: inline-flex;
   align-items: center;
   min-height: 44px;
-  font-size: 1rem;
-}
-.signature span {
-  color: var(--accent-mint);
-  margin-left: 0.2em;
+  --brand-logo-width: 16.875rem;
+  max-width: 100%;
 }
 .footer p {
   color: var(--text-subtle);
@@ -44,7 +45,7 @@
   font-size: 0.875rem;
 }
 .footer nav a:hover {
-  color: var(--accent-mint);
+  color: var(--accent-soft);
 }
 .location {
   color: var(--text-subtle);
@@ -81,7 +82,7 @@
   max-width: 100%;
 }
 .calloutEmail {
-  color: var(--accent-mint);
+  color: var(--accent-soft);
   font-size: clamp(1rem, 1.4vw, 1.25rem);
   min-height: 44px;
   display: inline-flex;

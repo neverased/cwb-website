@@ -24,7 +24,7 @@ const sample: PublicQuote = {
   clientCompany: "Pracownia Źródło",
   clientEmail: "lucja@example.com",
   clientDetails: "ul. Przykładowa 12\n00-001 Warszawa",
-  issuerName: "wb_ Studio",
+  issuerName: "Consulting Wojciech Bajer",
   issuerEmail: "studio@example.com",
   issuerDetails: "Projektowanie i rozwój produktów cyfrowych",
   issuedAt: "2026-09-25T12:00:00.000Z",
@@ -123,6 +123,12 @@ function verifyPdf(pdf: Buffer) {
   assert.ok(
     pdf.toString("latin1").includes("/ToUnicode"),
     "PDF includes Unicode text mapping",
+  );
+  assert.ok(
+    /\/Subtype\s*\/Image\b[^>]*\/Width\s+3217\b[^>]*\/Height\s+405\b/.test(
+      pdf.toString("latin1"),
+    ),
+    "PDF embeds the original full brand logo at its native proportions",
   );
   assert.ok(
     pdf.subarray(-50).toString().includes("%%EOF"),

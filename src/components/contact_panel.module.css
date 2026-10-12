@@ -20,7 +20,7 @@
   overflow-wrap: anywhere;
 }
 .email:hover {
-  color: var(--accent-mint);
+  color: var(--accent-soft);
 }
 .copyButton,
 .retryButton {
@@ -30,7 +30,7 @@
   min-height: 44px;
   border: 0;
   background: none;
-  color: var(--accent-mint);
+  color: var(--accent-soft);
   cursor: pointer;
   font-size: 0.8rem;
 }
@@ -44,7 +44,7 @@
 }
 .copyStatus {
   display: block;
-  color: var(--accent-mint);
+  color: var(--accent-soft);
   font-size: 0.75rem;
 }
 .context {
@@ -163,7 +163,7 @@
 }
 .success {
   background: #152a20;
-  color: var(--accent-mint);
+  color: var(--accent-soft);
 }
 .error {
   background: #291d17;

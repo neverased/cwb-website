@@ -50,6 +50,33 @@
   max-height: 3.4rem;
   object-fit: contain;
 }
+.collaborationLink {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 3.4rem;
+  padding: 0.25rem;
+  color: var(--text-subtle);
+  text-align: center;
+  text-decoration: none;
+}
+.lightRow .collaborationLink {
+  color: #3b4945;
+}
+.collaborationLink:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 0.3rem;
+}
+.collaborationLink:hover .role {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+.role {
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
 .dolby {
   --logo-width: 8.1rem;
 }
@@ -76,6 +103,12 @@
 }
 .pttk {
   --logo-width: 3.4rem;
+}
+.efectivo {
+  --logo-width: 8.1rem;
+}
+.koCoach {
+  --logo-width: 9.4rem;
 }
 @media (max-width: 720px) {
   .heading {

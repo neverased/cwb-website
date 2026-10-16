@@ -17,6 +17,8 @@ const logoPresentation: Record<
   TDJ: { className: styles.tdj },
   Lexense: { className: styles.lexense },
   PTTK: { className: styles.pttk },
+  Efectivo: { className: styles.efectivo },
+  "KO COACH": { className: styles.koCoach },
 };
 
 // Keep each supplied mark on its intended surface without recoloring it.
@@ -40,18 +42,32 @@ export const SelectedWork = () => (
           className={`${styles.logos} ${index === 1 ? styles.lightRow : styles.darkRow}`}
           role="list"
         >
-          {logos.map(({ name, src, width, height }) => {
+          {logos.map((collaboration) => {
+            const { name, src, width, height } = collaboration;
             const presentation = logoPresentation[name];
+            const logo = (
+              <Image
+                src={src}
+                alt={name}
+                width={presentation.width ?? width}
+                height={presentation.height ?? height}
+                sizes="(max-width: 480px) 105px, 150px"
+              />
+            );
 
             return (
               <li key={name} className={presentation.className}>
-                <Image
-                  src={src}
-                  alt={name}
-                  width={presentation.width ?? width}
-                  height={presentation.height ?? height}
-                  sizes="(max-width: 480px) 105px, 150px"
-                />
+                {"href" in collaboration ? (
+                  <a
+                    href={collaboration.href}
+                    className={styles.collaborationLink}
+                  >
+                    {logo}
+                    <span className={styles.role}>{collaboration.role}</span>
+                  </a>
+                ) : (
+                  logo
+                )}
               </li>
             );
           })}

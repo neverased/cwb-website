@@ -290,6 +290,7 @@ export const selectedCollaborations = [
   {
     name: "Dolby",
     tag: "selected work",
+    role: "QA Lead · past collaboration",
     src: "/partners/logo_Dolby.svg",
     width: 975,
     height: 247,
@@ -298,6 +299,7 @@ export const selectedCollaborations = [
   {
     name: "Polestar",
     tag: "selected work",
+    role: "DevOps",
     src: "/partners/Polestar_Logo.svg",
     width: 1000,
     height: 221,
@@ -306,6 +308,7 @@ export const selectedCollaborations = [
   {
     name: "Volvo",
     tag: "selected work",
+    role: "DevOps",
     src: "/partners/volvo-seeklogo.svg",
     width: 949,
     height: 74,
@@ -314,6 +317,7 @@ export const selectedCollaborations = [
   {
     name: "DHL",
     tag: "selected work",
+    role: "Web Developer / Freelance",
     src: "/partners/logo_DHL.svg",
     width: 964,
     height: 358,
@@ -322,6 +326,7 @@ export const selectedCollaborations = [
   {
     name: "Leroy Merlin",
     tag: "selected work",
+    role: "Web Developer / Freelance",
     src: "/partners/logo_leroy_merlin.svg",
     width: 2500,
     height: 2500,
@@ -330,6 +335,7 @@ export const selectedCollaborations = [
   {
     name: "Budimex",
     tag: "selected work",
+    role: "Web Developer / Freelance",
     src: "/partners/logo_budimex.png",
     width: 400,
     height: 400,
@@ -338,6 +344,7 @@ export const selectedCollaborations = [
   {
     name: "TDJ",
     tag: "selected work",
+    role: "Web Developer / Freelance",
     src: "/partners/logo_TDJ.svg",
     width: 57,
     height: 52,
@@ -346,6 +353,7 @@ export const selectedCollaborations = [
   {
     name: "Lexense",
     tag: "selected work",
+    role: "Co-founder / CTO",
     src: "/partners/logo_Lexense.png",
     width: 218,
     height: 218,
@@ -354,6 +362,7 @@ export const selectedCollaborations = [
   {
     name: "PTTK",
     tag: "selected work",
+    role: "Webmaster / Freelance",
     src: "/partners/logo_PTTK.png",
     width: 723,
     height: 723,

@@ -43,16 +43,19 @@ export const SelectedWork = () => (
           role="list"
         >
           {logos.map((collaboration) => {
-            const { name, src, width, height } = collaboration;
+            const { name, src, width, height, role } = collaboration;
             const presentation = logoPresentation[name];
-            const logo = (
-              <Image
-                src={src}
-                alt={name}
-                width={presentation.width ?? width}
-                height={presentation.height ?? height}
-                sizes="(max-width: 480px) 105px, 150px"
-              />
+            const content = (
+              <>
+                <Image
+                  src={src}
+                  alt={name}
+                  width={presentation.width ?? width}
+                  height={presentation.height ?? height}
+                  sizes="(max-width: 480px) 105px, 150px"
+                />
+                <span className={styles.role}>{role}</span>
+              </>
             );
 
             return (
@@ -60,13 +63,12 @@ export const SelectedWork = () => (
                 {"href" in collaboration ? (
                   <a
                     href={collaboration.href}
-                    className={styles.collaborationLink}
+                    className={`${styles.collaboration} ${styles.collaborationLink}`}
                   >
-                    {logo}
-                    <span className={styles.role}>{collaboration.role}</span>
+                    {content}
                   </a>
                 ) : (
-                  logo
+                  <div className={styles.collaboration}>{content}</div>
                 )}
               </li>
             );

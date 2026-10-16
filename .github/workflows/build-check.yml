@@ -47,6 +47,9 @@ jobs:
       - name: Run quote and PDF regression checks
         run: pnpm test:quotes
 
+      - name: Run standalone packaging regression checks
+        run: pnpm test:standalone
+
       - name: Build standalone app
         run: pnpm build
 

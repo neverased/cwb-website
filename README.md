@@ -142,11 +142,12 @@ is disabled in every environment; schema changes must have committed migrations.
 
 The image build also runs `scripts/verify-sharp.mjs` in the final runtime stage.
 It loads Sharp and processes a small image using only the standalone dependencies.
-After `next build`, `scripts/prepare-standalone-dependencies.mjs` copies Sharp's
-complete `semver` dependency into standalone, preserving its resolved package path.
-This prevents an incomplete standalone copy from breaking CMS initialization and
-`/api/health/` with `Cannot find module './functions/compare-build'`, even when the
-missing file was listed in the trace manifest.
+After `next build`, `scripts/prepare-standalone-dependencies.mjs` copies the complete
+Sharp package and its `semver` dependency into standalone, preserving their resolved
+package paths. This prevents incomplete standalone copies from omitting Sharp's
+`dist/channel.mjs` or `semver/functions/compare-build.js`, even when the missing
+files were listed in the trace manifest. Run `pnpm test:standalone` to verify that
+packaging repairs incomplete Sharp distributions with both flat and pnpm layouts.
 
 After changing a collection or editor configuration:
 

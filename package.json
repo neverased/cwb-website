@@ -24,10 +24,10 @@
     "test:services": "tsx scripts/service-intents-regression.ts"
   },
   "dependencies": {
-    "@payloadcms/db-postgres": "3.91.0",
-    "@payloadcms/next": "3.91.0",
-    "@payloadcms/richtext-lexical": "3.91.0",
-    "@payloadcms/ui": "3.91.0",
+    "@payloadcms/db-postgres": "3.92.0",
+    "@payloadcms/next": "3.92.0",
+    "@payloadcms/richtext-lexical": "3.92.0",
+    "@payloadcms/ui": "3.92.0",
     "@types/node": "26.6.5",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
@@ -37,7 +37,7 @@
     "jquery": "^4.0.0",
     "next": "^16.4.2",
     "nodemailer": "^10.2.0",
-    "payload": "3.91.0",
+    "payload": "3.92.0",
     "pdfkit": "^0.20.2",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",

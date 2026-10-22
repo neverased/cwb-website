@@ -18,7 +18,7 @@ minimumReleaseAgeExclude:
   - '@next/swc-win32-arm64-msvc@16.2.9 || 16.4.2'
   - '@next/swc-win32-x64-msvc@16.2.9 || 16.4.2'
   - next@16.2.9 || 16.4.2
-  - nodemailer@8.0.11 || 9.0.0 || 10.0.1 || 10.0.3 || 10.0.10
+  - nodemailer@8.0.11 || 9.0.0 || 10.0.1 || 10.0.3 || 10.0.10 || 10.2.0
   - tsx@4.22.5
   - '@types/node@26.5.0 || 26.6.2'
   - '@oxlint/binding-android-arm-eabi@1.82.0 || 1.83.0 || 1.88.0'
@@ -82,7 +82,7 @@ minimumReleaseAgeExclude:
   - jest-watcher@30.5.2
   - jest@30.5.2
   - payload@3.90.1 || 3.91.0
-  - sass@1.105.2
+  - sass@1.105.2 || 1.106.1
 onlyBuiltDependencies:
   - esbuild
   - unrs-resolver

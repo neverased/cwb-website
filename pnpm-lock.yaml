@@ -244,7 +244,7 @@ importers:
         version: 0.186.0
       coffeescript:
         specifier: ^2.7.0
-        version: 2.7.0
+        version: 2.7.1
       eslint-plugin-simple-import-sort:
         specifier: ^14.0.0
         version: 14.0.0
@@ -2440,8 +2440,8 @@ packages:
     resolution: {integrity: sha512-QVb0dM5HvG+uaxitm8wONl7jltx8dqhfU33DcqtOZcLSVIKSDDLDi7+0LbAKiyI8hD9u42m2YxXSkMGWThaecQ==}
     engines: {iojs: '>= 1.0.0', node: '>= 0.12.0'}
 
-  coffeescript@2.7.0:
-    resolution: {integrity: sha512-hzWp6TUE2d/jCcN67LrW1eh5b/rSDKQK6oD6VMLlggYVUUFexgTH9z3dNYihzX4RMhze5FTUsUmOXViJKFQR/A==}
+  coffeescript@2.7.1:
+    resolution: {integrity: sha512-zDQ0M/Ad05+5eudURWh31RIQc8i1TxIWuUgidoRx7gtrcQnDwSwSckVaJLg3AGKE+z0PuKnIOZ1DZnYvebuvIg==}
     engines: {node: '>=6'}
     hasBin: true
 
@@ -6184,7 +6184,7 @@ snapshots:
 
   co@4.6.0: {}
 
-  coffeescript@2.7.0: {}
+  coffeescript@2.7.1: {}
 
   collect-v8-coverage@1.0.3: {}
 

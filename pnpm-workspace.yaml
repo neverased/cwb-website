@@ -58,13 +58,13 @@ minimumReleaseAgeExclude:
   - '@jest/test-result@30.5.2'
   - '@jest/test-sequencer@30.5.2'
   - '@jest/transform@30.5.2'
-  - '@payloadcms/db-postgres@3.90.1 || 3.91.0'
-  - '@payloadcms/drizzle@3.90.1 || 3.91.0'
-  - '@payloadcms/graphql@3.90.1 || 3.91.0'
-  - '@payloadcms/next@3.90.1 || 3.91.0'
-  - '@payloadcms/richtext-lexical@3.90.1 || 3.91.0'
-  - '@payloadcms/translations@3.90.1 || 3.91.0'
-  - '@payloadcms/ui@3.90.1 || 3.91.0'
+  - '@payloadcms/db-postgres@3.90.1 || 3.91.0 || 3.92.1'
+  - '@payloadcms/drizzle@3.90.1 || 3.91.0 || 3.92.1'
+  - '@payloadcms/graphql@3.90.1 || 3.91.0 || 3.92.1'
+  - '@payloadcms/next@3.90.1 || 3.91.0 || 3.92.1'
+  - '@payloadcms/richtext-lexical@3.90.1 || 3.91.0 || 3.92.1'
+  - '@payloadcms/translations@3.90.1 || 3.91.0 || 3.92.1'
+  - '@payloadcms/ui@3.90.1 || 3.91.0 || 3.92.1'
   - babel-jest@30.5.2
   - expect@30.5.2
   - jest-circus@30.5.2
@@ -81,7 +81,7 @@ minimumReleaseAgeExclude:
   - jest-snapshot@30.5.2
   - jest-watcher@30.5.2
   - jest@30.5.2
-  - payload@3.90.1 || 3.91.0
+  - payload@3.90.1 || 3.91.0 || 3.92.1
   - sass@1.105.2 || 1.106.1
 onlyBuiltDependencies:
   - esbuild

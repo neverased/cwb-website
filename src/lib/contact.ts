@@ -5,9 +5,17 @@ import {
   randomInt,
   timingSafeEqual,
 } from "node:crypto";
-import { appendFile, chmod, mkdir, readFile, writeFile } from "node:fs/promises";
+import {
+  appendFileSync,
+  mkdirSync,
+  readdirSync,
+  statSync,
+  unlinkSync,
+} from "node:fs";
+import { chmod, mkdir, readFile, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
+import { DatabaseSync } from "node:sqlite";
 
 export const CONTACT_MAX_NAME_LENGTH = 120;
 export const CONTACT_MAX_EMAIL_LENGTH = 160;
@@ -18,6 +26,24 @@ export const CONTACT_DEFAULT_BOOTSTRAP_TTL_SECONDS = 1800;
 export const CONTACT_DEFAULT_SPAM_THRESHOLD = 5;
 export const CONTACT_DEFAULT_RATE_LIMIT_MAX_ATTEMPTS = 3;
 export const CONTACT_DEFAULT_RATE_LIMIT_WINDOW_SECONDS = 600;
+export const CONTACT_MAX_RATE_LIMIT_KEYS = 4096;
+export const CONTACT_MAX_QUARANTINE_BYTES = 1024 * 1024;
+export const CONTACT_QUARANTINE_RETENTION_DAYS = 7;
+export const CONTACT_FIELD_LIMITS = {
+  name: CONTACT_MAX_NAME_LENGTH,
+  email: CONTACT_MAX_EMAIL_LENGTH,
+  scope: CONTACT_MAX_SCOPE_LENGTH,
+  message: CONTACT_MAX_MESSAGE_LENGTH,
+  challenge_answer: 12,
+  contact_nonce: 128,
+  contact_issued_at: 24,
+  contact_token: 128,
+  challenge_first: 24,
+  challenge_second: 24,
+  website: 160,
+  company: 160,
+  full_name_confirm: 160,
+} as const;
 
 export interface ContactBootstrap {
   nonce: string;
@@ -46,6 +72,9 @@ interface ContactPolicyOptions {
   bootstrap_ttl_seconds?: number;
   rate_limit_window_seconds?: number;
   rate_limit_max_attempts?: number;
+  rate_limit_max_keys?: number;
+  quarantine_max_bytes?: number;
+  quarantine_retention_days?: number;
   spam_threshold?: number;
 }
 
@@ -299,10 +328,31 @@ export const scoreContactSubmissionContent = (message: string) => {
   };
 };
 
-const rateLimitFilePath = (storageDir: string, bucket: string, key: string) => {
-  const hashedKey = createHash("sha256").update(key.toLowerCase()).digest("hex");
-
-  return path.join(storageDir, "rate-limit", bucket, `${hashedKey}.json`);
+const withContactState = async <T>(
+  storageDir: string,
+  operation: (database: DatabaseSync) => T,
+) => {
+  await ensureDirectory(storageDir);
+  const database = new DatabaseSync(
+    path.join(storageDir, "contact-state.sqlite"),
+    {
+      timeout: 1000,
+    },
+  );
+  try {
+    database.exec(`PRAGMA max_page_count = 1024;
+      CREATE TABLE IF NOT EXISTS contact_rate_limits (
+      key TEXT PRIMARY KEY, timestamps TEXT NOT NULL, expires_at INTEGER NOT NULL
+    )`);
+    database.exec("BEGIN IMMEDIATE");
+    // Do not await while holding the transaction: another request in this process
+    // must never block the event loop waiting for a lock that its own await holds.
+    const result = operation(database);
+    database.exec("COMMIT");
+    return result;
+  } finally {
+    database.close();
+  }
 };
 
 const recordRateLimitEvent = async (
@@ -311,72 +361,123 @@ const recordRateLimitEvent = async (
   key: string,
   timestamp: number,
   windowSeconds: number,
-) => {
-  const normalizedKey = key.trim();
-
-  if (!normalizedKey || normalizedKey === "unknown") {
-    return 0;
-  }
-
-  const filePath = rateLimitFilePath(storageDir, bucket, normalizedKey);
-  await ensureDirectory(path.dirname(filePath));
-
-  let existingTimestamps: number[] = [];
-
-  try {
-    const decoded: unknown = JSON.parse(await readFile(filePath, "utf8"));
-
-    if (Array.isArray(decoded)) {
-      existingTimestamps = decoded
-        .map((candidate) =>
-          typeof candidate === "number" || /^\d+$/.test(String(candidate))
-            ? Number(candidate)
-            : Number.NaN,
-        )
-        .filter(Number.isFinite);
+  maximum: number,
+  maximumKeys: number,
+) =>
+  withContactState(storageDir, (database) => {
+    const normalizedKey = key.trim() || "unknown";
+    database
+      .prepare("DELETE FROM contact_rate_limits WHERE expires_at < ?")
+      .run(timestamp);
+    const keyHash = createHash("sha256")
+      .update(`${bucket}:${normalizedKey.toLowerCase()}`)
+      .digest("hex");
+    const row = database
+      .prepare("SELECT timestamps FROM contact_rate_limits WHERE key = ?")
+      .get(keyHash);
+    if (
+      !row &&
+      Number(
+        database
+          .prepare("SELECT COUNT(*) AS count FROM contact_rate_limits")
+          .get()?.count,
+      ) >= maximumKeys
+    ) {
+      return maximum + 1;
     }
-  } catch (error) {
-    if ((error as NodeJS.ErrnoException).code !== "ENOENT") {
-      throw error;
-    }
-  }
-
-  const cutoff = timestamp - windowSeconds;
-  const freshTimestamps = existingTimestamps.filter(
-    (candidate) => candidate >= cutoff,
-  );
-  freshTimestamps.push(timestamp);
-
-  await writeFile(filePath, JSON.stringify(freshTimestamps), "utf8");
-
-  return freshTimestamps.length;
-};
+    const previous: number[] = row ? JSON.parse(String(row.timestamps)) : [];
+    const current = previous.filter(
+      (value) => value >= timestamp - windowSeconds,
+    );
+    if (current.length >= maximum) return maximum + 1;
+    current.push(timestamp);
+    database
+      .prepare(
+        `INSERT INTO contact_rate_limits (key, timestamps, expires_at) VALUES (?, ?, ?)
+      ON CONFLICT(key) DO UPDATE SET timestamps = excluded.timestamps, expires_at = excluded.expires_at`,
+      )
+      .run(keyHash, JSON.stringify(current), timestamp + windowSeconds);
+    return current.length;
+  });
 
 const logQuarantine = async (
   storageDir: string,
   record: Record<string, unknown>,
-) => {
-  const quarantineDir = path.join(storageDir, "quarantine");
-  await ensureDirectory(quarantineDir);
+  maximumBytes: number,
+  retentionDays: number,
+) =>
+  withContactState(storageDir, () => {
+    const quarantineDir = path.join(storageDir, "quarantine");
+    mkdirSync(quarantineDir, { recursive: true, mode: 0o700 });
 
-  const receivedAt = Number(record.received_at ?? Math.floor(Date.now() / 1000));
-  const datePartition = new Date(receivedAt * 1000).toISOString().slice(0, 10);
-  const filePath = path.join(quarantineDir, `${datePartition}.jsonl`);
-
-  await appendFile(filePath, `${JSON.stringify(record)}\n`, "utf8");
-
-  return filePath;
-};
+    const receivedAt = Number(
+      record.received_at ?? Math.floor(Date.now() / 1000),
+    );
+    const day = Math.floor(receivedAt / 86400);
+    let storedBytes = 0;
+    for (const name of readdirSync(quarantineDir)) {
+      if (!/^\d{4}-\d{2}-\d{2}\.jsonl$/.test(name)) continue;
+      const partitionDay = Date.parse(name.slice(0, 10)) / 86_400_000;
+      const partitionPath = path.join(quarantineDir, name);
+      if (partitionDay < day - retentionDays + 1) {
+        unlinkSync(partitionPath);
+      } else {
+        storedBytes += statSync(partitionPath).size;
+      }
+    }
+    const line = `${JSON.stringify(record)}\n`;
+    if (storedBytes + Buffer.byteLength(line) > maximumBytes) return null;
+    const datePartition = new Date(receivedAt * 1000)
+      .toISOString()
+      .slice(0, 10);
+    const filePath = path.join(quarantineDir, `${datePartition}.jsonl`);
+    appendFileSync(filePath, line, { encoding: "utf8", mode: 0o600 });
+    return filePath;
+  });
 
 const uniqueReasons = (reasons: string[]) => Array.from(new Set(reasons));
 
-const isEmailValid = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+const isEmailValid = (email: string) => {
+  const at = email.indexOf("@");
+  const dot = email.indexOf(".", at + 2);
+  return (
+    at > 0 &&
+    at === email.lastIndexOf("@") &&
+    dot > at + 1 &&
+    dot < email.length - 1 &&
+    !/\s/u.test(email)
+  );
+};
 
 export const evaluateContactSubmission = async (
   server: ContactServerInput,
   post: ContactPostInput,
   options: ContactPolicyOptions = {},
 ): Promise<ContactEvaluation> => {
+  const rawFieldsAreBounded = Object.entries(post).every(
+    ([key, value]) =>
+      Object.hasOwn(CONTACT_FIELD_LIMITS, key) &&
+      (value === undefined ||
+        (typeof value === "string" &&
+          value.length <=
+            2 *
+              CONTACT_FIELD_LIMITS[key as keyof typeof CONTACT_FIELD_LIMITS])),
+  );
+  if (
+    !rawFieldsAreBounded ||
+    (server.remoteAddress?.length ?? 0) > 256 ||
+    (server.userAgent?.length ?? 0) > 2048
+  ) {
+    return {
+      classification: "reject",
+      reasons: ["invalid_contact_fields"],
+      spam_score: 0,
+      fields: { name: "", email: "", scope: "", message: "" },
+      remote_address: "unknown",
+      user_agent: "unknown",
+      quarantine_path: null,
+    };
+  }
   const now = options.now ?? Math.floor(Date.now() / 1000);
   const storageDir = getContactStorageDir(options);
   const secret = await getSigningSecret(options);
@@ -407,6 +508,35 @@ export const evaluateContactSubmission = async (
   const spamThreshold =
     options.spam_threshold ??
     parseIntegerEnv("CONTACT_SPAM_THRESHOLD", CONTACT_DEFAULT_SPAM_THRESHOLD);
+  const maximumKeys =
+    options.rate_limit_max_keys ?? CONTACT_MAX_RATE_LIMIT_KEYS;
+  const quarantineMaximumBytes =
+    options.quarantine_max_bytes ?? CONTACT_MAX_QUARANTINE_BYTES;
+  const quarantineRetentionDays =
+    options.quarantine_retention_days ?? CONTACT_QUARANTINE_RETENTION_DAYS;
+  if (
+    !Number.isSafeInteger(rateLimitMaxAttempts) ||
+    rateLimitMaxAttempts < 1 ||
+    rateLimitMaxAttempts > 100 ||
+    !Number.isSafeInteger(rateLimitWindowSeconds) ||
+    rateLimitWindowSeconds < 1 ||
+    rateLimitWindowSeconds > 86400 ||
+    !Number.isSafeInteger(maximumKeys) ||
+    maximumKeys < 1 ||
+    maximumKeys > CONTACT_MAX_RATE_LIMIT_KEYS
+  ) {
+    throw new Error("Invalid contact rate-limit policy");
+  }
+  if (
+    !Number.isSafeInteger(quarantineMaximumBytes) ||
+    quarantineMaximumBytes < 1 ||
+    quarantineMaximumBytes > CONTACT_MAX_QUARANTINE_BYTES ||
+    !Number.isSafeInteger(quarantineRetentionDays) ||
+    quarantineRetentionDays < 1 ||
+    quarantineRetentionDays > CONTACT_QUARANTINE_RETENTION_DAYS
+  ) {
+    throw new Error("Invalid contact quarantine policy");
+  }
 
   const name = compactWhitespace(post.name ?? "");
   const email = (post.email ?? "").trim();
@@ -429,11 +559,11 @@ export const evaluateContactSubmission = async (
   const isValid =
     name !== "" &&
     message !== "" &&
-    isEmailValid(email) &&
     stringLength(name) <= CONTACT_MAX_NAME_LENGTH &&
     stringLength(email) <= CONTACT_MAX_EMAIL_LENGTH &&
     stringLength(scope) <= CONTACT_MAX_SCOPE_LENGTH &&
-    stringLength(message) <= CONTACT_MAX_MESSAGE_LENGTH;
+    stringLength(message) <= CONTACT_MAX_MESSAGE_LENGTH &&
+    isEmailValid(email);
 
   if (!isValid) {
     hasInvalidPayload = true;
@@ -497,6 +627,8 @@ export const evaluateContactSubmission = async (
       remoteAddress,
       now,
       rateLimitWindowSeconds,
+      rateLimitMaxAttempts,
+      maximumKeys,
     );
 
     if (ipAttempts > rateLimitMaxAttempts) {
@@ -504,17 +636,21 @@ export const evaluateContactSubmission = async (
       reasons.push("ip_rate_limited");
     }
 
-    const emailAttempts = await recordRateLimitEvent(
-      storageDir,
-      "email",
-      email.toLowerCase(),
-      now,
-      rateLimitWindowSeconds,
-    );
+    if (!isRateLimited) {
+      const emailAttempts = await recordRateLimitEvent(
+        storageDir,
+        "email",
+        email.toLowerCase(),
+        now,
+        rateLimitWindowSeconds,
+        rateLimitMaxAttempts,
+        maximumKeys,
+      );
 
-    if (emailAttempts > rateLimitMaxAttempts) {
-      isRateLimited = true;
-      reasons.push("email_rate_limited");
+      if (emailAttempts > rateLimitMaxAttempts) {
+        isRateLimited = true;
+        reasons.push("email_rate_limited");
+      }
     }
   }
 
@@ -527,19 +663,24 @@ export const evaluateContactSubmission = async (
   });
   const normalizedReasons = uniqueReasons(reasons);
   const quarantinePath =
-    classification === "quarantine"
-      ? await logQuarantine(storageDir, {
-          received_at: now,
-          classification,
-          reasons: normalizedReasons,
-          spam_score: spamScore,
-          name,
-          email,
-          scope,
-          message,
-          remote_address: remoteAddress,
-          user_agent: userAgent,
-        })
+    classification === "quarantine" && !isRateLimited
+      ? await logQuarantine(
+          storageDir,
+          {
+            received_at: now,
+            classification,
+            reasons: normalizedReasons,
+            spam_score: spamScore,
+            name,
+            email,
+            scope,
+            message,
+            remote_address: remoteAddress,
+            user_agent: userAgent,
+          },
+          quarantineMaximumBytes,
+          quarantineRetentionDays,
+        )
       : null;
 
   return {

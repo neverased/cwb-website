@@ -204,6 +204,12 @@ The contact form still uses:
 - `SMTP_HOST`, `SMTP_PORT`, `SMTP_SECURE`, `SMTP_USER`, `SMTP_PASSWORD`:
   SMTP delivery settings. `SMTP_SECURE=true` enables implicit TLS, usually on 465.
 
+Contact rate limits use atomic transactions in `contact-state.sqlite` inside
+`CONTACT_STORAGE_DIR`. The first deployment starts fresh counters; old per-key
+JSON files remain untouched and are no longer read. Active keys are capped at
+4,096. Quarantine records retain at most seven days and one MiB in total; requests
+already over the rate limit do not add records.
+
 ## Verification
 
 ```bash

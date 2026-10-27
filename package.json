@@ -21,7 +21,9 @@
     "cms:setup": "node scripts/setup-cms-env.mjs",
     "lint": "oxlint src --deny-warnings",
     "lint:fix": "pnpm lint --fix",
-    "test:services": "tsx scripts/service-intents-regression.ts"
+    "test:services": "tsx scripts/service-intents-regression.ts",
+    "test:security": "node --import tsx scripts/contact-security-regression.ts && node --import tsx scripts/contact-http-regression.ts && node --import tsx scripts/contact-mail-regression.ts && node --import tsx scripts/contact-mail-tls-regression.ts && node --test scripts/security-config-regression.mjs scripts/live-state-exclusion-regression.mjs",
+    "test:security:tls": "node --test scripts/backend-tls-regression.mjs"
   },
   "dependencies": {
     "@payloadcms/db-postgres": "3.92.0",

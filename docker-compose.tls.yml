@@ -1,0 +1,37 @@
+# Opt-in remote-proxy transport. Provision certificates before starting this overlay.
+services:
+  web:
+    ports:
+      - "${BACKEND_TLS_BIND_ADDRESS:?Set the backend host LAN address}:3443:3443"
+
+  backend-tls:
+    image: traefik:v3.7.16@sha256:1336e85aaed293bd63d005086e0dd013b04078b26aaeb1c18b26a2f928af7e65
+    # Keep the unencrypted hop on loopback inside the application's namespace.
+    network_mode: service:web
+    depends_on:
+      web:
+        condition: service_healthy
+        restart: true
+    entrypoint: ["traefik"]
+    command: ["--configFile=/etc/traefik/traefik.yml"]
+    read_only: true
+    restart: unless-stopped
+    volumes:
+      - type: bind
+        source: ./deploy/backend-tls/traefik.yml
+        target: /etc/traefik/traefik.yml
+        read_only: true
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ./deploy/backend-tls/dynamic
+        target: /etc/traefik/dynamic
+        read_only: true
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ${BACKEND_TLS_CERT_DIR:?Set the absolute directory containing backend TLS certificates}
+        target: /etc/traefik/tls
+        read_only: true
+        bind:
+          create_host_path: false

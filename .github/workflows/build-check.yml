@@ -35,6 +35,11 @@ jobs:
       - name: Lint source
         run: pnpm lint
 
+      - name: Verify security regressions
+        env:
+          SECURITY_TEST_DOCKER_CONTEXT: default
+        run: pnpm test:security
+
       - name: Run contact regression checks
         run: pnpm test:contact
 
@@ -49,6 +54,11 @@ jobs:
 
       - name: Run standalone packaging regression checks
         run: pnpm test:standalone
+
+      - name: Verify local backend TLS
+        env:
+          SECURITY_TEST_DOCKER_CONTEXT: default
+        run: pnpm test:security:tls
 
       - name: Build standalone app
         run: pnpm build

@@ -20,11 +20,21 @@ http:
     cwb-website-canonical-host:
       redirectRegex:
         regex: '^https://www\.wojciechbajer\.com/(.*)'
-        replacement: 'https://wojciechbajer.com/${1}'
+        replacement: "https://wojciechbajer.com/${1}"
         permanent: true
   services:
     cwb-website-forward:
       loadBalancer:
         passHostHeader: true
+        serversTransport: cwb-website-backend-tls
         servers:
-          - url: "http://192.168.1.100:3010" # QNAP LAN IP
+          - url: "https://192.168.1.100:3443" # QNAP LAN IP; see docs/backend-tls.md
+  serversTransports:
+    cwb-website-backend-tls:
+      serverName: cwb-website-backend
+      insecureSkipVerify: false
+      rootCAs:
+        - /etc/traefik/cwb-backend-tls/server-ca.crt
+      certificates:
+        - certFile: /etc/traefik/cwb-backend-tls/client.crt
+          keyFile: /etc/traefik/cwb-backend-tls/client.key

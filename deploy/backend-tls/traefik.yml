@@ -1,0 +1,25 @@
+global:
+  checkNewVersion: false
+  sendAnonymousUsage: false
+
+entryPoints:
+  backend:
+    address: ":3443"
+    # Every caller must first authenticate with the dedicated proxy client CA.
+    # Preserve the public client's address supplied by that authenticated proxy.
+    forwardedHeaders:
+      insecure: true
+    http:
+      tls: {}
+
+providers:
+  file:
+    directory: /etc/traefik/dynamic
+    watch: true
+
+api:
+  dashboard: false
+  insecure: false
+
+log:
+  level: WARN

@@ -42,10 +42,12 @@ an authenticated administrator. All CMS accounts have editorial/admin access;
 separate editor roles are not configured.
 
 The stack binds to `127.0.0.1` by default. Complete the first-account setup
-before exposing it publicly. For deployment, configure your HTTPS reverse proxy,
-set `PAYLOAD_PUBLIC_SERVER_URL` to the site's public origin, and set
-`WEB_BIND_ADDRESS` as appropriate for that proxy. PostgreSQL is not published on
-the host in the main Compose file.
+before exposing it publicly. For deployment, configure your HTTPS reverse proxy
+and set `PAYLOAD_PUBLIC_SERVER_URL` to the site's public origin. The application
+HTTP port stays on loopback; `WEB_BIND_ADDRESS` no longer changes that binding.
+A proxy on another host must use the [backend mTLS overlay](docs/backend-tls.md).
+Provision its certificates before applying the forwarding configuration.
+PostgreSQL is not published on the host in the main Compose file.
 
 ## Publishing notes
 
@@ -220,9 +222,16 @@ pnpm test:seo
 pnpm test:contact
 pnpm test:services
 pnpm test:quotes
+pnpm test:security
+pnpm test:security:tls
 pnpm build
 docker compose config --quiet
 ```
+
+Security checks use Node.js 26, Python 3, OpenSSL, and a local Docker daemon.
+They default to the `desktop-linux` context; on Linux use
+`SECURITY_TEST_DOCKER_CONTEXT=default` when that context points to the local Unix
+socket. They use disposable fixtures and certificates, not production services.
 
 SEO checks cover pagination URLs, article social images, the six service pages,
 public media crawling and the scope of Payload's theme headers. CMS regression

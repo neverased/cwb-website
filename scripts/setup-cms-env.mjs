@@ -6,7 +6,6 @@ const content = [
   `PAYLOAD_SECRET=${randomBytes(48).toString("hex")}`,
   `POSTGRES_PASSWORD=${password}`,
   `CONTACT_FORM_SECRET=${randomBytes(32).toString("hex")}`,
-  "WEB_BIND_ADDRESS=127.0.0.1",
   "WEB_PORT=3000",
   "POSTGRES_PORT=54329",
   `DATABASE_URL=postgres://cwb:${password}@127.0.0.1:54329/cwb`,

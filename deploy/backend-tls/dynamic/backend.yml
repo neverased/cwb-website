@@ -1,0 +1,27 @@
+http:
+  routers:
+    application:
+      entryPoints:
+        - backend
+      rule: PathPrefix(`/`)
+      service: application
+      tls: {}
+  services:
+    application:
+      loadBalancer:
+        passHostHeader: true
+        servers:
+          - url: http://127.0.0.1:3000
+
+tls:
+  certificates:
+    - certFile: /etc/traefik/tls/server.crt
+      keyFile: /etc/traefik/tls/server.key
+  options:
+    default:
+      minVersion: VersionTLS12
+      sniStrict: true
+      clientAuth:
+        caFiles:
+          - /etc/traefik/tls/client-ca.crt
+        clientAuthType: RequireAndVerifyClientCert

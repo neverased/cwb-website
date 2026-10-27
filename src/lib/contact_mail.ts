@@ -1,38 +1,13 @@
 import nodemailer from "nodemailer";
 
 import type { ContactEvaluation } from "@/lib/contact";
+import { smtpTransportOptions } from "@/lib/smtp";
 
 const DEFAULT_CONTACT_EMAIL = "mail@wojciechbajer.com";
 
 const cleanLine = (value: string) => value.replace(/[\r\n]/g, " ").trim();
 
-const parseBoolean = (value: string | undefined) => /^(1|true|yes)$/i.test(value ?? "");
-
-const parsePort = (value: string | undefined, secure: boolean) => {
-  if (!value) {
-    return secure ? 465 : 587;
-  }
-
-  const parsed = Number.parseInt(value, 10);
-
-  return Number.isFinite(parsed) ? parsed : secure ? 465 : 587;
-};
-
-const getRequiredEnv = (name: string) => {
-  const value = process.env[name];
-
-  if (!value) {
-    throw new Error(`${name} is required for contact mail delivery`);
-  }
-
-  return value;
-};
-
 export const sendContactEmail = async (evaluation: ContactEvaluation) => {
-  const secure = parseBoolean(process.env.SMTP_SECURE);
-  const host = getRequiredEnv("SMTP_HOST");
-  const user = process.env.SMTP_USER;
-  const pass = process.env.SMTP_PASSWORD;
   const recipient = process.env.CONTACT_RECIPIENT ?? DEFAULT_CONTACT_EMAIL;
   const fromAddress =
     process.env.CONTACT_FROM ?? process.env.SMTP_FROM ?? DEFAULT_CONTACT_EMAIL;
@@ -52,18 +27,7 @@ export const sendContactEmail = async (evaluation: ContactEvaluation) => {
     `Remote address: ${safeRemoteAddress}`,
     `User agent: ${safeUserAgent}`,
   ].join("\n\n");
-  const transporter = nodemailer.createTransport({
-    host,
-    port: parsePort(process.env.SMTP_PORT, secure),
-    secure,
-    auth:
-      user || pass
-        ? {
-            user,
-            pass,
-          }
-        : undefined,
-  });
+  const transporter = nodemailer.createTransport(smtpTransportOptions());
 
   await transporter.sendMail({
     to: recipient,

@@ -202,7 +202,9 @@ The contact form still uses:
 - `CONTACT_STORAGE_DIR`: writable state directory, set by Compose.
 - `CONTACT_RECIPIENT` / `CONTACT_FROM`: mailbox and sender address.
 - `SMTP_HOST`, `SMTP_PORT`, `SMTP_SECURE`, `SMTP_USER`, `SMTP_PASSWORD`:
-  SMTP delivery settings. `SMTP_SECURE=true` enables implicit TLS, usually on 465.
+  SMTP delivery settings. `SMTP_SECURE=true` enables implicit TLS, usually on 465;
+  `false` requires STARTTLS, usually on 587. Both modes verify certificates and
+  reject plaintext delivery for contact and CMS emails.
 
 Contact rate limits use atomic transactions in `contact-state.sqlite` inside
 `CONTACT_STORAGE_DIR`. The first deployment starts fresh counters; old per-key

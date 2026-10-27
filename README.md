@@ -49,6 +49,15 @@ A proxy on another host must use the [backend mTLS overlay](docs/backend-tls.md)
 Provision its certificates before applying the forwarding configuration.
 PostgreSQL is not published on the host in the main Compose file.
 
+For QNAP deployment from a Mac, keep
+`COMPOSE_FILE=docker-compose.yml:docker-compose.tls.yml` in the existing gitignored
+`.env` so future Compose updates include the TLS sidecar. Set
+`BACKEND_TLS_CONFIG_DIR` and `BACKEND_TLS_CERT_DIR` to absolute paths on QNAP,
+copy the configuration and certificates there, and use
+`docker --context qnap compose ...`. Remote bind mounts refer to QNAP files, not Mac files. The
+[backend TLS guide](docs/backend-tls.md) records the deployment paths, required
+settings, proxy reload steps, and certificate renewal deadline.
+
 ## Publishing notes
 
 1. Open **Posts → Create New** in the CMS.

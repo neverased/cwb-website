@@ -18,13 +18,13 @@ services:
     restart: unless-stopped
     volumes:
       - type: bind
-        source: ./deploy/backend-tls/traefik.yml
+        source: ${BACKEND_TLS_CONFIG_DIR:-./deploy/backend-tls}/traefik.yml
         target: /etc/traefik/traefik.yml
         read_only: true
         bind:
           create_host_path: false
       - type: bind
-        source: ./deploy/backend-tls/dynamic
+        source: ${BACKEND_TLS_CONFIG_DIR:-./deploy/backend-tls}/dynamic
         target: /etc/traefik/dynamic
         read_only: true
         bind:

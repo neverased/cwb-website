@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
 import { readFile, readdir } from "node:fs/promises";
+import path from "node:path";
 import { test } from "node:test";
 
 test("browser evidence uses a pinned child process in a read-only agent", async () => {
@@ -173,4 +174,53 @@ test("remote proxy traffic requires verified TLS and the application has no LAN 
   assert.match(forward, /rootCAs:/);
   assert.match(forward, /certificates:/);
   assert.match(forward, /serverName:\s+cwb-website-backend/);
+  for (const file of ["server-ca.crt", "client.crt", "client.key"]) {
+    assert.ok(
+      forward.includes(`/etc/traefik/dynamic_conf/cwb-backend-tls/${file}`),
+      "Proxy certificates must use the existing read-only dynamic configuration mount",
+    );
+  }
+});
+
+test("TLS configuration bind mounts support an absolute path on the remote Docker host", () => {
+  const directory =
+    "/share/CACHEDEV1_DATA/homes/neverased/.config/cwb-website/backend-tls";
+  const config = compose(["docker-compose.yml", "docker-compose.tls.yml"], {
+    BACKEND_TLS_BIND_ADDRESS: "192.168.1.100",
+    BACKEND_TLS_CONFIG_DIR: directory,
+    BACKEND_TLS_CERT_DIR: `${directory}/certs`,
+  });
+  const mounts = config.services["backend-tls"].volumes;
+  for (const [target, source] of [
+    ["/etc/traefik/traefik.yml", `${directory}/traefik.yml`],
+    ["/etc/traefik/dynamic", `${directory}/dynamic`],
+    ["/etc/traefik/tls", `${directory}/certs`],
+  ]) {
+    const mount = mounts.find((candidate) => candidate.target === target);
+    assert.equal(
+      mount.source,
+      source,
+      "Bind paths must exist on the daemon host, not the invoking Mac",
+    );
+    assert.equal(mount.read_only, true);
+    assert.equal(mount.bind.create_host_path, false);
+  }
+});
+
+test("TLS configuration uses repository files for a local Docker host by default", () => {
+  const config = compose(["docker-compose.yml", "docker-compose.tls.yml"], {
+    BACKEND_TLS_BIND_ADDRESS: "127.0.0.1",
+    BACKEND_TLS_CONFIG_DIR: "",
+    BACKEND_TLS_CERT_DIR: "/tmp/cwb-config-test-certificates",
+  });
+  const mounts = config.services["backend-tls"].volumes;
+  for (const [target, relative] of [
+    ["/etc/traefik/traefik.yml", "deploy/backend-tls/traefik.yml"],
+    ["/etc/traefik/dynamic", "deploy/backend-tls/dynamic"],
+  ]) {
+    assert.equal(
+      mounts.find((candidate) => candidate.target === target).source,
+      path.resolve(relative),
+    );
+  }
 });

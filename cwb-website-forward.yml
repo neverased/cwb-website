@@ -34,7 +34,7 @@ http:
       serverName: cwb-website-backend
       insecureSkipVerify: false
       rootCAs:
-        - /etc/traefik/cwb-backend-tls/server-ca.crt
+        - /etc/traefik/dynamic_conf/cwb-backend-tls/server-ca.crt
       certificates:
-        - certFile: /etc/traefik/cwb-backend-tls/client.crt
-          keyFile: /etc/traefik/cwb-backend-tls/client.key
+        - certFile: /etc/traefik/dynamic_conf/cwb-backend-tls/client.crt
+          keyFile: /etc/traefik/dynamic_conf/cwb-backend-tls/client.key

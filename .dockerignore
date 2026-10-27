@@ -34,3 +34,9 @@ skills-lock.json
 !.env.sample
 
 public/*.php
+
+# Local live capabilities and session data never belong in build contexts.
+.impeccable/live/*
+!.impeccable/live/config.json
+.impeccable-live.json
+.impeccable-live/

@@ -41,3 +41,9 @@ firebase-debug.log
 
 # local brainstorming artifacts
 .superpowers/
+
+# Local live capabilities, journals and screenshots; retain shared setup.
+/.impeccable/live/*
+!/.impeccable/live/config.json
+/.impeccable-live.json
+/.impeccable-live/

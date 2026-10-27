@@ -182,6 +182,13 @@ update that URL as well. Do not run the production web container and host dev
 server on the same HTTP port. Host development stores uploads in `storage/media`;
 the production container uses its own media volume.
 
+## Design tooling
+
+Use the separately installed global Impeccable skill or plugin. This repository
+does not vendor its implementation or register project-local Impeccable hooks.
+The `.impeccable/` design settings and historical critiques remain project data;
+generated live-session state is excluded from Git and Docker build contexts.
+
 ## Runtime configuration
 
 See `.env.example` for all settings. Required Compose variables are

@@ -33,7 +33,7 @@ services:
       - media-data:/app/storage/media
 
   db:
-    image: postgres:17-bookworm@sha256:858bb5e98eed02eb8cafbcdc007f9a65d1b613972028944a8ec2133ccaf80d27
+    image: postgres:17-bookworm@sha256:665dc7b37ac52a17e298511414c21d23ffa4e6a6ef6225b3e5d59c7afb35e994
     environment:
       POSTGRES_DB: cwb
       POSTGRES_USER: cwb

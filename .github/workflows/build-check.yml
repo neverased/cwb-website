@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Install pnpm
-        uses: pnpm/action-setup@0977fd99725f1db4007ccb2928dbb4e90d06cc86 # v6
+        uses: pnpm/action-setup@73e46992e05b19abd31f2f3c20e0e7370d762115 # v6.1.1
         with:
           run_install: false
 
@@ -90,6 +90,16 @@ jobs:
           CMS_TEST_EMAIL: quotes-ci@example.test
           CMS_TEST_PASSWORD: disposable-local-quotes-ci-only
         run: pnpm test:quotes:integration
+
+      - name: Install Chromium for CMS browser checks
+        run: pnpm exec playwright install --with-deps chromium --only-shell
+
+      - name: Verify local CMS editor resources and workers
+        env:
+          CMS_TEST_URL: http://127.0.0.1:3100
+          CMS_TEST_EMAIL: quotes-ci@example.test
+          CMS_TEST_PASSWORD: disposable-local-quotes-ci-only
+        run: pnpm test:cms:browser
 
       - name: Stop CMS test stack
         if: always()

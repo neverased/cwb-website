@@ -22,6 +22,7 @@ import { UnderlineFeatureClient as UnderlineFeatureClient_e70f5e05f09f93e00b997e
 import { BoldFeatureClient as BoldFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
 import { ItalicFeatureClient as ItalicFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
 import { QuoteShareTools as QuoteShareTools_769660bc957f270eee096438ba629eaf } from '../../../cms/components/QuoteShareTools'
+import { LocalEditorProvider as LocalEditorProvider_704e03271a04c9e09c5ca8c534853f94 } from '../../../cms/components/LocalEditorProvider'
 import { CollectionCards as CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1 } from '@payloadcms/next/rsc'
 
 /** @type import('payload').ImportMap */
@@ -50,5 +51,6 @@ export const importMap = {
   "@payloadcms/richtext-lexical/client#BoldFeatureClient": BoldFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
   "@payloadcms/richtext-lexical/client#ItalicFeatureClient": ItalicFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
   "./cms/components/QuoteShareTools#QuoteShareTools": QuoteShareTools_769660bc957f270eee096438ba629eaf,
+  "./cms/components/LocalEditorProvider#LocalEditorProvider": LocalEditorProvider_704e03271a04c9e09c5ca8c534853f94,
   "@payloadcms/next/rsc#CollectionCards": CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1
 }

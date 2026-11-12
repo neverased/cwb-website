@@ -293,9 +293,36 @@ durable login limits. The script refuses remote hosts and cleans up its own
 quotes. Use the production server for the cache-header checks; for development
 only, `CMS_TEST_DEV=1` allows Next.js's development `no-cache` header.
 
+With the same disposable administrator account, run the browser regression:
+
+```bash
+pnpm exec playwright install chromium --only-shell
+CMS_TEST_URL=http://127.0.0.1:3100 \
+  CMS_TEST_EMAIL=local-test@example.test CMS_TEST_PASSWORD='<test-password>' \
+  pnpm test:cms:browser
+```
+
+It opens the quote acceptance JSON editor without saving a record, blocks
+external editor resources, and verifies the local Monaco instance and JSON worker.
+The existing Gravatar avatar image remains allowed.
+
 Linting uses Oxlint and `eslint-plugin-simple-import-sort`; `pnpm lint:fix`
 applies automatic fixes. The generated Payload import map is excluded from
 linting. Type checking remains part of `pnpm build`.
+
+Dependency security checks run with `pnpm test:dependencies` and are included in
+`pnpm test:security`. The pnpm patches are required during Docker installation:
+`deepmerge` 4.3.1 defines own data properties instead of invoking prototype setters,
+and Monaco uses the patched DOMPurify dependency in place of its vendored copy.
+The CMS provider loads this local Monaco build and local workers before mounting
+editors, avoiding the loader's default CDN version.
+
+`pnpm audit` has one specific exception for
+[GHSA-gcqx-w48m-w2h4](https://github.com/advisories/GHSA-gcqx-w48m-w2h4), because
+deepmerge has no fixed upstream release and the registry cannot recognize the
+local patch. The regression suite verifies target/source prototype attacks,
+nested properties and normal Payload merge behavior. Remove the patch and audit
+exception together once an upstream fixed version is available and verified.
 
 ## Contributions
 

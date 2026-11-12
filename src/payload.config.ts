@@ -23,6 +23,9 @@ const dirname = path.dirname(fileURLToPath(import.meta.url));
 export default buildConfig({
   admin: {
     user: Users.slug,
+    components: {
+      providers: ["./cms/components/LocalEditorProvider#LocalEditorProvider"],
+    },
     importMap: { baseDir: dirname },
     meta: { titleSuffix: "— CWB CMS" },
   },

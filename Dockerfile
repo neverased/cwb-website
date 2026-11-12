@@ -14,6 +14,7 @@ RUN npm install --global --no-audit --no-fund "$(node -p 'require("./package.jso
 FROM base AS deps
 
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+COPY patches ./patches
 RUN --mount=type=cache,id=pnpm-store,target=/pnpm/store \
     pnpm install --frozen-lockfile --store-dir=/pnpm/store --package-import-method=copy
 

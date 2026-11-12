@@ -89,3 +89,15 @@ onlyBuiltDependencies:
 overrides:
   # Oxlint supplies the ESLint-compatible API used by this plugin.
   eslint-plugin-simple-import-sort@14.0.0>eslint: '-'
+  # Upstream packages still pin releases covered by security advisories.
+  monaco-editor>dompurify: 3.4.17
+  '@lexical/headless>happy-dom': 21.0.4
+  '@esbuild-kit/core-utils>esbuild': 0.28.2
+patchedDependencies:
+  deepmerge@4.3.1: patches/deepmerge@4.3.1.patch
+  monaco-editor@0.57.0: patches/monaco-editor@0.57.0.patch
+auditConfig:
+  ignoreGhsas:
+    # No upstream release exists; the pinned pnpm patch fixes every merge write.
+    # test:dependencies exercises the exploit through Payload and guards this exception.
+    - GHSA-gcqx-w48m-w2h4

@@ -65,5 +65,5 @@
     "prettier": "^3.10.1",
     "tsx": "^4.23.15"
   },
-  "packageManager": "pnpm@12.18.0"
+  "packageManager": "pnpm@12.21.0"
 }

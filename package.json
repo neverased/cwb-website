@@ -42,7 +42,7 @@
     "jquery": "^4.0.0",
     "monaco-editor": "0.57.0",
     "next": "^16.4.6",
-    "nodemailer": "^10.5.0",
+    "nodemailer": "^10.6.0",
     "payload": "3.93.0",
     "pdfkit": "^0.20.2",
     "react": "^19.3.1",
@@ -59,11 +59,11 @@
     "@types/three": "0.187.0",
     "coffeescript": "^2.7.1",
     "eslint-plugin-simple-import-sort": "^14.0.0",
-    "jsdom": "^31.0.0",
+    "jsdom": "^31.0.1",
     "oxlint": "1.93.0",
-    "playwright": "^1.65.0",
+    "playwright": "^1.65.1",
     "prettier": "^3.10.1",
     "tsx": "^4.23.15"
   },
-  "packageManager": "pnpm@12.18.0"
+  "packageManager": "pnpm@12.21.0"
 }

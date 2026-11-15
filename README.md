@@ -152,13 +152,14 @@ The standalone image builds without a database connection. Automatic schema push
 is disabled in every environment; schema changes must have committed migrations.
 
 The image build also runs `scripts/verify-sharp.mjs` in the final runtime stage.
-It loads Sharp and processes a small image using only the standalone dependencies.
+It loads Sharp, processes a small image, loads the PostgreSQL driver and serializes
+a query using only the standalone dependencies, without connecting to a database.
 After `next build`, `scripts/prepare-standalone-dependencies.mjs` copies the complete
-Sharp package and its `semver` dependency into standalone, preserving their resolved
+Sharp, `semver` and `pg-protocol` packages into standalone, preserving their resolved
 package paths. This prevents incomplete standalone copies from omitting Sharp's
-`dist/channel.mjs` or `semver/functions/compare-build.js`, even when the missing
-files were listed in the trace manifest. Run `pnpm test:standalone` to verify that
-packaging repairs incomplete Sharp distributions with both flat and pnpm layouts.
+`dist/channel.mjs`, `semver/functions/compare-build.js` or PostgreSQL's protocol
+serializer, even when files were listed in the trace manifest. Run
+`pnpm test:standalone` to verify packaging repair with flat and pnpm layouts.
 
 After changing a collection or editor configuration:
 

@@ -220,7 +220,7 @@ importers:
         version: 11.12.0
       jquery:
         specifier: ^4.0.0
-        version: 4.0.0
+        version: 4.1.0
       monaco-editor:
         specifier: 0.57.0
         version: 0.57.0(patch_hash=59edd49dd1eef47944a9ca09d65bbc8f1c397ac1055b0e59aa8b858e93747eba)
@@ -2262,8 +2262,8 @@ packages:
     resolution: {integrity: sha512-34wB/Y7MW7bzjKRjUKTa46I2Z7eV62Rkhva+KkopW7Qvv/OSWBqvkSY7vusOPrNuZcUG3tApvdVgNB8POj3SPw==}
     engines: {node: '>=10'}
 
-  jquery@4.0.0:
-    resolution: {integrity: sha512-TXCHVR3Lb6TZdtw1l3RTLf8RBWVGexdxL6AC8/e0xZKEpBflBsjh9/8LXw+dkNFuOyW9B7iB3O1sP7hS0Kiacg==}
+  jquery@4.1.0:
+    resolution: {integrity: sha512-tnN2N83S+xD3yhmdBP4nnJ1XOO0Fl586rG23FA5h/JAe8XN3W9a1zGwDMltBptn+UpcqEKicnO61+jQ0EiF2fw==}
 
   js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
@@ -4815,7 +4815,7 @@ snapshots:
 
   joycon@3.1.1: {}
 
-  jquery@4.0.0: {}
+  jquery@4.1.0: {}
 
   js-tokens@4.0.0: {}
 

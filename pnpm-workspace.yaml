@@ -90,7 +90,7 @@ overrides:
   # Oxlint supplies the ESLint-compatible API used by this plugin.
   eslint-plugin-simple-import-sort@14.0.0>eslint: '-'
   # Upstream packages still pin releases covered by security advisories.
-  monaco-editor>dompurify: 3.4.17
+  monaco-editor>dompurify: 3.5.0
   '@lexical/headless>happy-dom': 21.0.4
   '@esbuild-kit/core-utils>esbuild': 0.28.2
 patchedDependencies:

@@ -173,7 +173,7 @@ settings:
 
 overrides:
   eslint-plugin-simple-import-sort@14.0.0>eslint: '-'
-  monaco-editor>dompurify: 3.4.17
+  monaco-editor>dompurify: 3.5.0
   '@lexical/headless>happy-dom': 21.0.4
   '@esbuild-kit/core-utils>esbuild': 0.28.2
 
@@ -1937,8 +1937,8 @@ packages:
   dom-helpers@5.2.1:
     resolution: {integrity: sha512-nRCa7CK3VTrM2NmGkIy4cbK7IZlgBE/PYMn55rrXefr5xXDP0LdtfPnblFDoVdcAfslJ7or6iqAUnx0CCGIWQA==}
 
-  dompurify@3.4.17:
-    resolution: {integrity: sha512-B/pSlYVHQ58kqISD/yDjuJ1yfzI34m1gF4lAod2bwSRhiN4K5Cl3H8Af7hqB2PmTL911tdEudnnXn5FnhRoz0w==}
+  dompurify@3.5.0:
+    resolution: {integrity: sha512-LYC0ZkE8P1V42JsRYTwMdme/2ET8SpOc5AA2eOFjP/IadvRd2fwiT4TVz5vkfy0XUx12aS2UaRkTnfVPNOv9vw==}
 
   drizzle-kit@0.31.7:
     resolution: {integrity: sha512-hOzRGSdyKIU4FcTSFYGKdXEjFsncVwHZ43gY3WU5Bz9j5Iadp6Rh6hxLSQ1IWXpKLBKt/d5y1cpSPcV+FcoQ1A==}
@@ -4541,7 +4541,7 @@ snapshots:
       '@babel/runtime': 7.29.13
       csstype: 3.2.3
 
-  dompurify@3.4.17:
+  dompurify@3.5.0:
     optionalDependencies:
       '@types/trusted-types': 2.0.7
 
@@ -5143,7 +5143,7 @@ snapshots:
 
   monaco-editor@0.57.0(patch_hash=59edd49dd1eef47944a9ca09d65bbc8f1c397ac1055b0e59aa8b858e93747eba):
     dependencies:
-      dompurify: 3.4.17
+      dompurify: 3.5.0
       marked: 14.0.0
 
   ms@2.1.3: {}
